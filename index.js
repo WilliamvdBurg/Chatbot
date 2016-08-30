@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Index route
-// app.get('/', function (req, res) {
-//     res.send('Hello world, I am a chat bot')
-// })
-
-// index
 app.get('/', function (req, res) {
-    res.send('hello world i am a secret bot')
+    res.send('Hello world, I am a chat bot')
 })
+
+// // index
+// app.get('/', function (req, res) {
+//     res.send('hello world i am a secret bot')
+// })
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
