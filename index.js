@@ -39,26 +39,21 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 app.post('/webhook/', function (req, res) {
-    messaging_events = req.body.entry[0].messaging
-    for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i]
-        sender = event.sender.id
+     messaging_events = req.body.entry[0].messaging
+    for ( i = 0; i < messaging_events.length; i++) {
+         event = req.body.entry[0].messaging[i]
+         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
             if (text === 'Generic') {
                 sendGenericMessage(sender)
                 continue
             }
-            // dit hoort bij vorige code
-            //text = event.message.text//
-
-            // toegevoegd misschien is het helemaal niet goed
-            sendTextMessage(sender, "Wat lief dat je dat vraagt, " + text.substring(0, 200))
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
-        // net toegevoegd misschien is het helemaal niet goed.
         if (event.postback) {
             text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
             continue
         }
     }
@@ -136,3 +131,7 @@ function sendGenericMessage(sender) {
         }
     })
 }
+// spin spin sugar
+app.listen(app.get('port'), function() {
+    console.log('running on port', app.get('port'))
+})
