@@ -1,24 +1,22 @@
-'use strict'
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
+var express = require('express')
+var bodyParser = require('body-parser')
+var request = require('request')
+var app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
-// parse application/x-www-form-urlencoded
+// Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
-// parse application/json
+// Process application/json
 app.use(bodyParser.json())
 
-// index
+// Index route
 app.get('/', function (req, res) {
-    res.send('hello world i am a secret bot')
+    res.send('Hello world, I am a chat bot')
 })
 
-// for facebook verification
+// for Facebook verification
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
         res.send(req.query['hub.challenge'])
@@ -26,37 +24,31 @@ app.get('/webhook/', function (req, res) {
     res.send('Error, wrong token')
 })
 
-// to post data
+// Spin up the server
+app.listen(app.get('port'), function() {
+    console.log('running on port', app.get('port'))
+})
+
 app.post('/webhook/', function (req, res) {
-    let messaging_events = req.body.entry[0].messaging
-    for ( let i = 0; i < messaging_events.length; i++) {
-          let event = req.body.entry[0].messaging[i]
-         let sender = event.sender.id
+    messaging_events = req.body.entry[0].messaging
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id
         if (event.message && event.message.text) {
-             text = event.message.text
-            if (text === 'Generic') {
-                sendGenericMessage(sender)
-                continue
-            }
+            text = event.message.text
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-        }
-        if (event.postback) {
-             text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-            continue
         }
     }
     res.sendStatus(200)
 })
 
-
-// recommended to inject access tokens as environmental variables, e.g.
-// const token = process.env.PAGE_ACCESS_TOKEN
-const token = "<PAGE_ACCESS_TOKEN>"
+var token = "EAAJdlf5ub0MBAPWdoA8bzHEyYftO2uGxyDXC7oPmNehkwVloOLJT2sGAy3FIZCbsD47fJzxkLJW6x3gN70GO1QJEY0GL22F49Gy9LZBolCrrJpFUSFiE07WCd18NZB7yZBwpil8MTESTnZBQ8HyO6PZAVVygC7TlQZB2kO8GeeftwZDZD
+"
 
 function sendTextMessage(sender, text) {
-    let messageData = { text:text }
-
+    messageData = {
+        text:text
+    }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
@@ -73,9 +65,8 @@ function sendTextMessage(sender, text) {
         }
     })
 }
-
 function sendGenericMessage(sender) {
-    let messageData = {
+    messageData = {
         "attachment": {
             "type": "template",
             "payload": {
@@ -123,7 +114,41 @@ function sendGenericMessage(sender) {
     })
 }
 
-// spin spin sugar
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
+app.post('/webhook/', function (req, res) {
+    messaging_events = req.body.entry[0].messaging
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id
+        if (event.message && event.message.text) {
+            text = event.message.text
+            if (text === 'Generic') {
+                sendGenericMessage(sender)
+                continue
+            }
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+        }
+    }
+    res.sendStatus(200)
+})
+
+app.post('/webhook/', function (req, res) {
+    messaging_events = req.body.entry[0].messaging
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id
+        if (event.message && event.message.text) {
+            text = event.message.text
+            if (text === 'Generic') {
+                sendGenericMessage(sender)
+                continue
+            }
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+        }
+        if (event.postback) {
+            text = JSON.stringify(event.postback)
+            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+            continue
+        }
+    }
+    res.sendStatus(200)
 })
