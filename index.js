@@ -92,7 +92,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             else if (text === 'help') {
-                sendTextMessage(sender, '-Website \n -Generic \n -hi \n -doet');
+                sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
                 continue
             }
             sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
