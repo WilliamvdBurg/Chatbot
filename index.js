@@ -68,6 +68,10 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+            else if (text === 'hello') {
+                sendTextMessage(sender,' teest1222333');
+                continue
+            }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
         if (event.postback) {
