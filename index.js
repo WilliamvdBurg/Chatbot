@@ -169,13 +169,36 @@ app.post('/webhook/', function (req, res) {
     }
 
 
-    function sendWebsiteMessage(sender) {
-        messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "Vrendly",
-                    "elements": [{
+    // function sendWebsiteMessage(sender) {
+    //     messageData = {
+    //         "attachment": {
+    //             "type": "template",
+    //             "payload": {
+    //                 "template_type": "generic",
+    //                 "elements": [{
+    //                 "title": "First card",
+    //                 "subtitle": "Element #1 of an hscroll",
+    //                 "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
+    //                 "buttons": [{
+    //                     "type": "web_url",
+    //                     "url": "https://www.evalytics.nl",
+    //                     "title": "web url"
+    //                 }, {
+    //                     "type": "postback",
+    //                     "title": "Postback",
+    //                     "payload": "Payload for first element in a generic bubble",
+    //                 }]
+    //             }]
+    //         }
+    //     }
+    // }
+function sendWebsiteMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "Website",
+                "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
@@ -188,7 +211,8 @@ app.post('/webhook/', function (req, res) {
                         "title": "Postback",
                         "payload": "Payload for first element in a generic bubble",
                     }],
-                }]
+                },
+                ]
             }
         }
     }
