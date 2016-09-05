@@ -68,24 +68,25 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            else if (text === ('hello' || 'Hello' || 'Hi' || 'hi')) {
-                sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
-                continue
-            }
-            else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
-                sendTextMessage(sender, "Thanks you, have a nice day!!");
-                continue
-            }
-
-            if (event.postback) {
-                text = JSON.stringify(event.postback)
-                sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
-                continue
-            }
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
-        res.sendStatus(200)
+        if (event.postback) {
+            text = JSON.stringify(event.postback)
+            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+            continue
+        }
     }
+    res.sendStatus(200)
+})
 
+// else if (text === ('hello' || 'Hello' || 'Hi' || 'hi')) {
+//     sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
+//     continue
+// }
+// else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
+//     sendTextMessage(sender, "Thanks you, have a nice day!!");
+//     continue
+// }
     var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
@@ -162,4 +163,3 @@ app.post('/webhook/', function (req, res) {
 
     }
 
-})
