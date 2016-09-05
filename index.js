@@ -29,22 +29,30 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
+// (event.message === 'hello') {
+//     // Let's reply back hello
+//     message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
+//     reply(sender, message)
+
+
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
-        if (event.message && event.message.text) {
-            text = event.message.text
-            sendTextMessage(sender, "" + text.substring(0, 200))
-        }
-        if (event.message === 'hello') {
-            // Let's reply back hello
+        if (event.message === 'hello')  {
             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
             reply(sender, message)
-        } else {
-
         }
+        else(event.message && event.message.text)
+        {
+                text = event.message.text
+                sendTextMessage(sender, "" + text.substring(0, 200))
+        }
+
+
+
+
     }
     res.sendStatus(200)
 })
@@ -159,3 +167,25 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200)
 })
+
+
+//
+// app.post('/webhook/', function (req, res) {
+//     messaging_events = req.body.entry[0].messaging
+//     for (i = 0; i < messaging_events.length; i++) {
+//         event = req.body.entry[0].messaging[i]
+//         sender = event.sender.id
+//         if (event.message && event.message.text) {
+//             text = event.message.text
+//             sendTextMessage(sender, "" + text.substring(0, 200))
+//         }
+//         if (event.message === 'hello') {
+//             // Let's reply back hello
+//             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
+//             reply(sender, message)
+//         } else {
+//
+//         }
+//     }
+//     res.sendStatus(200)
+// })
