@@ -77,10 +77,10 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            else if(inAflsuitingen(text) == true) { "tot ziens, dankuwel voor het chatten"}
-
-
-
+            else if(inAflsuitingen(text) == true) {
+                sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
+                continue
+            }
             else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
