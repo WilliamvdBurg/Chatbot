@@ -147,17 +147,16 @@ app.post('/webhook/', function (req, res) {
                             "title": "Postback",
                             "payload": "Payload for first element in a generic bubble",
                         }],
-                    }],
-                    //     {
-                    //     "title": "Second card",
-                    //     "subtitle": "Element #2 of an hscroll",
-                    //     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    //     "buttons": [{
-                    //         "type": "postback",
-                    //         "title": "Postback",
-                    //         "payload": "Payload for second element in a generic bubble",
-                    //     }],
-                    // }]
+                    }, {
+                        "title": "Second card",
+                        "subtitle": "Element #2 of an hscroll",
+                        "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "Postback",
+                            "payload": "Payload for second element in a generic bubble",
+                        }],
+                    }]
                 }
             }
         }
@@ -243,16 +242,17 @@ function sendWebsiteMessage(sender) {
                         "title": "Postback",
                         "payload": "Payload for first element in a generic bubble",
                     }],
-                }, {
-                    "title": "Vrendly",
-                    "subtitle": "site van vrendly",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+                }],
+                //     {
+                //     "title": "Vrendly",
+                //     "subtitle": "site van vrendly",
+                //     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                //     "buttons": [{
+                //         "type": "postback",
+                //         "title": "Postback",
+                //         "payload": "Payload for second element in a generic bubble",
+                //     }],
+                // }]
             }
         }
     }
