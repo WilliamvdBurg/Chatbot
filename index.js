@@ -35,48 +35,62 @@ app.listen(app.get('port'), function() {
 //     reply(sender, message)
 
 
-app.post('/webhook/', function (req, res) {
-    console.log('post request on /webhook/');
-    console.log('message body is', req.body.entry[0].messaging);
-    messaging_events = req.body.entry[0].messaging
-    for (i = 0; i < messaging_events.length; i++) {
-        event = messaging_events[i]
-        sender = event.sender.id
-        if (event.message.text === 'hello') {
-            // Let's reply back hello
-            message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
-            res.send(sender, message)
-            console.log(message)
-        }
-        if (event.message && event.message.text) {
-            text = event.message.text
-            // sendTextMessage(sender, "" + text.substring(0, 200))
-        }
-
-
-    }
-    res.sendStatus(200)
-})
 // app.post('/webhook/', function (req, res) {
+//     console.log('post request on /webhook/');
+//     console.log('message body is', req.body.entry[0].messaging);
 //     messaging_events = req.body.entry[0].messaging
 //     for (i = 0; i < messaging_events.length; i++) {
-//         event = req.body.entry[0].messaging[i]
+//         event = messaging_events[i]
 //         sender = event.sender.id
-//         if (event.message === 'hello')  {
+//         if (event.message.text === 'hello') {
+//             // Let's reply back hello
 //             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
-//             reply(sender, message)
+//             res.send(sender, message)
+//             console.log(message)
 //         }
-//         else(event.message && event.message.text)
-//         {
-//                 text = event.message.text
-//                 sendTextMessage(sender, "" + text.substring(0, 200))
+//         if (event.message && event.message.text) {
+//             text = event.message.text
+//             // sendTextMessage(sender, "" + text.substring(0, 200))
 //         }
-//
-//
 //
 //
 //     }
 //     res.sendStatus(200)
 // })
+app.post('/webhook/', function (req, res) {
+    messaging_events = req.body.entry[0].messaging
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id
+        if(event.message && event.message.text)
+        {
+                text = event.message.text
+                sendTextMessage(sender, "" + text.substring(0, 200))
+        }
+     }
+    res.sendStatus(200)
+})
 
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+
+
+function sendTextMessage(sender, text) {
+    messageData = {
+        text:text
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
