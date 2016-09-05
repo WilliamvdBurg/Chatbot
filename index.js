@@ -40,22 +40,41 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
-        if (event.message === 'hello')  {
+        if (event.message && event.message.text) {
+            text = event.message.text
+            sendTextMessage(sender, "" + text.substring(0, 200))
+        }
+        if (event.message === 'hello') {
+            // Let's reply back hello
             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
             reply(sender, message)
+        } else {
+
         }
-        else(event.message && event.message.text)
-        {
-                text = event.message.text
-                sendTextMessage(sender, "" + text.substring(0, 200))
-        }
-
-
-
-
     }
     res.sendStatus(200)
 })
+// app.post('/webhook/', function (req, res) {
+//     messaging_events = req.body.entry[0].messaging
+//     for (i = 0; i < messaging_events.length; i++) {
+//         event = req.body.entry[0].messaging[i]
+//         sender = event.sender.id
+//         if (event.message === 'hello')  {
+//             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
+//             reply(sender, message)
+//         }
+//         else(event.message && event.message.text)
+//         {
+//                 text = event.message.text
+//                 sendTextMessage(sender, "" + text.substring(0, 200))
+//         }
+//
+//
+//
+//
+//     }
+//     res.sendStatus(200)
+// })
 
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
