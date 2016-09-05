@@ -91,6 +91,10 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Thank you, have a nice day!!");
                 continue
             }
+            else if (text === 'help') {
+                sendTextMessage(sender, '-Website \n -Generic \n -hi \n -doet');
+                continue
+            }
             sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
