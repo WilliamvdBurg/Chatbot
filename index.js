@@ -69,7 +69,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             else if (text === 'hello') {
-                sendTextMessage(sender,' teest1222333');
+                sendTextMessage(sender,' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
