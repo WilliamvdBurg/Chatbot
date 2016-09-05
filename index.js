@@ -126,7 +126,7 @@ function sendWebsiteMessage(sender) {
                     "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.messenger.com",
+                        "url": "http://www.evalytics.nl",
                         "title": "web url"
                     }, {
                         "type": "postback",
@@ -152,7 +152,7 @@ function sendGenericMessage(sender) {
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.messenger.com",
+                        "url": "https://www.oculus.com/",
                         "title": "web url"
                     }, {
                         "type": "postback",
@@ -165,6 +165,7 @@ function sendGenericMessage(sender) {
                     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
                     "buttons": [{
                         "type": "postback",
+                        "url":  "http://www.vr-producties.nl/?gclid=CLywxuul-M4CFcYp0wodJwMMIw",
                         "title": "Postback",
                         "payload": "Payload for second element in a generic bubble",
                     }],
