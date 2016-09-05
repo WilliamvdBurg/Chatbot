@@ -72,7 +72,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            else if (text === ('hello' || 'Hello' || 'Hi' || 'hi')) {
+            else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
@@ -80,7 +80,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Thank you, have a nice day!!");
                 continue
             }
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
@@ -141,10 +141,6 @@ app.post('/webhook/', function (req, res) {
                         "subtitle": "Element #2 of an hscroll",
                         "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
                         "buttons": [{
-                            "type": "web_url",
-                            "url": "http://www.vr-producties.nl/?gclid=CP63gb-w-M4CFe4y0wod4AMOyA",
-                            "title": "web url"
-                        }, {
                             "type": "postback",
                             "title": "Postback",
                             "payload": "Payload for second element in a generic bubble",
