@@ -3,6 +3,8 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 
+
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -57,6 +59,9 @@ app.listen(app.get('port'), function() {
 //     }
 //     res.sendStatus(200)
 // })
+
+var afsluitingen = [" doei", "dag", "totziens"];
+
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
@@ -72,6 +77,10 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
+            else if(inAflsuitingen(text) == true) { "tot ziens, dankuwel voor het chatten"}
+
+
+
             else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
