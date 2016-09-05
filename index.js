@@ -72,9 +72,9 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
-            else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')){
-                sendTextMessage(sender, "Thanks you, have a nice day!!" );
-            continue
+            else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
+                sendTextMessage(sender, "Thanks you, have a nice day!!");
+                continue
             }
             else if (text === ('website' || 'Website')) {
                 sendWebsiteMessage(sender)
@@ -82,110 +82,111 @@ app.post('/webhook/', function (req, res) {
             }
 
             if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-            continue
+                text = JSON.stringify(event.postback)
+                sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+                continue
+            }
         }
+        res.sendStatus(200)
     }
-    res.sendStatus(200)
-})
 
-var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+    var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
-function sendTextMessage(sender, text) {
-    messageData = {
-        text:text
+    function sendTextMessage(sender, text) {
+        messageData = {
+            text: text
+        }
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {access_token: token},
+            method: 'POST',
+            json: {
+                recipient: {id: sender},
+                message: messageData,
+            }
+        }, function (error, response, body) {
+            if (error) {
+                console.log('Error sending messages: ', error)
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error)
+            }
+        })
     }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
 
-function sendWebsiteMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "Website",
-                "elements": [{
-                    "title": "Vrendly",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "http://www.evalytics.nl",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+    function sendWebsiteMessage(sender) {
+        messageData = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "Website",
+                    "elements": [{
+                        "title": "Vrendly",
+                        "subtitle": "Element #1 of an hscroll",
+                        "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": "http://www.evalytics.nl",
+                            "title": "web url"
+                        }, {
+                            "type": "postback",
+                            "title": "Postback",
+                            "payload": "Payload for first element in a generic bubble",
+                        }]
+
                     }]
-
-                }]
+                }
             }
         }
-    }
-}
 
-function sendGenericMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.oculus.com/",
-                        "title": "web url"
+
+    function sendGenericMessage(sender) {
+        messageData = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "First card",
+                        "subtitle": "Element #1 of an hscroll",
+                        "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.oculus.com/",
+                            "title": "web url"
+                        }, {
+                            "type": "postback",
+                            "title": "Postback",
+                            "payload": "Payload for first element in a generic bubble",
+                        }],
                     }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "url":  "http://www.vr-producties.nl/?gclid=CLywxuul-M4CFcYp0wodJwMMIw",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+                        "title": "Second card",
+                        "subtitle": "Element #2 of an hscroll",
+                        "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                        "buttons": [{
+                            "type": "postback",
+                            "url": "http://www.vr-producties.nl/?gclid=CLywxuul-M4CFcYp0wodJwMMIw",
+                            "title": "Postback",
+                            "payload": "Payload for second element in a generic bubble",
+                        }],
+                    }]
+                }
             }
         }
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {access_token: token},
+            method: 'POST',
+            json: {
+                recipient: {id: sender},
+                message: messageData,
+            }
+        }, function (error, response, body) {
+            if (error) {
+                console.log('Error sending messages: ', error)
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error)
+            }
+        })
     }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
+
