@@ -48,9 +48,9 @@ app.post('/webhook/', function (req, res) {
             // Let's reply back hello
             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
             reply(sender, message)
-        } else {
-
         }
+
+
     }
     res.sendStatus(200)
 })
