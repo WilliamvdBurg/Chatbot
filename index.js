@@ -60,8 +60,8 @@ app.listen(app.get('port'), function() {
 //     res.sendStatus(200)
 // })
 
-var inAfsluitingen = [" doei", "dag", "totziens"];
-afsluitingen = inAfsluitingen;
+afsluitingen = [" doei", "dag", "totziens"];
+
 
 
 app.post('/webhook/', function (req, res) {
