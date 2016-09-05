@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
             else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
-                sendTextMessage(sender, "Thanks you, have a nice day!!");
+                sendTextMessage(sender, "Thank you, have a nice day!!");
                 continue
             }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
@@ -125,7 +125,7 @@ app.post('/webhook/', function (req, res) {
                         "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                         "buttons": [{
                             "type": "web_url",
-                            "url": "https://www.messenger.com",
+                            "url": "https://www.oculus.com/",
                             "title": "web url"
                         }, {
                             "type": "postback",
@@ -137,6 +137,7 @@ app.post('/webhook/', function (req, res) {
                         "subtitle": "Element #2 of an hscroll",
                         "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
                         "buttons": [{
+                            "url": "http://www.vr-producties.nl/?gclid=CLywxuul-M4CFcYp0wodJwMMIw",
                             "type": "postback",
                             "title": "Postback",
                             "payload": "Payload for second element in a generic bubble",
