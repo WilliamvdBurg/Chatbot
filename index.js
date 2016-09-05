@@ -68,13 +68,20 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            else if (text === ('hello'|| 'Hello'|| 'Hi'|| 'hi')) {
-                sendTextMessage(sender,' Hello! Im BotVrendly, how can i help you?');
+            else if (text === ('hello' || 'Hello' || 'Hi' || 'hi')) {
+                sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-        }
-        if (event.postback) {
+            else if (text === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')){
+                sendTextMessage(sender, "Thanks you, have a nice day!!" );
+            continue
+            }
+            else if (text === 'website') {
+            sendTextMessage(sender)
+            continue
+            }
+
+            if (event.postback) {
             text = JSON.stringify(event.postback)
             sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
             continue
