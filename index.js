@@ -40,12 +40,12 @@ app.post('/webhook/', function (req, res) {
     console.log('message body is', req.body.entry[0].messaging);
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i]
+        event = messaging_events[i]
         sender = event.sender.id
-        if (event.message.text === 'hello' || event.message === 'hello') {
+        if (event.message.text === 'hello') {
             // Let's reply back hello
             message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
-            res.send(message)
+            res.send(sender, message)
             console.log(message)
         }
         if (event.message && event.message.text) {
