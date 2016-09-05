@@ -76,10 +76,6 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Thanks you, have a nice day!!");
                 continue
             }
-            else if (text === 'website') {
-                sendTextMessage(sender)
-                continue
-            }
 
             if (event.postback) {
                 text = JSON.stringify(event.postback)
