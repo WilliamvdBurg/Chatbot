@@ -246,17 +246,21 @@ function sendWebsiteMessage(sender) {
                         "title": "Postback",
                         "payload": "Payload for first element in a generic bubble",
                     }],
-                }],
-                //     {
-                //     "title": "Vrendly",
-                //     "subtitle": "site van vrendly",
-                //     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                //     "buttons": [{
-                //         "type": "postback",
-                //         "title": "Postback",
-                //         "payload": "Payload for second element in a generic bubble",
-                //     }],
-                // }]
+                },
+                    {
+                    "title": "Vrendly",
+                    "subtitle": "site van vrendly",
+                    "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://beta.vrendly.nl/app/#/login",
+                        "title": "web url"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
             }
         }
     }
