@@ -60,7 +60,9 @@ app.listen(app.get('port'), function() {
 //     res.sendStatus(200)
 // })
 
-var afsluitingen = [" doei", "dag", "totziens"];
+var inAfsluitingen = [" doei", "dag", "totziens"];
+afsluitingen = inAfsluitingen;
+
 
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
@@ -77,7 +79,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            else if(inAflsuitingen(text) == true) {
+            else if(afsluitingen(text) == true) {
                 sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
                 continue
             }
