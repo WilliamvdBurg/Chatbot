@@ -38,6 +38,13 @@ app.post('/webhook/', function (req, res) {
             text = event.message.text
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
+        if (event.message === 'hello') {
+            // Let's reply back hello
+            message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
+            reply(sender, message)
+        } else {
+
+        }
     }
     res.sendStatus(200)
 })
@@ -64,6 +71,7 @@ function sendTextMessage(sender, text) {
         }
     })
 }
+
 function sendGenericMessage(sender) {
     messageData = {
         "attachment": {
