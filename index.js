@@ -72,7 +72,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
+            else if (text === (('hello'), ('Hello') ,( 'Hi') ,('hi')){
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
