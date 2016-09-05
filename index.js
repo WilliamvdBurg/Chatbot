@@ -37,6 +37,7 @@ app.listen(app.get('port'), function() {
 
 app.post('/webhook/', function (req, res) {
     console.log('post request on /webhook/');
+    console.log('message body is', req.body);
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
