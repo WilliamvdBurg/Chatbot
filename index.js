@@ -138,6 +138,7 @@ app.post('/webhook/', function (req, res) {
                 }
             }
         }
+    }
 
 
         function sendGenericMessage(sender) {
