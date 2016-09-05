@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message === 'hello')  {
-            sendTextMessage(sender,'Hello yourself! I am a chat bot. You can say "show me pics of corgis"')
+            message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
             reply(sender, message)
         }
         else(event.message && event.message.text)
