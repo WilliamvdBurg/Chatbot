@@ -4,7 +4,6 @@ var request = require('request')
 var app = express()
 
 
-
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -20,14 +19,14 @@ app.get('/', function (req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-        if (req.query['hub.verify_token'] === 'vrendly_bot_will') {
+    if (req.query['hub.verify_token'] === 'vrendly_bot_will') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
 })
 
 // Spin up the server
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function () {
     console.log('running on port', app.get('port'))
 })
 
@@ -60,9 +59,8 @@ app.listen(app.get('port'), function() {
 //     res.sendStatus(200)
 // })
 
-//afsluitingen = [" doei", "dag", "totziens"];
-
-
+var allafsluitingen = [" doei", "dag", "totziens", "bye", "doeg"];
+allafsluitingen = new afsluitingen;
 
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
@@ -79,10 +77,10 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            // else if(afsluitingen(text) == true) {
-            //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
-            //     continue
-            // }
+            else if(afsluitingen(text) == true) {
+                sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
+                continue
+            }
             else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
@@ -99,7 +97,7 @@ app.post('/webhook/', function (req, res) {
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
             continue
         }
     }
@@ -107,124 +105,80 @@ app.post('/webhook/', function (req, res) {
 })
 
 
-    var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
-    function sendTextMessage(sender, text) {
-        messageData = {
-            text: text
-        }
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending messages: ', error)
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error)
-            }
-        })
+function sendTextMessage(sender, text) {
+    messageData = {
+        text: text
     }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
 
 
-    function sendGenericMessage(sender) {
-        messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": "First card",
-                        "subtitle": "Element #1 of an hscroll",
-                        "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": "https://www.oculus.com/",
-                            "title": "web url"
-                        }, {
-                            "type": "postback",
-                            "title": "Postback",
-                            "payload": "Payload for first element in a generic bubble",
-                        }],
+function sendGenericMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.oculus.com/",
+                        "title": "web url"
                     }, {
-                        "title": "Second card",
-                        "subtitle": "Element #2 of an hscroll",
-                        "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Postback",
-                            "payload": "Payload for second element in a generic bubble",
-                        }],
-                    }]
-                }
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
             }
         }
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending messages: ', error)
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error)
-            }
-        })
-
     }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
-
-// function sendWebsiteMessage(sender) {
-//     messageData = {
-//         "attachment": {
-//             "type": "template",
-//             "payload": {
-//                 "template_type": "Website",
-//                 "elements": [{
-//                     "title": "First card",
-//                     "subtitle": "Element #1 of an hscroll",
-//                     "image_url": "https://pbs.twimg.com/profile_images/431023001002201088/o2QTaBNI_400x400.png",
-//                     "buttons": [{
-//                         "type": "web_url",
-//                         "url": "https://www.evalytics.nl",
-//                         "title": "web url"
-//                     }, {
-//                         "type": "postback",
-//                         "title": "Postback",
-//                         "payload": "Payload for first element in a generic bubble",
-//                     }],
-//                 },
-//                 ]
-//             }
-//         }
-//     }
-//     request({
-//         url: 'https://graph.facebook.com/v2.6/me/messages',
-//         qs: {access_token: token},
-//         method: 'POST',
-//         json: {
-//             recipient: {id: sender},
-//             message: messageData,
-//         }
-//     }, function (error, response, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         } else if (response.body.error) {
-//             console.log('Error: ', response.body.error)
-//         }
-//     })
-//
-//
-// }
+}
 
 
 function sendWebsiteMessage(sender) {
@@ -248,19 +202,19 @@ function sendWebsiteMessage(sender) {
                     }],
                 },
                     {
-                    "title": "Vrendly",
-                    "subtitle": "site van vrendly",
-                    "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://beta.vrendly.nl/app/#/login",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+                        "title": "Vrendly",
+                        "subtitle": "site van vrendly",
+                        "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": "https://beta.vrendly.nl/app/#/login",
+                            "title": "web url"
+                        }, {
+                            "type": "postback",
+                            "title": "Postback",
+                            "payload": "Payload for second element in a generic bubble",
+                        }],
+                    }]
             }
         }
     }
