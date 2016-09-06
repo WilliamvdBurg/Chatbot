@@ -59,8 +59,7 @@ app.listen(app.get('port'), function () {
 //     res.sendStatus(200)
 // })
 
-var allafsluitingen = [" doei", "dag", "totziens", "bye", "doeg"];
-allafsluitingen = new afsluitingen;
+
 
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
@@ -77,11 +76,11 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
                 continue
             }
-            else if(afsluitingen(text) == true) {
-                sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
-                continue
-            }
-            else if (text === ('hello', 'Hello' , 'Hi' , 'hi')) {
+            // else if(afsluitingen(text) == true) {
+            //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
+            //     continue
+            // }
+            else if (text === ('hello' ||'Hello' , 'Hi' , 'hi')) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
