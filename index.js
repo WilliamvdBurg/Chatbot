@@ -53,11 +53,11 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
             //     continue
             // }
-            else if (text === ('hello' ||'Hello' , 'Hi' , 'hi')) {
+            else if (value === ("greetings")) {
                 sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
-            else if (text.toString() === 'doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens') {
+            else if (text.toString() === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
                 sendTextMessage(sender, "Thank you, have a nice day!!");
                 continue
             }
@@ -209,8 +209,32 @@ function sendWebsiteMessage(sender) {
 }
 
 
-
-
+function sendgreetingsMessage(sender) {
+    messageData = {
+    "lookups" : [
+        "free-text",
+        "keywords"
+    ],
+        "name" : "intent",
+        "lang" : "en",
+        "exotic" : false,
+        "id" : "intent",
+        "values" : [
+        {
+            "value" : "greetings",
+            "expressions" : [
+                "heey",
+                "hello",
+                "hi",
+                "howdy",
+                "yo"
+            ]
+        }
+    ],
+        "doc" : "User-defined entity",
+        "builtin" : false
+}
+}
 
 
 
