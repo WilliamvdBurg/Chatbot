@@ -54,7 +54,7 @@ app.post('/webhook/', function (req, res) {
             //     continue
             // }
             else if (value === ("greetings")) {
-                sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
+                sendgreetingsMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
                 continue
             }
             else if (text.toString() === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
