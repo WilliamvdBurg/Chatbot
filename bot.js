@@ -64,11 +64,10 @@ var read = function (sender, message, reply) {
 			}
 		})
 	}
-}
-
+};
 
 
 module.exports = {
 	findOrCreateSession: findOrCreateSession,
 	read: read,
-}
+};
