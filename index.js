@@ -6,7 +6,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 
-var Config = require('./../../../WebstormProjects/bot/config')
+var config = require('./../../../WebstormProjects/bot/config')
 var FB = require('./../.././facebook')
 var Bot = require('./../../../WebstormProjects/bot/bot')
 
