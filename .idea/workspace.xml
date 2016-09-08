@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="674efd4b-5de8-42ba-8fff-46670cefd4c1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="bot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -339,7 +338,7 @@
       <updated>1472548259512</updated>
       <workItem from="1472548260805" duration="15223000" />
       <workItem from="1472744817390" duration="2962000" />
-      <workItem from="1472830342529" duration="43017000" />
+      <workItem from="1472830342529" duration="43095000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -429,7 +428,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61202000" />
+    <option name="totallyTimeSpent" value="61280000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="396" y="24" width="1524" height="977" extended-state="0" />
