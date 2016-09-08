@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
 
 // for facebook to verify
 app.get('/webhooks', function (req, res) {
-    if (req.query['hub.verify_token'] === 'vrendly_bot_will') {
+    if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
@@ -40,10 +40,11 @@ app.get('/webhooks', function (req, res) {
 // to send messages to facebook
 app.post('/webhooks', function (req, res) {
     var entry = FB.getMessageEntry(req.body)
+    // IS THE ENTRY A VALID MESSAGE?
     if (entry && entry.message) {
         if (entry.message.attachments) {
             // NOT SMART ENOUGH FOR ATTACHMENTS YET
-          FB.newMessage(entry.sender.id, "That's interesting!")
+            FB.newMessage(entry.sender.id, "That's interesting!")
         } else {
             // SEND TO BOT FOR PROCESSING
             Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
@@ -54,6 +55,7 @@ app.post('/webhooks', function (req, res) {
 
     res.sendStatus(200)
 })
+
 
 // const token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
