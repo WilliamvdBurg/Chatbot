@@ -1,34 +1,34 @@
 'use strict'
 
 var Config = require('./config')
-var wit = require('./services/wit').getWit()
+var wit = require('./../.././wit').getWit()
 
 // LETS SAVE USER SESSIONS
 var sessions = {}
 
 var findOrCreateSession = function (fbid) {
-	var sessionId
+  var sessionId
 
-	// DOES USER SESSION ALREADY EXIST?
-	Object.keys(sessions).forEach(k => {
-		if (sessions[k].fbid === fbid) {
-			// YUP
-			sessionId = k
-		}
-	})
+  // DOES USER SESSION ALREADY EXIST?
+  Object.keys(sessions).forEach(k => {
+    if (sessions[k].fbid === fbid) {
+      // YUP
+      sessionId = k
+    }
+  })
 
-	// No session so we will create one
-	if (!sessionId) {
-		sessionId = new Date().toISOString()
-		sessions[sessionId] = {
-			fbid: fbid,
-			context: {
-				_fbid_: fbid
-			}
-		}
-	}
+  // No session so we will create one
+  if (!sessionId) {
+    sessionId = new Date().toISOString()
+    sessions[sessionId] = {
+      fbid: fbid,
+      context: {
+        _fbid_: fbid
+      }
+    }
+  }
 
-	return sessionId
+  return sessionId
 }
 
 var read = function (sender, message, reply) {
@@ -46,29 +46,28 @@ var read = function (sender, message, reply) {
 			message,  // the user's message
 			sessions[sessionId].context, // the user's session state
 			function (error, context) { // callback
-				if (error) {
-					console.log('oops!', error)
-				} else {
-					// Wit.ai ran all the actions
-					// Now it needs more messages
-					console.log('Waiting for further messages')
+			if (error) {
+				console.log('oops!', error)
+			} else {
+				// Wit.ai ran all the actions
+				// Now it needs more messages
+				console.log('Waiting for further messages')
 
-					// Based on the session state, you might want to reset the session
-					// Example:
-					// if (context['done']) {
-					// 	delete sessions[sessionId]
-					// }
+				// Based on the session state, you might want to reset the session
+				// Example:
+				// if (context['done']) {
+				// 	delete sessions[sessionId]
+				// }
 
-					// Updating the user's current session state
-					sessions[sessionId].context = context
-				}
-			})
+				// Updating the user's current session state
+				sessions[sessionId].context = context
+			}
+		})
 	}
-}
+};
 
 
-
-module.exports = {
+	module.exports = {
 	findOrCreateSession: findOrCreateSession,
 	read: read,
-}
+};
