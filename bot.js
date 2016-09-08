@@ -67,7 +67,7 @@ var read = function (sender, message, reply) {
 };
 
 
-module.exports = {
+	module.exports = {
 	findOrCreateSession: findOrCreateSession,
 	read: read,
 };
