@@ -6,9 +6,9 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 
-var Config = require('config')
-var FB = require('./../.././facebook')
-var Bot = require('./../../../WebstormProjects/bot/bot')
+var Config = require('./config')
+var FB = require('./connectors/facebook')
+var Bot = require('./bot')
 
 
 // LETS MAKE A SERVER!
