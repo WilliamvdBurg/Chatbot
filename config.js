@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 const WIT_TOKEN = process.env.WIT_TOKEN || 'YHBHDY4ONQO6GLSOZSI3QQIWOO3VJT7M';
 if (!WIT_TOKEN) {
