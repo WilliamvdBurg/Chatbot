@@ -6,7 +6,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 
-var Config = require('./../../../WebstormProjects/bot/config')
+var Config = require('config')
 var FB = require('./../.././facebook')
 var Bot = require('./../../../WebstormProjects/bot/bot')
 
@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 })
 
 // for facebook to verify
-app.get('/webhooks', function (req, res) {
+app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge'])
     }

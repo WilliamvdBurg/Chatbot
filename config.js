@@ -1,4 +1,3 @@
-
 'use strict';
 
 const WIT_TOKEN = process.env.WIT_TOKEN;
