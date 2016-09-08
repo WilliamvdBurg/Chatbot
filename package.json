@@ -16,4 +16,3 @@
   }
 }
 
-curl -H 'Authorization: Bearer YHBHDY4ONQO6GLSOZSI3QQIWOO3VJT7M' 'https://api.wit.ai/message?v=20160526&q=what%20is%20the%20weather%20in%20New%20York'
