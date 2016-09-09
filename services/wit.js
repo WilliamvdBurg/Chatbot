@@ -1,6 +1,6 @@
 'use strict'
 
-var Config = require('./config/config')
+var Config = require('./../config')
 var FB = require('../connectors/facebook')
 var Wit = require('node-wit').Wit
 var request = require('request')
