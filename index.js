@@ -37,6 +37,7 @@ app.get('/webhook/', function (req, res) {
 
 // to send messages to facebook
 app.post('/webhook/', function (req, res) {
+    console.log('read')
     var entry = FB.getMessageEntry(req.body)
     // IS THE ENTRY A VALID MESSAGE?
     if (entry && entry.message) {
