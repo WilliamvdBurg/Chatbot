@@ -1,74 +1,106 @@
 'use strict'
 
+var request = require('request')
 var Config = require('./../config')
-var wit = require('./../services/wit').getWit()
 
-// LETS SAVE USER SESSIONS
-var sessions = {}
+// SETUP A REQUEST TO FACEBOOK SERVER
+var newRequest = request.defaults({
+	uri: 'https://graph.facebook.com/v2.6/me/messages',
+	method: 'POST',
+	json: true,
+	qs: {
+		access_token: Config.FB_PAGE_TOKEN
+	},
+	headers: {
+		'Content-Type': 'application/json'
+	},
+})
 
-var findOrCreateSession = function (fbid) {
-	var sessionId
-
-	// DOES USER SESSION ALREADY EXIST?
-	Object.keys(sessions).forEach(k => {
-		if (sessions[k].fbid === fbid) {
-			// YUP
-			sessionId = k
+// SETUP A MESSAGE FOR THE FACEBOOK REQUEST
+var newMessage = function (recipientId, msg, atts, cb) {
+	var opts = {
+		form: {
+			recipient: {
+				id: recipientId
+			},
 		}
-	})
+	}
 
-	// No session so we will create one
-	if (!sessionId) {
-		sessionId = new Date().toISOString()
-		sessions[sessionId] = {
-			fbid: fbid,
-			context: {
-				_fbid_: fbid
+	// https://developers.facebook.com/docs/messenger-platform/send-api-reference
+
+	// FOR IMAGES
+	// "message":{
+	//    "attachment":{
+	//      "type":"image",
+	//      "payload":{
+	//        "url":"https://petersapparel.com/img/shirt.png"
+	//      }
+	//    }
+	//  }
+
+	// FOR TEMPLATES
+	// "message":{
+	//   "attachment":{
+	//     "type":"template",
+	//     "payload":{
+	//       "template_type":"button",
+	//       "text":"What do you want to do next?",
+	//       "buttons":[
+	//         {
+	//           "type":"web_url",
+	//           "url":"https://petersapparel.parseapp.com",
+	//           "title":"Show Website"
+	//         },
+	//         {
+	//           "type":"postback",
+	//           "title":"Start Chatting",
+	//           "payload":"USER_DEFINED_PAYLOAD"
+	//         }
+	//       ]
+	//     }
+	//   }
+	// }
+
+	if (atts) {
+		var message = {
+			attachment: {
+				"type": "image",
+				"payload": {
+					"url": msg
+				}
 			}
 		}
-	}
-
-	return sessionId
-}
-
-var read = function (sender, message, reply) {
-	if (message === 'hello') {
-		// Let's reply back hello
-		message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
-		reply(sender, message)
 	} else {
-		// Let's find the user
-		var sessionId = findOrCreateSession(sender)
-		// Let's forward the message to the Wit.ai bot engine
-		// This will run all actions until there are no more actions left to do
-		wit.runActions(
-			sessionId, // the user's current session by id
-			message,  // the user's message
-			sessions[sessionId].context, // the user's session state
-			function (error, context) { // callback
-				if (error) {
-					console.log('oops!', error)
-				} else {
-					// Wit.ai ran all the actions
-					// Now it needs more messages
-					console.log('Waiting for further messages')
-
-					// Based on the session state, you might want to reset the session
-					// Example:
-					// if (context['done']) {
-					// 	delete sessions[sessionId]
-					// }
-
-					// Updating the user's current session state
-					sessions[sessionId].context = context
-				}
-			});
+		var message = {
+			text: msg
+		}
 	}
+	opts.form.message = message
+
+	newRequest(opts, function (err, resp, data) {
+		if (cb) {
+			cb(err || data.error && data.error.message, data)
+		}
+	})
 }
 
-
+// PARSE A FACEBOOK MESSAGE to get user, message body, or attachment
+// https://developers.facebook.com/docs/messenger-platform/webhook-reference
+var getMessageEntry = function (body) {
+	var val = body.object === 'page' &&
+		body.entry &&
+		Array.isArray(body.entry) &&
+		body.entry.length > 0 &&
+		body.entry[0] &&
+		body.entry[0].messaging &&
+		Array.isArray(body.entry[0].messaging) &&
+		body.entry[0].messaging.length > 0 &&
+		body.entry[0].messaging[0]
+	return val || null
+}
 
 module.exports = {
-	findOrCreateSession: findOrCreateSession,
-	read: read,
+	newRequest: newRequest,
+	newMessage: newMessage,
+	getMessageEntry: getMessageEntry,
 }
