@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 
 var Config = require('./config/config')
-var FB = require('./connectors/facebook')
+var FB = require('./facebook')
 var Bot = require('./bot')
 
 
