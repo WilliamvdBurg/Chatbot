@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT) || 5000)
 // SPIN UP SERVER
 app.listen(app.get('port'), function () {
     console.log('Running on port', app.get('port'))
-    console.log('read')
+
 })
 // PARSE THE BODY
 app.use(bodyParser.json());

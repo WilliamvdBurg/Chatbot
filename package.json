@@ -9,8 +9,8 @@
   "author": "william",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "lodash": "^4.15.0",
     "node-wit": "^3.3.2",
     "request": "^2.74.0"
