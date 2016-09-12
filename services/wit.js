@@ -161,6 +161,9 @@ var allPics = {
 		'http://i.imgur.com/05hlAWU.jpeg',
 		'http://i.imgur.com/HAeMnSq.jpeg',
 	],
+	hotguy: [
+		'https://33.media.tumblr.com/avatar_ebd832f6fbd7_128.png',
+	],
 	default: [
 		'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
 		 'https://pbs.twimg.com/profile_images/646943168764727296/nG984Qtc.jpg',
