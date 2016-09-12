@@ -35,7 +35,7 @@ var read = function (sender, message, reply)
 { 	console.log('read')
 	if (message === 'hello') {
 		// Let's reply back hello
-		message = 'Hello! I am Vrendlybot. How can i help you today? Typ Help for more info.'
+		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
 	} else {
 		// Let's find the user
