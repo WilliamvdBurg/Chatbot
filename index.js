@@ -41,9 +41,8 @@ app.get('/webhook/', function (req, res) {
 app.post('/webhook/', function (req, res) {
     console.log('read')
     var entry = FB.getMessageEntry(req.body)
-    // IS THE ENTRY A VALID MESSAGE
-    }
-    else if(entry && entry.message) {
+    // IS THE ENTRY A VALID MESSAGE?
+    if (entry && entry.message) {
         if (entry.message.attachments) {
             // NOT SMART ENOUGH FOR ATTACHMENTS YET
             FB.newMessage(entry.sender.id, "That's interesting!")
@@ -224,38 +223,38 @@ app.post('/webhook/', function (req, res) {
 // function sendWebsiteMessage(sender) {
 //     messageData = {
 //         "attachment": {
-//                 "type": "template",
-//                 "payload": {
-//                     "template_type": "generic",
-//                     "elements": [{
-//                         "title": "Evalytics",
-//                         "subtitle": "site van eva",
-//                         "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+//             "type": "template",
+//             "payload": {
+//                 "template_type": "generic",
+//                 "elements": [{
+//                     "title": "Evalytics",
+//                     "subtitle": "site van eva",
+//                     "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+//                     "buttons": [{
+//                         "type": "web_url",
+//                         "url": "http://www.evalytics.nl/",
+//                         "title": "web url"
+//                     }, {
+//                         "type": "postback",
+//                         "title": "Postback",
+//                         "payload": "Payload for first element in a generic bubble",
+//                     }],
+//                 },
+//                     {
+//                         "title": "Vrendly",
+//                         "subtitle": "site van vrendly",
+//                         "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
 //                         "buttons": [{
 //                             "type": "web_url",
-//                             "url": "http://www.evalytics.nl/",
+//                             "url": "https://beta.vrendly.nl/app/#/login",
 //                             "title": "web url"
 //                         }, {
 //                             "type": "postback",
 //                             "title": "Postback",
-//                             "payload": "Payload for first element in a generic bubble",
+//                             "payload": "Payload for second element in a generic bubble",
 //                         }],
-//                     },
-//                         {
-//                             "title": "Vrendly",
-//                             "subtitle": "site van vrendly",
-//                             "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
-//                             "buttons": [{
-//                                 "type": "web_url",
-//                                 "url": "https://beta.vrendly.nl/app/#/login",
-//                                 "title": "web url"
-//                             }, {
-//                                 "type": "postback",
-//                                 "title": "Postback",
-//                                 "payload": "Payload for second element in a generic bubble",
-//                             }],
-//                         }]
-//                 }
+//                     }]
+//             }
 //         }
 //     }
 //     request({
