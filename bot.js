@@ -32,7 +32,7 @@ var findOrCreateSession = function (fbid) {
 }
 
 var read = function (sender, message, reply)
-{ 	console.log('read')
+{ 	console.log('read'
 	if (message === 'hello') {
 		// Let's reply back hello
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
