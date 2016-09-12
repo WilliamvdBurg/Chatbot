@@ -163,5 +163,7 @@ var allPics = {
 	],
 	default: [
 		'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
+		 'https://pbs.twimg.com/profile_images/646943168764727296/nG984Qtc.jpg',
+		'https://pbs.twimg.com/profile_images/545630961283919873/BHAxGdeI.jpeg',
 	],
 };
