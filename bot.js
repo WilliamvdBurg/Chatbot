@@ -90,42 +90,42 @@ var read = function (sender, message, reply)
 	}
 	else if (message === 'Thanks') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'Thank you') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'dankuwel') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'dankjewel') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'thank you') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'thanks') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'Dankjewel') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else if (message === 'Dankuwel') {
 		// Let's reply back hello
-		message = 'Thanks for visiting! Hope to see you again!'
+		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
 	else {
