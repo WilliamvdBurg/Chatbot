@@ -37,6 +37,17 @@ var read = function (sender, message, reply)
 		// Let's reply back hello
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
+	}
+	else if (message === 'yo') {
+		// Let's reply back hello
+		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
+		reply(sender, message)
+	}
+	else if (message === 'heey') {
+		// Let's reply back hello
+		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
+		reply(sender, message)
+
 	} else {
 		// Let's find the user
 		var sessionId = findOrCreateSession(sender)
