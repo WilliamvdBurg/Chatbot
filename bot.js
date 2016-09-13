@@ -47,8 +47,18 @@ var read = function (sender, message, reply)
 		// Let's reply back hello
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
-
-	} else {
+	}
+	if (message === 'help') {
+		// Let's reply back hello
+		message = 'Here is some. Try these statements: (FactuurInfo), (DebiteurenInfo), (Betalingen) '
+		reply(sender, message)
+	}
+	if (message === 'Help') {
+		// Let's reply back hello
+		message = 'Here is some. Try these statements: (FactuurInfo), (DebiteurenInfo), (Betalingen) '
+		reply(sender, message)
+	}
+	else {
 		// Let's find the user
 		var sessionId = findOrCreateSession(sender)
 		// Let's forward the message to the Wit.ai bot engine
