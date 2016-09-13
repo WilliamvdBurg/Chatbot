@@ -34,7 +34,7 @@ var findOrCreateSession = function (fbid) {
 var read = function (sender, message, reply)
 { 	console.log('read')
 	if(chatIsClean || todayNothingSend){
-	send("hallo")
+	send('hallo')
 	}
 
 	if (message === 'hello') {
