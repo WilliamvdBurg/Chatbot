@@ -58,6 +58,36 @@ var read = function (sender, message, reply)
 		message = 'Here is some. Try these statements: (FactuurInfo), (DebiteurenInfo), (Betalingen) '
 		reply(sender, message)
 	}
+	else if (message === 'Bye') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'bye') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'goodbye') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'Goodbye') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'see you later') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'See you later') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
 	else {
 		// Let's find the user
 		var sessionId = findOrCreateSession(sender)
