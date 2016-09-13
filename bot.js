@@ -38,22 +38,22 @@ var read = function (sender, message, reply)
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
 	}
-	if (message === 'yo') {
+	else if (message === 'yo') {
 		// Let's reply back hello
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
 	}
-	if (message === 'heey') {
+	else if (message === 'heey') {
 		// Let's reply back hello
 		message = 'Hello! I am VrendlyBot. How can i help you today? Typ Help for more info.'
 		reply(sender, message)
 	}
-	if (message === 'help') {
+	else if (message === 'help') {
 		// Let's reply back hello
 		message = 'Here is some. Try these statements: (FactuurInfo), (DebiteurenInfo), (Betalingen) '
 		reply(sender, message)
 	}
-	if (message === 'Help') {
+	else if (message === 'Help') {
 		// Let's reply back hello
 		message = 'Here is some. Try these statements: (FactuurInfo), (DebiteurenInfo), (Betalingen) '
 		reply(sender, message)
