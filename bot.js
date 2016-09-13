@@ -88,6 +88,46 @@ var read = function (sender, message, reply)
 		message = 'Thanks for visiting! Hope to see you again!'
 		reply(sender, message)
 	}
+	else if (message === 'Thanks') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'Thank you') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'dankuwel') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'dankjewel') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'thank you') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'thanks') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'Dankjewel') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
+	else if (message === 'Dankuwel') {
+		// Let's reply back hello
+		message = 'Thanks for visiting! Hope to see you again!'
+		reply(sender, message)
+	}
 	else {
 		// Let's find the user
 		var sessionId = findOrCreateSession(sender)
