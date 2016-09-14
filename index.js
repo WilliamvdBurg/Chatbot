@@ -18,9 +18,11 @@ request('https://modulus.io', function (error, response, body) {
         return console.log('Error:', error);
     }
 
-    //Check for right status code
+    //Check f
+    // or right status code
     if(response.statusCode !== 200){
-        return console.log('Invalid Status Code Returned:', response.statusCode);
+        return console.log('Inval' +
+            'id Status Code Returned:', response.statusCode);
     }
 
     //All is good. Print the body
