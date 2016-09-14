@@ -21,32 +21,7 @@ var firstEntityValue = function (entities, entity) {
 // Require the module
 var Forecast = require('forecast');
 
-// Initialize
-['fetch-weather'](sessionId, context, cb)
-{
-	var forecast = new Forecast({
-		service: 'forecast.io',
-		key: '008963866c17f13d4d16bbd48fecbfbe',
-		units: 'celcius', // Only the first letter is parsed
-		cache: true,      // Cache API requests?
-		ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-			minutes: 27,
-			seconds: 45
-		}
-	});
-
-// Retrieve weather information from coordinates (Sydney, Australia)
-	forecast.get([-33.8683, 151.2086], function (err, weather) {
-		if (err) return console.dir(err);
-		console.dir(weather);
-	});
-
-// Retrieve weather information, ignoring the cache
-	forecast.get([-33.8683, 151.2086], true, function (err, weather) {
-		if (err) return console.dir(err);
-		console.dir(weather);
-	});
-}
+// Initializ
 
 var actions = {
 	say (sessionId, context, message, cb) {
@@ -117,6 +92,29 @@ var actions = {
 				.catch(function (err) {
 					console.log(err)
 				})
+
+			var forecast = new Forecast({
+				service: 'forecast.io',
+				key: '008963866c17f13d4d16bbd48fecbfbe',
+				units: 'celcius', // Only the first letter is parsed
+				cache: true,      // Cache API requests?
+				ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
+					minutes: 27,
+					seconds: 45
+				}
+			});
+
+// Retrieve weather information from coordinates (Sydney, Australia)
+			forecast.get([-33.8683, 151.2086], function (err, weather) {
+				if (err) return console.dir(err);
+				console.dir(weather);
+			});
+
+// Retrieve weather information, ignoring the cache
+			forecast.get([-33.8683, 151.2086], true, function (err, weather) {
+				if (err) return console.dir(err);
+				console.dir(weather);
+			});
 		}
 
 		context.forecast = 'Sunny'
