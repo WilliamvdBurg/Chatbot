@@ -61,6 +61,7 @@ var actions = {
 			context.cat = category
 		}
 
+
 		// Retrieve the sentiment
 		var sentiment = firstEntityValue(entities, 'sentiment')
 		if (sentiment) {
@@ -97,6 +98,13 @@ var actions = {
 	['fetch-pics'](sessionId, context, cb) {
 		var wantedPics = allPics[context.cat || 'default']
 		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
+
+		cb(context)
+	},
+
+	['fetch-facturen'](sessionId, context, cb) {
+		var wantedfacturen = allFacturen[context.cat || 'default']
+		context.facturen = wantedfacturen[Math.floor(Math.random() * wantedfacturen.length)]
 
 		cb(context)
 	},
@@ -170,4 +178,7 @@ var allPics = {
 		'https://pbs.twimg.com/profile_images/545630961283919873/BHAxGdeI.jpeg',
 		'https://yt3.ggpht.com/-SD3VoswjwQQ/AAAAAAAAAAI/AAAAAAAAAAA/EyXmpoRHK9k/s900-c-k-no-rj-c0xffffff/photo.jpg',
 	],
+	facturen: [
+
+	]
 };
