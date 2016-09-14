@@ -24,7 +24,7 @@ var Forecast = require('forecast');
 // Initialize
 var forecast = new Forecast({
 	service: 'forecast.io',
-	key: 'your-api-key',
+	key: '008963866c17f13d4d16bbd48fecbfbe',
 	units: 'celcius', // Only the first letter is parsed
 	cache: true,      // Cache API requests?
 	ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
