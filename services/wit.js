@@ -18,10 +18,6 @@ var firstEntityValue = function (entities, entity) {
 	return typeof val === 'object' ? val.value : val
 }
 
-// Require the module
-var Forecast = require('forecast');
-
-// Initializ
 
 var actions = {
 	say (sessionId, context, message, cb) {
@@ -84,29 +80,15 @@ var actions = {
 	// list of functions Wit.ai can execute
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
-		var forecast = new Forecast({
-				service: 'forecast.io',
-				key: '008963866c17f13d4d16bbd48fecbfbe',
-				units: 'celcius', // Only the first letter is parsed
-				cache: true,      // Cache API requests?
-				ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
-					minutes: 27,
-					seconds: 45
-				}
-			});
-
-// Retrieve weather information from coordinates (Sydney, Australia)
-			forecast.get([-33.8683, 151.2086], function (err, weather) {
-				if (err) return console.dir(err);
-				console.dir(weather);
-			});
-
-// Retrieve weather information, ignoring the cache
-			forecast.get([-33.8683, 151.2086], true, function (err, weather) {
-				if (err) return console.dir(err);
-				console.dir(weather);
-			});
-		}
+		// if (context.loc) {
+		// 	getWeather(context.loc)
+		// 		.then(function (forecast) {
+		// 			context.forecast = forecast || 'sunny'
+		// 		})
+		// 		.catch(function (err) {
+		// 			console.log(err)
+		// 		})
+		// }
 
 		context.forecast = 'Sunny'
 
