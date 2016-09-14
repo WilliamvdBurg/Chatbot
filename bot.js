@@ -160,11 +160,6 @@ var read = function (sender, message, reply)
 			}
 		})
 	}
-	{
-		if message == null {
-
-		}
-	}
 
 };
 
