@@ -128,7 +128,7 @@ var read = function (sender, message, reply)
 		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
-	else if(responses.size() == 0) {
+	else if (message.size() == 0) {
 		message = 'I AM NOT SURE IF I  UNDERSTAND WHAT YOU  ARE TALKING ABOUT.'
 		reply(sender, message)
 	}
