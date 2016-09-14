@@ -8,7 +8,12 @@ var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
 
-
+//Lets try to make a HTTP GET request to modulus.io's website.
+request('http://www.modulus.io', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body); // Show the HTML for the Modulus homepage.
+    }
+});
 // LETS MAKE A SERVER!
 var app = express()
 app.set('port', (process.env.PORT) || 5000)
