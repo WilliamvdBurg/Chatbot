@@ -126,7 +126,6 @@ var read = function (sender, message, reply)
 	else if (message === 'Dankuwel') {
 		// Let's reply back hello
 		message = 'No problem, i am here for you!'
-		message = 'lalalalalala'
 		reply(sender, message)
 	}
 	else {
