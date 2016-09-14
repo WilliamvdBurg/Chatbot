@@ -159,7 +159,7 @@ var read = function (sender, message, reply)
 	}
 
 	if (message.response == null) {
-		message = 'I AM NOT SURE IF I UNDERSTAND WHAT YOU ARE TALKING ABOUT.'
+		message = 'I dont understand you, plzz try something else or typ Help'
 		reply(sender, message)
 	}
 };
