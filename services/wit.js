@@ -84,16 +84,7 @@ var actions = {
 	// list of functions Wit.ai can execute
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
-		if (context.loc) {
-			getWeather(context.loc)
-				.then(function (forecast) {
-					context.forecast = forecast || 'sunny'
-				})
-				.catch(function (err) {
-					console.log(err)
-				})
-
-			var forecast = new Forecast({
+		var forecast = new Forecast({
 				service: 'forecast.io',
 				key: '008963866c17f13d4d16bbd48fecbfbe',
 				units: 'celcius', // Only the first letter is parsed
