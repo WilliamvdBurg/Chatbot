@@ -128,6 +128,10 @@ var read = function (sender, message, reply)
 		message = 'No problem, i am here for you!'
 		reply(sender, message)
 	}
+	else if(responses.size() == 0) {
+		message = "I'M NOT SURE IF I  UNDERSTAND WHAT YOU  ARE TALKING ABOUT."
+		reply(sender, message)
+	}
 	else {
 		// Let's find the user
 		var sessionId = findOrCreateSession(sender)
@@ -156,6 +160,12 @@ var read = function (sender, message, reply)
 			}
 		})
 	}
+	{
+		if message == null {
+
+		}
+	}
+
 };
 
 
