@@ -80,15 +80,15 @@ var actions = {
 	// list of functions Wit.ai can execute
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
-		// if (context.loc) {
-		// 	getWeather(context.loc)
-		// 		.then(function (forecast) {
-		// 			context.forecast = forecast || 'sunny'
-		// 		})
-		// 		.catch(function (err) {
-		// 			console.log(err)
-		// 		})
-		// }
+		if (context.loc) {
+			getWeather(context.loc)
+				.then(function (forecast) {
+					context.forecast = forecast || 'sunny'
+				})
+				.catch(function (err) {
+					console.log(err)
+				})
+		}
 
 		context.forecast = 'Sunny'
 
@@ -179,6 +179,6 @@ var allPics = {
 		'https://yt3.ggpht.com/-SD3VoswjwQQ/AAAAAAAAAAI/AAAAAAAAAAA/EyXmpoRHK9k/s900-c-k-no-rj-c0xffffff/photo.jpg',
 	],
 	facturen: [
-
+	factuur.get()
 	]
 };
