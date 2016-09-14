@@ -178,7 +178,7 @@ var allPics = {
 		'https://pbs.twimg.com/profile_images/545630961283919873/BHAxGdeI.jpeg',
 		'https://yt3.ggpht.com/-SD3VoswjwQQ/AAAAAAAAAAI/AAAAAAAAAAA/EyXmpoRHK9k/s900-c-k-no-rj-c0xffffff/photo.jpg',
 	],
-	facturen: [
-	factuur.get()
-	]
+	// facturen: [
+	// factuur.get()
+	// ]
 };
