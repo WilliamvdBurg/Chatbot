@@ -157,7 +157,7 @@ var read = function (sender, message, reply)
 			}
 		})
 	}
-	if (message.response == 0) {
+	if (message.response == null) {
 		message = 'I AM NOT SURE IF I  UNDERSTAND WHAT YOU  ARE TALKING ABOUT.'
 		reply(sender, message)
 	}
