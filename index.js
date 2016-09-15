@@ -91,7 +91,7 @@ app.post('/webhook/', function (req, res) {
         //         sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
         //         continue
         //     }
-            else {sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
+            sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
@@ -100,7 +100,7 @@ app.post('/webhook/', function (req, res) {
         }
     }
     res.sendStatus(200)
-}
+})
 
 
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
@@ -177,12 +177,13 @@ function sendWebsiteMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Vragenlijst EVA",
-                    "subtitle": "Wilt u beginnen met de test, klik dan op de ja button",
+                    "title": "Vragen",
+                    "subtitle": "VragenLijst EVA",
+                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
                         "type": "web_url",
                         "url": "http://www.evalytics.nl/",
-                        "title": "Ja"
+                        "title": "ja"
                     }, {
                         "type": "postback",
                         "title": "nee",
@@ -199,7 +200,7 @@ function sendWebsiteMessage(sender) {
                             "title": "web url"
                         }, {
                             "type": "postback",
-                            "title": "Postback",
+                            "title": "Nee",
                             "payload": "Payload for second element in a generic bubble",
                         }],
                     }]
@@ -222,7 +223,7 @@ function sendWebsiteMessage(sender) {
         }
     })
 
-
+}
 
 
 
