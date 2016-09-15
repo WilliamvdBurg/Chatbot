@@ -189,7 +189,7 @@ function sendWebsiteMessage(sender) {
                             {
                               "type":"postback",
                               "title":"Nee",
-                              "payload" : "StartTest"
+                              "payload" : function (StartTest){}
                             }
                           ]
                         }
