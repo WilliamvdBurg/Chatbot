@@ -31,7 +31,7 @@ app.listen(app.get('port'), function () {
     console.log('running on port', app.get('port'))
 })
 
-//_.indexOf([1 ,2 , 1, 2], 2);
+
 
 
 app.post('/webhook/', function (req, res) {
@@ -41,37 +41,47 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if (text === 'Generic') {
-                sendGenericMessage(sender)
+            if (text === 'StartTest') {
+                sendTextMessage(sender,'de vragen dienen te worden beantwoord met cijfer van 1 tot en met 10')
+                sendTextMessage(sender, 'De docent toonde voldoende kennis over de lesstof.')
                 continue
-            }
-            else if (text === 'Website') {
-                sendWebsiteMessage(sender)
-                continue
-            }
-            // else if(afsluitingen(text) == true) {
-            //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
-            //     continue
-            // }
-            else if (text === ('hello' ||'Hello' , 'Hi' , 'hi')) {
-                sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
-                continue
-            }
-            else if (text.toString() === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
-                sendTextMessage(sender, "Thank you, have a nice day!!");
-                continue
-            }
-            else if (text === 'help') {
-                sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
-                continue
-            }
-            sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
-        }
-        if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
-            continue
-        }
+           }
+
+
+
+
+
+
+
+
+
+        //     else if (text === 'Website') {
+        //         sendWebsiteMessage(sender)
+        //         continue
+        //     }
+        //     // else if(afsluitingen(text) == true) {
+        //     //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
+        //     //     continue
+        //     // }
+        //     else if (text === ('hello' ||'Hello' , 'Hi' , 'hi')) {
+        //         sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
+        //         continue
+        //     }
+        //     else if (text.toString() === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
+        //         sendTextMessage(sender, "Thank you, have a nice day!!");
+        //         continue
+        //     }
+        //     else if (text === 'help') {
+        //         sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
+        //         continue
+        //     }
+        //     sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
+        // }
+        // if (event.postback) {
+        //     text = JSON.stringify(event.postback)
+        //     sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+        //     continue
+        // }
     }
     res.sendStatus(200)
 })
