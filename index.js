@@ -39,6 +39,7 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
+        var vraag = 0;
         if (event.message && event.message.text) {
             text = event.message.text
             if (text == 'hello'){
@@ -47,20 +48,18 @@ app.post('/webhook/', function (req, res) {
             if (text == 'StartTest') {
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+
                 if ( text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
                 if (text < 11 ) {
                     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-                    if ( text > 10) {
-                        sendTextMessage(sender, 'error, antwoord onbekend!')
-                    }
-                    if ( text < 11) {
-                        sendTextMessage(sender, 'goedzo')
-                    }
+                    vraag ++
                 }
 
-
+            }
+            if (vraag == 1){
+                sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
             }
 
             // if (text < 11 ) {
