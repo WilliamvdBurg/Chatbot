@@ -170,7 +170,7 @@ function receivedPostback(event) {
             default:
                 sendTextMessage(senderID, "Postback called");
         }
-
+    }
 // function sendGenericMessage(sender) {
 //     messageData = {
 //         "attachment": {
@@ -211,45 +211,44 @@ function receivedPostback(event) {
 //     })
 
 
-
-
-function sendWebsiteMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "text": "Hello, do you wanna start the test?",
-                "buttons": [
-                    {
-                        "type": "web_url",
-                        "url": "https://petersapparel.parseapp.com",
-                        "title": "Ja"
-                    },
-                    {
-                        "type": "postback",
-                        "title": "Nee",
-                        "payload": "USER_DEFINED_PAYLOAD"
-                    }
-                ]
+    function sendWebsiteMessage(sender) {
+        messageData = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "Hello, do you wanna start the test?",
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://petersapparel.parseapp.com",
+                            "title": "Ja"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Nee",
+                            "payload": "USER_DEFINED_PAYLOAD"
+                        }
+                    ]
+                }
             }
         }
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {access_token: token},
+            method: 'POST',
+            json: {
+                recipient: {id: sender},
+                message: messageData,
+            }
+        }, function (error, response, body) {
+            if (error) {
+                console.log('Error sending messages: ', error)
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error)
+            }
+        })
     }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
 }
 
 
