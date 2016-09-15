@@ -56,7 +56,6 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'error, antwoord onbekend!')
             }
             if (text < 11 ) {
-                sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
                 vraag ++
             }
             if (vraag == 1){
