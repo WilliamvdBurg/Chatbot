@@ -75,13 +75,13 @@ app.post('/webhook/', function (req, res) {
         //         sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
         //         continue
         //     }
-        //     sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
-        // }
-        // if (event.postback) {
-        //     text = JSON.stringify(event.postback)
-        //     sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
-        //     continue
-        // }
+            sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
+        }
+        if (event.postback) {
+            text = JSON.stringify(event.postback)
+            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            continue
+        }
     }
     res.sendStatus(200)
 })
