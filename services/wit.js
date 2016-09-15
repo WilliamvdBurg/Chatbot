@@ -100,14 +100,14 @@ var actions = {
 	},
 
 	['fetch-pics'](sessionId, context, cb) {
-		var wantedPics = allPics[context.cat ]
+		var wantedPics = allPics[context.cat || 'default']
 		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
 
 		cb(context)
 	},
-	// || 'default'
+
 	['fetch-facturen'](sessionId, context, cb) {
-		var wantedfacturen = allFacturen[context.cat ]
+		var wantedfacturen = allFacturen[context.cat || 'default']
 		context.facturen = wantedfacturen[Math.floor(Math.random() * wantedfacturen.length)]
 
 		cb(context)
