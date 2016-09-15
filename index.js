@@ -56,7 +56,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (text < 11 ) {
                 vraag = vraag + 1
-                console.log(vraag)
+                console.log('hoi' + vraag)
             }
             if (vraag === 1){
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
