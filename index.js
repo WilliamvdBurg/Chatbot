@@ -47,6 +47,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (text == 'start') {
                 vragensessie = true
+                vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
             }
@@ -60,12 +61,12 @@ app.post('/webhook/', function (req, res) {
                     vraag = vraag + 1
                     console.log(text)
                 }
-                if (vraag === 1) {
+                if (vraag == 1) {
                     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
 
 
                 }
-                if (vraag === 2) {
+                if (vraag == 2) {
                     sendTextMessage(sender, 'alle vragen beantwoord,, doei')
                     vragensessie = false
 
