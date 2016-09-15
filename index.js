@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 var _ = require('lodash');
-
+var vraag = 0;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -39,7 +39,6 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
-        var vraag = 0;
         if (event.message && event.message.text) {
             text = event.message.text
             if (text == 'hello'){
@@ -61,10 +60,6 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
                 console.log(vraag)
 
-            }
-                if (text < 11 ) {
-                    vraag = vraag + 1
-                    console.log('hoizzzz' + vraag)
             }
             if (vraag === 2){
                 sendTextMessage(sender, 'alle vragen beantwoord,, doei')
