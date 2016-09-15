@@ -47,24 +47,26 @@ app.post('/webhook/', function (req, res) {
             if (text == 'StartTest') {
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-                console.log(vraag)
+
             }
             if ( text > 10) {
                 sendTextMessage(sender, 'error, antwoord onbekend!')
             }
             if (text < 11 ) {
+
                 vraag = vraag + 1
-                console.log('hoi' + vraag)
+                console.log( text)
             }
             if (vraag === 1) {
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-                console.log(vraag)
+
 
             }
             if (vraag === 2){
                 sendTextMessage(sender, 'alle vragen beantwoord,, doei')
-                console.log(vraag)
+
             }
+
 
             // if (text < 11 ) {
             //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
