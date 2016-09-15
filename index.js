@@ -182,7 +182,7 @@ function sendWebsiteMessage(sender) {
                 "text":"Hello, do you wanna start the test?",
                 "buttons":[
                             {
-                              "text":"ja",
+                              "type":"text",
                               "url":"https://petersapparel.parseapp.com",
                               "title":"Ja"
                             },
