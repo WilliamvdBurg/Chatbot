@@ -183,7 +183,7 @@ function sendWebsiteMessage(sender) {
                 "buttons":[
                             {
                               "type":"text",
-                              "url":"https://petersapparel.parseapp.com",
+                              "text":"https://petersapparel.parseapp.com",
                               "title":"Ja"
                             },
                             {
