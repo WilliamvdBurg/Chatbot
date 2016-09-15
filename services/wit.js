@@ -59,11 +59,9 @@ var actions = {
 		var category = firstEntityValue(entities, 'category')
 		if (category) {
 			context.cat = category
-		} else {
-
-		delete context.cat
 		}
 
+		delete context.cat
 
 
 		// Retrieve the sentiment
