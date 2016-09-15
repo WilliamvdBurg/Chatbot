@@ -131,8 +131,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-31" />
-    <option name="y" value="47" />
+    <option name="x" value="-6" />
+    <option name="y" value="44" />
     <option name="width" value="1031" />
     <option name="height" value="929" />
   </component>
@@ -312,7 +312,7 @@
       <updated>1472548259512</updated>
       <workItem from="1472548260805" duration="15223000" />
       <workItem from="1472744817390" duration="2962000" />
-      <workItem from="1472830342529" duration="90807000" />
+      <workItem from="1472830342529" duration="90969000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -402,7 +402,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108992000" />
+    <option name="totallyTimeSpent" value="109154000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -414,7 +414,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-31" y="47" width="1031" height="929" extended-state="1" />
+    <frame x="-6" y="44" width="1031" height="929" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2089109" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
