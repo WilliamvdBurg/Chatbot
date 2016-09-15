@@ -164,7 +164,7 @@ function receivedPostback(event) {
         // let them know it was successful
         switch (payload) {
             case 'USER_DEFINED_PAYLOAD':
-                startedConv(senderID);
+                StartTest(senderID);
                 break;
 
             default:
