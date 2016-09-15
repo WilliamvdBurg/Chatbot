@@ -55,7 +55,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'error, antwoord onbekend!')
             }
             if (text < 11 ) {
-                vraag ++
+                vraag = vraag + 1
                 console.log(vraag)
             }
             if (vraag === 1){
