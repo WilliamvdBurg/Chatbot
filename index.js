@@ -41,17 +41,20 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if ( text > 10){
-
-            }
-            else if (text == 'StartTest') {
+            if (text == 'StartTest') {
                 sendTextMessage(sender, 'de vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-                sendTextMessage(sender, 'vraag 3: De docent toonde voldoende kennis over de lesstof.')
-                continue
+                sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+               if ( text > 10) {
+                   sendTextMessage(sender, 'error, antwoord onbekend!'),
+                       sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+               }
             }
             else if (text < 11) {
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-                continue
+                if ( text > 10) {
+                    sendTextMessage(sender, 'error, antwoord onbekend!'),
+                        sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+                }
             }
 
 
