@@ -56,11 +56,11 @@ app.post('/webhook/', function (req, res) {
             if (text < 11 ) {
                 vraag ++
             }
-            if (vraag == 1){
+            if (vraag === 1){
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
 
             }
-            if (vraag == 2){
+            if (vraag === 2){
                 sendTextMessage(sender, 'alle vragen beantwoord,, doei')
             }
 
