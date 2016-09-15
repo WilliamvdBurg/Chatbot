@@ -175,38 +175,23 @@ function sendWebsiteMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Vragen",
-                    "subtitle": "VragenLijst EVA",
-                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "http://www.evalytics.nl/",
-                        "title": "ja"
-                    }, {
-                        "type": "postback",
-                        "title": "nee",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                },
-                    {
-                        "title": "Vrendly",
-                        "subtitle": "site van vrendly",
-                        "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": "https://beta.vrendly.nl/app/#/login",
-                            "title": "web url"
-                        }, {
-                            "type": "postback",
-                            "title": "Nee",
-                            "payload": "Payload for second element in a generic bubble",
-                        }],
-                    }]
-            }
-        }
-    }
+                "template_type": "button",
+                "text":"What do you want to do next?",
+                "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"https://petersapparel.parseapp.com",
+                              "title":"Show Website"
+                            },
+                            {
+                              "type":"postback",
+                              "title":"Start Chatting",
+                              "payload":"USER_DEFINED_PAYLOAD"
+                            }
+                          ]
+                        }
+                      }
+                    }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
