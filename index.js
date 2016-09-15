@@ -181,13 +181,11 @@ function sendWebsiteMessage(sender) {
                     "subtitle": "site van eva",
                     "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "http://www.evalytics.nl/",
-                        "title": "web url"
+                        "type": "Text",
+                        "title": "Ja"
                     }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "type": "Text",
+                        "title": "nee",
                     }],
                 },
                     {
