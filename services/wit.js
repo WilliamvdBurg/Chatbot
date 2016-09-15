@@ -61,7 +61,7 @@ var actions = {
 			context.cat = category
 		}
 
-		delete context.cat
+		// delete context.cat
 
 
 		// Retrieve the sentiment
