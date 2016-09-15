@@ -167,7 +167,7 @@ function sendGenericMessage(sender) {
         }
     })
 
-}
+
 
 
 // function sendWebsiteMessage(sender) {
