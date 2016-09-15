@@ -44,6 +44,9 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello'){
                 sendWebsiteMessage(sender)
             }
+            function vragen(){
+
+
             if (text == 'start') {
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
@@ -66,7 +69,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'alle vragen beantwoord,, doei')
 
             }
-
+        }
 
             // if (text < 11 ) {
             //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
