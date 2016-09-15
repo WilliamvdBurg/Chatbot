@@ -58,7 +58,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (vraag == 1){
                 sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-                vraag ++
+
             }
             if (vraag == 2){
                 sendTextMessage(sender, 'alle vragen beantwoord,, doei')
