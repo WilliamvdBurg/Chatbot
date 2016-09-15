@@ -181,11 +181,11 @@ function sendWebsiteMessage(sender) {
                             {
                               "type":"web_url",
                               "url":"https://petersapparel.parseapp.com",
-                              "title":"Show Website"
+                              "title":"Ja"
                             },
                             {
                               "type":"postback",
-                              "title":"Start Chatting",
+                              "title":"Nee",
                               "payload":"USER_DEFINED_PAYLOAD"
                             }
                           ]
