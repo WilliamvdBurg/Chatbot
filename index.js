@@ -219,22 +219,22 @@ function sendWebsiteMessage(sender) {
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"Hello, do you wanna start the test?",
-                "buttons":[
-                            {
-                              "type":"web_url",
-                              "url":"https://petersapparel.parseapp.com",
-                              "title":"Ja"
-                            },
-                            {
-                              "type":"postback",
-                              "title":"Nee",
-                              "payload" : "USER_DEFINED_PAYLOAD"
-                            }
-                          ]
-                        }
-                      }
+                "text": "Hello, do you wanna start the test?",
+                "buttons": [
+                    {
+                        "type": "web_url",
+                        "url": "https://petersapparel.parseapp.com",
+                        "title": "Ja"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Nee",
+                        "payload": "USER_DEFINED_PAYLOAD"
                     }
+                ]
+            }
+        }
+    }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -250,7 +250,7 @@ function sendWebsiteMessage(sender) {
             console.log('Error: ', response.body.error)
         }
     })
-
+}
 }
 
 
