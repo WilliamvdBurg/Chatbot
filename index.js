@@ -41,8 +41,11 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
+            if (text == 'hello'){
+                sendGenericMessage(sender)
+            }
             if (text == 'StartTest') {
-                sendTextMessage(sender, 'de vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
                if ( text > 10) {
                    sendTextMessage(sender, 'error, antwoord onbekend!'),
@@ -130,11 +133,10 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
+                "template_type": "Start",
                 "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.oculus.com/",
@@ -144,16 +146,8 @@ function sendGenericMessage(sender) {
                         "title": "Postback",
                         "payload": "Payload for first element in a generic bubble",
                     }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+                }, ],
+                }
             }
         }
     }
