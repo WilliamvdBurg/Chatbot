@@ -90,7 +90,8 @@ app.post('/webhook/', function (req, res) {
         //     else if (text === 'help') {
         //         sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
         //         continue
-        //     }sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
+        //     }
+            else {sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
@@ -176,15 +177,16 @@ function sendWebsiteMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Evalytics",
-                    "subtitle": "site van eva",
-                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+                    "title": "Vragenlijst EVA",
+                    "subtitle": "Wilt u beginnen met de test, klik dan op de ja button",
                     "buttons": [{
-                        "type": "Text",
+                        "type": "web_url",
+                        "url": "http://www.evalytics.nl/",
                         "title": "Ja"
                     }, {
-                        "type": "Text",
+                        "type": "postback",
                         "title": "nee",
+                        "payload": "Payload for first element in a generic bubble",
                     }],
                 },
                     {
