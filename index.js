@@ -46,7 +46,6 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
             }
             if (text == 'start') {
-                vragen()
                 vragensessie = true
             }
             if (vragensessie) {
