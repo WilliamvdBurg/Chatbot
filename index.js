@@ -45,12 +45,12 @@ app.post('/webhook/', function (req, res) {
 
             }
             else if (text == 'StartTest') {
-                sendTextMessage(sender, 'de vragen dienen te worden beantwoord met cijfer van 1 tot en met 10')
-                sendTextMessage(sender, 'De docent toonde voldoende kennis over de lesstof.')
+                sendTextMessage(sender, 'de vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+                sendTextMessage(sender, 'vraag 3: De docent toonde voldoende kennis over de lesstof.')
                 continue
             }
             else if (text < 11) {
-                sendTextMessage(sender, 'De docent legde de lesstof begrijpelijk uit.')
+                sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
                 continue
             }
 
