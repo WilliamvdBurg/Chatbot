@@ -44,7 +44,7 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello'){
                 sendWebsiteMessage(sender)
             }
-            if (text == 'StartTest') {
+            if (text == 'start') {
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
 
