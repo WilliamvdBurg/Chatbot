@@ -61,29 +61,13 @@ app.post('/webhook/', function (req, res) {
             }
 
 
-// function StartTest()
-// {
-//     sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-//     sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-// }
-function StartTest(recipientId){
-                var name;
+function StartTest()
+{
+    sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+    sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+}
 
-                request({
-                    url: 'https://graph.facebook.com/v2.6/'+ recipientId +'?fields=first_name',
-                    qs: {access_token: PAGE_ACCESS_TOKEN},
-                    method: 'GET'
-                }, function(error, response, body) {
-                    if (error) {
-                        console.log('Error sending message: ', error);
-                    } else if (response.body.error) {
-                        console.log('Error: ', response.body.error);
-                    }else{
-                        name = JSON.parse(body);
-                        sendTextMessage(recipientId, "Hello "+ name.first_name+", how can i help you ? ")
-                    }
-                });
-            }
+
 
 
 
@@ -145,32 +129,8 @@ function sendTextMessage(sender, text) {
         }
     })
 }
-function receivedPostback(event) {
-    var senderID = event.sender.id;
-    var recipientID = event.recipient.id;
-    var timeOfPostback = event.timestamp;
-
-    // The 'payload' param is a developer-defined field which is set in a postback
-    // button for Structured Messages.
-    var payload = event.postback.payload;
-
-    console.log("Received postback for user %d and page %d with payload '%s' " +
-        "at %d", senderID, recipientID, payload, timeOfPostback);
 
 
-    if (payload) {
-
-        // When a postback is called, we'll send a message back to the sender to
-        // let them know it was successful
-        switch (payload) {
-            case 'USER_DEFINED_PAYLOAD':
-                StartTest(senderID);
-                break;
-
-            default:
-                sendTextMessage(senderID, "Postback called");
-        }
-    }
 // function sendGenericMessage(sender) {
 //     messageData = {
 //         "attachment": {
@@ -211,46 +171,47 @@ function receivedPostback(event) {
 //     })
 
 
-    function sendWebsiteMessage(sender) {
-        messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "button",
-                    "text": "Hello, do you wanna start the test?",
-                    "buttons": [
-                        {
-                            "type": "web_url",
-                            "url": "https://petersapparel.parseapp.com",
-                            "title": "Ja"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Nee",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }
-                    ]
-                }
-            }
-        }
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending messages: ', error)
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error)
-            }
-        })
-    }
-}
 
+
+function sendWebsiteMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text":"Hello, do you wanna start the test?",
+                "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"https://petersapparel.parseapp.com",
+                              "title":"Ja"
+                            },
+                            {
+                              "type":"postback",
+                              "title":"Nee",
+                              "payload" : "USER_DEFINED_PAYLOAD"
+                            }
+                          ]
+                        }
+                      }
+                    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
 
 
 
@@ -605,7 +566,6 @@ function receivedPostback(event) {
 //     })
 //
 // }
-//
 //
 //
 //
