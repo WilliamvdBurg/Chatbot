@@ -4,6 +4,7 @@ var request = require('request')
 var app = express()
 var _ = require('lodash');
 var vraag = 0;
+var vragensessie = false;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -45,31 +46,36 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
             }
             if (text == 'start') {
-            vragen()
+                vragen()
+                vragensessie = true
             }
-            function vragen(){
-             sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-             sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+            if (vragensessie) {
+
+                if (text == 'start') {
+
+                    sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+                        sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+                }
+
+                if (text > 10) {
+                    sendTextMessage(sender, 'error, antwoord onbekend!')
+                }
+                if (text < 11) {
+
+                    vraag = vraag + 1
+                    console.log(text)
+                }
+                if (vraag === 1) {
+                    sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
 
 
-            if ( text > 10) {
-                sendTextMessage(sender, 'error, antwoord onbekend!')
+                }
+                if (vraag === 2) {
+                    sendTextMessage(sender, 'alle vragen beantwoord,, doei')
+                    vragensessie = false
+
+                }
             }
-            if (text < 11 ) {
-
-                vraag = vraag + 1
-                console.log( text)
-            }
-            if (vraag === 1) {
-                sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-
-
-            }
-            if (vraag === 2){
-                sendTextMessage(sender, 'alle vragen beantwoord,, doei')
-
-            }
-        }
 
             // if (text < 11 ) {
             //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
