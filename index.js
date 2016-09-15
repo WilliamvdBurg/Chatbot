@@ -182,9 +182,9 @@ function sendWebsiteMessage(sender) {
                 "text":"Hello, do you wanna start the test?",
                 "buttons":[
                             {
-                              "type":"web_url",
-                              "url":"https://petersapparel.parseapp.com",
-                              "title":"Ja"
+                                "type":"postback",
+                                "title":"ja",
+                                "payload" : "StartTest"
                             },
                             {
                               "type":"postback",
