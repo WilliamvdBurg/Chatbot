@@ -152,7 +152,7 @@ var read = function (sender, message, reply)
 				// Based on the session state, you might want to reset the session
 				// Example:
 				if (message.response == null)
-					message = 'I dont understand you, plzz try something else or typp Hel'
+					message = 'I dont understand you, plzz try something else or typ Help'
 				reply(sender, message)
 
 				if (context['done']) {
