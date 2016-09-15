@@ -61,8 +61,11 @@ app.post('/webhook/', function (req, res) {
             }
 
 
-
-
+function StartTest()
+{
+    sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+    sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+}
 
 
 
@@ -179,7 +182,7 @@ function sendWebsiteMessage(sender) {
                 "text":"Hello, do you wanna start the test?",
                 "buttons":[
                             {
-                              "type":"web_url",
+                              "text":"ja",
                               "url":"https://petersapparel.parseapp.com",
                               "title":"Ja"
                             },
