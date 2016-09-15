@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
                if ( text > 10) {
                    sendTextMessage(sender, 'error, antwoord onbekend!'),
-                       sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+                   sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
                }
             }
             else if (text < 11) {
@@ -128,44 +128,44 @@ function sendTextMessage(sender, text) {
 }
 
 
-function sendGenericMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "Start",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.oculus.com/",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, ],
-                }
-            }
-        }
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+// function sendGenericMessage(sender) {
+//     messageData = {
+//         "attachment": {
+//             "type": "template",
+//             "payload": {
+//                 "template_type": "Start",
+//                 "elements": [{
+//                     "title": "First card",
+//                     "subtitle": "Element #1 of an hscroll",
+//                     "buttons": [{
+//                         "type": "web_url",
+//                         "url": "https://www.oculus.com/",
+//                         "title": "web url"
+//                     }, {
+//                         "type": "postback",
+//                         "title": "Postback",
+//                         "payload": "Payload for first element in a generic bubble",
+//                     }],
+//                 }, ],
+//                 }
+//             }
+//         }
+//     }
+//     request({
+//         url: 'https://graph.facebook.com/v2.6/me/messages',
+//         qs: {access_token: token},
+//         method: 'POST',
+//         json: {
+//             recipient: {id: sender},
+//             message: messageData,
+//         }
+//     }, function (error, response, body) {
+//         if (error) {
+//             console.log('Error sending messages: ', error)
+//         } else if (response.body.error) {
+//             console.log('Error: ', response.body.error)
+//         }
+//     })
 
 
 
