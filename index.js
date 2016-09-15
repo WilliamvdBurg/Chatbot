@@ -176,7 +176,7 @@ function sendWebsiteMessage(sender) {
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"What do you want to do next?",
+                "text":"Hello, do you wanna start the test?",
                 "buttons":[
                             {
                               "type":"web_url",
