@@ -65,8 +65,7 @@ app.post('/webhook/', function (req, res) {
 
                     vraag = vraag + 1
                     cijferArray.push(text);
-
-console.log(cijferArray);
+                    console.log(cijferArray);
 
                 }
                 if (vraag == 1) {
@@ -215,7 +214,45 @@ function sendWebsiteMessage(sender) {
 
 }
 
+function sendTestfinishedMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Evalytics",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "http://www.evalytics.nl/",
+                        "title": "web url"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }
+                    ]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
+}
 
 
 // function sendWebsiteMessage(sender) {
@@ -307,7 +344,7 @@ function sendWebsiteMessage(sender) {
 // }
 
 
-
+// quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
 function sendGenericMessage(sender) {
     messageData = {
