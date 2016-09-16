@@ -235,7 +235,13 @@ function sendTestfinishedMessage(sender) {
                             "type": "postback",
                             "title": "Ja",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
-                        }]
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Nee",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                        }
+                        ]
                 }]
             }
         }
