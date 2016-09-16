@@ -228,7 +228,7 @@ function sendWebsiteMessage(sender) {
 function sendTestfinishedMessage(sender) {
     messageData = {
         "attachment": {
-            "content_type": "text",
+            "type": "text",
             "payload": {
                 "template_type": "generic",
 
