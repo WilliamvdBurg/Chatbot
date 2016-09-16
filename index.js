@@ -249,9 +249,8 @@ function sendWebsiteMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
 
-                    "buttons": "vertical" [{
+                    "buttons":  [{
                         "type": "postback",
                         "title": "web url",
                         "payload": "StartTest"
