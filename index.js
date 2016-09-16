@@ -297,6 +297,7 @@ function sendGenericMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
+                    "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
                     "buttons": [
                         "eff",
                         "efsef",
