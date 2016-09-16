@@ -46,9 +46,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if (text == 'haai'){
-                sendGenericMessage(sender)
-            }
+
             if (text == 'start') {
                 vragensessie = true
                 vraag = 0
