@@ -243,7 +243,7 @@ function sendTextMessage(sender, text) {
 
 
 
-function sendGenericMessage(sender) {
+function sendWebsiteMessage(sender) {
     messageData = {
         "attachment": {
             "type": "template",
