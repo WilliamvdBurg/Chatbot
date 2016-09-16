@@ -218,6 +218,16 @@ function sendWebsiteMessage(sender) {
                         "title":"ja",
                         "payload" : "StartTest"
                     },
+                    {
+                        "type":"postback",
+                        "title":"ja",
+                        "payload" : "StartTest"
+                    },
+                    {
+                        "type":"postback",
+                        "title":"ja",
+                        "payload" : "StartTest"
+                    },
 
                           ]
                         }
