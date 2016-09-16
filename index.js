@@ -42,7 +42,7 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id
         if (event.message && event.message.text) {
             text = event.message.text
-            if (text == 'hello'){
+            if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
             }
@@ -157,44 +157,44 @@ function sendTextMessage(sender, text) {
 }
 
 
-// function sendGenericMessage(sender) {
-//     messageData = {
-//         "attachment": {
-//             "type": "template",
-//             "payload": {
-//                 "template_type": "Start",
-//                 "elements": [{
-//                     "title": "First card",
-//                     "subtitle": "Element #1 of an hscroll",
-//                     "buttons": [{
-//                         "type": "web_url",
-//                         "url": "https://www.oculus.com/",
-//                         "title": "web url"
-//                     }, {
-//                         "type": "postback",
-//                         "title": "Postback",
-//                         "payload": "Payload for first element in a generic bubble",
-//                     }],
-//                 }, ],
-//                 }
-//             }
-//         }
-//     }
-//     request({
-//         url: 'https://graph.facebook.com/v2.6/me/messages',
-//         qs: {access_token: token},
-//         method: 'POST',
-//         json: {
-//             recipient: {id: sender},
-//             message: messageData,
-//         }
-//     }, function (error, response, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         } else if (response.body.error) {
-//             console.log('Error: ', response.body.error)
-//         }
-//     })
+function sendWebsiteMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "Start",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.oculus.com/",
+                        "title": "web url"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, ],
+                }
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
 
 
@@ -244,48 +244,48 @@ function sendTextMessage(sender, text) {
 
 
 
-function sendWebsiteMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
-
-                    "buttons":  [{
-                        "type": "postback",
-                        "title": "web url",
-                        "payload": "StartTest"
-                    }],
-                        "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "StartTest",
-                    }],
-                }, ]
-            }
-        }
-    }
-
-
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-
-}
+// function sendWebsiteMessage(sender) {
+//     messageData = {
+//         "attachment": {
+//             "type": "template",
+//             "payload": {
+//                 "template_type": "generic",
+//                 "elements": [{
+//                     "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
+//
+//                     "buttons":  [{
+//                         "type": "postback",
+//                         "title": "web url",
+//                         "payload": "StartTest"
+//                     }],
+//                         "buttons": [{
+//                         "type": "postback",
+//                         "title": "Postback",
+//                         "payload": "StartTest",
+//                     }],
+//                 }, ]
+//             }
+//         }
+//     }
+//
+//
+//     request({
+//         url: 'https://graph.facebook.com/v2.6/me/messages',
+//         qs: {access_token: token},
+//         method: 'POST',
+//         json: {
+//             recipient: {id: sender},
+//             message: messageData,
+//         }
+//     }, function (error, response, body) {
+//         if (error) {
+//             console.log('Error sending messages: ', error)
+//         } else if (response.body.error) {
+//             console.log('Error: ', response.body.error)
+//         }
+//     })
+//
+// }
 
 
 
