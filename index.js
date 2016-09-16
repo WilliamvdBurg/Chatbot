@@ -248,7 +248,7 @@ function sendWebsiteMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
+                    "title": vraag = 0,
 
                     "buttons":  [{
                         "type": "postback",
