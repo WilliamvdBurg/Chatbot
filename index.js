@@ -212,22 +212,16 @@ function sendWebsiteMessage(sender) {
                               "title":"Nee",
                               "payload" : "StartTest"
 
-                            },
-                    {
-                        "type":"postback",
-                        "title":"ja",
-                        "payload" : "StartTest"
-                    },
-                    {
-                        "type":"postback",
-                        "title":"ja",
-                        "payload" : "StartTest"
-                    },
-                    {
-                        "type":"postback",
-                        "title":"ja",
-                        "payload" : "StartTest"
-                    },
+                            }],
+                        "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+
 
                           ]
                         }
