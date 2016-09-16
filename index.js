@@ -137,7 +137,7 @@ function StartTest()
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postbackugiygyuuyohyioiu received: " + text.substring(0, 200), token)
+            sendTextMessage(sender, "Postback received: " + text, token)
             continue
         }
     }
