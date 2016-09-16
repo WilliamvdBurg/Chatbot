@@ -203,7 +203,6 @@ function sendWebsiteMessage(sender) {
                 "text": "Hello, do you wanna start the test?",
                 "elements": [{
                     "title": "first card",
-                    "subtitle": "Element #1 of an hscroll",
                     "buttons": [
                         {
                             "type": "postback",
@@ -218,7 +217,6 @@ function sendWebsiteMessage(sender) {
                         }],
                 }, {
                     "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
