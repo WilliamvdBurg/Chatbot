@@ -292,7 +292,7 @@ function sendWebsiteMessage(sender) {
 
 function sendGenericMessage(sender) {
     messageData = {
-
+        "attachment": {
             "type": "template",
             "template": "here are some!",
             "quickreplies": [
@@ -305,6 +305,7 @@ function sendGenericMessage(sender) {
                 "sef"
             ]
         }
+    }
 
 
     request({
