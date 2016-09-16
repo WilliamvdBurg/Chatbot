@@ -44,7 +44,8 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
             console.log("-------------------------------------------");
-            console.log(text.payload);
+            console.log(text);
+            console.log(typeof(text));
 
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
