@@ -292,21 +292,21 @@ function sendWebsiteMessage(sender) {
 
 function sendGenericMessage(sender) {
     messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
-                    "buttons": [
-                        "eff",
-                        "efsef",
-                        "sefse"
-                    ]
-                }]
+        "attachment":{
+            "type":"image",
+            "payload":{
+                "url": image_url
             }
-        }
+        },
+        "quick_replies": [
+            {
+                "content_type":"text",
+                "title": "Next Image",
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            }
+        ]
     }
+
 
 
     request({
