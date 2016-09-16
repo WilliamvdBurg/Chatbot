@@ -246,7 +246,7 @@ function sendWebsiteMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
+                "template_type": "button",
                 "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
