@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 2) {
-                    sendTextMessage(sender, 'alle vragen beantwoord,, doei')
+                    sendTextMessage(sender, 'alle vragen beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart')
                     vragensessie = false
 
                 }
