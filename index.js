@@ -219,8 +219,8 @@ function sendWebsiteMessage(sender) {
                     "title": "Second card",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "title": "nee",
+                        "payload": "StartTest",
                     }],
                 }]
             }
