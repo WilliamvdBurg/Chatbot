@@ -229,9 +229,9 @@ function sendTestfinishedMessage(sender) {
                 "elements": [{
                     "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet drukt u No.",
                     "buttons": [{
-                        "type":"text",
-                        "title": "Yes",
-                        "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+                        "type":"postback",
+                        "title":"Bookmark Item",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
                     }, {
                         "type":"text",
                         "title": "No",
