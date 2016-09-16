@@ -66,6 +66,7 @@ app.post('/webhook/', function (req, res) {
                     vraag = vraag + 1
                     cijferArray.push(text);
 
+console.log(cijferArray);
 
                 }
                 if (vraag == 1) {
