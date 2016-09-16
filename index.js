@@ -295,15 +295,17 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "template": "here are some!",
-            "buttons": [
-                "eff",
-                "efsef",
-                "sefse",
-                "fsef",
-                "sefse",
-                "fsef",
-                "sef"
-            ]
+            "elements": [{
+                "buttons": [
+                    "eff",
+                    "efsef",
+                    "sefse",
+                    "fsef",
+                    "sefse",
+                    "fsef",
+                    "sef"
+                ]
+            }]
         }
     }
 
