@@ -228,6 +228,7 @@ function sendTestfinishedMessage(sender) {
                 "template_type": "generic",
 
                 "elements": [{
+                    "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart",
                     "buttons": [
                         {
                             "type": "postback",
