@@ -296,12 +296,42 @@ function sendGenericMessage(sender) {
         "quick_replies":[
             {
                 "content_type":"text",
-                "title":"Red",
+                "title":"1",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             },
             {
                 "content_type":"text",
-                "title":"Green",
+                "title":"2",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }
+            {
+                "content_type":"text",
+                "title":"3",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"4",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }
+            {
+                "content_type":"text",
+                "title":"5",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"6",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }
+            {
+                "content_type":"text",
+                "title":"7",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"8",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }
         ]
