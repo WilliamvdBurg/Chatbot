@@ -292,21 +292,20 @@ function sendWebsiteMessage(sender) {
 
 function sendGenericMessage(sender) {
     messageData = {
-        "attachment":{
-            "type":"image",
-            "payload":{
-                "url": image_url
-            }
-        },
-        "quick_replies": [
+        "text":"Pick a color:",
+        "quick_replies":[
             {
                 "content_type":"text",
-                "title": "Next Image",
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+                "title":"Red",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Green",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }
         ]
     }
-
 
 
     request({
