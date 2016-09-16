@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
-                text = start;
+                text = 'start'
             }
             if (text == 'ready'){
                 sendTestfinishedMessage(sender)
@@ -61,7 +61,7 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
 
             }
-            if (text == start) {
+            if (text == 'start') {
                 vragensessie = true
                 vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
@@ -229,7 +229,7 @@ function sendWebsiteMessage(sender) {
 
 function sendTestfinishedMessage(sender) {
     messageData = {
-        "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
+        "text": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
         "quick_replies": [
             {
                 "content_type": "text",
