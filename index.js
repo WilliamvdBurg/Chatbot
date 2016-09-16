@@ -292,7 +292,7 @@ function sendWebsiteMessage(sender) {
 
 function sendGenericMessage(sender) {
     messageData = {
-        "text":"Pick a color:",
+        "text":"vraag 1: De docent toonde voldoende kennis over de lesstof.",
         "quick_replies":[
             {
                 "content_type":"text",
