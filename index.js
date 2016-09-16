@@ -287,9 +287,41 @@ function sendWebsiteMessage(sender) {
 
 
 
+function sendWebsiteMessage(sender) {
+    messageData = {
+        "attachment": {
+            "id": "template-here are some!",
+            "type": "template",
+            "template": "here are some!",
+            "quickreplies": [
+                "eff",
+                "efsef",
+                "sefse",
+                "fsef",
+                "sefse",
+                "fsef",
+                "sef"
+            ]
+        }
+    }
+}
+request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: token},
+    method: 'POST',
+    json: {
+        recipient: {id: sender},
+        message: messageData,
+    }
+}, function (error, response, body) {
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
 
-
-
+}
 
 
 
