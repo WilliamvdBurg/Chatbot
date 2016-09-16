@@ -46,8 +46,11 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
+            else if (text == 'haai'){
+                sendGenericMessage(sender)
 
-            if (text == 'start') {
+            }
+                        if (text == 'start') {
                 vragensessie = true
                 vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
@@ -287,7 +290,7 @@ function sendWebsiteMessage(sender) {
 
 
 
-function sendWebsiteMessage(sender) {
+function sendGenericMessage(sender) {
     messageData = {
         "attachment": {
             "id": "template-here are some!",
