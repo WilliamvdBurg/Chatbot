@@ -222,26 +222,13 @@ function sendWebsiteMessage(sender) {
 
 function sendTestfinishedMessage(sender) {
     messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet drukt u No.",
-                    "buttons": [{
-                        "type":"postback",
-                        "title":"Bookmark Item",
-                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                    }, {
-                        "type":"text",
-                        "title": "No",
-                        "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-                    }],
-                }
-                    ]
+        "buttons":[
+            {
+                "type":"postback",
+                "title":"Bookmark Item",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
             }
-        }
-    }
+        ]}
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
