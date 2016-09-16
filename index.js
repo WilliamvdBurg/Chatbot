@@ -229,11 +229,11 @@ function sendTestfinishedMessage(sender) {
                 "elements": [{
                     "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet drukt u No.",
                     "buttons": [{
-                        "content_type":"text",
+                        "type":"text",
                         "title": "Yes",
                         "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
                     }, {
-                        "content_type":"text",
+                        "type":"text",
                         "title": "No",
                         "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
                     }],
