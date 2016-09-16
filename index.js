@@ -333,6 +333,16 @@ function sendGenericMessage(sender) {
                 "content_type":"text",
                 "title":"8",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"9",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"10",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
         ]
     }
