@@ -200,33 +200,42 @@ function sendWebsiteMessage(sender) {
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text":"Hello, do you wanna start the test?",
-                "buttons":[
-                            {
-                                "type":"postback",
-                                "title":"ja",
-                                "payload" : "StartTest"
-                            },
-                            {
-                              "type":"postback",
-                              "title":"Nee",
-                              "payload" : "StartTest"
+                "text": "Hello, do you wanna start the test?",
+                "elements": [{
+                    "title": "first card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "ja",
+                            "payload": "StartTest"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Nee",
+                            "payload": "StartTest"
 
-                            }],
-                        "title": "Second card",
+                        }],
+                }, {
+                    "title": "Second card",
                     "subtitle": "Element #2 of an hscroll",
                     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
                         "payload": "Payload for second element in a generic bubble",
                     }],
+                }]
+            }
+        }
+    }
 
 
-                          ]
-                        }
-                      }
-                    }
+
+
+
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
