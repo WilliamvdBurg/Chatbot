@@ -230,27 +230,25 @@ function sendTestfinishedMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
+                "template_type": "button",
+                "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
 
-                "elements": [{
-                    "title": "alle vragen zijn beantwoord",
-                    "subtitle": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
                     "buttons": [
                         {
-                            "content_type": "text",
+                            "type": "postback",
                             "title": "Ja",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         },
                         {
-                            "content_type": "text",
+                            "type": "postback",
                             "title": "Nee",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         }
                         ]
-                }]
+                }
             }
         }
-    }
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
