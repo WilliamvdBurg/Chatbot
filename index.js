@@ -67,8 +67,16 @@ app.post('/webhook/', function (req, res) {
             if (text == 'start') {
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-                sendGenericMessage(sender)
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response)
+                if (error) {
+                    console.log('Error sending messages: ', error)
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error)
+                } else {
+                    // Gelukt, doe 2e ding
+                    sendGenericMessage(sender)
+
+                }
             }
             if (vragensessie) {
 
@@ -381,7 +389,7 @@ function sendTestfinishedMessage(sender) {
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
-function sendGenericMessage(sender) {
+function sendGenericMessage(sender, callback) {
     messageData = {
         "text":"vraag 1: De docent toonde voldoende kennis over de lesstof.",
         "quick_replies":[
@@ -447,13 +455,7 @@ function sendGenericMessage(sender) {
             recipient: {id: sender},
             message: messageData,
         }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    }, callback)
 }
 
 function sendGeneric1Message(sender) {
