@@ -293,7 +293,6 @@ function sendWebsiteMessage(sender) {
 function sendGenericMessage(sender) {
     messageData = {
         "attachment": {
-            "id": "template-here are some!",
             "type": "template",
             "template": "here are some!",
             "quickreplies": [
