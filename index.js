@@ -200,30 +200,24 @@ function sendWebsiteMessage(sender) {
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text": "Hello, do you wanna start the test?",
-                "elements": [{
-                    "buttons": [
-                        {
-                            "type": "postback",
-                            "title": "ja",
-                            "payload": "StartTest"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Nee",
-                            "payload": "StartTest"
+                "text":"Hello, do you wanna start the test?",
+                "buttons":[
+                            {
+                                "type":"postback",
+                                "title":"ja",
+                                "payload" : "StartTest"
+                            },
+                            {
+                              "type":"postback",
+                              "title":"Nee",
+                              "payload" : "StartTest"
 
-                        }],
-                }, {
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "nee",
-                        "payload": "StartTest",
-                    }],
-                }]
-            }
-        }
-    }
+                            },
+
+                          ]
+                        }
+                      }
+                    }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
