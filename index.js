@@ -43,7 +43,6 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
 
             text = event.message.text;
-
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
@@ -138,18 +137,9 @@ function StartTest()
            // sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
-
-            // console.log("-------------------------------------------");
-            // console.log(event);
-            // console.log(typeof(text));
-            console.log("-------------------------------------------");
-            console.log(event);
-            if (text == 'Ja'){
-                sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
-            }
-            // text = JSON.stringify(event.postback)
-            // console.log(sender, "Postback received: " + text.substring(0, 200), token)
-            // continue
+            text = JSON.stringify(event.postback)
+            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            continue
         }
     }
     res.sendStatus(200)
@@ -238,28 +228,44 @@ function sendWebsiteMessage(sender) {
 
 function sendTestfinishedMessage(sender) {
     messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
+        "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "Ja",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "nee",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
+    }
 
-                    "buttons": [
-                        {
 
-                            "type": "postback",
-                            "title": "Ja",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "Nee",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }
-                        ]
-                }
-            }
-        }
+            // messageData = {
+    //     "attachment": {
+    //         "type": "template",
+    //         "payload": {
+    //             "template_type": "button",
+    //             "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
+    //
+    //                 "buttons": [
+    //                     {
+    //
+    //                         "type": "postback",
+    //                         "title": "Ja",
+    //                         "payload": "USER_DEFINED_PAYLOAD"
+    //                     },
+    //                     {
+    //                         "type": "postback",
+    //                         "title": "Nee",
+    //                         "payload": "USER_DEFINED_PAYLOAD"
+    //                     }
+    //                     ]
+    //             }
+    //         }
+    //     }
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
