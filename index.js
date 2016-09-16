@@ -46,6 +46,9 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
+            if (text = ''){
+                sendTextMessage(sender, 'Ik kan dit niet herkennen, probeer het opnieuw aub')
+            }
             if (text = 'ready'){
                 sendTestfinishedMessage(sender)
             }
