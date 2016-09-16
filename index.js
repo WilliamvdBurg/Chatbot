@@ -83,7 +83,7 @@ app.post('/webhook/', function (req, res) {
 
                 }
             }
-            if (reply = null){
+            if (event.message = null){
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
             // if (text < 11 ) {
