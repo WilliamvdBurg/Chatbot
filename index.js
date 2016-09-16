@@ -64,7 +64,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11) {
 
                     vraag = vraag + 1
-                    console.log(text)
+                    array.log(text)
                 }
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
