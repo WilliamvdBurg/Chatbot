@@ -228,7 +228,7 @@ function sendTestfinishedMessage(sender) {
                 "template_type": "generic",
 
                 "elements": [{
-                    "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart",
+                    "title": "alle vragen zijn beantwoord",
                     "subtitle": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
                     "buttons": [
                         {
