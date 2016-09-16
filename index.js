@@ -5,7 +5,7 @@ var app = express()
 var _ = require('lodash');
 var vraag = 0;
 var vragensessie = false;
-
+var array = array
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
