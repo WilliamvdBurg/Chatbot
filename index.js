@@ -237,12 +237,12 @@ function sendTestfinishedMessage(sender) {
                     "subtitle": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
                     "buttons": [
                         {
-                            "type": "text",
+                            "content_type": "text",
                             "title": "Ja",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         },
                         {
-                            "type": "text",
+                            "content_type": "text",
                             "title": "Nee",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         }
