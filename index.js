@@ -238,7 +238,7 @@ function sendTestfinishedMessage(sender) {
 
                             "type": "postback",
                             "title": "Ja",
-                            "payload": "USER_DEFINED_PAYLOAD"
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         },
                         {
                             "type": "postback",
