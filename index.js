@@ -43,15 +43,12 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
 
             text = event.message.text;
-            console.log("-------------------------------------------");
-            console.log(text);
-            console.log(typeof(text));
 
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
             }
-            if (text == '"payload":"USER_DEFINED_PAYLOAD"'){
+            if (text == 'Ja'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
@@ -141,9 +138,17 @@ function StartTest()
            // sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
-            continue
+
+            console.log("-------------------------------------------");
+            console.log(text);
+            console.log(typeof(text));
+
+            if (text == 'Ja'){
+                sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+            }
+            // text = JSON.stringify(event.postback)
+            // sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            // continue
         }
     }
     res.sendStatus(200)
