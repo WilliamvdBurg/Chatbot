@@ -6,7 +6,7 @@ var _ = require('lodash');
 var vraag = 0;
 var vragensessie = false;
 var cijferArray = new Array();
-var start = 'start'
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -241,7 +241,7 @@ function sendTestfinishedMessage(sender) {
             },
             {
                 "content_type": "text",
-                "title": "nee",
+                "title": "Nee",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
     }
