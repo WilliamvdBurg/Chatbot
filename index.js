@@ -5,7 +5,7 @@ var app = express()
 var _ = require('lodash');
 var vraag = 0;
 var vragensessie = false;
-var array = array
+var cijferArray = new Array();
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -64,7 +64,9 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11) {
 
                     vraag = vraag + 1
-                    array.log(text)
+                    cijferArray.push(text);
+
+
                 }
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
