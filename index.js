@@ -44,8 +44,6 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            console.log("-------------------------------------------");
-            console.log(event);
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
@@ -144,7 +142,8 @@ function StartTest()
             // console.log("-------------------------------------------");
             // console.log(event);
             // console.log(typeof(text));
-
+            console.log("-------------------------------------------");
+            console.log(event);
             if (text == 'Ja'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
