@@ -367,7 +367,7 @@ function sendGenericMessage(sender) {
 
 function sendGeneric1Message(sender) {
     messageData = {
-        "text":"vraag 1: De docent toonde voldoende kennis over de lesstof.",
+        "text":"Vraag 2: De docent legde de lesstof begrijpelijk uit.",
         "quick_replies":[
             {
                 "content_type":"text",
