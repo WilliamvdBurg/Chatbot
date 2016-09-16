@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
             if (text = ''){
                 sendTextMessage(sender, 'Ik kan dit niet herkennen, probeer het opnieuw aub')
             }
-            if (text = 'ready'){
+            if (text == 'ready'){
                 sendTestfinishedMessage(sender)
             }
             if (text == 'haai'){
