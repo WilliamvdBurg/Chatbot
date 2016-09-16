@@ -55,7 +55,7 @@ app.post('/webhook/', function (req, res) {
                 vragensessie = true
                 vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-                    sendGenericMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+                sendGenericMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
             }
             if (text == 'ready'){
                 sendTestfinishedMessage(sender)
