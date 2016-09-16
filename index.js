@@ -204,13 +204,54 @@ function sendWebsiteMessage(sender) {
                 "buttons":[
                             {
                                 "type":"postback",
-                                "title":"ja",
+                                "title":"1",
                                 "payload" : "StartTest"
                             },
                             {
-                              "type":"postback",
-                              "title":"Nee",
-                              "payload" : "StartTest"
+                                "type":"postback",
+                                "title":"2",
+                                "payload" : "StartTest"
+
+                            },
+                            {
+                                "type":"postback",
+                                "title":"3",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"4",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"5",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"6",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"7",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"8",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"9",
+                                "payload" : "StartTest"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"10",
+                                "payload" : "StartTest"
                             }
                           ]
                         }
