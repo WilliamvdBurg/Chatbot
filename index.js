@@ -222,13 +222,16 @@ function sendWebsiteMessage(sender) {
 
 function sendTestfinishedMessage(sender) {
     messageData = {
-        "buttons":[
-            {
-                "type":"postback",
-                "title":"Bookmark Item",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-            }
-        ]}
+        "elements": [{
+            "buttons": [
+                {
+                    "type": "postback",
+                    "title": "Bookmark Item",
+                    "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                }
+            ]
+        }]
+    }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
