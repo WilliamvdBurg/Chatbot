@@ -41,6 +41,9 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
+
+            console.log(text);
+
             text = event.message.text
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
@@ -229,7 +232,7 @@ function sendTestfinishedMessage(sender) {
     messageData = {
         "attachment": {
             "type": "template",
-            text: {
+            "payload": {
                 "template_type": "button",
                 "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
 
