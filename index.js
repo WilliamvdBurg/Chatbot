@@ -46,6 +46,9 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
+            if (text = 'ready'){
+                sendTestfinishedMessage(sender)
+            }
             if (text == 'haai'){
                 sendGenericMessage(sender)
 
