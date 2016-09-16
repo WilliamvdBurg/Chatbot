@@ -254,7 +254,8 @@ function sendWebsiteMessage(sender) {
                         "type": "postback",
                         "title": "web url",
                         "payload": "StartTest"
-                    }, {
+                    }],
+                        "buttons": [{
                         "type": "postback",
                         "title": "Postback",
                         "payload": "StartTest",
@@ -263,6 +264,8 @@ function sendWebsiteMessage(sender) {
             }
         }
     }
+
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
