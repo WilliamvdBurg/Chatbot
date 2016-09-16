@@ -44,18 +44,12 @@ app.post('/webhook/', function (req, res) {
             text = event.message.text
             sendStartMessage(start.message)
 
-            function sendStartMessage(sender) {
-                messageData = {
-                    "recipient": {
-                        "id": "USER_ID"
-                    },
-                    "message": {
-                        "text": "hello, world!"
-                    }
-                }
 
 
-            start.message('Hallootjes, vul die test nou maar in. Typ start om te starten duhhhhh....')
+
+
+
+        start.message = 'Hallootjes, vul die test nou maar in. Typ start om te starten duhhhhh....'
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
