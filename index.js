@@ -228,7 +228,7 @@ function sendWebsiteMessage(sender) {
 function sendTestfinishedMessage(sender) {
     messageData = {
         "attachment": {
-            "type": "text",
+            "type": "template",
             "payload": {
                 "template_type": "generic",
 
@@ -237,12 +237,12 @@ function sendTestfinishedMessage(sender) {
                     "subtitle": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
                     "buttons": [
                         {
-                            "type": "postback",
+                            "type": "text",
                             "title": "Ja",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         },
                         {
-                            "type": "postback",
+                            "type": "text",
                             "title": "Nee",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         }
