@@ -67,19 +67,20 @@ app.post('/webhook/', function (req, res) {
             if (text == 'start') {
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response) {
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', (function (error, response) {
                 if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
                         // Gelukt, doe 2ew ding
-                    sendGenericMessage(sender, function (error, response)
+                    sendGenericMessage(sender, function (error, response) {
+
                     }
 
 
-                });
-            }
+
+
             if (vragensessie) {
 
                 if (text > 10) {
