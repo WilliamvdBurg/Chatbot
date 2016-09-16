@@ -294,18 +294,20 @@ function sendGenericMessage(sender) {
     messageData = {
         "attachment": {
             "type": "template",
-            "template": "here are some!",
-            "elements": [{
-                "buttons": [
-                    "eff",
-                    "efsef",
-                    "sefse",
-                    "fsef",
-                    "sefse",
-                    "fsef",
-                    "sef"
-                ]
-            }]
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "buttons": [
+                        "eff",
+                        "efsef",
+                        "sefse",
+                        "fsef",
+                        "sefse",
+                        "fsef",
+                        "sef"
+                    ]
+                }]
+            }
         }
     }
 
