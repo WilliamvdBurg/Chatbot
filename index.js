@@ -295,7 +295,7 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "template": "here are some!",
-            "quickreplies": [
+            "buttons": [
                 "eff",
                 "efsef",
                 "sefse",
