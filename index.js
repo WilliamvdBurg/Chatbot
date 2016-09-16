@@ -44,6 +44,8 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
+            console.log("-------------------------------------------");
+            console.log(event);
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
@@ -139,15 +141,15 @@ function StartTest()
         }
         if (event.postback) {
 
-            console.log("-------------------------------------------");
-            console.log(text);
-            console.log(typeof(text));
+            // console.log("-------------------------------------------");
+            // console.log(event);
+            // console.log(typeof(text));
 
             if (text == 'Ja'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             // text = JSON.stringify(event.postback)
-            // sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            // console.log(sender, "Postback received: " + text.substring(0, 200), token)
             // continue
         }
     }
