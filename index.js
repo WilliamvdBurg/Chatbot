@@ -235,14 +235,15 @@ function sendTestfinishedMessage(sender) {
 
                     "buttons": [
                         {
+
                             "type": "postback",
                             "title": "Ja",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                            "payload": "USER_DEFINED_PAYLOAD"
                         },
                         {
                             "type": "postback",
                             "title": "Nee",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                            "payload": "USER_DEFINED_PAYLOAD"
                         }
                         ]
                 }
