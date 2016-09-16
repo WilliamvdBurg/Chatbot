@@ -162,21 +162,35 @@ function sendWebsiteMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "Start",
+                "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
+                    "title": "Evalytics",
+                    "subtitle": "site van eva",
+                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.oculus.com/",
+                        "url": "http://www.evalytics.nl/",
                         "title": "web url"
                     }, {
                         "type": "postback",
                         "title": "Postback",
                         "payload": "Payload for first element in a generic bubble",
                     }],
-                }, ],
-                }
+                },
+                    {
+                        "title": "Vrendly",
+                        "subtitle": "site van vrendly",
+                        "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": "https://beta.vrendly.nl/app/#/login",
+                            "title": "web url"
+                        }, {
+                            "type": "postback",
+                            "title": "Postback",
+                            "payload": "Payload for second element in a generic bubble",
+                        }],
+                    }]
             }
         }
     }
@@ -195,6 +209,8 @@ function sendWebsiteMessage(sender) {
             console.log('Error: ', response.body.error)
         }
     })
+
+}
 
 
 
