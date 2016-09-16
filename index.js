@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if (text === 'Ja'){
+            if (text == 'Ja'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
@@ -229,7 +229,7 @@ function sendTestfinishedMessage(sender) {
     messageData = {
         "attachment": {
             "type": "template",
-            "payload": {
+            text: {
                 "template_type": "button",
                 "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
 
