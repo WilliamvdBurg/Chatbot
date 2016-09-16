@@ -259,16 +259,7 @@ function sendWebsiteMessage(sender) {
                         "title": "Postback",
                         "payload": "StartTest",
                     }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "StartTest",
-                    }],
-                }]
+                }, ]
             }
         }
     }
