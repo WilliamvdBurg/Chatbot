@@ -202,7 +202,6 @@ function sendWebsiteMessage(sender) {
                 "template_type": "button",
                 "text": "Hello, do you wanna start the test?",
                 "elements": [{
-                    "title": "first card",
                     "buttons": [
                         {
                             "type": "postback",
@@ -216,7 +215,6 @@ function sendWebsiteMessage(sender) {
 
                         }],
                 }, {
-                    "title": "Second card",
                     "buttons": [{
                         "type": "postback",
                         "title": "nee",
