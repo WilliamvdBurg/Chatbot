@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 2) {
-                    sendTextMessage(sender, 'alle vragen beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart')
+                    sendTextMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart')
                     vragensessie = false
 
                 }
@@ -227,15 +227,15 @@ function sendTestfinishedMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Evalytics",
+                    "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet drukt u No.",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "http://www.evalytics.nl/",
-                        "title": "web url"
+                        "content_type":"text",
+                        "title": "Yes",
+                        "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
                     }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "content_type":"text",
+                        "title": "No",
+                        "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
                     }],
                 }
                     ]
