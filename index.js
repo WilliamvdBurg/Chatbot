@@ -137,7 +137,7 @@ function StartTest()
         }
         if (event.postback) {
             text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
+            sendTextMessage(sender, "Postbackugiygyuuyohyioiu received: " + text.substring(0, 200), token)
             continue
         }
     }
@@ -238,7 +238,7 @@ function sendTestfinishedMessage(sender) {
 
                             "type": "postback",
                             "title": "Ja",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                            "payload": "USER_DEFINED_PAYLOAD"
                         },
                         {
                             "type": "postback",
