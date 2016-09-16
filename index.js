@@ -305,7 +305,7 @@ function sendGenericMessage(sender) {
                 "sef"
             ]
         }
-    }
+
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
