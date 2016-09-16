@@ -250,7 +250,7 @@ function sendWebsiteMessage(sender) {
                 "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+
                     "buttons": [{
                         "type": "postback",
                         "title": "web url",
@@ -263,7 +263,7 @@ function sendWebsiteMessage(sender) {
                 }, {
                     "title": "Second card",
                     "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
