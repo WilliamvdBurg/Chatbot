@@ -303,7 +303,7 @@ function sendGenericMessage(sender) {
                 "content_type":"text",
                 "title":"2",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            }
+            },
             {
                 "content_type":"text",
                 "title":"3",
@@ -313,7 +313,7 @@ function sendGenericMessage(sender) {
                 "content_type":"text",
                 "title":"4",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            }
+            },
             {
                 "content_type":"text",
                 "title":"5",
@@ -323,7 +323,7 @@ function sendGenericMessage(sender) {
                 "content_type":"text",
                 "title":"6",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            }
+            },
             {
                 "content_type":"text",
                 "title":"7",
