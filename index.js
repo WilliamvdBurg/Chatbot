@@ -300,11 +300,7 @@ function sendGenericMessage(sender) {
                     "buttons": [
                         "eff",
                         "efsef",
-                        "sefse",
-                        "fsef",
-                        "sefse",
-                        "fsef",
-                        "sef"
+                        "sefse"
                     ]
                 }]
             }
