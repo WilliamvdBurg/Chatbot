@@ -51,7 +51,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if (text == 'Ja'){
+            if (text == '{"payload":"USER_DEFINED_PAYLOAD"}'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
