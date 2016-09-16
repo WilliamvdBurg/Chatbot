@@ -253,8 +253,8 @@ function sendWebsiteMessage(sender) {
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "postback",
-                        "url": "postback",
-                        "title": "web url"
+                        "title": "web url",
+                        "payload": "StartTest"
                     }, {
                         "type": "postback",
                         "title": "Postback",
