@@ -251,7 +251,7 @@ function sendWebsiteMessage(sender) {
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
 
-                    "buttons": [{
+                    "buttons": vertical [{
                         "type": "postback",
                         "title": "web url",
                         "payload": "StartTest"
