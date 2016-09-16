@@ -246,19 +246,19 @@ function sendWebsiteMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "button",
+                "template_type": "generic",
                 "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.oculus.com/",
+                        "type": "postback",
+                        "url": "postback",
                         "title": "web url"
                     }, {
                         "type": "postback",
                         "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "payload": "StartTest",
                     }],
                 }, {
                     "title": "Second card",
@@ -267,7 +267,7 @@ function sendWebsiteMessage(sender) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "payload": "StartTest",
                     }],
                 }]
             }
