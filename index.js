@@ -225,6 +225,10 @@ function sendWebsiteMessage(sender) {
 
 }
 
+function test() {
+    console.log("FGHJK");
+}
+
 function sendTestfinishedMessage(sender) {
     messageData = {
         "attachment": {
@@ -238,7 +242,7 @@ function sendTestfinishedMessage(sender) {
 
                             "type": "postback",
                             "title": "Ja",
-                            "payload": "USER_DEFINED_PAYLOAD"
+                            "payload": test()
                         },
                         {
                             "type": "postback",
