@@ -40,6 +40,7 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
+        startmessage = 'Hallootjes, vul die test nou maar in. Typ start om te starten duhhhhh....'
         if (event.message && event.message.text) {
             text = event.message.text
             sendStartMessage(start.message)
