@@ -248,7 +248,7 @@ function sendWebsiteMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": vraag = 0,
+                    "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
 
                     "buttons":  [{
                         "type": "postback",
