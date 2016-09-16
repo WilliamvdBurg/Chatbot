@@ -83,7 +83,10 @@ app.post('/webhook/', function (req, res) {
 
                 }
             }
-
+            else {
+                sendTextMessage(sender, 'het bericht word niet herkent, probeer het opnieuw of typ help.'
+            )
+            }
             // if (text < 11 ) {
             //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
             //     if ( text > 10) {
