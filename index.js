@@ -67,14 +67,14 @@ app.post('/webhook/', function (req, res) {
             if (text == 'start') {
                 vragensessie = true
                 vraag = 0
-
-                sendGenericMessage(sender, function (error, response, body) {
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
+                 {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10')
+                        sendGenericMessage(sender)
                     }
                 })
             }
@@ -161,7 +161,7 @@ function StartTest()
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
-function sendTextMessage(sender, text) {
+function sendTextMessage(sender, text, callback) {
     messageData = {
         text: text
     }
@@ -173,13 +173,7 @@ function sendTextMessage(sender, text) {
             recipient: {id: sender},
             message: messageData,
         }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    }, callback)
 }
 
 
