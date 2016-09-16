@@ -229,10 +229,11 @@ function sendTestfinishedMessage(sender) {
 
                 "elements": [{
                     "title": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart",
+                    "subtitle": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
                     "buttons": [
                         {
                             "type": "postback",
-                            "title": "Bookmark Item",
+                            "title": "Ja",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD"
                         }]
                 }]
