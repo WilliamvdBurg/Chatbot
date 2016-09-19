@@ -197,7 +197,7 @@ function sendWebsiteMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Dankuwel voor het invullen van de test!",
-                    "subtitle": "Wilt u meer weten over Evalytics, bekijk dan onze website!",
+                    "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
                     "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
                         "type": "web_url",
