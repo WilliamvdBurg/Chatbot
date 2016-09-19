@@ -102,8 +102,8 @@ app.post('/webhook/', function (req, res) {
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
-                if (text < 11  ){
-                // || "Eens" || "Oneens" || 'Zeer weinig'  ||'Weinig' ||'Neutraal' || 'Veel' || 'Zeer veel'
+                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel"){
+
 
                     vraag = vraag + 1
                     cijferArray.push(text);
