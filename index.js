@@ -49,10 +49,13 @@ app.post('/webhook/', function (req, res) {
 
             }
 
-            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' ){
+            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo'){
                 sendOnderwijsMessage(sender)
             }
             if ( text == 'Informatica'){
+                sendInformaticaMessage(sender)
+            }
+            if ( text == 'psychologie'){
                 sendInformaticaMessage(sender)
             }
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
