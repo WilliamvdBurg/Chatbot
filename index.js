@@ -63,11 +63,11 @@ app.post('/webhook/', function (req, res) {
             }
             if (text == 'testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                console.log('1')
+
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                console.log('2')
+
                 sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                console.log('3')
+
                 sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
                 sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
                 sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
@@ -92,7 +92,7 @@ app.post('/webhook/', function (req, res) {
                     }
                 })
             }
-            if (text == 'restart'){
+            if (text == 'restart' || text == 'Restart'){
                 sendTestfinishedMessage(sender)
             }
             if (text == 'haai'){
