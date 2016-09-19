@@ -212,6 +212,7 @@ function sendWebsiteMessage(sender) {
                 }
             ]
         }
+    }
 
 
     request({
