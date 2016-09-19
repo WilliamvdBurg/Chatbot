@@ -275,7 +275,7 @@ function sendOnderwijsMessage(sender) {
 
 function  sendInformaticaMessage(sender) {
     messageData = {
-        "text": "Op welke studie zit u?",
+        "text": "Welke leraar wilt u beoordelen?",
         "quick_replies": [
             {
                 "content_type": "text",
