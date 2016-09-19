@@ -42,12 +42,17 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
-message.send(sendOnderwijsMessage(sender))
+
             text = event.message.text;
             if (text == 'Informatie'){
                 sendWebsiteMessage(sender)
 
             }
+
+            if (text == 'informatica'){
+                sendOnderwijsMessage(sender)
+            }
+            message.sendOnderwijsMessage(sender)
             if (text == 'testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
