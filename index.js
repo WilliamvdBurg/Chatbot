@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
 
             }
 
-            if (text == 'hello'){
+            if (text == 'hello' || text == 'yo'){
                 sendOnderwijsMessage(sender)
             }
             if ( text == 'Informatica'){
