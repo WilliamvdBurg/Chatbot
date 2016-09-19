@@ -349,26 +349,23 @@ request({
 
     function sendWebsiteMessage(sender) {
         messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "payload":{
-                        "template_type":"button",
-                        "text":"What do you want to do next?",
-                        "buttons":[
-                            {
-                            "type": "web_url",
-                            "url": "http://www.evalytics.nl/",
-                            "title": "Webiste Evalytics"
+            "attachment":{
+                "type":"template",
+                "payload":{
+                    "template_type":"button",
+                    "text":"What do you want to do next?",
+                    "buttons":[
+                        {
+                            "type":"web_url",
+                            "url":"https://petersapparel.parseapp.com",
+                            "title":"Show Website"
                         },
-
-                            {
-                                "type": "postback",
-                                "title": "testresultaten",
-                                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                            },],
-                    },
-
+                        {
+                            "type":"postback",
+                            "title":"Start Chatting",
+                            "payload":"USER_DEFINED_PAYLOAD"
+                        }
+                    ]
                 }
             }
         }
