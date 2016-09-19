@@ -52,7 +52,9 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello'){
                 sendOnderwijsMessage(sender)
             }
-
+            if ( text == 'informatica'){
+                sendInformaticaMessage(sender)
+            }
             if (text == 'testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
@@ -267,6 +269,40 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+
+function  sendInformaticaMessage(sender) {
+    messageData = {
+        "text": "Op welke studie zit u?",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "Arend Appel",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Jaap Hoogeveen",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
+
 
 
     function sendWebsiteMessage(sender) {
