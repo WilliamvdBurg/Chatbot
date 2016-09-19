@@ -55,6 +55,9 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'informatica'){
                 sendInformaticaMessage(sender)
             }
+            if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
+                sendStartMessage(sender)
+            }
             if (text == 'testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
@@ -90,7 +93,7 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
 
             }
-            if (text == 'start') {
+            if (text == 'Start') {
                 vragensessie = true
                 vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
@@ -303,7 +306,40 @@ function  sendInformaticaMessage(sender) {
 
 }
 
+function sendStartMessage(sender) {
+    messageData = {
+    "text": "Wilt u de Test starten?",
+        "quick_replies": [
+        {
+            "content_type": "text",
+            "title": "Start",
+            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+        },
+        {
+            "content_type": "text",
+            "title": "Stop",
+            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+        }]
+}
+request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: token},
+    method: 'POST',
+    json: {
+        recipient: {id: sender},
+        message: messageData,
+    }
+}, function (error, response, body) {
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
 
+}
+
+}
 
     function sendWebsiteMessage(sender) {
         messageData = {
