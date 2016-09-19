@@ -360,7 +360,7 @@ request({
                             {
                                 "type": "postback",
                                 "title": "testresultaten",
-                                "payload": ""
+                                "payload": "sasdasdasd"
                             },],
                     },
                     ]
