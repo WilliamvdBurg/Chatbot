@@ -193,7 +193,7 @@ function sendWebsiteMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Evalytics",
+                    "title": "Dankuwel voor het invullen van de test!",
                     "subtitle": "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!",
                     "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
