@@ -49,8 +49,8 @@ app.post('/webhook/', function (req, res) {
 
             }
             if (text == 'testresultaten'){
-                sendTextMessage(sender, 'Vraag 1: antwoord' + (response = (cijferArray = 0)))
-                sendTextMessage(sender, 'Vraag 2: antwoord' + (response = (cijferArray = 1)))
+                sendTextMessage(sender, 'Vraag 1: antwoord' + cijferArray[1-1])
+                sendTextMessage(sender, 'Vraag 2: antwoord' + cijferArray[1])
             }
             if (text == 'Ja'){
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
