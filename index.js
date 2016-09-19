@@ -191,10 +191,8 @@ function sendTextMessage(sender, text, callback) {
 
 function sendWebsiteMessage(sender) {
     messageData = {
-        "menu_item": {
-            "setting_type": "call_to_actions",
 
-            "thread_state": "existing_thread",
+
             "call_to_actions": [
                 {
                     "type": "postback",
@@ -213,7 +211,7 @@ function sendWebsiteMessage(sender) {
                 }
             ]
         }
-    }
+
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
