@@ -117,6 +117,31 @@ app.post('/webhook/', function (req, res) {
 
 
                 }
+                if (vraag == 4) {
+                    sendGeneric4Message(sender)
+
+
+                }
+                if (vraag == 5) {
+                    sendGeneric5Message(sender)
+
+
+                }
+                if (vraag == 6) {
+                    sendGeneric6Message(sender)
+
+
+                }
+                if (vraag == 7) {
+                    sendGeneric7Message(sender)
+
+
+                }
+                if (vraag == 8) {
+                    sendGeneric8Message(sender)
+
+
+                }
 
                 if (vraag == 4) {
                     sendTextMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart')
@@ -541,7 +566,7 @@ function sendGeneric1Message(sender) {
 
 function sendGeneric2Message(sender, callback) {
     messageData = {
-        "text":"vraag 3: De docent toonde voldoende kennis over de lesstof.",
+        "text":"vraag 3: De docent gaf op een inspirerende en stimulerende manier les.",
         "quick_replies":[
             {
                 "content_type":"text",
@@ -610,7 +635,96 @@ function sendGeneric2Message(sender, callback) {
 
 function sendGeneric3Message(sender, callback) {
     messageData = {
-        "text":"vraag 4: De docent toonde voldoende kennis over de lesstof.",
+        "text":"vraag 4: In hoeverre heeft de docent bijgedragen aan het behalen van de omschreven leerdoelen?",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"Zeer weinig",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Weinig",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"Neutraal",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Veel",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"Zeer veel",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
+
+function sendGeneric4Message(sender, callback) {
+    messageData = {
+        "text":"vraag 5: In welke mate toonde de docent zich betrokken bij het leerproces van de studenten?",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"Zeer weinig",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Weinig",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"Neutraal",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Veel",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"Zeer veel",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
+
+function sendGeneric5Message(sender, callback) {
+    messageData = {
+        "text":"vraag 6: De leerdoelen van deze module waren helder geformuleerd.",
         "quick_replies":[
             {
                 "content_type":"text",
@@ -661,6 +775,172 @@ function sendGeneric3Message(sender, callback) {
                 "content_type":"text",
                 "title":"10",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
+function sendGeneric6Message(sender, callback) {
+    messageData = {
+        "text":"vraag 7: De voor deze module vastgestelde leerdoelen heb ik behaald",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"1",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"2",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"3",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"4",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"5",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"6",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"7",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"8",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"9",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"10",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
+
+function sendGeneric7Message(sender, callback) {
+    messageData = {
+        "text":"vraag 8: De module droeg bij aan de ontwikkeling van mijn vaardigheden",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"1",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"2",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"3",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"4",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"5",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"6",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"7",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"8",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"9",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"10",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
+
+function sendGeneric8Message(sender, callback) {
+    messageData = {
+        "text":"vraag 9: De tijd die ik aan de module heb besteed komt overeen met het aantal studiepunten van de module",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"Eens",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"Oneens",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }
         ]
     }
