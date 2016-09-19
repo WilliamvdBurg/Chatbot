@@ -368,7 +368,7 @@ request({
                                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                             },],
                     },
-                    ]
+
                 }
             }
         }
