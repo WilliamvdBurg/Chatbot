@@ -225,7 +225,7 @@ function sendKlaarMessage(sender) {
     })
 
 }
-}
+
 
 
         //     else if (text === 'Website') {
