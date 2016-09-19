@@ -55,7 +55,7 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Informatica'){
                 sendInformaticaMessage(sender)
             }
-            if ( text == 'pshychologie'){
+            if ( text == 'Pshychologie'){
                 sendInformaticaMessage(sender)
             }
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
