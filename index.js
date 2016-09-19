@@ -49,7 +49,6 @@ app.post('/webhook/', function (req, res) {
 
             }
             if (text == 'Ja'){
-                sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
