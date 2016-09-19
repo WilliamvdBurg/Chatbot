@@ -203,6 +203,12 @@ function sendWebsiteMessage(sender) {
                         "type": "web_url",
                         "url": "http://www.evalytics.nl/",
                         "title": "Webiste Evalytics"
+                    },
+
+                        {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
                     }, ],
                 },
                     ]
