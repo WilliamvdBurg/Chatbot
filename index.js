@@ -207,8 +207,9 @@ function sendWebsiteMessage(sender) {
 
                         {
                         "type": "postback",
+                        "postback":{"payload": "testresultaten"},
                         "title": "testresultaten",
-                        "payload": "testresultaten",
+
                     }, ],
                 },
                     ]
