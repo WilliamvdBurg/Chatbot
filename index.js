@@ -95,7 +95,7 @@ app.post('/webhook/', function (req, res) {
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
-                else {
+                if (text < 11 || response) {
 
                     vraag = vraag + 1
                     cijferArray.push(text);
