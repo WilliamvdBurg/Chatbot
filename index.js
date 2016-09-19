@@ -59,35 +59,12 @@ app.post('/webhook/', function (req, res) {
                 sendStartMessage(sender)
             }
             if (text == 'testresultaten'){
-                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1], function (error, response, body)
-                {
-                    if (error) {
-                        console.log('Error sending messages: ', error)
-                    } else if (response.body.error) {
-                        console.log('Error: ', response.body.error)
-                    }else{
-                        sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1], function (error, response, body)
-                        {
-                            if (error) {
-                                console.log('Error sending messages: ', error)
-                            } else if (response.body.error) {
-                                console.log('Error: ', response.body.error)
-                            }else{
-                                sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2], function (error, response, body)
-                                {})
-                            }
-                        })
-                    }
-                })
-}
-
-
-
-
-
-
-
+                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
+                console.log('1')
+                sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                console.log('2')
                 sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                console.log('3')
                 sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
                 sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
                 sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
