@@ -208,7 +208,7 @@ function sendWebsiteMessage(sender) {
                         {
                         "type": "postback",
                         "title": "testresultaten",
-                        "payload": "Payload for first element in a generic bubble",
+                        "payload": "testresultaten",
                     }, ],
                 },
                     ]
