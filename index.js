@@ -61,7 +61,7 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
                 sendStartMessage(sender)
             }
-            if (text == 'testresultaten'){
+            if (text == 'testresultaten' || text == 'Testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
 
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
@@ -75,10 +75,10 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-            if (text == 'Ja'){
+            if (text == 'Ja' || text == 'ja'){
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
-            if (text == 'Nee'){
+            if (text == 'Nee' || text == 'nee'){
                 vragensessie = true
                 vraag = 0
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
@@ -95,10 +95,10 @@ app.post('/webhook/', function (req, res) {
             if (text == 'restart' || text == 'Restart'){
                 sendTestfinishedMessage(sender)
             }
-            if (text == 'haai'){
-                sendGenericMessage(sender)
-
-            }
+            // if (text == 'haai'){
+            //     sendGenericMessage(sender)
+            //
+            // }
             if (text == 'Start') {
                 vragensessie = true
                 vraag = 0
@@ -195,7 +195,7 @@ function StartTest()
 
 function sendKlaarMessage(sender) {
     messageData = {
-        "text": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
+        "text": "Alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
         "quick_replies": [
             {
                 "content_type": "text",
