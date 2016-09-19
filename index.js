@@ -112,42 +112,42 @@ app.post('/webhook/', function (req, res) {
                 }
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 2) {
                     sendGeneric2Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 3) {
                     sendGeneric3Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 4) {
                     sendGeneric4Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 5) {
                     sendGeneric5Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 6) {
                     sendGeneric6Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 7) {
                     sendGeneric7Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
 
                 }
                 if (vraag == 8) {
                     sendGeneric8Message(sender)
-                    vraag = vraag + 1
+                    vraag + 1
                 }
 
                 if (vraag == 9) {
