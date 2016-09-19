@@ -166,7 +166,7 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 if (vraag == 9) {
-                    sendTextMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden? Zo niet typ restart')
+                    sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                     vragensessie = false
 
                 }
@@ -193,7 +193,39 @@ function StartTest()
 
 
 
+function sendKlaarMessage(sender) {
+    messageData = {
+        "text": "alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "Ja",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Nee",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
+}
+}
 
 
         //     else if (text === 'Website') {
