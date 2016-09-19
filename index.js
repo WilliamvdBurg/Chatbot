@@ -366,7 +366,7 @@ request({
                             {
                                 "type": "postback",
                                 "title": "testresultaten",
-                                "payload": "sasdasdasd"
+                                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                             },],
                     },
                     ]
