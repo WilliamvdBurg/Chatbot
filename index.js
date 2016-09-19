@@ -206,9 +206,9 @@ function sendWebsiteMessage(sender) {
                     },
 
                         {
-                        "type": "postback",
-                        "postback":{"payload": "testresultaten"},
-                        "title": "testresultaten",
+                            "timestamp":1458692752478,
+                            "postback":{
+                                "payload":"USER_DEFINED_PAYLOAD"}
 
                     }, ],
                 },
