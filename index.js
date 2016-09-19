@@ -54,8 +54,16 @@ app.post('/webhook/', function (req, res) {
             if (text == 'Nee'){
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-                sendGenericMessage(sender)
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
+                {
+                    if (error) {
+                        console.log('Error sending messages: ', error)
+                    } else if (response.body.error) {
+                        console.log('Error: ', response.body.error)
+                    }else{
+                        sendGenericMessage(sender)
+                    }
+                })
             }
             if (text == 'restart'){
                 sendTestfinishedMessage(sender)
