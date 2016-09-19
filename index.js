@@ -194,8 +194,8 @@ function sendWebsiteMessage(sender) {
         "attachment": {
 
 
-            "call_to_actions": [
-                {
+
+
                     "type": "postback",
                     "title": "Help",
                     "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
