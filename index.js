@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello'){
                 sendOnderwijsMessage(sender)
             }
-            if ( text == 'informatica'){
+            if ( text == 'Informatica'){
                 sendInformaticaMessage(sender)
             }
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
