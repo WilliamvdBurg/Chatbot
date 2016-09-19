@@ -192,29 +192,30 @@ function sendTextMessage(sender, text, callback) {
 function sendWebsiteMessage(sender) {
     messageData = {
         "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Dankuwel voor het invullen van de test!",
+                    "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
+                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "http://www.evalytics.nl/",
+                        "title": "Webiste Evalytics"
+                    },
 
+                        {
+                            "content_type": "text",
+                            "title": "Ja",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
 
-
-
-                    "type": "postback",
-                    "title": "Help",
-                    "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+                    }, ],
                 },
-                {
-                    "type": "postback",
-                    "title": "Start a New Order",
-                    "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
-                },
-                {
-                    "type": "web_url",
-                    "title": "View Website",
-                    "url": "http://petersapparel.parseapp.com/"
-                }
-            ]
+                    ]
+            }
         }
     }
-
-
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
