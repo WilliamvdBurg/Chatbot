@@ -206,10 +206,9 @@ function sendWebsiteMessage(sender) {
                     },
 
                         {
-                            "type" : "button",
-                            "title": "hallo",
-                            "postback":{
-                                "payload":"USER_DEFINED_PAYLOAD"}
+                            "content_type": "text",
+                            "title": "Ja",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
 
                     }, ],
                 },
