@@ -50,6 +50,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (text == 'Ja'){
                 sendTextMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee'){
                 vragensessie = true
@@ -193,7 +194,7 @@ function sendWebsiteMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Evalytics",
-                    "subtitle": "site van eva",
+                    "subtitle": "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!",
                     "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
                     "buttons": [{
                         "type": "web_url",
@@ -205,20 +206,7 @@ function sendWebsiteMessage(sender) {
                         "payload": "Payload for first element in a generic bubble",
                     }],
                 },
-                    {
-                        "title": "Vrendly",
-                        "subtitle": "site van vrendly",
-                        "image_url": "https://beta.vrendly.nl/app/images/vrendly-logo-w200px.svg",
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": "https://beta.vrendly.nl/app/#/login",
-                            "title": "web url"
-                        }, {
-                            "type": "postback",
-                            "title": "Postback",
-                            "payload": "Payload for second element in a generic bubble",
-                        }],
-                    }]
+                    ]
             }
         }
     }
