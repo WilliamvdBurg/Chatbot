@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello'){
                 sendOnderwijsMessage(sender)
             }
-            message.sendOnderwijsMessage(sender)
+
             if (text == 'testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
