@@ -206,9 +206,9 @@ function sendWebsiteMessage(sender) {
                     },
 
                         {
-                            "content_type": "text",
-                            "title": "Ja",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                        "type": "postback",
+                        "postback":{"payload": "testresultaten"},
+                        "title": "testresultaten",
 
                     }, ],
                 },
