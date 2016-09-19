@@ -206,8 +206,8 @@ function sendWebsiteMessage(sender) {
                     },
 
                         {
-                            "type" : "postback",
-
+                            "type" : "button",
+                            "title": "hallo",
                             "postback":{
                                 "payload":"USER_DEFINED_PAYLOAD"}
 
