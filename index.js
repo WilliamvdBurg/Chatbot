@@ -108,12 +108,12 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 2) {
-                    sendGeneric1Message(sender)
+                    sendGeneric2Message(sender)
 
 
                 }
                 if (vraag == 3) {
-                    sendGeneric1Message(sender)
+                    sendGeneric3Message(sender)
 
 
                 }
@@ -539,9 +539,143 @@ function sendGeneric1Message(sender) {
     })
 }
 
+function sendGeneric2Message(sender, callback) {
+    messageData = {
+        "text":"vraag 3: De docent toonde voldoende kennis over de lesstof.",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"1",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"2",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"3",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"4",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"5",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"6",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"7",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"8",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"9",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"10",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
 
 
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
 
+function sendGeneric3Message(sender, callback) {
+    messageData = {
+        "text":"vraag 4: De docent toonde voldoende kennis over de lesstof.",
+        "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"1",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"2",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"3",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"4",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"5",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"6",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"7",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"8",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type":"text",
+                "title":"9",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type":"text",
+                "title":"10",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
+}
 // 'use strict'
 //
 // var express = require('express')
