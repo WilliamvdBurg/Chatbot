@@ -77,7 +77,7 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
                 sendStartMessage(sender)
             }
-            if (text == 'testresultaten' || text == 'payload'){
+            if (text == 'testresultaten' || text == 'Testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
@@ -483,17 +483,26 @@ request({
 
     function sendWebsiteMessage(sender) {
         messageData = {
-            'attachment': {
-                'type': 'template',
-                'payload': {
-                    'template_type': 'button',
-                    'text': 'This is the description',
-                    'buttons': [
-                        {
-                            'type': 'postback',
-                            'title': 'testresultaten',
-                            'payload': 'This is the value you get back'
-                        }
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Dankuwel voor het invullen van de test!",
+                        "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
+                        "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": "http://www.evalytics.nl/",
+                            "title": "Webiste Evalytics"
+                        },
+
+                            {
+                                "type": "postback",
+                                "title": "testresultaten",
+                                "payload": "sasdasdasd"
+                            },],
+                    },
                     ]
                 }
             }
