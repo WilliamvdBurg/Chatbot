@@ -69,7 +69,7 @@ app.post('/webhook/', function (req, res) {
             //     sendInformaticaMessage(sender)
             //
             // }
-            if ( text == 'Bierpong' || text == 'Breien voor gevorderen' || text == 'Java For Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
+            if ( text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
                 sendInformaticaMessage(sender)
 
             }
@@ -401,12 +401,12 @@ function  sendModuleMessage(sender) {
             },
             {
                 "content_type": "text",
-                "title": "Java For Beginners",
+                "title": "Java Beginners",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             },
             {
                 "content_type": "text",
-                "title": "Breien voor gevorderen",
+                "title": "Breien",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             },
             {
