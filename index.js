@@ -142,7 +142,6 @@ app.post('/webhook/', function (req, res) {
                     console.log(cijferArray);
 
                 }
-
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
 
