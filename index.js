@@ -179,7 +179,7 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 8) {
-                    text == 'Oneens' || text == 'Eens' ||
+                    text == 'Oneens' || text == 'Eens' || text == 'oneens' || text == 'eens'
                     sendGeneric2Message(sender)
                     if (text !== 0){
                         sendTextMessage(sender, 'error, antwoord onbekend!')
