@@ -34,7 +34,8 @@ app.listen(app.get('port'), function () {
 })
 
 
-
+// curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d "{'json':{'data':'here'}}" http://theurl.com/to/post/to
+// $ curl -X POST http://localhost:3000/api/v1/shops.json -d \"shop[name]=Supermarket&shop[products]=fruit,eggs&auth_token=a1b2c3d4"
 
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
@@ -58,7 +59,16 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Pshychologie'){
                 sendInformaticaMessage(sender)
             }
-            if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel') {
+            if ( text == 'Communicatie'){
+                sendInformaticaMessage(sender)
+            }
+            if ( text == 'Pabo'){
+                sendInformaticaMessage(sender)
+            }
+            if ( text == 'Scheikunde'){
+                sendInformaticaMessage(sender)
+            }
+            if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
                 sendStartMessage(sender)
             }
             if (text == 'testresultaten' || text == 'Testresultaten'){
@@ -292,6 +302,21 @@ function sendOnderwijsMessage(sender) {
                 "content_type": "text",
                 "title": "Pshychologie",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Communicatie",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Pabo",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Scheikunde",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }]
     }
     request({
@@ -324,8 +349,24 @@ function  sendInformaticaMessage(sender) {
                 "content_type": "text",
                 "title": "Jaap Hoogeveen",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Truus Huus",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Tinus Hendrikus",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Jerommeke Arends",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
     }
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
