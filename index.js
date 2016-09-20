@@ -51,7 +51,7 @@ app.post('/webhook/', function (req, res) {
 
             }
 
-            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo'){
+            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
                 getEvaluation56(sender);
                 sendOnderwijsMessage(sender)
             }
@@ -368,6 +368,7 @@ function getEvaluation56(sender){
         var evaluation = data.results[0];
         console.log(evaluation)
 
+        var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
             console.log(questionset)
         })
