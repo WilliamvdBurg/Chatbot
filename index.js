@@ -149,11 +149,7 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 2) {
-                    text == 'Oneens' || text == 'Eens' ||
                     sendGeneric2Message(sender)
-                    if (text !== 0){
-                        sendTextMessage(sender, 'error, antwoord onbekend!')
-                    }
 
 
                 }
@@ -183,9 +179,14 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 8) {
-                    sendGeneric8Message(sender)
-                }
+                    text == 'Oneens' || text == 'Eens' ||
+                    sendGeneric2Message(sender)
+                    if (text !== 0){
+                        sendTextMessage(sender, 'error, antwoord onbekend!')
+                    }
 
+
+                }
                 if (vraag == 9) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                     vragensessie = false
