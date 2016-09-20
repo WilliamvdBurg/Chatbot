@@ -138,50 +138,44 @@ app.post('/webhook/', function (req, res) {
 
 
                     vraag = vraag + 1
-
+                    cijferArray.push(text);
+                    console.log(cijferArray);
 
                 }
 
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+
 
                 }
                 if (vraag == 2) {
-
-                    cijferArray.push(text);
-                    console.log(cijferArray);
                     sendGeneric2Message(sender)
+
+
                 }
                 if (vraag == 3) {
-
-                    cijferArray.push(text);
-                    console.log(cijferArray);
                     sendGeneric3Message(sender)
+
+
                 }
                 if (vraag == 4) {
                     sendGeneric4Message(sender)
 
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+
                 }
                 if (vraag == 5) {
                     sendGeneric5Message(sender)
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+
 
                 }
                 if (vraag == 6) {
                     sendGeneric6Message(sender)
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+
 
                 }
                 if (vraag == 7) {
                     sendGeneric7Message(sender)
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+
 
                 }
                 if (vraag == 8) {
@@ -190,9 +184,7 @@ app.post('/webhook/', function (req, res) {
                     }
                     else if ( text == 'Eens')
                     {
-                        sendGeneric8Message(sender)
-                        cijferArray.push(text);
-                        console.log(cijferArray);
+                        sendGeneric8Message
                     }
 
 
