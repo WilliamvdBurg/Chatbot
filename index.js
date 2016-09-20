@@ -383,7 +383,7 @@ function getEvaluation56(sender){
 
 function lAALalala(sender, callback) {
     messageData = {
-        "text": questionSets.questions.questionNL + 1 ,
+        "text": get (questionSets.questions.questionNL ) ,
         "quick_replies": [
             {
                 "content_type": "text",
