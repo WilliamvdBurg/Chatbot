@@ -142,13 +142,18 @@ app.post('/webhook/', function (req, res) {
                     console.log(cijferArray);
 
                 }
+
                 if (vraag == 1) {
                     sendGeneric1Message(sender)
 
 
                 }
                 if (vraag == 2) {
+                    text == 'Oneens' || text == 'Eens' ||
                     sendGeneric2Message(sender)
+                    if (text !== 0){
+                        sendTextMessage(sender, 'error, antwoord onbekend!')
+                    }
 
 
                 }
