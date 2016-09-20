@@ -51,7 +51,7 @@ app.post('/webhook/', function (req, res) {
 
             }
 
-            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
+            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
                 getEvaluation56(sender);
                 sendOnderwijsMessage(sender)
             }
