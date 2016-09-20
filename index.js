@@ -365,12 +365,9 @@ function getEvaluation56(sender){
     }).then(function(result){
         // console.log(result)
         var evaluation = JSON.parse(result);
-        console.log(evaluation.results);
-        // var evaluation = result.results[0];
-        //
-        // _.forEach(evaluation.blocks.questionSets, function(questionset){
-        //     console.log(questionset)
-        // })
+        _.forEach(evaluation.blocks.questionSets, function(questionset){
+            console.log(questionset)
+        })
 
     }).catch(function(error){
         console.log(error);
