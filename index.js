@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 var _ = require('lodash');
+var Promise = require('bluebird');
 var vraag = 0;
 var vragensessie = false;
 var cijferArray = new Array();
@@ -51,6 +52,7 @@ app.post('/webhook/', function (req, res) {
             }
 
             if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo'){
+                getEvaluation56(sender);
                 sendOnderwijsMessage(sender)
             }
             if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
@@ -349,6 +351,21 @@ function sendOnderwijsMessage(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+    })
+}
+
+function getEvaluation56(sender){
+    request({
+        url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
+        qs: {access_token: token},
+        method: 'GET',
+        headers: {
+            ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOiJ0cnVlIiwicG9zdEFuc3dlcnMiOiJ0cnVlIn19LCJjb2RlIjoiam9yZGlpc2dlayIsImV2YWx1YXRpb25JZCI6IjU2Iiwic3ViIjoiMTQiLCJpYXQiOjE0NzQzNzQ0NjAsImV4cCI6MTQ3NDQ2MDg2MCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.KIQs3T0w24PVtvMWcmUQmw7UJdTk-EzqMSj1h1HS4pY'
+        }
+    }).then(function(result){
+        console.log(result)
+    }).catch(function(error){
+        console.log(error);
     })
 }
 
