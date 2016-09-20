@@ -54,7 +54,6 @@ app.post('/webhook/', function (req, res) {
                 sendOnderwijsMessage(sender)
             }
             if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
-
                 sendModuleMessage(sender)
             }
             // if ( text == 'Pshychologie'){
