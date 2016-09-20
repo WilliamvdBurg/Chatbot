@@ -480,7 +480,7 @@ request({
                     'buttons': [
                         {
                             'type': 'postback',
-                            'title': 'This is the visible text',
+                            'title': 'testresultaten',
                             'payload': 'This is the value you get back'
                         }
                     ]

@@ -312,7 +312,7 @@
       <workItem from="1472548260805" duration="15223000" />
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
-      <workItem from="1474039264905" duration="26705000" />
+      <workItem from="1474039264905" duration="26733000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -402,7 +402,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178042000" />
+    <option name="totallyTimeSpent" value="178070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
