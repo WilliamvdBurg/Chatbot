@@ -472,26 +472,17 @@ request({
 
     function sendWebsiteMessage(sender) {
         messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": "Dankuwel voor het invullen van de test!",
-                        "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
-                        "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": "http://www.evalytics.nl/",
-                            "title": "Webiste Evalytics"
-                        },
-
-                            {
-                                "type": "postback",
-                                "title": "testresultaten",
-                                "payload": "sasdasdasd"
-                            },],
-                    },
+            'attachment': {
+                'type': 'template',
+                'payload': {
+                    'template_type': 'button',
+                    'text': 'This is the description',
+                    'buttons': [
+                        {
+                            'type': 'postback',
+                            'title': 'This is the visible text',
+                            'payload': 'This is the value you get back'
+                        }
                     ]
                 }
             }
