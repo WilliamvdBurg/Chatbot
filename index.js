@@ -364,7 +364,7 @@ function getEvaluation56(sender){
         }
     }).then(function(result){
         console.log(result)
-        var evaluation = result.data.results[0];
+        var evaluation = result.results[0];
 
         _.forEach(evaluation.blocks.questionSets, function(questionset){
             console.log(questionset)
