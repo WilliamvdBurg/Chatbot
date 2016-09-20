@@ -265,7 +265,7 @@ function sendKlaarMessage(sender) {
         }
         else if (event.postback && event.postback.payload) {
             payload = event.postback.payload;
-            // Handle a payload from this sender
+            payload = 'testresultaten'
         }
     }
     res.sendStatus(200);
