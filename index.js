@@ -263,14 +263,13 @@ function sendKlaarMessage(sender) {
         //     }
            // sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
-        if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token)
-            continue
+        else if (event.postback && event.postback.payload) {
+            payload = event.postback.payload;
+            // Handle a payload from this sender
         }
     }
-    res.sendStatus(200)
-})
+    res.sendStatus(200);
+});
 
 
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
