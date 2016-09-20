@@ -50,8 +50,8 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if (text == 'yoop' ){
-                lAALalala(sender)
+            // if (text == 'yoop' ){
+            //     lAALalala(sender)
 
             }
             if (text == 'hello' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
