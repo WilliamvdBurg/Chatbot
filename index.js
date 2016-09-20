@@ -53,21 +53,28 @@ app.post('/webhook/', function (req, res) {
             if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'hi' || text == 'Yo'){
                 sendOnderwijsMessage(sender)
             }
-            if ( text == 'Informatica'){
-                sendInformaticaMessage(sender)
+            if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
+
+                sendModuleMessage(sender)
             }
-            if ( text == 'Pshychologie'){
+            // if ( text == 'Pshychologie'){
+            //     sendInformaticaMessage(sender)
+            // }
+            // if ( text == 'Communicatie'){
+            //     sendInformaticaMessage(sender)
+            // }
+            // if ( text == 'Pabo'){
+            //     sendInformaticaMessage(sender)
+            // }
+            // if ( text == 'Scheikunde'){
+            //     sendInformaticaMessage(sender)
+            //
+            // }
+            if ( text == 'Bierpong' || text == 'Breien voor gevorderen' || text == 'Java For Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
                 sendInformaticaMessage(sender)
+
             }
-            if ( text == 'Communicatie'){
-                sendInformaticaMessage(sender)
-            }
-            if ( text == 'Pabo'){
-                sendInformaticaMessage(sender)
-            }
-            if ( text == 'Scheikunde'){
-                sendInformaticaMessage(sender)
-            }
+
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
                 sendStartMessage(sender)
             }
@@ -363,6 +370,54 @@ function  sendInformaticaMessage(sender) {
             {
                 "content_type": "text",
                 "title": "Jerommeke Arends",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
+    }
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
+function  sendModuleMessage(sender) {
+    messageData = {
+        "text": "Om welke Module gaat het?",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "Bierpong",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Java For Beginners",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Breien voor gevorderen",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Aapies kijken",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "Sterrekunde",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
     }
