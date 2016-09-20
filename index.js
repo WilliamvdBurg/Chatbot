@@ -56,6 +56,9 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
                 sendModuleMessage(sender)
             }
+
+
+            }
             // if ( text == 'Pshychologie'){
             //     sendInformaticaMessage(sender)
             // }
@@ -71,12 +74,12 @@ app.post('/webhook/', function (req, res) {
             // }
             if ( text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
                 sendInformaticaMessage(sender)
-
             }
 
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
                 sendStartMessage(sender)
             }
+
             if (text == 'testresultaten' || text == 'Testresultaten'){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
