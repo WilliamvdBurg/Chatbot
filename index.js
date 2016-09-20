@@ -149,16 +149,16 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 2) {
-                    sendGeneric2Message(sender)
+
                     cijferArray.push(text);
                     console.log(cijferArray);
-
+                    sendGeneric2Message(sender)
                 }
                 if (vraag == 3) {
-                    sendGeneric3Message(sender)
+
                     cijferArray.push(text);
                     console.log(cijferArray);
-
+                    sendGeneric3Message(sender)
                 }
                 if (vraag == 4) {
                     sendGeneric4Message(sender)
