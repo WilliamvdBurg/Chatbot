@@ -50,8 +50,11 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
+            if (text == 'yoop' ){
+                lAALalala(sender)
 
-            if (text == 'hello' || text == 'yo' || text == 'hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
+            }
+            if (text == 'hello' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
                 getEvaluation56(sender);
                 sendOnderwijsMessage(sender)
             }
@@ -377,6 +380,75 @@ function getEvaluation56(sender){
         console.log(error);
     })
 }
+
+function lAALalala(sender, callback) {
+    messageData = {
+        "text": questionSets.questions.questionNL + 1 ,
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "1",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "2",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "3",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "4",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "5",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "6",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "7",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "8",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            },
+            {
+                "content_type": "text",
+                "title": "9",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "10",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+        ]
+    }
+
+
+    request({
+        url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
+        qs: {access_token: token},
+        method: 'GET',
+        headers: {
+            ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOiJ0cnVlIiwicG9zdEFuc3dlcnMiOiJ0cnVlIn19LCJjb2RlIjoiam9yZGlpc2dlayIsImV2YWx1YXRpb25JZCI6IjU2Iiwic3ViIjoiMTQiLCJpYXQiOjE0NzQzNzQ0NjAsImV4cCI6MTQ3NDQ2MDg2MCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.KIQs3T0w24PVtvMWcmUQmw7UJdTk-EzqMSj1h1HS4pY'
+        }
+    }, callback)
+}
+
 
 function  sendInformaticaMessage(sender) {
     messageData = {
