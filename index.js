@@ -364,8 +364,10 @@ function getEvaluation56(sender){
         }
     }).then(function(result){
         // console.log(result)
-        var evaluation = JSON.parse(result);
+        var data = JSON.parse(result);
+        var evaluation = data.results[0];
         console.log(evaluation)
+
         // _.forEach(evaluation.blocks.questionSets, function(questionset){
         //     console.log(questionset)
         // })
