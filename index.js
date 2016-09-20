@@ -182,6 +182,10 @@ app.post('/webhook/', function (req, res) {
                     if (text !== 0){
                         sendTextMessage(sender, 'error, antwoord onbekend!')
                     }
+                    else if ( text == 'Eens')
+                    {
+                        sendGeneric8Message
+                    }
 
 
                 }
