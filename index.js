@@ -77,7 +77,7 @@ app.post('/webhook/', function (req, res) {
             if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
                 sendStartMessage(sender)
             }
-            if (text == 'testresultaten' || text == 'Testresultaten'){
+            if (text == 'testresultaten' || text == "'payload': 'this is the value you get back'"){
                 sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
@@ -481,7 +481,7 @@ request({
                         {
                             'type': 'postback',
                             'title': 'testresultaten',
-                            'payload': 'testresultaten'
+                            'payload': 'This is the value you get back'
                         }
                     ]
                 }
