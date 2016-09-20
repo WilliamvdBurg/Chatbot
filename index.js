@@ -179,16 +179,9 @@ app.post('/webhook/', function (req, res) {
 
                 }
                 if (vraag == 8) {
-                    if (text !== 0){
-                        sendTextMessage(sender, 'error, antwoord onbekend!')
-                    }
-                    else if ( text == 'Eens')
-                    {
-                        sendGeneric8Message
-                    }
-
-
+                    sendGeneric8Message(sender)
                 }
+
                 if (vraag == 9) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                     vragensessie = false
