@@ -281,7 +281,7 @@ function sendTextMessage(sender, text, callback) {
 
 function sendOnderwijsMessage(sender) {
     messageData = {
-        "text": "Op welke studie zit u?",
+        "text": "Heey! welcome, op welke studie zit u?",
         "quick_replies": [
             {
                 "content_type": "text",
