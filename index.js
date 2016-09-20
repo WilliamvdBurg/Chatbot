@@ -481,7 +481,7 @@ request({
                         {
                             'type': 'postback',
                             'title': 'testresultaten',
-                            'payload': 'This is the value you get back'
+                            'payload': 'testresultaten'
                         }
                     ]
                 }
