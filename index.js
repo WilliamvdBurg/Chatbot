@@ -363,8 +363,8 @@ function getEvaluation56(sender){
             ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOiJ0cnVlIiwicG9zdEFuc3dlcnMiOiJ0cnVlIn19LCJjb2RlIjoiam9yZGlpc2dlayIsImV2YWx1YXRpb25JZCI6IjU2Iiwic3ViIjoiMTQiLCJpYXQiOjE0NzQzNzQ0NjAsImV4cCI6MTQ3NDQ2MDg2MCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.KIQs3T0w24PVtvMWcmUQmw7UJdTk-EzqMSj1h1HS4pY'
         }
     }).then(function(result){
-        // console.log(result)
-        console.log(result.results);
+        console.log(result)
+        //console.log(result.results);
         // var evaluation = result.results[0];
         //
         // _.forEach(evaluation.blocks.questionSets, function(questionset){
