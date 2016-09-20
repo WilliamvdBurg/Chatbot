@@ -276,8 +276,8 @@ function sendKlaarMessage(sender) {
 
 
             if (payload = 'testresultaten'){
-                for(var i = 0; i < cijferArray.length; i++) {
-                    sendTextMessage(sender, 'Vraag:  + (i+1) +  - antwoord:' + ' ' + cijferArray[i]);
+                for(var i = 0; i < cijferArray.length(); i++) {
+                    sendTextMessage(sender, "Vraag: ‘ + (i+1) + ' - antwoord:' + ' " + cijferArray[i]);
                 }
 
             }
