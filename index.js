@@ -50,9 +50,11 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-
+            if (text == 'test'){
+                getEvaluation56(sender)
+            }
             if (text == 'hello' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
-                getEvaluation56(sender);
+
                 sendOnderwijsMessage(sender)
             }
             if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
@@ -270,16 +272,37 @@ function sendKlaarMessage(sender) {
         }
         else if (event.postback && event.postback.payload) {
             payload = event.postback.payload;
+
+
+        .then(function(result){
+                // console.log(result)
+                var data = JSON.parse(result);
+                var evaluation = data.results[0];
+                console.log(evaluation)
+
+                var openQuestions = [];
+                _.forEach(evaluation.blocks[0].questionSets, function(questionset){
+                    console.log(questionset)
+                })
+
+            }).catch(function(error){
+                console.log(error);
+            })
+        }
             if (payload = 'testresultaten'){
-                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])}
+                .catch(function(err) {
+            console.log(err + ' failed to load!')
+        })
+
+                then(sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1]))
+                then(sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2]))
+                then(sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3]))
+                then(sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4]))
+                then(sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5]))
+                then(sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6]))
+                then(sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7]))
+                then(sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8]))
             }
 
         }
@@ -377,6 +400,7 @@ function getEvaluation56(sender){
         console.log(error);
     })
 }
+
 
 function  sendInformaticaMessage(sender) {
     messageData = {
