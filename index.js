@@ -58,7 +58,7 @@ app.post('/webhook/', function (req, res) {
             }
 
 
-            }
+
             // if ( text == 'Pshychologie'){
             //     sendInformaticaMessage(sender)
             // }
