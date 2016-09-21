@@ -281,6 +281,7 @@ function sendKlaarMessage(sender) {
                     sendTextMessage(sender, 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i]);
                     console.log('Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i]);
                 }
+                console.log(cijferArray.length)
                 // sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 // sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 // sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
