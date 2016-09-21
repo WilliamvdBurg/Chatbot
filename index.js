@@ -395,7 +395,7 @@ function getEvaluation56(sender){
         console.log(result)
         var data = JSON.parse(result);
         var evaluation = data.results[0];
-        console.log(evaluation)
+        console.log("hoi" + evaluation)
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
