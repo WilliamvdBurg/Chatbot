@@ -299,23 +299,19 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-        // }
-        //
-        //
-        //     else if (event.postback && event.postback.payload) {
-        //         payload = event.postback.payload;
-        //
-        //         if (payload = 'Aan de slag') {
-        //             sendOnderwijsMessage(sender)
-        //         }
-        //         //
-        //         //
-        //         //
-        //         // if (payload = 'Start test') {
-        //         //     sendOnderwijsMessage(sender)
-        //         // }
-        }
 
+
+
+            // if (payload = 'Aan de slag'){
+            //     sendOnderwijsMessage(sender)
+            // }
+            //
+            //
+            //
+            // if (payload = 'Start test') {
+            //     sendOnderwijsMessage(sender)
+            // }
+        }
     }
     res.sendStatus(200);
 });
@@ -733,32 +729,7 @@ request({
 //     })
 //
 // }
-function askQuestion(questionId, sender) {
-    var question = _.find(questions, ['id', questionId]);
 
-    var quickReplies = [];
-
-    if(question.scale.input === 'rating'){
-        // 1 t/m 10 afhandeling
-    } else if(question.scale.input === 'boolean'){
-        // Ja/nee afhandeling
-    } else if(question.scale.input === 'text'){
-        // Open vraag
-    } else {
-        question.scale.scalenNl.forEach(function(scale) {
-            quickReplies.push({
-                title: scale.value
-                // payload
-                // content type
-            })
-        });
-    }
-
-    var messageData = [{
-        text: question.questionNl,
-        quick_replies: quickReplies
-    }];
-}
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
