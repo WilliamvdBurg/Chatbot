@@ -275,7 +275,7 @@ function sendKlaarMessage(sender) {
 
 
 
-            if (payload = 'testresultaten'){
+            if (payload = 'Testresultaten'){
 
                 var antwoorden = '';
                 for(var i = 0; i < cijferArray.length; i++) {
@@ -555,7 +555,7 @@ request({
 
                             {
                                 "type": "postback",
-                                "title": "testresultaten",
+                                "title": "Testresultaten",
                                 "payload": "sasdasdasd"
                             },],
                     },
