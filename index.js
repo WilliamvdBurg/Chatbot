@@ -758,6 +758,16 @@ function askQuestion(questionId, sender) {
         text: question.questionNl,
         quick_replies: quickReplies
     }];
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, callback)
 }
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
