@@ -274,16 +274,15 @@ function sendKlaarMessage(sender) {
             payload = event.postback.payload;
 
 
+            if (payload = 'testresultaten') {
 
-            if (payload = 'testresultaten'){
-                for(var i = 0; i < cijferArray.length; i++) {
-                    sendTextMessage(sender, 'Vraag' + (i+1) + '- antwoord:'+ '' + cijferArray[i]);
+                for (var i = 0; i < cijferArray.length; i++) {
+                    sendTextMessage(sender, 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i])
                 }
 
             }
-
+            }
         }
-    }
     res.sendStatus(200);
 });
 
