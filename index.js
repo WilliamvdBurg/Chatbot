@@ -443,13 +443,13 @@ function getEvaluation56(sender) {
             //     }).catch(function (error) {
             //         console.log(error);
                 })
-        (function sendGenericMessage(sender) {
-                        messageData = [{
-                            text: question.questionNl,
-                            quick_replies: quickReplies
-
-                        }];
-                    })
+        // (function sendGenericMessage(sender) {
+        //                 messageData = [{
+        //                     text: question.questionNl,
+        //                     quick_replies: quickReplies
+        //
+        //                 }];
+        //             })
 
 
 
