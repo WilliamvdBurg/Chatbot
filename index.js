@@ -129,7 +129,7 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        askQuestion(sender)
+                        getEvaluation56(sender)
                     }
                 })
             }
@@ -405,7 +405,7 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
-    askQuestion(questionId, sender)
+    askQuestion(sender)
 
 }
 
