@@ -396,7 +396,7 @@ function getEvaluation56(sender){
         var data = JSON.parse(result);
         var evaluation = data.results[0];
         console.log(evaluation)
-
+        askQuestion(sender, evaluation)
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
             console.log(questionset)
@@ -405,7 +405,7 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
-    askQuestion(sender, evaluation)
+
 
 }
 
