@@ -299,19 +299,14 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-        }
-            else if (event.postback && event.postback.payload) {
-                payload = event.postback.payload;
 
-            if (payload = 'Aan de slag'){
+
+
+            else if (payload = 'Aan de slag'){
                 sendOnderwijsMessage(sender)
             }
 
-        }
-        else if (event.postback && event.postback.payload) {
-            payload = event.postback.payload;
-
-            if (payload = 'Start test') {
+            else if (payload = 'Start test') {
                 sendOnderwijsMessage(sender)
             }
         }
