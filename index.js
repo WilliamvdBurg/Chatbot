@@ -733,13 +733,38 @@ request({
 //     })
 //
 // }
+function askQuestion(questionId, sender) {
+    var question = _.find(questions, ['id', questionId]);
 
+    var quickReplies = [];
+
+    if(question.scale.input === 'rating'){
+        // 1 t/m 10 afhandeling
+    } else if(question.scale.input === 'boolean'){
+        // Ja/nee afhandeling
+    } else if(question.scale.input === 'text'){
+        // Open vraag
+    } else {
+        question.scale.scalenNl.forEach(function(scale) {
+            quickReplies.push({
+                title: scale.value
+                // payload
+                // content type
+            })
+        });
+    }
+
+    var messageData = [{
+        text: question.questionNl,
+        quick_replies: quickReplies
+    }];
+}
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
     function sendGenericMessage(sender, callback) {
         messageData = {
-            "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
+            "text": questionId,
             "quick_replies": [
                 {
                     "content_type": "text",
