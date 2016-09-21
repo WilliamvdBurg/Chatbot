@@ -277,7 +277,7 @@ function sendKlaarMessage(sender) {
 
             if (payload = 'testresultaten'){
 
-                var antwoorden;
+                var antwoorden = '';
                 for(var i = 0; i < cijferArray.length; i++) {
                     antwoorden += 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i] + '\n';
                 }
