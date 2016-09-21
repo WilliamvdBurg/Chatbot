@@ -404,7 +404,7 @@ function sendOnderwijsMessage(sender) {
 
 
 
-function getEvaluation56(sender){
+function getEvaluation56(sender) {
     request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
         qs: {access_token: token},
@@ -412,54 +412,57 @@ function getEvaluation56(sender){
         headers: {
             ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOiJ0cnVlIiwicG9zdEFuc3dlcnMiOiJ0cnVlIn19LCJjb2RlIjoiam9yZGlpc2dlayIsImV2YWx1YXRpb25JZCI6IjU2Iiwic3ViIjoiMTQiLCJpYXQiOjE0NzQzNzQ0NjAsImV4cCI6MTQ3NDQ2MDg2MCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.KIQs3T0w24PVtvMWcmUQmw7UJdTk-EzqMSj1h1HS4pY'
         }
-    }).then(function(result){
+    }).then(function (result) {
         // console.log(result)
         var data = JSON.parse(result);
         var evaluation = data.results[0];
         console.log(evaluation)
 
         var openQuestions = [];
-        _.forEach(evaluation.blocks[0].questionSets, function(questionset){
+        _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
             console.log(questionset)
         })
 
-    }).catch(function(error){
+    }).catch(function (error) {
         console.log(error);
     })
 
         .then(function askQuestion(questionId, sender) {
-        var question = _.find(questions, ['id', questionId]);
+            var question = _.find(questions, ['id', questionId]);
 
-        var quickReplies = [];
+            var quickReplies = [];
 
-        if (question.scale.input === 'rating') {
-            // 1 t/m 10 afhandeling
-        } else if (question.scale.input === 'boolean') {
-            // Ja/nee afhandeling
-        } else if (question.scale.input === 'text') {
-            // Open vraag
-        } else {
-            question.scale.scalenNl.forEach(function (scale) {
-                quickReplies.push({
-                    title: scale.value
-                    // payload
-                    // content type
+            if (question.scale.input === 'rating') {
+                // 1 t/m 10 afhandeling
+            } else if (question.scale.input === 'boolean') {
+                // Ja/nee afhandeling
+            } else if (question.scale.input === 'text') {
+                // Open vraag
+            } else {
+                question.scale.scalenNl.forEach(function (scale) {
+                    quickReplies.push({
+                        title: scale.value
+                        // payload
+                        // content type
+                    })
+
+                }).catch(function (error) {
+                    console.log(error);
                 })
+                    .then(function sendGenericMessage(sender) {
+                        messageData = [{
+                            text: question.questionNl,
+                            quick_replies: quickReplies
 
-        }).catch(function(error) {
-                console.log(error);
-            })
-        .then(function sendGenericMessage(sender) {
-            messageData = [{
-                text: question.questionNl,
-                quick_replies: quickReplies
+                        }];
+                    })
 
-            }];
+
+            }
         })
-
-
-    }
 }
+
+
 
 
 
