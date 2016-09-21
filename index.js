@@ -405,34 +405,36 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
-    function askQuestion(questionId, sender) {
-        var question = _.find(questions, ['id', questionId]);
+    askQuestion(questionId, sender)
 
-        var quickReplies = [];
+}
 
-        if(question.scale.input === 'rating'){
-            // 1 t/m 10 afhandeling
-        } else if(question.scale.input === 'boolean'){
-            // Ja/nee afhandeling
-        } else if(question.scale.input === 'text'){
-            // Open vraag
-        } else {
-            question.scale.scalenNl.forEach(function(scale) {
-                quickReplies.push({
-                    title: scale.value
-                    // payload
-                    // content type
-                })
-            });
-        }
-        console.log(questionId);
-        var messageData = [{
-            text: question.questionNl,
-            quick_replies: quickReplies
+function askQuestion(questionId, sender) {
+    var question = _.find(questions, ['id', questionId]);
 
-        }];
+    var quickReplies = [];
+
+    if(question.scale.input === 'rating'){
+        // 1 t/m 10 afhandeling
+    } else if(question.scale.input === 'boolean'){
+        // Ja/nee afhandeling
+    } else if(question.scale.input === 'text'){
+        // Open vraag
+    } else {
+        question.scale.scalenNl.forEach(function(scale) {
+            quickReplies.push({
+                title: scale.value
+                // payload
+                // content type
+            })
+        });
     }
+    console.log(questionId);
+    var messageData = [{
+        text: question.questionNl,
+        quick_replies: quickReplies
 
+    }];
 }
 
 
