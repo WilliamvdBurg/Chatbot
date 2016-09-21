@@ -395,7 +395,7 @@ function getEvaluation56(sender){
         console.log(result)
         var data = JSON.parse(result);
         var evaluation = data.results[0];
-        console.log("hoi" + evaluation)
+        console.log(evaluation)
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
@@ -405,11 +405,11 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
-    askQuestion(sender)
+    askQuestion(sender, evaluation)
 
 }
 
-function askQuestion(sender, lodash) {
+function askQuestion(sender, evaluation) {
     var questionId = "1"
     var question = _.find(questions, ['id', questionId]);
 
@@ -430,7 +430,7 @@ function askQuestion(sender, lodash) {
     //         })
     //     });
     // }
-    console.log(question);
+    console.log("vraag1" + question);
     var messageData = [{
         text: question.questionNl,
         quick_replies: quickReplies
