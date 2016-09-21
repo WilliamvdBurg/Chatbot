@@ -762,9 +762,9 @@ function askQuestion(questionId, sender) {
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
-    function sendGenericMessage(sender, callback, questionId) {
+    function sendGenericMessage(sender, callback, question) {
         messageData = {
-            "text": questionId,
+            "text": question,
             "quick_replies": [
                 {
                     "content_type": "text",
