@@ -302,11 +302,13 @@ function sendKlaarMessage(sender) {
 
 
 
-            else if (payload = 'Aan de slag'){
+            if (payload = 'Aan de slag'){
                 sendOnderwijsMessage(sender)
             }
 
-            else if (payload = 'Start test') {
+
+
+            if (payload = 'Start test') {
                 sendOnderwijsMessage(sender)
             }
         }
