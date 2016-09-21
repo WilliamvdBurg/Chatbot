@@ -129,7 +129,7 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        sendGenericMessage(sender)
+                        getEvaluation56(sender)
                     }
                 })
             }
