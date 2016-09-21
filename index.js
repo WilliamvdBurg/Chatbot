@@ -302,9 +302,9 @@ function sendKlaarMessage(sender) {
 
 
 
-            // if (payload = 'Aan de slag'){
-            //     sendOnderwijsMessage(sender)
-            // }
+            if (payload = 'Aan de slag'){
+                sendOnderwijsMessage(sender)
+            }
             //
             //
             //
