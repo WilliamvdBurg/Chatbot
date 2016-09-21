@@ -405,7 +405,7 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
-    then.(function askQuestion(questionId, sender) {
+    function askQuestion(questionId, sender) {
         var question = _.find(questions, ['id', questionId]);
 
         var quickReplies = [];
@@ -430,7 +430,7 @@ function getEvaluation56(sender){
             text: question.questionNl,
             quick_replies: quickReplies
         }];
-    })
+    }
 
 }
 
