@@ -383,7 +383,7 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function getEvaluation56(sender){
+function getEvaluation56(sender, questionId, askQuestion){
     request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
         qs: {access_token: token},
@@ -410,23 +410,21 @@ function getEvaluation56(sender){
 
         var quickReplies = [];
 
-        // if(question.scale.input === 'rating'){
-        //     // 1 t/m 10 afhandeling
-        // } else if(question.scale.input === 'boolean'){
-        //     // Ja/nee afhandeling
-        // } else if(question.scale.input === 'text'){
-        //     // Open vraag
-        // } else {
-        //     question.scale.scalenNl.forEach(function(scale) {
-        //         quickReplies.push({
-        //             title: scale.value
-        //             // payload
-        //             // content type
-        //         })
-        //     });
-        // }
-
-
+        if(question.scale.input === 'rating'){
+            // 1 t/m 10 afhandeling
+        } else if(question.scale.input === 'boolean'){
+            // Ja/nee afhandeling
+        } else if(question.scale.input === 'text'){
+            // Open vraag
+        } else {
+            question.scale.scalenNl.forEach(function(scale) {
+                quickReplies.push({
+                    title: scale.value
+                    // payload
+                    // content type
+                })
+            });
+        }
             messageData = {
             "text": question.questionNl,
             "quick_replies": [quickReplies]
