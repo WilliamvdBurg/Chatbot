@@ -302,15 +302,15 @@ function sendKlaarMessage(sender) {
 
 
 
-            if (payload = 'Aan de slag'){
-                sendOnderwijsMessage(sender)
-            }
-
-
-
-            if (payload = 'Start test') {
-                sendOnderwijsMessage(sender)
-            }
+            // if (payload = 'Aan de slag'){
+            //     sendOnderwijsMessage(sender)
+            // }
+            //
+            //
+            //
+            // if (payload = 'Start test') {
+            //     sendOnderwijsMessage(sender)
+            // }
         }
     }
     res.sendStatus(200);
