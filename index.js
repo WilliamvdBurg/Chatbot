@@ -301,7 +301,9 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-
+            if (payload = 'Aan de slag'){
+                sendOnderwijsMessage(sender)
+            }
         }
     }
     res.sendStatus(200);
