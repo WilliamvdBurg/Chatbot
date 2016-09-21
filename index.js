@@ -129,7 +129,7 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        sendGenericMessage(sender)
+                        askQuestion(sender)
                     }
                 })
             }
@@ -762,9 +762,9 @@ function askQuestion(questionId, sender) {
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
-    function sendGenericMessage(sender, callback, question) {
+    function sendGenericMessage(sender, callback) {
         messageData = {
-            text: question.questionNl,
+            "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
             "quick_replies": [
                 {
                     "content_type": "text",
