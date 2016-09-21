@@ -277,15 +277,21 @@ function sendKlaarMessage(sender) {
 
             if (payload = 'testresultaten'){
 
-                for(var i = 0; i < 8; i++) {
-                    setTimeout(function(){
-                        sendTextMessage(sender, 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i]);
-                    }, 100);
-
-                    console.log('Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i]);
+                var antwoorden;
+                for(var i = 0; i < cijferArray.length; i++) {
+                    antwoorden += 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i] + '\n';
                 }
-                console.log(cijferArray.length)
+
+                sendTextMessage(sender, antwoorden);
+
+                console.log('antwoorden', antwoorden);
                 // sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
+                //     .then(function(callBack) {
+                //         sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                //     })
+                //
+
+
                 // sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 // sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
                 // sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
