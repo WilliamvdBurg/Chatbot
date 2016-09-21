@@ -274,15 +274,25 @@ function sendKlaarMessage(sender) {
             payload = event.postback.payload;
 
 
-            if (payload = 'testresultaten') {
 
-                for (var i = 0; i < cijferArray.length; i++) {
-                    sendTextMessage(sender, 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i])
-                }
+            if (payload = 'testresultaten'){
 
+                // for(var i = 0; i < cijferArray.length; i++) {
+                //     sendTextMessage(sender, 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i])
+                // }
+                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
+                sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-            }
+
         }
+    }
     res.sendStatus(200);
 });
 
