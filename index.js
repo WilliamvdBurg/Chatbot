@@ -399,11 +399,6 @@ function sendOnderwijsMessage(sender) {
 
 
 
-
-
-
-
-
 function getEvaluation56(sender) {
     request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
@@ -429,27 +424,26 @@ function getEvaluation56(sender) {
 
         .then(function askQuestion(questionId, sender) {
             var question = _.find(questions, ['id', questionId]);
-
             var quickReplies = [];
 
-            if (question.scale.input === 'rating') {
-                // 1 t/m 10 afhandeling
-            } else if (question.scale.input === 'boolean') {
-                // Ja/nee afhandeling
-            } else if (question.scale.input === 'text') {
-                // Open vraag
-            } else {
-                question.scale.scalenNl.forEach(function (scale) {
-                    quickReplies.push({
-                        title: scale.value
-                        // payload
-                        // content type
-                    })
-
-                }).catch(function (error) {
-                    console.log(error);
+            // if (question.scale.input === 'rating') {
+            //     // 1 t/m 10 afhandeling
+            // } else if (question.scale.input === 'boolean') {
+            //     // Ja/nee afhandeling
+            // } else if (question.scale.input === 'text') {
+            //     // Open vraag
+            // } else {
+            //     question.scale.scalenNl.forEach(function (scale) {
+            //         quickReplies.push({
+            //             title: scale.value
+            //             // payload
+            //             // content type
+            //         })
+            //
+            //     }).catch(function (error) {
+            //         console.log(error);
                 })
-                    .then(function sendGenericMessage(sender) {
+        (function sendGenericMessage(sender) {
                         messageData = [{
                             text: question.questionNl,
                             quick_replies: quickReplies
@@ -458,8 +452,8 @@ function getEvaluation56(sender) {
                     })
 
 
-            }
-        })
+
+
 }
 
 
