@@ -427,7 +427,7 @@ function getEvaluation56(sender){
         console.log(error);
     })
 
-    function askQuestion(questionId, sender) {
+        .then(function askQuestion(questionId, sender) {
         var question = _.find(questions, ['id', questionId]);
 
         var quickReplies = [];
@@ -445,14 +445,17 @@ function getEvaluation56(sender){
                     // payload
                     // content type
                 })
-            });
-        }
 
-        var messageData = [{
-            text: question.questionNl,
-            quick_replies: quickReplies
+        }).catch(function(error) {
+                console.log(error);
+            })
+        .then(function sendGenericMessage(sender) {
+            messageData = [{
+                text: question.questionNl,
+                quick_replies: quickReplies
 
-        }];
+            }];
+        })
 
 
     }
