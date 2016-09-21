@@ -387,6 +387,23 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getEvaluation56(sender){
     request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
@@ -409,7 +426,62 @@ function getEvaluation56(sender){
     }).catch(function(error){
         console.log(error);
     })
+
+    function askQuestion(questionId, sender) {
+        var question = _.find(questions, ['id', questionId]);
+
+        var quickReplies = [];
+
+        if (question.scale.input === 'rating') {
+            // 1 t/m 10 afhandeling
+        } else if (question.scale.input === 'boolean') {
+            // Ja/nee afhandeling
+        } else if (question.scale.input === 'text') {
+            // Open vraag
+        } else {
+            question.scale.scalenNl.forEach(function (scale) {
+                quickReplies.push({
+                    title: scale.value
+                    // payload
+                    // content type
+                })
+            });
+        }
+
+        var messageData = [{
+            text: question.questionNl,
+            quick_replies: quickReplies
+
+        }];
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function  sendInformaticaMessage(sender) {
@@ -733,42 +805,8 @@ request({
 //     })
 //
 // }
-function askQuestion(questionId, sender) {
-    var question = _.find(questions, ['id', questionId]);
 
-    var quickReplies = [];
 
-    if(question.scale.input === 'rating'){
-        // 1 t/m 10 afhandeling
-    } else if(question.scale.input === 'boolean'){
-        // Ja/nee afhandeling
-    } else if(question.scale.input === 'text'){
-        // Open vraag
-    } else {
-        question.scale.scalenNl.forEach(function(scale) {
-            quickReplies.push({
-                title: scale.value
-                // payload
-                // content type
-            })
-        });
-    }
-
-    var messageData = [{
-        text: question.questionNl,
-        quick_replies: quickReplies
-    }];
-
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, callback)
-}
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
