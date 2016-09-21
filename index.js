@@ -426,10 +426,11 @@ function getEvaluation56(sender){
         //     });
         // }
 
-        var messageData = [{
-            text: question.questionNl,
-            quick_replies: quickReplies
-        }];
+
+            messageData = {
+            "text": question.questionNl,
+            "quick_replies": [quickReplies]
+        };
     }
 
 }
