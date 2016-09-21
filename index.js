@@ -762,7 +762,7 @@ function askQuestion(questionId, sender) {
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
 
-    function sendGenericMessage(sender, callback) {
+    function sendGenericMessage(sender, callback, questionId) {
         messageData = {
             "text": questionId,
             "quick_replies": [
@@ -821,14 +821,26 @@ function askQuestion(questionId, sender) {
 
 
         request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
+            url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
             qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
+            method: 'GET',
+            headers: {
+                ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOiJ0cnVlIiwicG9zdEFuc3dlcnMiOiJ0cnVlIn19LCJjb2RlIjoiam9yZGlpc2dlayIsImV2YWx1YXRpb25JZCI6IjU2Iiwic3ViIjoiMTQiLCJpYXQiOjE0NzQzNzQ0NjAsImV4cCI6MTQ3NDQ2MDg2MCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.KIQs3T0w24PVtvMWcmUQmw7UJdTk-EzqMSj1h1HS4pY'
             }
-        }, callback)
+        }).then(function(result){
+            // console.log(result)
+            var data = JSON.parse(result);
+            var evaluation = data.results[0];
+            console.log(evaluation)
+
+            var openQuestions = [];
+            _.forEach(evaluation.blocks[0].questionSets, function(questionset){
+                console.log(questionset)
+            })
+
+        }).catch(function(error){
+            console.log(error);
+        })
     }
 
     function sendGeneric1Message(sender) {
