@@ -273,11 +273,11 @@ function sendKlaarMessage(sender) {
         else if (event.postback && event.postback.payload) {
             payload = event.postback.payload;
 
-            if (payload = 'Testresultaten'){
+            if (payload = 'Testresultaten') {
 
                 var antwoorden = '';
-                for(var i = 0; i < cijferArray.length; i++) {
-                    antwoorden += 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i] + '\n';
+                for (var i = 0; i < cijferArray.length; i++) {
+                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i] + '\n';
                 }
 
                 sendTextMessage(sender, antwoorden);
@@ -299,6 +299,10 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
+        }
+            else if (event.postback && event.postback.payload) {
+                payload = event.postback.payload;
+
             if (payload = 'Aan de slag'){
                 sendOnderwijsMessage(sender)
             }
