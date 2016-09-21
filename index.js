@@ -414,21 +414,21 @@ function askQuestion(questionId, sender) {
 
     var quickReplies = [];
 
-    if(question.scale.input === 'rating'){
-        // 1 t/m 10 afhandeling
-    } else if(question.scale.input === 'boolean'){
-        // Ja/nee afhandeling
-    } else if(question.scale.input === 'text'){
-        // Open vraag
-    } else {
-        question.scale.scalenNl.forEach(function(scale) {
-            quickReplies.push({
-                title: scale.value
-                // payload
-                // content type
-            })
-        });
-    }
+    // if(question.scale.input === 'rating'){
+    //     // 1 t/m 10 afhandeling
+    // } else if(question.scale.input === 'boolean'){
+    //     // Ja/nee afhandeling
+    // } else if(question.scale.input === 'text'){
+    //     // Open vraag
+    // } else {
+    //     question.scale.scalenNl.forEach(function(scale) {
+    //         quickReplies.push({
+    //             title: scale.value
+    //             // payload
+    //             // content type
+    //         })
+    //     });
+    // }
     console.log(questionId);
     var messageData = [{
         text: question.questionNl,
