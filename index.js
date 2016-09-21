@@ -422,9 +422,9 @@ function getEvaluation56(sender) {
         console.log(error);
     })
 
-        .then(function askQuestion(questionId, sender) {
-            var question = _.find(questions, ['id', questionId]);
-            var quickReplies = [];
+        // .then(function askQuestion(questionId, sender) {
+        //     var question = _.find(questions, ['id', questionId]);
+        //     var quickReplies = [];
 
             // if (question.scale.input === 'rating') {
             //     // 1 t/m 10 afhandeling
@@ -442,7 +442,7 @@ function getEvaluation56(sender) {
             //
             //     }).catch(function (error) {
             //         console.log(error);
-                })
+            //     })
         // (function sendGenericMessage(sender) {
         //                 messageData = [{
         //                     text: question.questionNl,
