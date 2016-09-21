@@ -425,10 +425,11 @@ function getEvaluation56(sender){
                 })
             });
         }
-
+        console.log(questionId);
         var messageData = [{
             text: question.questionNl,
             quick_replies: quickReplies
+
         }];
     }
 
@@ -1307,7 +1308,7 @@ request({
 // var request = require('request')
 //
 // var Config = require('./config')
-// var FB = require('./connectors/facebook')
+// var FB = require('./connectors/askQuestionfacebook')
 // var Bot = require('./bot')
 //
 // var request = require('request');
