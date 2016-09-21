@@ -275,7 +275,7 @@ function sendKlaarMessage(sender) {
 
 
 
-            if (payload == 'testresultaten' || payload == 'Testresultaten'){
+            if (payload = 'testresultaten'){
 
                 var antwoorden = '';
                 for(var i = 0; i < cijferArray.length; i++) {
@@ -301,7 +301,36 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-            if (payload == 'Aan de slag' || payload == 'Start test'){
+            if (payload = 'Testresultaten'){
+
+                var antwoorden = '';
+                for(var i = 0; i < cijferArray.length; i++) {
+                    antwoorden += 'Vraag' + (i+1) + '- antwoord:'+ ' ' + cijferArray[i] + '\n';
+                }
+
+                sendTextMessage(sender, antwoorden);
+
+                console.log('antwoorden', antwoorden);
+                // sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
+                //     .then(function(callBack) {
+                //         sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                //     })
+                //
+
+
+                // sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                // sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                // sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                // sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                // sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                // sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+            }
+            if (payload = 'Aan de slag' ){
+                sendOnderwijsMessage(sender)
+            }
+            if (payload = 'Start test'){
                 sendOnderwijsMessage(sender)
             }
 
