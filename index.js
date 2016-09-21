@@ -409,7 +409,8 @@ function getEvaluation56(sender){
 
 }
 
-function askQuestion(sender) {
+function askQuestion(sender, lodash) {
+    var questionId = "1"
     var question = _.find(questions, ['id', questionId]);
 
     var quickReplies = [];
