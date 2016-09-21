@@ -764,7 +764,7 @@ function askQuestion(questionId, sender) {
 
     function sendGenericMessage(sender, callback, question) {
         messageData = {
-            "text": question,
+            text: question.questionNl,
             "quick_replies": [
                 {
                     "content_type": "text",
