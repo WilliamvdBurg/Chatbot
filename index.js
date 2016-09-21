@@ -273,10 +273,6 @@ function sendKlaarMessage(sender) {
         else if (event.postback && event.postback.payload) {
             payload = event.postback.payload;
 
-            if ( payload = 'Start test'){
-                sendOnderwijsMessage(sender)
-            }
-
             if (payload = 'Testresultaten'){
 
                 var antwoorden = '';
@@ -303,10 +299,17 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-            if (payload == 'Aan de slag' || payload == 'Start test'){
+            if (payload = 'Aan de slag'){
                 sendOnderwijsMessage(sender)
             }
 
+        }
+        else if (event.postback && event.postback.payload) {
+            payload = event.postback.payload;
+
+            if (payload = 'Start test') {
+                sendOnderwijsMessage(sender)
+            }
         }
     }
     res.sendStatus(200);
