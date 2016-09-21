@@ -429,7 +429,7 @@ function askQuestion(questionId, sender) {
     //         })
     //     });
     // }
-    console.log(questionId);
+    console.log(question);
     var messageData = [{
         text: question.questionNl,
         quick_replies: quickReplies
