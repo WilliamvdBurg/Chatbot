@@ -325,7 +325,7 @@ function askQuestion(question, sender) {
     var quickReplies = [];
 
     if(question.scale.input === 'rating') {
-var i = 0;
+var i = 1;
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
                 content_type: 'text',
@@ -349,12 +349,14 @@ var i = 0;
 
     }
     else {
+        console.log('jsdbaksjdb');
         question.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
+
         });
     }
 
