@@ -403,10 +403,12 @@ function askQuestion(question, sender) {
         text: question.questionNl,
         quickReplies: [{
             contentType: 'text',
-            title: '1'
+            title: '1',
+            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         }, {
             contentType: 'text',
-            title: '2'
+            title: '2',
+            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         }]
     };
 
