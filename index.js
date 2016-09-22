@@ -400,7 +400,14 @@ function askQuestion(question, sender) {
     // }
 
     var messageData = {
-        text: question.questionNl
+        text: question.questionNl,
+        quickReplies: [{
+            contentType: 'text',
+            title: '1'
+        }, {
+            contentType: 'text',
+            title: '2'
+        }]
     };
 
     console.log('message', messageData);
@@ -411,7 +418,7 @@ function askQuestion(question, sender) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: JSON.stringify(messageData),
+            message: messageData,
         }
     }, function (error, response, body) {
         if (error) {
