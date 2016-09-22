@@ -403,14 +403,16 @@ function askQuestion(question, sender) {
         text: question.questionNl,
         quick_replies: quickReplies
     }];
-    console.log('najwdbnakbakjdw',sender)
+
+    console.log('message', messageData);
+
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: messageData,
+            message: JSON.stringify(messageData),
         }
     }, function (error, response, body) {
         if (error) {
