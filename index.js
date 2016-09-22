@@ -336,7 +336,7 @@ var i = 1;
 
         // 1 t/m 10 afhandeling
 
-    } else if(question.questions.scale.input === 'boolean') {
+    } else if(question.scale.input === 'boolean') {
         // Ja/nee afhandeling
         quickReplies.push({
             content_type: 'text',
@@ -350,7 +350,7 @@ var i = 1;
     }
     else {
         console.log('jsdbaksjdb');
-        question.scale.scalenNl..forEach(function(scale) {
+        question.questions.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
