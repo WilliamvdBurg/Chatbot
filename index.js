@@ -151,9 +151,9 @@ app.post('/webhook/', function (req, res) {
 
                 }
 
-                askQuestion(questionSet[vraag], sender);
-
-
+                if(questionSet[vraag]){
+                    askQuestion(questionSet[vraag], sender);
+                }
 
                 if (vraag == 9) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
