@@ -384,12 +384,13 @@ function askQuestion(question, sender) {
 
     if(question.scale.input === 'rating'){
         // 1 t/m 10 afhandeling
-        quickReplies = i++
+        1
 
     } else if(question.scale.input === 'boolean'){
+        1
         // Ja/nee afhandeling
     } else if(question.scale.input === 'text'){
-        // Open vraag
+        1
     } else {
         question.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
