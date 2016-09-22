@@ -372,7 +372,7 @@ function getEvaluation56(sender){
 
             console.log(questionset)
         });
-        askQuestion(sender, result)
+
     }).catch(function(error){
         console.log(error);
     })
