@@ -345,6 +345,7 @@ function askQuestion(question, sender) {
         })
 
     } else if(question.scale.input === 'singleChoice') {
+        console.log('waarbenik')
         // Open vraag
         quickReplies.push({
             content_type: 'text',
