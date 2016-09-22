@@ -410,7 +410,7 @@ function askQuestion(question, sender) {
 
     var messageData = [{
         text: question.questionNl,
-        quick_replies: quickReplies
+        // quick_replies: quickReplies
     }];
 
     request({
