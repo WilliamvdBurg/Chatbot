@@ -325,7 +325,7 @@ function askQuestion(question, sender) {
     var quickReplies = [];
 
     if(question.scale.input === 'rating') {
-var i = 1;
+            var i = 1;
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
                 content_type: 'text',
