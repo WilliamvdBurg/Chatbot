@@ -36,10 +36,6 @@ app.listen(app.get('port'), function () {
     console.log('running on port', app.get('port'))
 })
 
-
-// curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d "{'json':{'data':'here'}}" http://theurl.com/to/post/to
-// $ curl -X POST http://localhost:3000/api/v1/shops.json -d \"shop[name]=Supermarket&shop[products]=fruit,eggs&auth_token=a1b2c3d4"
-
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
@@ -64,20 +60,6 @@ app.post('/webhook/', function (req, res) {
             }
 
 
-
-            // if ( text == 'Pshychologie'){
-            //     sendInformaticaMessage(sender)
-            // }
-            // if ( text == 'Communicatie'){
-            //     sendInformaticaMessage(sender)
-            // }
-            // if ( text == 'Pabo'){
-            //     sendInformaticaMessage(sender)
-            // }
-            // if ( text == 'Scheikunde'){
-            //     sendInformaticaMessage(sender)
-            //
-            // }
             if ( text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
                 sendInformaticaMessage(sender)
             }
@@ -213,29 +195,6 @@ function sendKlaarMessage(sender) {
 
 }
 
-
-
-        //     else if (text === 'Website') {
-        //         sendWebsiteMessage(sender)
-        //         continue
-        //     }
-        //     // else if(afsluitingen(text) == true) {
-        //     //     sendTextMessage(sender, 'tot ziens, dankuwel voor het chatten');
-        //     //     continue
-        //     // }
-        //     else if (text === ('hello' ||'Hello' , 'Hi' , 'hi')) {
-        //         sendTextMessage(sender, ' Hello! Im BotVrendly, how can i help you?');
-        //         continue
-        //     }
-        //     else if (text.toString() === ('doei' || 'Doei' || 'dag' || 'Dag' || 'Bye' || 'bye' || 'doeg' || 'Doeg' || 'Totziens' || 'totziens')) {
-        //         sendTextMessage(sender, "Thank you, have a nice day!!");
-        //         continue
-        //     }
-        //     else if (text === 'help') {
-        //         sendTextMessage(sender, '-Website\n-Generic\n-hi\n-doei');
-        //         continue
-        //     }
-           // sendTextMessage(sender, "Ik ben nog niet zo slim!: " + text.substring(0, 200))
         }
         else if (event.postback && event.postback.payload) {
             payload = event.postback.payload;
@@ -256,7 +215,6 @@ function sendKlaarMessage(sender) {
                 //     })
                 //
 
-
                 // sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 // sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
                 // sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
@@ -267,17 +225,6 @@ function sendKlaarMessage(sender) {
                 // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
 
-
-
-            // if (payload = 'Aan de slag'){
-            //     sendOnderwijsMessage(sender)
-            // }
-            //
-            //
-            //
-            // if (payload = 'Start test') {
-            //     sendOnderwijsMessage(sender)
-            // }
         }
     }
     res.sendStatus(200);
@@ -382,7 +329,7 @@ function askQuestion(question, sender) {
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
                 content_type: 'text',
-                title: '1',
+                title: scaleNl,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
         });
@@ -397,12 +344,10 @@ function askQuestion(question, sender) {
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         })
 
-    }
+    } else if(question.scale.input === 'text'){
+        // Open vraag
 
-    // } else if(question.scale.input === 'text'){
-    //     // Open vraag
-    //
-    // }
+    }
     else {
         question.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
@@ -640,30 +585,6 @@ request({
         }
 
 
-        // messageData = {
-        //     "attachment": {
-        //         "type": "template",
-        //         "payload": {
-        //             "template_type": "button",
-        //             "text":"Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
-        //
-        //                 "buttons": [
-        //                     {
-        //
-        //                         "type": "postback",
-        //                         "title": "Ja",
-        //                         "payload": "USER_DEFINED_PAYLOAD"
-        //                     },
-        //                     {
-        //                         "type": "postback",
-        //                         "title": "Nee",
-        //                         "payload": "USER_DEFINED_PAYLOAD"
-        //                     }
-        //                     ]
-        //             }
-        //         }
-        //     }
-
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {access_token: token},
@@ -681,93 +602,6 @@ request({
         })
 
     }
-
-
-// function sendWebsiteMessage(sender) {
-//     messageData = {
-//         "attachment": {
-//             "type": "template",
-//             "payload": {
-//                 "template_type": "button",
-//                 "text":"Hello, do you wanna start the test?",
-//                 "buttons":[
-//                             {
-//                                 "type":"postback",
-//                                 "title":"ja",
-//                                 "payload" : "StartTest"
-//                             },
-//                             {
-//                               "type":"postback",
-//                               "title":"Nee",
-//                               "payload" : "StartTest"
-//
-//                             },
-//
-//                           ]
-//                         }
-//                       }
-//                     }
-//     request({
-//         url: 'https://graph.facebook.com/v2.6/me/messages',
-//         qs: {access_token: token},
-//         method: 'POST',
-//         json: {
-//             recipient: {id: sender},
-//             message: messageData,
-//         }
-//     }, function (error, response, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         } else if (response.body.error) {
-//             console.log('Error: ', response.body.error)
-//         }
-//     })
-//
-// }
-
-
-// function sendWebsiteMessage(sender) {
-//     messageData = {
-//         "attachment": {
-//             "type": "template",
-//             "payload": {
-//                 "template_type": "generic",
-//                 "elements": [{
-//                     "title": 'vraag 1: De docent toonde voldoende kennis over de lesstof.',
-//
-//                     "buttons":  [{
-//                         "type": "postback",
-//                         "title": "web url",
-//                         "payload": "StartTest"
-//                     }],
-//                         "buttons": [{
-//                         "type": "postback",
-//                         "title": "Postback",
-//                         "payload": "StartTest",
-//                     }],
-//                 }, ]
-//             }
-//         }
-//     }
-//
-//
-//     request({
-//         url: 'https://graph.facebook.com/v2.6/me/messages',
-//         qs: {access_token: token},
-//         method: 'POST',
-//         json: {
-//             recipient: {id: sender},
-//             message: messageData,
-//         }
-//     }, function (error, response, body) {
-//         if (error) {
-//             console.log('Error sending messages: ', error)
-//         } else if (response.body.error) {
-//             console.log('Error: ', response.body.error)
-//         }
-//     })
-//
-// }
 
 
 // quickreplie buttons aanmaak. Zijn er 10 want er cijfers gaan van 1 t/m 10
