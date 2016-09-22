@@ -406,9 +406,9 @@ function askQuestion(question, sender) {
 
     var messageData = [{
         text: question.questionNl,
-        // quick_replies: quickReplies
+        quick_replies: quickReplies
     }];
-    console.log('najwdbnakbakjdw')
+    console.log('najwdbnakbakjdw',sender)
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
