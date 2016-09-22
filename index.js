@@ -377,41 +377,57 @@ function getEvaluation56(sender){
 function askQuestion(question, sender) {
     var quickReplies = [];
 
-    console.log('question.scale.input', question.scale.input);
+    if(question.scale.input === 'rating'){
 
-    // if(question.scale.input === 'rating'){
-    //
-    //
-    //
-    //     // 1 t/m 10 afhandeling
-    //
-    // } else if(question.scale.input === 'boolean'){
-    //     // Ja/nee afhandeling
-    //
+        _.times(question.scale.scaleNl.max, function(value){
+            quickReplies.push({
+                content_type: 'text',
+                title: scale.scaleNl,
+                payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+            })
+        });
+
+
+
+        // 1 t/m 10 afhandeling
+
+    } else if(question.scale.input === 'boolean') {
+        // Ja/nee afhandeling
+        quickReplies.push({
+            content_type: 'text',
+            title: scale.value,
+            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+        })
+
+    }
+
     // } else if(question.scale.input === 'text'){
     //     // Open vraag
     //
-    // } else {
-    //     question.scale.scalenNl.forEach(function(scale) {
-    //         quickReplies.push({
-    //             title: scale.value
-    //             // payload
-    //             // content type
-    //         })
-    //     });
     // }
+    else {
+        question.scale.scalenNl.forEach(function(scale) {
+            quickReplies.push({
+                content_type: 'text',
+                title: scale.value,
+                payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+            })
+        });
+    }
+
+    // quick_replies: [{
+    //     content_type: 'text',
+    //     title: '1',
+    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+    // }, {
+    //     content_type: 'text',
+    //     title: '2',
+    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+    // }]
 
     var messageData = {
         text: question.questionNl,
-        quick_replies: [{
-            content_type: 'text',
-            title: '1',
-            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-        }, {
-            content_type: 'text',
-            title: '2',
-            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-        }]
+        quick_replies: quickReplies
     };
 
     console.log('message', messageData);
