@@ -350,8 +350,8 @@ var i = 0;
     }
 
 
-    else { console.log('kadbaujdkudjw',question.scale)
-        question.scale.scalenNl.forEach(function(scale) {
+    else {
+        question.scale.scaleNl.forEach(function(scale) {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
