@@ -401,12 +401,12 @@ function askQuestion(question, sender) {
 
     var messageData = {
         text: question.questionNl,
-        quickReplies: [{
-            contentType: 'text',
+        quick_replies: [{
+            content_type: 'text',
             title: '1',
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         }, {
-            contentType: 'text',
+            content_type: 'text',
             title: '2',
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         }]
