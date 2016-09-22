@@ -352,7 +352,7 @@ var i = 0;
 
     else {
         question.scale.scalenNl.forEach(function(scale) {
-
+console.log(question)
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
@@ -360,7 +360,6 @@ var i = 0;
             })
 
         });
-        console.log('jksdikuagiauiakudgakuwg',question.scale)
     }
 
     // quick_replies: [{
