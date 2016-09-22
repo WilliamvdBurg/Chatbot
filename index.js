@@ -122,8 +122,8 @@ app.post('/webhook/', function (req, res) {
             //
             // }
             if (text == 'Start') {
-                vragensessie = true
-                vraag = 0
+                vragensessie = true;
+                vraag = 0;
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
                  {
                     if (error) {
@@ -143,23 +143,20 @@ app.post('/webhook/', function (req, res) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel"){
-
-
                     vraag = vraag + 1
                     cijferArray.push(text);
                     console.log(cijferArray);
-
                 }
 
                 if(questionSet[vraag]){
                     askQuestion(questionSet[vraag], sender);
                 }
 
-                if (vraag == 9) {
+                if (vraag >= questionSet.questions.length) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                     vragensessie = false
-
                 }
+
             }
             if (event.message = null){
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
@@ -362,25 +359,19 @@ function getEvaluation56(sender){
             ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOnRydWUsInBvc3RBbnN3ZXJzIjp0cnVlfX0sImNvZGUiOiJqb3JkaWlzZ2VrIiwiZXZhbHVhdGlvbklkIjoiNTYiLCJzdWIiOjE0LCJpYXQiOjE0NzQ0NjgxMzAsImV4cCI6MTQ3NDU1NDUzMCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.pX9RSd6Qx1ttEqnKfhIl2A9Tawa695eOFwY3skqE018'
         }
     }).then(function(result){
-        console.log(result);
         var data = JSON.parse(result);
         var evaluation = data.results[0];
-        console.log("hoi" + evaluation);
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
-
-            questionSet = questionset;
-
-            console.log(questionset)
+            questionSet = questionset.questions;
+            console.log(questionSet);
         });
 
-        return questionset;
-
+        return questionSet;
     }).catch(function(error){
         console.log(error);
-    })
-
+    });
 }
 
 function askQuestion(question, sender) {
