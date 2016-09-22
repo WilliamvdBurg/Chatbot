@@ -395,7 +395,7 @@ function askQuestion(question, sender) {
             title: '2',
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         }]
-    }
+
 
 
 
