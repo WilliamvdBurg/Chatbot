@@ -377,6 +377,8 @@ function getEvaluation56(sender){
 function askQuestion(question, sender) {
     var quickReplies = [];
 
+    console.log('question.scale.input', question.scale.input);
+
     // if(question.scale.input === 'rating'){
     //
     //
