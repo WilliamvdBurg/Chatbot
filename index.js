@@ -384,6 +384,8 @@ function askQuestion(question, sender) {
 
     if(question.scale.input === 'rating'){
         // 1 t/m 10 afhandeling
+        quickReplies = i++
+
     } else if(question.scale.input === 'boolean'){
         // Ja/nee afhandeling
     } else if(question.scale.input === 'text'){
