@@ -152,7 +152,7 @@ app.post('/webhook/', function (req, res) {
                     askQuestion(questionSet[vraag], sender);
                 }
 
-                if (vraag >= questionSet.questions.length) {
+                if (vraag >= questionSet.length) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                     vragensessie = false
                 }
