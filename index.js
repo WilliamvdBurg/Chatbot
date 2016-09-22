@@ -350,14 +350,14 @@ var i = 1;
     }
     else {
         console.log('jsdbaksjdb');
-        question.scale.scalenNl.forEach((scale)); {
+        question.scale.scalenNl.forEach(scale); {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
 
-        });
+        };
     }
 
     // quick_replies: [{
