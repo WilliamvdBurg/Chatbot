@@ -360,6 +360,7 @@ var i = 0;
             })
 
         });
+        console.log('jksdikuagiauiakudgakuwg',question.scale)
     }
 
     // quick_replies: [{
