@@ -344,12 +344,13 @@ var i = 1;
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         })
 
-    } else if(question.scale.input === 'singleChoice'){
+    } else if(question.scale.input === 'singleChoice') {
         // Open vraag
         quickReplies.push({
             content_type: 'text',
             title: scale.value,
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+        })
     }
     else if(question.scale.input === 'text'){
 
