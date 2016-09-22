@@ -349,8 +349,9 @@ var i = 0;
 
     }
 
-    console.log('jksdikuagiauiakudgakuwg',question.scale);
-    else { question.scale.scalenNl.forEach(function(scale) {
+
+    else {
+        question.scale.scalenNl.forEach(function(scale) {
 
             quickReplies.push({
                 content_type: 'text',
