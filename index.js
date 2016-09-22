@@ -135,9 +135,9 @@ app.post('/webhook/', function (req, res) {
                             askQuestion(questionSet[vraag], sender);
                         });
                     }
-                })
+                })ß
             }
-            if (vragensessie) {
+            if (vragensessie && questionSet) {
 
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
