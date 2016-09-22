@@ -347,16 +347,17 @@ var i = 0;
     } else if(question.scale.input === 'text'){
         // Open vraag
 
-    }
-    else (question.scale.scalenNl.forEach(function(scale) {
+    }console.log('jksdikuagiauiakudgakuwg',question.scale)
+    else {
+        question.scale.scalenNl.forEach(function(scale) {
+
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
-
-        }));
-
+        });
+    }
 
     // quick_replies: [{
     //     content_type: 'text',
