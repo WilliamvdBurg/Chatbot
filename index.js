@@ -382,24 +382,22 @@ function getEvaluation56(sender){
 function askQuestion(question, sender) {
     var quickReplies = [];
 
-    // if(question.scale.input === 'rating'){
-    //     // 1 t/m 10 afhandeling
-    //     sendGenericMessage(sender, callback)
-    //
-    // } else if(question.scale.input === 'boolean'){
-    //     sendGenericMessage(sender, callback)
-    //     // Ja/nee afhandeling
-    // } else if(question.scale.input === 'text'){
-    //     sendGenericMessage(sender, callback)
-    // } else {
-    //     question.scale.scalenNl.forEach(function(scale) {
-    //         quickReplies.push({
-    //             title: scale.value
-    //             // payload
-    //             // content type
-    //         })
-    //     });
-    // }
+    if(question.scale.input === 'rating'){
+        // 1 t/m 10 afhandeling
+
+    } else if(question.scale.input === 'boolean'){
+        // Ja/nee afhandeling
+    } else if(question.scale.input === 'text'){
+        // Open vraag
+    } else {
+        question.scale.scalenNl.forEach(function(scale) {
+            quickReplies.push({
+                title: scale.value
+                // payload
+                // content type
+            })
+        });
+    }
 
     var messageData = [{
         text: question.questionNl,
@@ -753,6 +751,7 @@ request({
 
     function sendGenericMessage(sender, callback) {
         messageData = {
+            "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
             "quick_replies": [
                 {
                     "content_type": "text",
