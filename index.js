@@ -400,8 +400,7 @@ function askQuestion(question, sender) {
     // }
 
     var messageData = [{
-        text: question.questionNl,
-        quick_replies: quickReplies
+        text: question.questionNl
     }];
 
     console.log('message', messageData);
