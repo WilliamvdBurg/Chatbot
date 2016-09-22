@@ -377,15 +377,25 @@ function getEvaluation56(sender){
 function askQuestion(question, sender) {
     var quickReplies = [];
 
-    if(question.scale.input === 'rating'){
+    if(question.scale.input === 'rating') {
 
-        _.times(question.scale.scaleNl.max, function(value){
-            quickReplies.push({
-                content_type: 'text',
-                title: scale.scaleNl,
-                payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-            })
-        });
+        // _.times(question.scale.scaleNl.max, function(value){
+        //     quickReplies.push({
+        //         content_type: 'text',
+        //         title: scale.scaleNl,
+        //         payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+        //     })
+        // });
+        quickReplies.push [{
+            content_type: 'text',
+            title: '1',
+            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+        }, {
+            content_type: 'text',
+            title: '2',
+            payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+        }]
+    }
 
 
 
