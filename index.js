@@ -422,11 +422,6 @@ function askQuestion(question, sender) {
     })
 }
 
-    git commit -m 'hhahahs'
-    git push `heroku master
-git add .; git commit -m 'hhahahs'; git push heroku master
-
-
     function  sendInformaticaMessage(sender) {
     messageData = {
         "text": "Welke leraar wilt u beoordelen?",
