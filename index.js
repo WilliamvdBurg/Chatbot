@@ -131,7 +131,9 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        getEvaluation56(sender)
+                        getEvaluation56(sender).then(function(questionSet) {
+                            askQuestion(questionSet[vraag], sender);
+                        });
                     }
                 })
             }
@@ -352,7 +354,7 @@ function sendOnderwijsMessage(sender) {
 }
 
 function getEvaluation56(sender){
-    request({
+    return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
         qs: {access_token: token},
         method: 'GET',
@@ -372,6 +374,8 @@ function getEvaluation56(sender){
 
             console.log(questionset)
         });
+
+        return questionset;
 
     }).catch(function(error){
         console.log(error);
