@@ -328,8 +328,8 @@ function askQuestion(question, sender) {
 
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
-                content_type: ('1', '2'),
-                title: 1,
+                content_type: 'text',
+                title: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
         });
