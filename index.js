@@ -325,11 +325,11 @@ function askQuestion(question, sender) {
     var quickReplies = [];
 
     if(question.scale.input === 'rating') {
-
+var i = 0;
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
                 content_type: 'text',
-                title: count ,
+                title: i++ ,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
         });
