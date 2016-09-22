@@ -383,12 +383,21 @@ function askQuestion(question, sender) {
     var quickReplies = [];
 
     if(question.scale.input === 'rating'){
+        quickReplies.push({
+            title: scale.value
+        })
         // 1 t/m 10 afhandeling
 
     } else if(question.scale.input === 'boolean'){
         // Ja/nee afhandeling
+        quickReplies.push({
+            title: scale.value
+        })
     } else if(question.scale.input === 'text'){
         // Open vraag
+        quickReplies.push({
+            title: scale.value
+        })
     } else {
         question.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
