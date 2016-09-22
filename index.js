@@ -8,6 +8,8 @@ var vraag = 0;
 var vragensessie = false;
 var cijferArray = new Array();
 
+var questionSet;
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -146,44 +148,10 @@ app.post('/webhook/', function (req, res) {
                     console.log(cijferArray);
 
                 }
-                if (vraag == 1) {
-                    sendGeneric1Message(sender)
+
+                askQuestion(questionSet[vraag], sender);
 
 
-                }
-                if (vraag == 2) {
-                    sendGeneric2Message(sender)
-
-
-                }
-                if (vraag == 3) {
-                    sendGeneric3Message(sender)
-
-
-                }
-                if (vraag == 4) {
-                    sendGeneric4Message(sender)
-
-
-                }
-                if (vraag == 5) {
-                    sendGeneric5Message(sender)
-
-
-                }
-                if (vraag == 6) {
-                    sendGeneric6Message(sender)
-
-
-                }
-                if (vraag == 7) {
-                    sendGeneric7Message(sender)
-
-
-                }
-                if (vraag == 8) {
-                    sendGeneric8Message(sender)
-                }
 
                 if (vraag == 9) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
@@ -392,50 +360,64 @@ function getEvaluation56(sender){
             ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOnRydWUsInBvc3RBbnN3ZXJzIjp0cnVlfX0sImNvZGUiOiJqb3JkaWlzZ2VrIiwiZXZhbHVhdGlvbklkIjoiNTYiLCJzdWIiOjE0LCJpYXQiOjE0NzQ0NjgxMzAsImV4cCI6MTQ3NDU1NDUzMCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.pX9RSd6Qx1ttEqnKfhIl2A9Tawa695eOFwY3skqE018'
         }
     }).then(function(result){
-        console.log(result)
+        console.log(result);
         var data = JSON.parse(result);
         var evaluation = data.results[0];
-        console.log(evaluation)
-        askQuestion(sender, evaluation)
+        console.log("hoi" + evaluation);
+
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function(questionset){
-            console.log(questionset)
-        })
 
+            questionSet = questionset;
+
+            console.log(questionset)
+        });
+        askQuestion(sender, result)
     }).catch(function(error){
         console.log(error);
     })
 
-
 }
 
-function askQuestion(sender, evaluation) {
-    var questionId = "1"
-    var question = _.find(questions, ['id', questionId]);
-
+function askQuestion(question, sender) {
     var quickReplies = [];
 
-    // if(question.scale.input === 'rating'){
-    //     // 1 t/m 10 afhandeling
-    // } else if(question.scale.input === 'boolean'){
-    //     // Ja/nee afhandeling
-    // } else if(question.scale.input === 'text'){
-    //     // Open vraag
-    // } else {
-    //     question.scale.scalenNl.forEach(function(scale) {
-    //         quickReplies.push({
-    //             title: scale.value
-    //             // payload
-    //             // content type
-    //         })
-    //     });
-    // }
-    console.log("vraag1" + question);
+    if(question.scale.input === 'rating'){
+        // 1 t/m 10 afhandeling
+    } else if(question.scale.input === 'boolean'){
+        // Ja/nee afhandeling
+    } else if(question.scale.input === 'text'){
+        // Open vraag
+    } else {
+        question.scale.scalenNl.forEach(function(scale) {
+            quickReplies.push({
+                title: scale.value
+                // payload
+                // content type
+            })
+        });
+    }
+
     var messageData = [{
         text: question.questionNl,
         quick_replies: quickReplies
-
     }];
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 }
 
 
@@ -470,7 +452,7 @@ function  sendInformaticaMessage(sender) {
                 "title": "Jerommeke Arends",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
-    }
+    };
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
