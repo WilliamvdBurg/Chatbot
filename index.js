@@ -350,7 +350,7 @@ var i = 1;
     }
     else {
         console.log('jsdbaksjdb');
-        question.scale.scalenNl.forEach(function(scale) {
+        question.scale.scalenNl.value.forEach(function(scale) {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
