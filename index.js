@@ -325,7 +325,7 @@ function askQuestion(question, sender) {
     var quickReplies = [];
 
     if(question.scale.input === 'rating') {
-            var i = 1;
+var i = 1;
         _.times(question.scale.scaleNl.max, function(value){
             quickReplies.push({
                 content_type: 'text',
@@ -344,29 +344,21 @@ function askQuestion(question, sender) {
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         })
 
-    } else if(question.scale.input === 'singleChoice') {
-        console.log('waarbenik')
+    } else if(question.scale.input === 'text'){
         // Open vraag
+
+    }
+    else (question.scale.scalenNl.forEach(function(scale)
+    {
         quickReplies.push({
             content_type: 'text',
             title: scale.value,
             payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
         })
-    }
-    else if(question.scale.input === 'text'){
+    })
 
-    }
-    else {
-        console.log('jsdbaksjdb');
-        question.scale.scalenNl.forEach(function(question) {
-            quickReplies.push({
-                content_type: 'text',
-                title: scale.value,
-                payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-            })
-            console.log('jajajajaaajajajajaj');
-        });
-    }
+
+
 
     // quick_replies: [{
     //     content_type: 'text',
