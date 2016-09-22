@@ -384,13 +384,13 @@ function askQuestion(question, sender) {
 
     if(question.scale.input === 'rating'){
         // 1 t/m 10 afhandeling
-        1
+        sendGenericMessage(sender, callback)
 
     } else if(question.scale.input === 'boolean'){
-        1
+        sendGenericMessage(sender, callback)
         // Ja/nee afhandeling
     } else if(question.scale.input === 'text'){
-        1
+        sendGenericMessage(sender, callback)
     } else {
         question.scale.scalenNl.forEach(function(scale) {
             quickReplies.push({
@@ -753,7 +753,6 @@ request({
 
     function sendGenericMessage(sender, callback) {
         messageData = {
-            "text": "vraag 1: De docent toonde voldoende kennis over de lesstof.",
             "quick_replies": [
                 {
                     "content_type": "text",
