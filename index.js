@@ -347,7 +347,9 @@ var i = 0;
     } else if(question.scale.input === 'text'){
         // Open vraag
 
-    }console.log('jksdikuagiauiakudgakuwg',question.scale)
+    }
+
+
     else {
         question.scale.scalenNl.forEach(function(scale) {
 
@@ -356,6 +358,7 @@ var i = 0;
                 title: scale.value,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
+            console.log('jksdikuagiauiakudgakuwg',question.scale)
         });
     }
 
