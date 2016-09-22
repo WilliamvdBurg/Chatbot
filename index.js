@@ -135,7 +135,7 @@ app.post('/webhook/', function (req, res) {
                             askQuestion(questionSet[vraag], sender);
                         });
                     }
-                })ß
+                })
             }
             if (vragensessie && questionSet) {
 
