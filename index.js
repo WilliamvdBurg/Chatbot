@@ -311,7 +311,7 @@ function getEvaluation(){
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
     return request({
-        url: 'https://staging-api-portal.evalytics.nl/auth/code',
+        url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
         method: 'POST',
         data: 'code=' + code
     }).then(function(result){
