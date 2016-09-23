@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request-promise')
+var jwt = require('jwt-node-decoder')
 var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
@@ -305,6 +306,7 @@ function getEvaluation(){
         .then(function(result){
             var accessToken = result;
             console.log(accessToken);
+            getEvaluation56(accessToken)
         })
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
@@ -322,14 +324,20 @@ function authenticateCode(code){
 
 
 }
+
+
+function decryptToken(){
+
+}
+
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
-function getEvaluation56(){
+function getEvaluation56(accessToken){
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
         qs: {access_token: token},
         method: 'GET',
         headers: {
-            ['access-token']: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwZXJtaXNzaW9ucyI6eyJldmFsdWF0aW9uIjp7ImdldERldGFpbHMiOnRydWUsInBvc3RBbnN3ZXJzIjp0cnVlfX0sImNvZGUiOiJqb3JkaWlzZ2VrIiwiZXZhbHVhdGlvbklkIjoiNTYiLCJzdWIiOjE0LCJpYXQiOjE0NzQ1NTUzMzAsImV4cCI6MTQ3NDY0MTczMCwiYXVkIjpbInd3dy5ldmFseXRpY3MubmwiXSwiaXNzIjoiRXZhbHl0aWNzIn0.G1o32zaWM8omrcJaqdodBfyPdE8ZOdQ-GPf2WI3J3Qw'
+            ['access-token']: accessToken
         }
     }).then(function(result){
         var data = JSON.parse(result);
