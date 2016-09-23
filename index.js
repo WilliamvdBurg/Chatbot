@@ -314,8 +314,12 @@ function getEvaluation(){
             console.log(accessToken);
             var decoded = jwt_decode(accessToken);
             console.log(decoded);
-
+            var evaluationId = decoded.evaluationId;
+            return getEvaluationData(evaluationId, accessToken)
     })
+        .then(function(result){
+            console.log(result);
+        })
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
@@ -343,9 +347,9 @@ function authenticateCode(code){
 // }
 
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
-function getEvaluation56(accessToken){
+function getEvaluationData(id, accessToken){
     return request({
-        url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
+        url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
         qs: {access_token: token},
         method: 'GET',
         headers: {
