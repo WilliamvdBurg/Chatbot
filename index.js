@@ -48,6 +48,9 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
+            if ( text == 'code'){
+                authenticateCode(code)
+            }
             if (text == 'test'){
                 getEvaluation56(sender)
             }
@@ -296,15 +299,25 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+// code
+function getEvaluation(){
+    authenticateCode('jordiisgek')
+        .then(function(result){
+            var accessToken = result;
 
+        })
+}
+// evaluren met code word gevraagd met die code. als het goed ggaat krijg je Acces token terug. anders een error
+// bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
     return request({
-        url: 'https://staging-api-portal.evalytics.nl/auth/code',
+        url: 'http://178.62.234.94:1338/auth/code?code=skp-855',
         method: 'POST',
         data: 'code=' + code
     }).then(function(result){
         var data = JSON.parse(result);
         console.log(data);
+        return data;
     }).catch(function(error){
         console.log('error')
         console.log(error);
