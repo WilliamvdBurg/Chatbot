@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request-promise')
-var jwtDecode = require('jwt-decode');
+var jwt_decode = require('jwt-decode');
 var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
@@ -312,10 +312,10 @@ function getEvaluation(){
             var accessToken = result;
             console.log('accwss ontvangen')
             console.log(accessToken);
-            getEvaluation56(accessToken)
-        })
-        .then(function (accesToken)
-        {
+            // getEvaluation56(accessToken)
+        // })
+        // .then(function (accesToken)
+        // {
         var token = accesToken;
         var decoded = jwt_decode(token);
         console.log(decoded);
