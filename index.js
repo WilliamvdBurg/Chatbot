@@ -49,9 +49,6 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if ( text == 'code'){
-                startQuestions()
-            }
             if (text == 'test'){
                 getEvaluation56(sender)
             }
