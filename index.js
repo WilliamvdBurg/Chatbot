@@ -117,9 +117,18 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }else{
-                        getEvaluation56(sender).then(function(questionSet) {
-                            askQuestion(questionSet[vraag], sender);
-                        });
+                        authenticateCode('skp-855')
+                            .then(function(accessToken){
+                                var decoded = jwt_decode(accessToken);
+                                var evaluationId = decoded.evaluationId;
+                                return getEvaluationData(evaluationId, accessToken);
+                            })
+                            .then(function(questionSet){
+                                askQuestion(questionSet[vraag], sender);
+                            })
+                            .catch(function(error){
+                                console.log(error);
+                            })
                     }
                 })
             }
@@ -307,8 +316,7 @@ function sendOnderwijsMessage(sender) {
 function getEvaluation(){
     console.log("yoooooooooooooooop")
     authenticateCode('skp-855')
-        .then(function(result)
-        {
+        .then(function(result) {
             var accessToken = result;
             console.log('access ontvangen')
             console.log(accessToken);
@@ -316,29 +324,10 @@ function getEvaluation(){
             console.log(decoded);
             var evaluationId = decoded.evaluationId;
             return getEvaluationData(evaluationId, accessToken)
-    })
-        .then(function(result){
+    }).then(function(result){
             console.log(result);
+            askQuestion(question, sender)
         })
-}
-
-function startQuestions(){
-    getEvaluation()
-        .then(function(result)
-    {
-        getEvaluationData(id, accessToken)
-
-    }).catch(function(err) {
-        // catch any error that happened along the way
-        console.log("Argh, broken: " + err.message);
-    }).then(function () {
-        askQuestion(question, sender)
-    }).catch(function(err) {
-        // catch any error that happened along the way
-        console.log("Argh, broken2: " + err.message);
-    })
-
-
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
