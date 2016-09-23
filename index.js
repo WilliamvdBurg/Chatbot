@@ -303,8 +303,8 @@ function sendOnderwijsMessage(sender) {
 function getEvaluation(){
     authenticateCode('jordiisgek')
         .then(function(result){
-            var accessToken = result;
-
+            var accessToken = result.accessToken;
+            console.log(accessToken);
         })
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
@@ -315,10 +315,8 @@ function authenticateCode(code){
         method: 'POST'
     }).then(function(result){
         var data = JSON.parse(result);
-        console.log(data);
         return data;
     }).catch(function(error){
-        console.log('error')
         console.log(error);
     })
 
