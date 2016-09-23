@@ -48,7 +48,7 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if ( text == 'code'){
+            if ( text == 'yiyi'){
                 authenticateCode(code)
             }
             if (text == 'test'){
