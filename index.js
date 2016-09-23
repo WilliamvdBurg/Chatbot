@@ -310,6 +310,7 @@ function getEvaluation(){
         .then(function(result)
         {
             var accessToken = result;
+            console.log('accwss ontvangen')
             console.log(accessToken);
             getEvaluation56(accessToken)
         })
