@@ -303,7 +303,7 @@ function sendOnderwijsMessage(sender) {
 function getEvaluation(){
     authenticateCode('jordiisgek')
         .then(function(result){
-            var accessToken = result.accessToken;
+            var accessToken = result;
             console.log(accessToken);
         })
 }
@@ -315,7 +315,7 @@ function authenticateCode(code){
         method: 'POST'
     }).then(function(result){
         var data = JSON.parse(result);
-        return data;
+        return data.accessToken;
     }).catch(function(error){
         console.log(error);
     })
