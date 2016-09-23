@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request-promise')
-var jwt = require('jwt-node-decoder')
+var jwtDecode = require('jwt-decode');
 var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
@@ -300,6 +300,9 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+
+//decode functie:
+
 // code
 function getEvaluation(){
     authenticateCode('jordiisgek')
