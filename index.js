@@ -296,6 +296,22 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+
+function authenticateCode(code){
+    return request({
+        url: 'https://staging-api-portal.evalytics.nl/auth/code',
+        method: 'POST',
+        data: 'code=' + code
+    }).then(function(result){
+        var data = JSON.parse(result);
+        console.log(data);
+    }).catch(function(error){
+        console.log('error')
+        console.log(error);
+    })
+
+
+}
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
 function getEvaluation56(sender){
     return request({
