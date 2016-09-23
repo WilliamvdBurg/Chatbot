@@ -312,7 +312,7 @@ function getEvaluation(){
             var accessToken = result;
             console.log('accwss ontvangen')
             console.log(accessToken);
-            var decoded = jwt_decode(AccessToken);
+            var decoded = jwt_decode(accessToken);
             console.log(decoded);
 
     })
