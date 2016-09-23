@@ -311,7 +311,7 @@ function getEvaluation(){
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
     return request({
-        url: 'http://178.62.234.94:1338/auth/code?code=skp-855',
+        url: 'https://staging-api-portal.evalytics.nl/auth/code',
         method: 'POST',
         data: 'code=' + code
     }).then(function(result){
