@@ -1,3 +1,32 @@
+// function startQuestions(){
+//     getEvaluation()
+//         .then(function(result)
+//     {
+//         getEvaluationData(id, accessToken)
+//
+//     }).catch(function(err) {
+//         // catch any error that happened along the way
+//         addTextToPage("Argh, broken: " + err.message);
+//     }).then(function () {
+//         askQuestion(question, sender)
+//     }).catch(function(err) {
+//         // catch any error that happened along the way
+//         addTextToPage("Argh, broken2: " + err.message);
+//     })
+//
+//
+// }
+
+
+
+
+
+
+
+
+
+
+
 
  function sendGenericMessage(sender, callback) {
         messageData = {

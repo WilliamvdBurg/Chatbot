@@ -310,7 +310,7 @@ function getEvaluation(){
         .then(function(result)
         {
             var accessToken = result;
-            console.log('access ontvangen')
+            console.log('accwss ontvangen')
             console.log(accessToken);
             var decoded = jwt_decode(accessToken);
             console.log(decoded);
@@ -321,25 +321,6 @@ function getEvaluation(){
             console.log(result);
         })
 }
-
-// function startQuestions(){
-//     getEvaluation()
-//         .then(function(result)
-//     {
-//         getEvaluationData(id, accessToken)
-//
-//     }).catch(function(err) {
-//         // catch any error that happened along the way
-//         addTextToPage("Argh, broken: " + err.message);
-//     }).then(function () {
-//         askQuestion(question, sender)
-//     }).catch(function(err) {
-//         // catch any error that happened along the way
-//         addTextToPage("Argh, broken2: " + err.message);
-//     })
-//
-//
-// }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
@@ -355,6 +336,16 @@ function authenticateCode(code){
 
 
 }
+
+
+// function decryptToken(accessToken){
+//     var token = accesToken;
+//
+//     var decoded = jwt_decode(token);
+//     console.log(decoded);
+//
+// }
+
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
 function getEvaluationData(id, accessToken){
     return request({
