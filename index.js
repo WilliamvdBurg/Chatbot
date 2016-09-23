@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
 
             }
             if ( text == 'code'){
-                authenticateCode(code)
+                getEvaluation(code)
             }
             if (text == 'test'){
                 getEvaluation56(sender)
@@ -307,7 +307,7 @@ function getEvaluation(){
 
         })
 }
-// evaluren met code word gevraagd met die code. als het goed ggaat krijg je Acces token terug. anders een error
+// evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
     return request({
