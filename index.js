@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
 
             }
             if ( text == 'code'){
-                getEvaluation(code)
+                authenticateCode(code)
             }
             if (text == 'test'){
                 getEvaluation56(sender)
