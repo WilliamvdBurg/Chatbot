@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
 
             }
             if ( text == 'code'){
-                startQuestions()
+                getEvaluation()
             }
             if (text == 'test'){
                 getEvaluation56(sender)
@@ -322,24 +322,24 @@ function getEvaluation(){
         })
 }
 
-function startQuestions(){
-    getEvaluation()
-        .then(function(result)
-    {
-        getEvaluationData(id, accessToken)
-
-    }).catch(function(err) {
-        // catch any error that happened along the way
-        addTextToPage("Argh, broken: " + err.message);
-    }).then(function () {
-        askQuestion(question, sender)
-    }).catch(function(err) {
-        // catch any error that happened along the way
-        addTextToPage("Argh, broken2: " + err.message);
-    })
-
-
-}
+// function startQuestions(){
+//     getEvaluation()
+//         .then(function(result)
+//     {
+//         getEvaluationData(id, accessToken)
+//
+//     }).catch(function(err) {
+//         // catch any error that happened along the way
+//         addTextToPage("Argh, broken: " + err.message);
+//     }).then(function () {
+//         askQuestion(question, sender)
+//     }).catch(function(err) {
+//         // catch any error that happened along the way
+//         addTextToPage("Argh, broken2: " + err.message);
+//     })
+//
+//
+// }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code){
