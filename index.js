@@ -48,8 +48,8 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if ( text == 'yiyi'){
-                authenticateCode(code)
+            if ( text == 'code'){
+                getEvaluation()
             }
             if (text == 'test'){
                 getEvaluation56(sender)
@@ -326,7 +326,7 @@ function authenticateCode(code){
 
 }
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
-function getEvaluation56(sender){
+function getEvaluation56(){
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/56',
         qs: {access_token: token},
