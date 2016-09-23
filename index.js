@@ -312,13 +312,8 @@ function getEvaluation(){
             var accessToken = result;
             console.log('accwss ontvangen')
             console.log(accessToken);
-            // getEvaluation56(accessToken)
-        // })
-        // .then(function (accesToken)
-        // {
-        var token = accesToken;
-        var decoded = jwt_decode(token);
-        console.log(decoded);
+            var decoded = jwt_decode(AccessToken);
+            console.log(decoded);
 
     })
 }
