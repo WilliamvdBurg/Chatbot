@@ -305,12 +305,15 @@ function sendOnderwijsMessage(sender) {
 
 // code
 function getEvaluation(){
-    authenticateCode('jordiisgek')
-        .then(function(result){
+    authenticateCode('skp-855')
+        .then(function(result)
+        {
             var accessToken = result;
             console.log(accessToken);
             getEvaluation56(accessToken)
-        }).then(function (accesToken) {
+        })
+        .then(function (accesToken)
+        {
         var token = accesToken;
         var decoded = jwt_decode(token);
         console.log(decoded);
