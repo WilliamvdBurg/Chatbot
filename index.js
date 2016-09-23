@@ -305,6 +305,7 @@ function sendOnderwijsMessage(sender) {
 
 // code
 function getEvaluation(){
+    console.log("yoooooooooooooooop")
     authenticateCode('skp-855')
         .then(function(result)
         {
