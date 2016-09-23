@@ -312,8 +312,7 @@ function getEvaluation(){
 function authenticateCode(code){
     return request({
         url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
-        method: 'POST',
-        data: 'code=' + code
+        method: 'POST'
     }).then(function(result){
         var data = JSON.parse(result);
         console.log(data);
