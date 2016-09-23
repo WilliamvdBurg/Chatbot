@@ -330,12 +330,12 @@ function startQuestions(){
 
     }).catch(function(err) {
         // catch any error that happened along the way
-        addTextToPage("Argh, broken: " + err.message);
+        console.log("Argh, broken: " + err.message);
     }).then(function () {
         askQuestion(question, sender)
     }).catch(function(err) {
         // catch any error that happened along the way
-        addTextToPage("Argh, broken2: " + err.message);
+        console.log("Argh, broken2: " + err.message);
     })
 
 
