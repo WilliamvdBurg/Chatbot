@@ -309,7 +309,7 @@ function getEvaluation(){
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
-function authenticateCode(code){
+function authenticateCode(code, sender){
     return request({
         url: 'https://staging-api-portal.evalytics.nl/auth/code',
         method: 'POST',
