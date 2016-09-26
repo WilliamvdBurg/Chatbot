@@ -10,7 +10,8 @@ var vragensessie = false;
 var cijferArray = new Array();
 
 var questionSet;
-
+var sessies = {};
+var self = this; 
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -38,175 +39,174 @@ app.listen(app.get('port'), function () {
 })
 
 app.post('/webhook/', function (req, res) {
-    messaging_events = req.body.entry[0].messaging
+    messaging_events = req.body.entry[0].messaging;
     for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i]
-        sender = event.sender.id
+        event = req.body.entry[0].messaging[i];
+        self.self.sender = event.self.sender.id;
+        if (!sessies.self.self.sender) {
+            sessies[self.self.sender].answers = array();
+            console.log('self.sender is ', sessies)
+        }
         if (event.message && event.message.text) {
 
             text = event.message.text;
-            if (text == 'Informatie' || text == 'Informatie'){
-                sendWebsiteMessage(sender)
-
-            }
-            if (text == 'test'){
-                getEvaluation56(sender)
-            }
-            if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi'|| text == 'Hoi'){
-
-                sendOnderwijsMessage(sender)
-            }
-            if ( text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie'|| text == 'Pabo' || text == 'Scheikunde' ){
-                sendModuleMessage(sender)
-            }
 
 
-            if ( text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners'|| text == 'Sterrekunde'|| text == 'Aapies kijken'){
-                sendInformaticaMessage(sender)
+            if (text == 'Informatie' || text == 'Informatie') {
+                sendWebsiteMessage(self.self.sender)
+
+            }
+            if (text == 'test') {
+                getEvaluation56(self.self.sender)
+            }
+            if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
+
+                sendOnderwijsMessage(self.self.sender)
+            }
+            if (text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie' || text == 'Pabo' || text == 'Scheikunde') {
+                sendModuleMessage(self.self.sender)
             }
 
-            if ( text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
-                sendStartMessage(sender)
+
+            if (text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners' || text == 'Sterrekunde' || text == 'Aapies kijken') {
+                sendInformaticaMessage(self.self.sender)
             }
 
-            if (text == 'testresultaten' || text == 'Testresultaten'){
-                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+            if (text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
+                sendStartMessage(self.self.sender)
             }
-            if (text == 'Ja' || text == 'ja'){
-                sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+
+            if (text == 'testresultaten' || text == 'Testresultaten') {
+                sendTextMessage(self.self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
+                sendTextMessage(self.self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                sendTextMessage(self.self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                sendTextMessage(self.self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                sendTextMessage(self.self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                sendTextMessage(self.self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                sendTextMessage(self.self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                sendTextMessage(self.self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                sendTextMessage(self.self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
-            if (text == 'Nee' || text == 'nee'){
+            if (text == 'Ja' || text == 'ja') {
+                sendWebsiteMessage(self.self.sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+            }
+            if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
-                {
+                sendTextMessage(self.self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }else{
-                        sendGenericMessage(sender)
+                    } else {
+                        sendGenericMessage(self.self.sender)
                     }
                 })
             }
-            if (text == 'restart' || text == 'Restart'){
-                sendTestfinishedMessage(sender)
+            if (text == 'restart' || text == 'Restart') {
+                sendTestfinishedMessage(self.self.sender)
             }
             // if (text == 'haai'){
-            //     sendGenericMessage(sender)
+            //     sendGenericMessage(self.self.sender)
             //
             // }
             if (text == 'Start') {
-                var vragensessie = {}
-                on.(connect)
-                {
-                    vragensessie.id = array();
-                }
-                vragensessie = true;
-                vraag = 0;
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
-                 {
+                sessies.self.self.sender.vragensessie = true;
+                sessies.self.self.sender.vraag = 0;
+
+                sendTextMessage(self.self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }else{
+                    } else {
                         authenticateCode('skp-855')
-                            .then(function(accessToken){
+                            .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
                                 return getEvaluationData(evaluationId, accessToken);
                             })
-                            .then(function(questionSet){
-                                askQuestion(questionSet[vraag], sender);
+                            .then(function (questionSet) {
+                                askQuestion(questionSet[vraag], self.self.sender);
                             })
-                            .catch(function(error){
+                            .catch(function (error) {
                                 console.log(error);
                             })
                     }
                 })
             }
-            if (vragensessie && questionSet) {
+            if (sessies.self.self.sender.vragensessie && questionSet) {
 
                 if (text > 10) {
-                    sendTextMessage(sender, 'error, antwoord onbekend!')
+                    sendTextMessage(self.self.sender, 'error, antwoord onbekend!')
                 }
-                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel"){
-                    vraag = vraag + 1
-                    cijferArray.push(text);
-                    console.log(cijferArray);
+                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
+                    sessies.self.self.sender.vraag++;
+                    sessies.self.self.sender.answers.push(text);
+                    console.log(sessies.self.self.sender.answers);
                     // moet gereset worden + verzonden.
                 }
 
-                if(questionSet[vraag]){
-                    askQuestion(questionSet[vraag], sender);
+                if (questionSet[sessies.self.self.sender.vraag]) {
+                    askQuestion(questionSet[sessies.self.self.sender.vraag], self.self.sender);
                 }
 
-                if (vraag >= questionSet.length) {
-                    sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
-                    vragensessie = false
+                if (sessies.self.self.sender.vraag >= questionSet.length) {
+                    sendKlaarMessage(self.self.sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
             }
-            if (event.message = null){
-                sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
+            if (event.message = null) {
+                sendTextMessage(self.self.sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
             // if (text < 11 ) {
-            //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
+            //     sendTextMessage(self.sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
             //     if ( text > 10) {
-            //         sendTextMessage(sender, 'error, antwoord onbekend!'),
-            //             sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+            //         sendTextMessage(self.sender, 'error, antwoord onbekend!'),
+            //             sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
             //     }
             // }
 
 
 // function StartTest()
 // {
-//     sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-//     sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
+//     sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
+//     sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
 // }
 
 
-function sendKlaarMessage(sender) {
-    messageData = {
-        "text": "Alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
-        "quick_replies": [
-            {
-                "content_type": "text",
-                "title": "Ja",
-                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            },
-            {
-                "content_type": "text",
-                "title": "Nee",
-                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            }]
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+            function sendKlaarMessage(sender) {
+                messageData = {
+                    "text": "Alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
+                    "quick_replies": [
+                        {
+                            "content_type": "text",
+                            "title": "Ja",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                        },
+                        {
+                            "content_type": "text",
+                            "title": "Nee",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                        }]
+                }
+                request({
+                    url: 'https://graph.facebook.com/v2.6/me/messages',
+                    qs: {access_token: token},
+                    method: 'POST',
+                    json: {
+                        recipient: {id: self.sender},
+                        message: messageData,
+                    }
+                }, function (error, response, body) {
+                    if (error) {
+                        console.log('Error sending messages: ', error)
+                    } else if (response.body.error) {
+                        console.log('Error: ', response.body.error)
+                    }
+                })
 
-}
+            }
 
         }
         else if (event.postback && event.postback.payload) {
@@ -219,23 +219,23 @@ function sendKlaarMessage(sender) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i] + '\n';
                 }
 
-                sendTextMessage(sender, antwoorden);
+                sendTextMessage(self.sender, antwoorden);
 
                 console.log('antwoorden', antwoorden);
-                // sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
+                // sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
                 //     .then(function(callBack) {
-                //         sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                //         sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
                 //     })
                 //
 
-                // sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                // sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                // sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                // sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                // sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                // sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                // sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                // sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+                // sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                // sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                // sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                // sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                // sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                // sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                // sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
 
         }
@@ -256,7 +256,7 @@ function sendTextMessage(sender, text, callback) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: self.sender},
             message: messageData,
         }
     }, callback)
@@ -298,7 +298,7 @@ function sendOnderwijsMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: self.sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -310,13 +310,12 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-//decode functie:
 
 // code
-function getEvaluation(){
+function getEvaluation() {
     console.log("yoooooooooooooooop")
     authenticateCode('skp-855')
-        .then(function(result) {
+        .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
             console.log(accessToken);
@@ -324,28 +323,28 @@ function getEvaluation(){
             console.log(decoded);
             var evaluationId = decoded.evaluationId;
             return getEvaluationData(evaluationId, accessToken)
-    }).then(function(result){
-            console.log(result);
-            askQuestion(question, sender)
-        })
+        }).then(function (result) {
+        console.log(result);
+        askQuestion(question, self.sender)
+    })
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
-function authenticateCode(code){
+function authenticateCode(code) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
         method: 'POST'
-    }).then(function(result){
+    }).then(function (result) {
         var data = JSON.parse(result);
         return data.accessToken;
-    }).catch(function(error){
+    }).catch(function (error) {
         console.log(error);
     })
 
 
 }
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
-function getEvaluationData(id, accessToken){
+function getEvaluationData(id, accessToken) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
         qs: {access_token: token},
@@ -353,18 +352,18 @@ function getEvaluationData(id, accessToken){
         headers: {
             ['access-token']: accessToken
         }
-    }).then(function(result){
+    }).then(function (result) {
         var data = JSON.parse(result);
         var evaluation = data.results[0];
 
         var openQuestions = [];
-        _.forEach(evaluation.blocks[0].questionSets, function(questionset){
+        _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
             questionSet = questionset.questions;
             console.log(questionSet);
         });
 
         return questionSet;
-    }).catch(function(error){
+    }).catch(function (error) {
         console.log(error);
     });
 }
@@ -374,19 +373,19 @@ function getEvaluationData(id, accessToken){
 function askQuestion(question, sender) {
     var quickReplies = [];
 
-    if(question.scale.input === 'rating') {
-var i = 1;
-        _.times(question.scale.scaleNl.max, function(value){
+    if (question.scale.input === 'rating') {
+        var i = 1;
+        _.times(question.scale.scaleNl.max, function (value) {
             quickReplies.push({
                 content_type: 'text',
-                title: i++ ,
+                title: i++,
                 payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
             })
         });
 
         // 1 t/m 10 afhandeling
 
-    } else if(question.scale.input === 'boolean') {
+    } else if (question.scale.input === 'boolean') {
 
         quickReplies.push({
             content_type: 'text',
@@ -396,14 +395,14 @@ var i = 1;
         })
         // Ja/nee afhandeling
 
-    } else if(question.scale.input === 'text'){
+    } else if (question.scale.input === 'text') {
         // Open vraag
 
     }
 
 
     else {
-        question.scale.scaleNl.forEach(function(scale) {
+        question.scale.scaleNl.forEach(function (scale) {
             quickReplies.push({
                 content_type: 'text',
                 title: scale.value,
@@ -435,7 +434,7 @@ var i = 1;
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: self.sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -447,7 +446,7 @@ var i = 1;
     })
 }
 
-    function  sendInformaticaMessage(sender) {
+function sendInformaticaMessage(sender) {
     messageData = {
         "text": "Welke leraar wilt u beoordelen?",
         "quick_replies": [
@@ -483,7 +482,7 @@ var i = 1;
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: self.sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -495,7 +494,7 @@ var i = 1;
     })
 
 }
-function  sendModuleMessage(sender) {
+function sendModuleMessage(sender) {
     messageData = {
         "text": "Om welke Module gaat het?",
         "quick_replies": [
@@ -531,7 +530,7 @@ function  sendModuleMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: self.sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -546,117 +545,116 @@ function  sendModuleMessage(sender) {
 
 function sendStartMessage(sender) {
     messageData = {
-    "text": "Wilt u de Test starten?",
+        "text": "Wilt u de Test starten?",
         "quick_replies": [
-        {
-            "content_type": "text",
-            "title": "Start",
-            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-        },
-        {
-            "content_type": "text",
-            "title": "Stop",
-            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-        }]
-}
-request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token: token},
-    method: 'POST',
-    json: {
-        recipient: {id: sender},
-        message: messageData,
+            {
+                "content_type": "text",
+                "title": "Start",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Stop",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
     }
-}, function (error, response, body) {
-    if (error) {
-        console.log('Error sending messages: ', error)
-    } else if (response.body.error) {
-        console.log('Error: ', response.body.error)
-    }
-})
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: self.sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
 }
 
 
-
-    function sendWebsiteMessage(sender) {
-        messageData = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": "Dankuwel voor het invullen van de test!",
-                        "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
-                        "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": "http://www.evalytics.nl/",
-                            "title": "Webiste Evalytics"
-                        },
-
-                            {
-                                "type": "postback",
-                                "title": "Testresultaten",
-                                "payload": "sasdasdasd"
-                            },],
+function sendWebsiteMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Dankuwel voor het invullen van de test!",
+                    "subtitle": "U antwoorden kunt u inkijken door te drukken op testresultaten. Wilt u meer weten over Evalytics, bekijk dan onze website!",
+                    "image_url": "https://www.surf.nl/binaries/article/content/gallery/surf/nieuws/evalytics-forbidden-fruit.png",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "http://www.evalytics.nl/",
+                        "title": "Webiste Evalytics"
                     },
-                    ]
-                }
-            }
-        }
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending messages: ', error)
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error)
-            }
-        })
 
-    }
-
-    function sendTestfinishedMessage(sender) {
-        messageData = {
-            "text": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
-            "quick_replies": [
-                {
-                    "content_type": "text",
-                    "title": "Ja",
-                    "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                        {
+                            "type": "postback",
+                            "title": "Testresultaten",
+                            "payload": "sasdasdasd"
+                        },],
                 },
-                {
-                    "content_type": "text",
-                    "title": "Nee",
-                    "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                }]
+                ]
+            }
         }
-
-
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: token},
-            method: 'POST',
-            json: {
-                recipient: {id: sender},
-                message: messageData,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending messages: ', error)
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error)
-            }
-        })
-
     }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: self.sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
+
+function sendTestfinishedMessage(sender) {
+    messageData = {
+        "text": "Ben u niet zeker over uw antwoorden kies voor nee, zowel kies voor ja",
+        "quick_replies": [
+            {
+                "content_type": "text",
+                "title": "Ja",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            },
+            {
+                "content_type": "text",
+                "title": "Nee",
+                "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+            }]
+    }
+
+
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: self.sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
 
 
 
