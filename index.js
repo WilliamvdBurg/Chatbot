@@ -239,8 +239,8 @@ app.post('/webhook/', function (req, res) {
 
         }
         else if (event.postback && event.postback.payload) {
-            payload = event.postback.payload;
-            if (payload = 'Get started') {
+            if (event.postback.payload.indexOf('Get started')> -1);
+            {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
             }
         }
