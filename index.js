@@ -212,7 +212,7 @@ app.post('/webhook/', function (req, res) {
             if (payload = 'Testresultaten') {
 
                 var antwoorden = '';
-                for (var i = 0; i < sessies.length; i++) {
+                for (var i = 0; i < sessies.answers.length; i++) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies.sender.answers[i] + '\n';
                 }
                 console.log(' stoned kotsen', sessies);
