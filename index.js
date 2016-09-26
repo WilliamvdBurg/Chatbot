@@ -42,9 +42,10 @@ app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging;
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i];
-        self.sender = event.sender.id;
-        if (!sessies[self.sender]) {
-            sessies[self.sender].answers = [];
+        sender = event.sender.id;
+        if (!sessies[sender]) {
+            sessies.sender = {};
+            sessies.sender.answers = [];
             console.log('self.sender is ', sessies)
         }
         if (event.message && event.message.text) {
@@ -53,68 +54,68 @@ app.post('/webhook/', function (req, res) {
 
 
             if (text == 'Informatie' || text == 'Informatie') {
-                sendWebsiteMessage(self.sender)
+                sendWebsiteMessage(sender)
 
             }
             if (text == 'test') {
-                getEvaluation56(self.sender)
+                getEvaluation56(sender)
             }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
-                sendOnderwijsMessage(self.sender)
+                sendOnderwijsMessage(sender)
             }
             if (text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie' || text == 'Pabo' || text == 'Scheikunde') {
-                sendModuleMessage(self.sender)
+                sendModuleMessage(sender)
             }
 
 
             if (text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners' || text == 'Sterrekunde' || text == 'Aapies kijken') {
-                sendInformaticaMessage(self.sender)
+                sendInformaticaMessage(sender)
             }
 
             if (text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
-                sendStartMessage(self.sender)
+                sendStartMessage(sender)
             }
 
             if (text == 'testresultaten' || text == 'Testresultaten') {
-                sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
-                sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+                sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
+                sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
             if (text == 'Ja' || text == 'ja') {
-                sendWebsiteMessage(self.sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
-                        sendGenericMessage(self.sender)
+                        sendGenericMessage(sender)
                     }
                 })
             }
             if (text == 'restart' || text == 'Restart') {
-                sendTestfinishedMessage(self.sender)
+                sendTestfinishedMessage(sender)
             }
             // if (text == 'haai'){
-            //     sendGenericMessage(self.sender)
+            //     sendGenericMessage(sender)
             //
             // }
             if (text == 'Start') {
-                sessies.self.sender.vragensessie = true;
-                sessies.self.sender.vraag = 0;
+                sessies.sender.vragensessie = true;
+                sessies.sender.vraag = 0;
 
-                sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
@@ -127,7 +128,7 @@ app.post('/webhook/', function (req, res) {
                                 return getEvaluationData(evaluationId, accessToken);
                             })
                             .then(function (questionSet) {
-                                askQuestion(questionSet[vraag], self.sender);
+                                askQuestion(questionSet[vraag], sender);
                             })
                             .catch(function (error) {
                                 console.log(error);
@@ -135,34 +136,34 @@ app.post('/webhook/', function (req, res) {
                     }
                 })
             }
-            if (sessies.self.sender.vragensessie && questionSet) {
+            if (sessies.sender.vragensessie && questionSet) {
 
                 if (text > 10) {
-                    sendTextMessage(self.sender, 'error, antwoord onbekend!')
+                    sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
-                    sessies.self.sender.vraag++;
-                    sessies.self.sender.answers.push(text);
-                    console.log(sessies.self.sender.answers);
+                    sessies.sender.vraag++;
+                    sessies.sender.answers.push(text);
+                    console.log(sessies.sender.answers);
                     // moet gereset worden + verzonden.
                 }
 
-                if (questionSet[sessies.self.sender.vraag]) {
-                    askQuestion(questionSet[sessies.self.sender.vraag], self.sender);
+                if (questionSet[sessies.sender.vraag]) {
+                    askQuestion(questionSet[sessies.sender.vraag], sender);
                 }
 
-                if (sessies.self.sender.vraag >= questionSet.length) {
-                    sendKlaarMessage(self.sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
+                if (sessies.sender.vraag >= questionSet.length) {
+                    sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
             }
             if (event.message = null) {
-                sendTextMessage(self.sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
+                sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
             // if (text < 11 ) {
-            //     sendTextMessage(self.sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
+            //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
             //     if ( text > 10) {
-            //         sendTextMessage(self.sender, 'error, antwoord onbekend!'),
+            //         sendTextMessage(sender, 'error, antwoord onbekend!'),
             //             sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
             //     }
             // }
@@ -195,7 +196,7 @@ app.post('/webhook/', function (req, res) {
                     qs: {access_token: token},
                     method: 'POST',
                     json: {
-                        recipient: {id: self.sender},
+                        recipient: {id: sender},
                         message: messageData,
                     }
                 }, function (error, response, body) {
@@ -219,7 +220,7 @@ app.post('/webhook/', function (req, res) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i] + '\n';
                 }
 
-                sendTextMessage(self.sender, antwoorden);
+                sendTextMessage(sender, antwoorden);
 
                 console.log('antwoorden', antwoorden);
                 // sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
@@ -256,7 +257,7 @@ function sendTextMessage(sender, text, callback) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, callback)
@@ -298,7 +299,7 @@ function sendOnderwijsMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -325,7 +326,7 @@ function getEvaluation() {
             return getEvaluationData(evaluationId, accessToken)
         }).then(function (result) {
         console.log(result);
-        askQuestion(question, self.sender)
+        askQuestion(question, sender)
     })
 }
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
@@ -434,7 +435,7 @@ function askQuestion(question, sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -482,7 +483,7 @@ function sendInformaticaMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -530,7 +531,7 @@ function sendModuleMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -563,7 +564,7 @@ function sendStartMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -608,7 +609,7 @@ function sendWebsiteMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
@@ -643,7 +644,7 @@ function sendTestfinishedMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: self.sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function (error, response, body) {
