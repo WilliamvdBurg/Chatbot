@@ -144,7 +144,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
                     sessies.sender.vraag++;
                     sessies.sender.answers.push(text);
-                    console.log(sessies.sender.answers);
+                    console.log(' answers zijn',sessies.sender.answers);
                     // moet gereset worden + verzonden.
                 }
 
