@@ -40,9 +40,10 @@ app.post('/webhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i];
         var sender = event.sender.id;
-        if (!sessies.sender) {
-            sessies.sender = {};
-            sessies.sender.answers = [];
+        var recipient = event.recipient.id;
+        if (!sessies.recipient) {
+            sessies.recipient = {};
+            sessies.recipient.answers = [];
             console.log('self.sender is ', sessies)
         }
         if (event.message && event.message.text) {
@@ -125,7 +126,7 @@ app.post('/webhook/', function (req, res) {
                                 return getEvaluationData(evaluationId, accessToken);
                             })
                             .then(function (questionSet) {
-                                askQuestion(questionSet[sessies.sender.vraag], sender);
+                                askQuestion(questionSet[sessies.recipient.vraag], sender);
                             })
                             .catch(function (error) {
                                 console.log(error);
@@ -133,23 +134,23 @@ app.post('/webhook/', function (req, res) {
                     }
                 })
             }
-            if (sessies.sender.vragensessie && questionSet) {
+            if (sessies.recipient.vragensessie && questionSet) {
 
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
-                    sessies.sender.vraag++;
-                    sessies.sender.answers.push(text);
-                    console.log(' answers zijn',sessies.sender.answers);
+                    sessies.recipient.vraag++;
+                    sessies.recipient.answers.push(text);
+                    console.log(' answers zijn',sessies.recipient.answers);
                     // moet gereset worden + verzonden.
                 }
 
-                if (questionSet[sessies.sender.vraag]) {
-                    askQuestion(questionSet[sessies.sender.vraag], sender);
+                if (questionSet[sessies.recipient.vraag]) {
+                    askQuestion(questionSet[sessies.recipient.vraag], sender);
                 }
 
-                if (sessies.sender.vraag >= questionSet.length) {
+                if (sessies.recipient.vraag >= questionSet.length) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
