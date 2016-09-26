@@ -212,7 +212,7 @@ app.post('/webhook/', function (req, res) {
             if (payload = 'Testresultaten') {
 
                 var antwoorden = '';
-                for (var i = 0; i < cijferArray.length; i++) {
+                for (var i = 0; i < sessies[recipient].length; i++) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
 
