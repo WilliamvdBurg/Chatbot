@@ -5,9 +5,6 @@ var jwt_decode = require('jwt-decode');
 var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
-var vraag = 0;
-var vragensessie = false;
-var cijferArray = new Array();
 
 var questionSet;
 var sessies = {};
@@ -217,7 +214,7 @@ app.post('/webhook/', function (req, res) {
 
                 var antwoorden = '';
                 for (var i = 0; i < cijferArray.length; i++) {
-                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + cijferArray[i] + '\n';
+                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies.sender.answers[i] + '\n';
                 }
 
                 sendTextMessage(sender, antwoorden);
