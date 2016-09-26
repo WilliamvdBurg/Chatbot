@@ -105,6 +105,7 @@ app.post('/webhook/', function (req, res) {
             //
             // }
             if (text == 'Start') {
+                vragensessie.id = array();
                 vragensessie = true;
                 vraag = 0;
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body)
