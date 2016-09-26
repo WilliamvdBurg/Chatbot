@@ -234,6 +234,10 @@ app.post('/webhook/', function (req, res) {
                 // sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
                 // sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
                 // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+
+            }
+            if (payload = 'Get started') {
+                sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
             }
 
         }
