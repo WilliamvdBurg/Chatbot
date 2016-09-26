@@ -207,9 +207,9 @@ app.post('/webhook/', function (req, res) {
 
         }
         else if (event.postback && event.postback.payload) {
-            payload = event.postback.payload;
+            if(event.postback.payload,indexOf('Testresultaten'))
 
-            if (payload = 'Testresultaten') {
+            {
 
                 var antwoorden = '';
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
@@ -239,7 +239,7 @@ app.post('/webhook/', function (req, res) {
 
         }
         else if (event.postback && event.postback.payload) {
-            if (event.postback.payload.indexOf('Get started')> -1);
+            if (event.postback.payload.indexOf('Get started'));
             {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
             }
