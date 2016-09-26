@@ -138,6 +138,7 @@ app.post('/webhook/', function (req, res) {
                     vraag = vraag + 1
                     cijferArray.push(text);
                     console.log(cijferArray);
+                    // moet gereset worden + verzonden.
                 }
 
                 if(questionSet[vraag]){
@@ -167,9 +168,6 @@ app.post('/webhook/', function (req, res) {
 //     sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
 //     sendTextMessage(sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
 // }
-
-
-
 
 
 function sendKlaarMessage(sender) {
