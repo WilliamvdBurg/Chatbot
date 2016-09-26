@@ -236,12 +236,16 @@ app.post('/webhook/', function (req, res) {
                 // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
 
             }
+
+        }
+        else if (event.postback && event.postback.payload) {
+            payload = event.postback.payload;
             if (payload = 'Get started') {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
             }
+        }
 
         }
-    }
     res.sendStatus(200);
 });
 
