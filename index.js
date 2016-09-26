@@ -207,7 +207,7 @@ app.post('/webhook/', function (req, res) {
 
         }
         else if (event.postback && event.postback.payload) {
-            if(event.postback.payload,indexOf('Testresultaten'))
+            if(event.postback.payload.indexOf('Testresultaten'))
 
             {
 
