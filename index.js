@@ -137,7 +137,7 @@ app.post('/webhook/', function (req, res) {
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
                 }
-                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
+                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed") {
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push(text);
                     console.log(' answers zijn',sessies[recipient].answers);
