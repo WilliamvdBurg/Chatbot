@@ -42,9 +42,9 @@ app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging;
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i];
-        self.self.sender = event.self.sender.id;
-        if (!sessies.self.self.sender) {
-            sessies[self.self.sender].answers = array();
+        self.sender = event.self.sender.id;
+        if (!sessies.self.sender) {
+            sessies[self.sender].answers = array();
             console.log('self.sender is ', sessies)
         }
         if (event.message && event.message.text) {
@@ -53,68 +53,68 @@ app.post('/webhook/', function (req, res) {
 
 
             if (text == 'Informatie' || text == 'Informatie') {
-                sendWebsiteMessage(self.self.sender)
+                sendWebsiteMessage(self.sender)
 
             }
             if (text == 'test') {
-                getEvaluation56(self.self.sender)
+                getEvaluation56(self.sender)
             }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
-                sendOnderwijsMessage(self.self.sender)
+                sendOnderwijsMessage(self.sender)
             }
             if (text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie' || text == 'Pabo' || text == 'Scheikunde') {
-                sendModuleMessage(self.self.sender)
+                sendModuleMessage(self.sender)
             }
 
 
             if (text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners' || text == 'Sterrekunde' || text == 'Aapies kijken') {
-                sendInformaticaMessage(self.self.sender)
+                sendInformaticaMessage(self.sender)
             }
 
             if (text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
-                sendStartMessage(self.self.sender)
+                sendStartMessage(self.sender)
             }
 
             if (text == 'testresultaten' || text == 'Testresultaten') {
-                sendTextMessage(self.self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
-                sendTextMessage(self.self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                sendTextMessage(self.self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                sendTextMessage(self.self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                sendTextMessage(self.self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                sendTextMessage(self.self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                sendTextMessage(self.self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                sendTextMessage(self.self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                sendTextMessage(self.self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
+                sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
+                sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
+                sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
+                sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
+                sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
+                sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
+                sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
+                sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
+                sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             }
             if (text == 'Ja' || text == 'ja') {
-                sendWebsiteMessage(self.self.sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                sendWebsiteMessage(self.sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
                 vraag = 0
-                sendTextMessage(self.self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
-                        sendGenericMessage(self.self.sender)
+                        sendGenericMessage(self.sender)
                     }
                 })
             }
             if (text == 'restart' || text == 'Restart') {
-                sendTestfinishedMessage(self.self.sender)
+                sendTestfinishedMessage(self.sender)
             }
             // if (text == 'haai'){
-            //     sendGenericMessage(self.self.sender)
+            //     sendGenericMessage(self.sender)
             //
             // }
             if (text == 'Start') {
-                sessies.self.self.sender.vragensessie = true;
-                sessies.self.self.sender.vraag = 0;
+                sessies.self.sender.vragensessie = true;
+                sessies.self.sender.vraag = 0;
 
-                sendTextMessage(self.self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
@@ -127,7 +127,7 @@ app.post('/webhook/', function (req, res) {
                                 return getEvaluationData(evaluationId, accessToken);
                             })
                             .then(function (questionSet) {
-                                askQuestion(questionSet[vraag], self.self.sender);
+                                askQuestion(questionSet[vraag], self.sender);
                             })
                             .catch(function (error) {
                                 console.log(error);
@@ -135,29 +135,29 @@ app.post('/webhook/', function (req, res) {
                     }
                 })
             }
-            if (sessies.self.self.sender.vragensessie && questionSet) {
+            if (sessies.self.sender.vragensessie && questionSet) {
 
                 if (text > 10) {
-                    sendTextMessage(self.self.sender, 'error, antwoord onbekend!')
+                    sendTextMessage(self.sender, 'error, antwoord onbekend!')
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel") {
-                    sessies.self.self.sender.vraag++;
-                    sessies.self.self.sender.answers.push(text);
-                    console.log(sessies.self.self.sender.answers);
+                    sessies.self.sender.vraag++;
+                    sessies.self.sender.answers.push(text);
+                    console.log(sessies.self.sender.answers);
                     // moet gereset worden + verzonden.
                 }
 
-                if (questionSet[sessies.self.self.sender.vraag]) {
-                    askQuestion(questionSet[sessies.self.self.sender.vraag], self.self.sender);
+                if (questionSet[sessies.self.sender.vraag]) {
+                    askQuestion(questionSet[sessies.self.sender.vraag], self.sender);
                 }
 
-                if (sessies.self.self.sender.vraag >= questionSet.length) {
-                    sendKlaarMessage(self.self.sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
+                if (sessies.self.sender.vraag >= questionSet.length) {
+                    sendKlaarMessage(self.sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
             }
             if (event.message = null) {
-                sendTextMessage(self.self.sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
+                sendTextMessage(self.sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
             // if (text < 11 ) {
             //     sendTextMessage(self.sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
