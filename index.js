@@ -42,7 +42,7 @@ app.post('/webhook/', function (req, res) {
         console.log(event);
         var sender = event.sender.id;
         var recipient = sender;
-        if (sessies.sender == null || sessies.sender == undefined) {
+        if (sessies.recipient == null || sessies.recipient == undefined) {
             sessies.recipient = {};
             sessies.recipient.answers = [];
             console.log('self.sender is ', sessies)
