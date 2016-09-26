@@ -213,7 +213,7 @@ app.post('/webhook/', function (req, res) {
 
                 var antwoorden = '';
                 for (var i = 0; i < cijferArray.length; i++) {
-                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies.sender.answers[i] + '\n';
+                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
 
                 sendTextMessage(sender, antwoorden);
