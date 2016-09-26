@@ -106,7 +106,7 @@ app.post('/webhook/', function (req, res) {
             // }
             if (text == 'Start') {
                 var vragensessie = {}
-                on.('connect')
+                on.(connect)
                 {
                     vragensessie.id = array();
                 }
