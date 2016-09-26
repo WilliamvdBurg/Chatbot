@@ -44,7 +44,7 @@ app.post('/webhook/', function (req, res) {
         event = req.body.entry[0].messaging[i];
         self.sender = event.sender.id;
         if (!sessies[self.sender]) {
-            sessies[self.sender].answers = array();
+            sessies[self.sender].answers = [];
             console.log('self.sender is ', sessies)
         }
         if (event.message && event.message.text) {
