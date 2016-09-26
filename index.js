@@ -395,7 +395,7 @@ function askQuestion(question, sender) {
 
     } else if (question.scale.input === 'text') {
         // Open vraag
-
+        input.push
     }
 
 
