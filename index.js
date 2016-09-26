@@ -128,7 +128,7 @@ app.post('/webhook/', function (req, res) {
                                 return getEvaluationData(evaluationId, accessToken);
                             })
                             .then(function (questionSet) {
-                                askQuestion(questionSet[vraag], sender);
+                                askQuestion(questionSet[sessies.sender.vraag], sender);
                             })
                             .catch(function (error) {
                                 console.log(error);
