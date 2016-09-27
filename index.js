@@ -112,28 +112,33 @@ app.post('/webhook/', function (req, res) {
             //
             // }
             if (text == 'Start' || text == 'mijn code is:' + code) {
-                sessies[recipient].vragensessie = true;
-                sessies[recipient].vraag = 0;
 
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
-                        authenticateCode('skp-855')
-                            .then(function (accessToken) {
-                                var decoded = jwt_decode(accessToken);
-                                var evaluationId = decoded.evaluationId;
-                                return getEvaluationData(evaluationId, accessToken);
-                            })
-                            .then(function (questionSet) {
-                                askQuestion(questionSet[sessies[recipient].vraag], sender);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            })
+                        var userInput = message.text;
+                        console.log('het lukt we krijgen code', userInput)
+                        startVragen(userInput);
+
                     }
+                    //else {
+                    //     authenticateCode(getAuthenticateCode(code))
+                    //         .then(function (accessToken) {
+                    //             var decoded = jwt_decode(accessToken);
+                    //             var evaluationId = decoded.evaluationId;
+                    //             return getEvaluationData(evaluationId, accessToken);
+                    //         })
+                    //         .then(function (questionSet) {
+                    //             askQuestion(questionSet[sessies[recipient].vraag], sender);
+                    //         })
+                    //         .catch(function (error) {
+                    //             console.log(error);
+                    //         })
+                    // }
                 })
             }
             if (sessies[recipient].vragensessie && questionSet) {
@@ -316,23 +321,44 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+
+function startVragen(userInput)
+{
+    sessies[recipient].vragensessie = true;
+    sessies[recipient].vraag = 0;
+    authenticateCode(getAuthenticateCode(userInput))
+            .then(function (accessToken) {
+                var decoded = jwt_decode(accessToken);
+                var evaluationId = decoded.evaluationId;
+                return getEvaluationData(evaluationId, accessToken);
+            })
+            .then(function (questionSet) {
+                askQuestion(questionSet[sessies[recipient].vraag], sender);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+
+
 // code uit de text halen
-function getAuthenticateCode(code){
+function getAuthenticateCode(userInput){
     console.log('code word opgevraagt');
     woordenArray = ["code",':',"mijn","is"]
     for (var i = 0; i < woordenArray.length; i++){
-        code = code.replace(woordenArray[i],'')
+        userInput = userInput.replace(woordenArray[i],'')
     }
-    console.log('hier is de code', code)
-    return code;
+    console.log('hier is de code', userInput)
+    return userInput;
 
 }
 
 
 // code
-function getEvaluation() {
+function getEvaluation(code) {
     console.log("yoooooooooooooooop")
-    authenticateCode(getAuthenticateCode(code))
+    authenticateCode(code)
         .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
