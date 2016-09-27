@@ -483,6 +483,8 @@ function askQuestion(question, sender) {
             console.log('Error: ', response.body.error)
         }
     })
+
+    console.log('--------------------------------------------------');
 }
 
 function sendInformaticaMessage(sender) {
