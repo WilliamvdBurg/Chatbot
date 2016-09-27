@@ -51,10 +51,10 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            if (text == 'mijn code is:' + code ) {
-                sendWebsiteMessage(sender)
-
-            }
+            // if (text == 'mijn code is:' + code ) {
+            //     sendWebsiteMessage(sender)
+            //
+            // }
 
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
