@@ -315,6 +315,7 @@ function sendOnderwijsMessage(sender) {
 
 function startVragen(userInput)
 {
+    var recipient = sender;
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
