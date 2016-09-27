@@ -113,30 +113,18 @@ app.post('/webhook/', function (req, res) {
             // }
             if (text == 'Start' ) {
 
-    sessies[recipient].vragensessie = true;
-    sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                         }
-                        else {
-                        authenticateCode('skp-855')
-                                .then(function (accessToken) {
-                                    var decoded = jwt_decode(accessToken);
-                                    var evaluationId = decoded.evaluationId;
-                                    return getEvaluationData(evaluationId, accessToken);
-                                })
-                                .then(function (questionSet) {
-                                    askQuestion(questionSet[sessies[recipient].vraag], sender);
-                                })
-                                .catch(function (error) {
-                                    console.log(error);
-                                })
-                        }
+                        console.log(recipient.response);
+                        getAuthenticateCode(recipient.response);
+                     // code zal moeten worden opgahaald uit de getypte text
                 })
             }
+
             if (sessies[recipient].vragensessie && questionSet) {
 
                 if (text > 10) {
@@ -318,37 +306,37 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-// function startVragen(userInput)
-// {
-//     sessies[recipient].vragensessie = true;
-//     sessies[recipient].vraag = 0;
-//     authenticateCode(getAuthenticateCode(userInput))
-//             .then(function (accessToken) {
-//                 var decoded = jwt_decode(accessToken);
-//                 var evaluationId = decoded.evaluationId;
-//                 return getEvaluationData(evaluationId, accessToken);
-//             })
-//             .then(function (questionSet) {
-//                 askQuestion(questionSet[sessies[recipient].vraag], sender);
-//             })
-//             .catch(function (error) {
-//                 console.log(error);
-//             })
-//     }
+function startVragen(userInput)
+{
+    sessies[recipient].vragensessie = true;
+    sessies[recipient].vraag = 0;
+    authenticateCode(getAuthenticateCode(userInput))
+            .then(function (accessToken) {
+                var decoded = jwt_decode(accessToken);
+                var evaluationId = decoded.evaluationId;
+                return getEvaluationData(evaluationId, accessToken);
+            })
+            .then(function (questionSet) {
+                askQuestion(questionSet[sessies[recipient].vraag], sender);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
 
 
-// // code uit de text halen
-// function getAuthenticateCode(){
-//     console.log('code word opgevraagt');
-//     woordenArray = ["code",':',"mijn","is"]
-//     for (var i = 0; i < woordenArray.length; i++){
-//         userInput = userInput.replace(woordenArray[i],'')
-//     }
-//     console.log('hier is de code', userInput)
-//     return userInput;
-//
-// }
+// code uit de text halen
+function getAuthenticateCode(){
+    console.log('code word opgevraagt');
+    woordenArray = ["code",':',"mijn","is"]
+    for (var i = 0; i < woordenArray.length; i++){
+        userInput = userInput.replace(woordenArray[i],'')
+    }
+    console.log('hier is de code', userInput)
+    return userInput;
+
+}
 
 
 // code

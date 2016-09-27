@@ -1,3 +1,49 @@
+
+  if (text == 'Start' ) {
+
+    sessies[recipient].vragensessie = true;
+    sessies[recipient].vraag = 0;
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                    if (error) {
+                        console.log('Error sending messages: ', error)
+                    } else if (response.body.error) {
+                        console.log('Error: ', response.body.error)
+                        }
+                        else {
+                        authenticateCode('skp-855')
+                                .then(function (accessToken) {
+                                    var decoded = jwt_decode(accessToken);
+                                    var evaluationId = decoded.evaluationId;
+                                    return getEvaluationData(evaluationId, accessToken);
+                                })
+                                .then(function (questionSet) {
+                                    askQuestion(questionSet[sessies[recipient].vraag], sender);
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                })
+                        }
+                })
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function startQuestions(){
 //     getEvaluation()
 //         .then(function(result)
