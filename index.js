@@ -314,11 +314,12 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(text)
+function startVragen(userInput)
 {
+    text = userInput
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
-    authenticateCode(getAuthenticateCode(text))
+    authenticateCode(getAuthenticateCode(userInput))
             .then(function (accessToken) {
                 var decoded = jwt_decode(accessToken);
                 var evaluationId = decoded.evaluationId;
