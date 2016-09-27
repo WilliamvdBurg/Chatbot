@@ -114,7 +114,7 @@ app.post('/webhook/', function (req, res) {
 
 
             if (text == 'Start' ) {
-                waitForCode = true;
+                waitForCode = false;
                  sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
 
 
@@ -129,7 +129,7 @@ app.post('/webhook/', function (req, res) {
             }
 
             if(waitForCode) {
-                waitForCode = false;
+                waitForCode = true;
                 console.log("code is getypt", text)
                 startVragen(text);
             }
