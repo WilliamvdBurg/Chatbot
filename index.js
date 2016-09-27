@@ -120,6 +120,7 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
+                        response = message.text;
                         var userInput = message.text;
                         console.log('het lukt we krijgen code', userInput)
                         startVragen(userInput);
