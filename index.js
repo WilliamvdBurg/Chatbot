@@ -316,7 +316,7 @@ function sendOnderwijsMessage(sender) {
 function startVragen(userInput, sender)
 {
     var recipient = sender;
-    sessies[recipient].vragensessie = true;
+    sessies[recipient].questionSet = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
             .then(function (accessToken) {
