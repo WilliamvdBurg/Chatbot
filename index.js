@@ -121,7 +121,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                         }
                         else {
-                            authenticateCode(getAuthenticateCode(code))
+                            authenticateCode(getAuthenticateCode())
                                 .then(function (accessToken) {
                                     var decoded = jwt_decode(accessToken);
                                     var evaluationId = decoded.evaluationId;
@@ -338,7 +338,7 @@ function startVragen(userInput)
 
 
 // code uit de text halen
-function getAuthenticateCode(userInput){
+function getAuthenticateCode('skp-855'){
     console.log('code word opgevraagt');
     woordenArray = ["code",':',"mijn","is"]
     for (var i = 0; i < woordenArray.length; i++){
@@ -353,7 +353,7 @@ function getAuthenticateCode(userInput){
 // code
 function getEvaluation(code) {
     console.log("yoooooooooooooooop")
-    authenticateCode(code)
+    authenticateCode('skp-855')
         .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
