@@ -51,10 +51,10 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            // if (text == 'mijn code is:' + code ) {
-            //     sendWebsiteMessage(sender)
-            //
-            // }
+            if (text == 'mijn code is:' + code ) {
+                sendWebsiteMessage(sender)
+
+            }
 
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
             //     sendGenericMessage(sender)
             //
             // }
-            if (text == 'Start') {
+            if (text == 'Start' || text == 'mijn code is:' + code) {
 
 
                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
@@ -119,27 +119,21 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    } else {
-                        response = message.answers;
-                        var userInput = message.text;
-                        console.log('het lukt we krijgen code', userInput)
-                        startVragen(userInput);
-
-                    }
-                    //else {
-                    //     authenticateCode(getAuthenticateCode(code))
-                    //         .then(function (accessToken) {
-                    //             var decoded = jwt_decode(accessToken);
-                    //             var evaluationId = decoded.evaluationId;
-                    //             return getEvaluationData(evaluationId, accessToken);
-                    //         })
-                    //         .then(function (questionSet) {
-                    //             askQuestion(questionSet[sessies[recipient].vraag], sender);
-                    //         })
-                    //         .catch(function (error) {
-                    //             console.log(error);
-                    //         })
-                    // }
+                        }
+                        else {
+                            authenticateCode(getAuthenticateCode(code))
+                                .then(function (accessToken) {
+                                    var decoded = jwt_decode(accessToken);
+                                    var evaluationId = decoded.evaluationId;
+                                    return getEvaluationData(evaluationId, accessToken);
+                                })
+                                .then(function (questionSet) {
+                                    askQuestion(questionSet[sessies[recipient].vraag], sender);
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                })
+                        }
                 })
             }
             if (sessies[recipient].vragensessie && questionSet) {
