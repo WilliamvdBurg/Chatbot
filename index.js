@@ -112,10 +112,11 @@ app.post('/webhook/', function (req, res) {
             //
             // }
 
-           if (text == 'Start' ) {
+
+            if (text == 'Start' ) {
 
                  sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
-                     waitForCode = true;
+
 
                      if (error) {
                         console.log('Error sending messages: ', error)
@@ -123,6 +124,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                      // code zal moeten worden opgehaald uit de getypte text
+                     waitForCode = true;
                 })
             }
 
@@ -313,10 +315,10 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput, sender)
+function startVragen(userInput)
 {
-    var recipient = sender;
-    sessies[recipient].questionSet = true;
+    text = userInput
+    sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
             .then(function (accessToken) {
