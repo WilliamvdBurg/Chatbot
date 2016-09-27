@@ -316,8 +316,8 @@ function sendOnderwijsMessage(sender) {
 }
 
 function startVragen(userInput)
-{
-    text = userInput
+{ var sender = event.sender.id;
+    var recipient = sender;
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
