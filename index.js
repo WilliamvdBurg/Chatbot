@@ -111,19 +111,26 @@ app.post('/webhook/', function (req, res) {
             //     sendGenericMessage(sender)
             //
             // }
+
+            var waitForCode = false;
+
             if (text == 'Start' ) {
 
                  sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
-                    if (error) {
+                     waitForCode = true;
+
+                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                        }
-                        console.log('antwoord', )
-                        console.log('jawdbnaiwfiaudwwibauwaw',recipient.input);
-                        getAuthenticateCode(recipient.response);
-                     // code zal moeten worden opgahaald uit de getypte text
+                    }
+                     // code zal moeten worden opgehaald uit de getypte text
                 })
+            }
+
+            if(waitForCode) {
+                waitForCode = false;
+                startVragen(text);
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
@@ -328,22 +335,21 @@ function startVragen(userInput)
 
 
 // code uit de text halen
-function getAuthenticateCode(){
+function getAuthenticateCode(userInput){
     console.log('code word opgevraagt');
-    woordenArray = ["code",':',"mijn","is"]
+    var woordenArray = ["code",':',"mijn","is"];
     for (var i = 0; i < woordenArray.length; i++){
         userInput = userInput.replace(woordenArray[i],'')
     }
-    console.log('hier is de code', userInput)
+    console.log('hier is de code', userInput);
     return userInput;
-
 }
 
 
 // code
 function getEvaluation(code) {
     console.log("yoooooooooooooooop")
-    authenticateCode('skp-855')
+    authenticateCode(code)
         .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
