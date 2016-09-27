@@ -333,6 +333,7 @@ function startVragen(userInput)
             .catch(function (error) {
                 console.log(error);
             })
+                sessies[recipient].vragensessie && questionSet
     }
 
 
