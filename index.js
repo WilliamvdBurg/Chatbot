@@ -122,21 +122,9 @@ app.post('/webhook/', function (req, res) {
                     } else {
                         var userInput = message.text;
                         console.log('het lukt we krijgen code', userInput)
-                        startVragen(userInput)
-                        else {
-                            authenticateCode(getAuthenticateCode(code))
-                                .then(function (userInput) {
-                            console.log('userinput', userInput)
-                                    return startVragen(userInput);
-                                })
+                        startVragen(userInput);
 
-
-                    // .then(funtion(userInput)
-                    //     {
-                    //         return userInput
-                    //     }
-
-                    )
+                    }
                     //else {
                     //     authenticateCode(getAuthenticateCode(code))
                     //         .then(function (accessToken) {
