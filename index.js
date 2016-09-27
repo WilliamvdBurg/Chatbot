@@ -121,7 +121,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                         }
                         else {
-                            authenticateCode(getAuthenticateCode())
+                            authenticateCode()
                                 .then(function (accessToken) {
                                     var decoded = jwt_decode(accessToken);
                                     var evaluationId = decoded.evaluationId;
