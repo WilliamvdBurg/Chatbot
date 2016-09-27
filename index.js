@@ -130,6 +130,7 @@ app.post('/webhook/', function (req, res) {
 
             if(waitForCode) {
                 waitForCode = false;
+                console.log("code is getypt", text)
                 startVragen(text);
             }
 
