@@ -120,9 +120,8 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                         }
-                        getEvaluation()
                         else {
-                            authenticateCode()
+                        authenticateCode('skp-855')
                                 .then(function (accessToken) {
                                     var decoded = jwt_decode(accessToken);
                                     var evaluationId = decoded.evaluationId;
