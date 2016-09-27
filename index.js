@@ -115,7 +115,7 @@ app.post('/webhook/', function (req, res) {
 
             if (text == 'Start' ) {
 
-                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                 sendTextMessage(sender, 'skp-855', function (error, response, body) {
 
 
                      if (error) {
