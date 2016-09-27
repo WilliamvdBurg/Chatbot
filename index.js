@@ -51,7 +51,7 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            if (text == 'mijn code is:' ) {
+            if (text == 'mijn code is:' + code ) {
                 sendWebsiteMessage(sender)
 
             }
@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
             //     sendGenericMessage(sender)
             //
             // }
-            if (text == 'Start') {
+            if (text == 'Start' || text == 'mijn code is:' + code) {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
 
@@ -332,7 +332,7 @@ function getAuthenticateCode(code){
 // code
 function getEvaluation() {
     console.log("yoooooooooooooooop")
-    authenticateCode(getAuthenticateCode())
+    authenticateCode(getAuthenticateCode(code))
         .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
