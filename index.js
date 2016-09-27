@@ -313,7 +313,7 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput)
+function startVragen(userInput, sender)
 {
     var recipient = sender;
     sessies[recipient].vragensessie = true;
