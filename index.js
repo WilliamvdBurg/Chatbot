@@ -135,7 +135,7 @@ app.post('/webhook/', function (req, res) {
             }
             console.log('sessies[recipient].vragensessie: ', sessies[recipient].vragensessie);
             console.log('questionSet: ', questionSet);
-            if (sessies[recipient].vragensessie && questionSet) {
+            if (sessies[recipient].vragensessie) {
 
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
@@ -483,8 +483,6 @@ function askQuestion(question, sender) {
             console.log('Error: ', response.body.error)
         }
     })
-
-    console.log('--------------------------------------------------');
 }
 
 function sendInformaticaMessage(sender) {
