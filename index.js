@@ -51,6 +51,10 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
+            if (text == 'mijn code is:' ) {
+                sendWebsiteMessage(sender)
+
+            }
 
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
@@ -238,6 +242,7 @@ app.post('/webhook/', function (req, res) {
             }
             if (payload = 'Get started') {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
+
             }
 
         }
@@ -311,12 +316,23 @@ function sendOnderwijsMessage(sender) {
         }
     })
 }
+// code uit de text halen
+function getAuthenticateCode(code){
+    console.log('code word opgevraagt');
+    woordenArray = ["code",':',"mijn","is"]
+    for (var i = 0; i < woordenArray.length; i++){
+        code = code.replace(woordenArray[i],'')
+    }
+    console.log('hier is de code', code)
+    return code;
+
+}
 
 
 // code
 function getEvaluation() {
     console.log("yoooooooooooooooop")
-    authenticateCode('skp-855')
+    authenticateCode(getAuthenticateCode())
         .then(function (result) {
             var accessToken = result;
             console.log('access ontvangen')
