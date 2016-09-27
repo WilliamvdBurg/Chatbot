@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
             //     sendGenericMessage(sender)
             //
             // }
-            if (text == 'Start' || text == 'mijn code is:' + code) {
+            if (text == 'Start') {
 
 
                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
@@ -122,9 +122,21 @@ app.post('/webhook/', function (req, res) {
                     } else {
                         var userInput = message.text;
                         console.log('het lukt we krijgen code', userInput)
-                        startVragen(userInput);
+                        startVragen(userInput)
+                        else {
+                            authenticateCode(getAuthenticateCode(code))
+                                .then(function (userInput) {
+                            console.log('userinput', userInput)
+                                    return startVragen(userInput);
+                                })
 
-                    }
+
+                    .then(funtion(userInput)
+                        {
+                            return userInput
+                        }
+
+                    )
                     //else {
                     //     authenticateCode(getAuthenticateCode(code))
                     //         .then(function (accessToken) {
