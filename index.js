@@ -317,37 +317,37 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput)
-{
-    sessies[recipient].vragensessie = true;
-    sessies[recipient].vraag = 0;
-    authenticateCode(getAuthenticateCode(userInput))
-            .then(function (accessToken) {
-                var decoded = jwt_decode(accessToken);
-                var evaluationId = decoded.evaluationId;
-                return getEvaluationData(evaluationId, accessToken);
-            })
-            .then(function (questionSet) {
-                askQuestion(questionSet[sessies[recipient].vraag], sender);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
+// function startVragen(userInput)
+// {
+//     sessies[recipient].vragensessie = true;
+//     sessies[recipient].vraag = 0;
+//     authenticateCode(getAuthenticateCode(userInput))
+//             .then(function (accessToken) {
+//                 var decoded = jwt_decode(accessToken);
+//                 var evaluationId = decoded.evaluationId;
+//                 return getEvaluationData(evaluationId, accessToken);
+//             })
+//             .then(function (questionSet) {
+//                 askQuestion(questionSet[sessies[recipient].vraag], sender);
+//             })
+//             .catch(function (error) {
+//                 console.log(error);
+//             })
+//     }
 
 
 
-// code uit de text halen
-function getAuthenticateCode(){
-    console.log('code word opgevraagt');
-    woordenArray = ["code",':',"mijn","is"]
-    for (var i = 0; i < woordenArray.length; i++){
-        userInput = userInput.replace(woordenArray[i],'')
-    }
-    console.log('hier is de code', userInput)
-    return userInput;
-
-}
+// // code uit de text halen
+// function getAuthenticateCode(){
+//     console.log('code word opgevraagt');
+//     woordenArray = ["code",':',"mijn","is"]
+//     for (var i = 0; i < woordenArray.length; i++){
+//         userInput = userInput.replace(woordenArray[i],'')
+//     }
+//     console.log('hier is de code', userInput)
+//     return userInput;
+//
+// }
 
 
 // code
