@@ -119,7 +119,7 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                         }
-                        console.log('antwoord', sender.message.text)
+                        console.log('antwoord', event.message.text)
                         console.log('jawdbnaiwfiaudwwibauwaw',recipient.response);
                         getAuthenticateCode(recipient.response);
                      // code zal moeten worden opgahaald uit de getypte text
