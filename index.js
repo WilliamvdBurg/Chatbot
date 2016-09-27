@@ -131,10 +131,10 @@ app.post('/webhook/', function (req, res) {
                                 })
 
 
-                    .then(funtion(userInput)
-                        {
-                            return userInput
-                        }
+                    // .then(funtion(userInput)
+                    //     {
+                    //         return userInput
+                    //     }
 
                     )
                     //else {
