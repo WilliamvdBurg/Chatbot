@@ -5,7 +5,7 @@ var jwt_decode = require('jwt-decode');
 var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
-
+var waitForCode = false;
 var questionSet;
 var sessies = {};
 var self = this; 
@@ -112,9 +112,7 @@ app.post('/webhook/', function (req, res) {
             //
             // }
 
-            var waitForCode = false;
-
-            if (text == 'Start' ) {
+           if (text == 'Start' ) {
 
                  sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                      waitForCode = true;
