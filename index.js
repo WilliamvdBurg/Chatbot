@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
             //     sendGenericMessage(sender)
             //
             // }
-            if (text == 'Start' || text == 'mijn code is:' + code) {
+            if (text == 'Start' ) {
 
 
                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
