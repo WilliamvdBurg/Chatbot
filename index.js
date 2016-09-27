@@ -113,7 +113,8 @@ app.post('/webhook/', function (req, res) {
             // }
             if (text == 'Start' ) {
 
-
+    sessies[recipient].vragensessie = true;
+    sessies[recipient].vraag = 0;
                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
