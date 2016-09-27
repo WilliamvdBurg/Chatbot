@@ -327,6 +327,7 @@ function startVragen(userInput)
                 return getEvaluationData(evaluationId, accessToken);
             })
             .then(function (questionSet) {
+                console.log('askquetsions word aangeroepen')
                 askQuestion(questionSet[sessies[recipient].vraag], sender);
             })
             .catch(function (error) {
