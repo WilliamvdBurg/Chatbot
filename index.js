@@ -338,7 +338,7 @@ function startVragen(userInput)
 
 
 // code uit de text halen
-function getAuthenticateCode('skp-855'){
+function getAuthenticateCode(){
     console.log('code word opgevraagt');
     woordenArray = ["code",':',"mijn","is"]
     for (var i = 0; i < woordenArray.length; i++){
