@@ -114,7 +114,7 @@ app.post('/webhook/', function (req, res) {
 
 
             if (text == 'Start' ) {
-
+                waitForCode = true;
                  sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
 
 
@@ -124,7 +124,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                      // code zal moeten worden opgehaald uit de getypte text
-                     waitForCode = true;
+
                 })
             }
 
