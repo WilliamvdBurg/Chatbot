@@ -320,7 +320,7 @@ function startVragen(userInput)
 { var sender = event.sender.id;
     var recipient = sender;
     sessies[recipient].vragensessie = true;
-    sessies[recipient].vraag = 0;
+    \
     authenticateCode(getAuthenticateCode(userInput))
         .then(function (accessToken) {
             var decoded = jwt_decode(accessToken);
