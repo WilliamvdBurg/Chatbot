@@ -112,10 +112,6 @@ app.post('/webhook/', function (req, res) {
             //
             // }
 
-            if(str.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
-                alert("match!");
-            }
-
 
 
             if(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/)) {
