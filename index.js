@@ -254,10 +254,10 @@ app.post('/webhook/', function (req, res) {
         console.log('we gaan nu een call maken om de details te vragen', id, accessToken);
         return request({
             url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
-            method: 'GET',
-            headers: {
-                ['access-token']: 'JWT '+accessToken
-            }
+            method: 'GET'//,
+            // headers: {
+            //     ['access-token']: 'JWT '+accessToken
+            // }
         }).then(function (result) {
             var data = JSON.parse(result);
             var evaluation = data.results[0];
