@@ -316,8 +316,15 @@ function sendOnderwijsMessage(sender) {
 }
 
 function startVragen(userInput)
-{ var sender = event.sender.id;
+{
+    var sender = event.sender.id;
     var recipient = sender;
+    var recipient = sender;
+    if (sessies[recipient] == null || sessies[recipient] == undefined) {
+        sessies[recipient] = {};
+        sessies[recipient].answers = [];
+        console.log('self.sender is ', sessies)var sender = event.sender.id;
+
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
