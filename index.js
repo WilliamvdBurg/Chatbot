@@ -117,14 +117,15 @@ app.post('/webhook/', function (req, res) {
 
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                waitForCode = true;
+                sendTextMessage(sender, 'skp-855', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }
                     else {
-                        authenticateCode('skp-855')
+                        authenticateCode(getAuthenticateCode(userInput))
                             .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
