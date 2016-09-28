@@ -323,7 +323,9 @@ function startVragen(userInput)
     if (sessies[recipient] == null || sessies[recipient] == undefined) {
         sessies[recipient] = {};
         sessies[recipient].answers = [];
-        console.log('self.sender is ', sessies)var sender = event.sender.id;
+        console.log('self.sender is ', sessies)
+        var sender = event.sender.id;
+    }
 
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
