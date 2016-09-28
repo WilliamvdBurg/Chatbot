@@ -115,7 +115,9 @@ app.post('/webhook/', function (req, res) {
 
 
             if(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/)) {
+                console.log('werkt nie');
                authenticateCode(text);
+
             }
 
             if (text == 'Start' ) {
