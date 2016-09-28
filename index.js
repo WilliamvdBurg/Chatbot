@@ -113,7 +113,7 @@ app.post('/webhook/', function (req, res) {
             // }
 
 
-            if (text == 'Start' ) {
+            if (text == 'Start') {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
                 sendTextMessage(sender, 'otm-505', function (error, response, body) {
@@ -123,18 +123,20 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }waitForCode = true;
+                    }
+                    waitForCode = true;
                     // code zal moeten worden opgehaald uit de getypte text
 
                 });
 
             }
 
-            if(waitForCode) {
+            if (waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
-                sendTextMessage(sender, questionSet[sessies[recipient].vraag], function(){});
+                sendTextMessage(sender, questionSet[sessies[recipient].vraag], function () {
+                });
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
@@ -145,7 +147,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push(text);
-                    console.log(' answers zijn',sessies[recipient].answers);
+                    console.log(' answers zijn', sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
 
@@ -320,8 +322,8 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput)
-{ var sender = event.sender.id;
+function startVragen(userInput) {
+    var sender = event.sender.id;
     var recipient = sender;
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
@@ -342,13 +344,12 @@ function startVragen(userInput)
 }
 
 
-
 // code uit de text halen
-function getAuthenticateCode(userInput){
+function getAuthenticateCode(userInput) {
     console.log('code word opgevraagt');
-    var woordenArray = ["code",':',"mijn","is"];
-    for (var i = 0; i < woordenArray.length; i++){
-        userInput = userInput.replace(woordenArray[i],'')
+    var woordenArray = ["code", ':', "mijn", "is"];
+    for (var i = 0; i < woordenArray.length; i++) {
+        userInput = userInput.replace(woordenArray[i], '')
     }
     console.log('hier is de code', userInput);
     return userInput;
@@ -472,7 +473,18 @@ function askQuestion(question, sender) {
     };
 
     //console.log('aamessage', sender, messageData);
-    sendTextMessage(sender,messageData, function (response, error, body) {
+
+
+    console.log('messageData in sendTextMessage', messageData);
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (response, error, body) {
         if (response) {
             console.log('Response of messages');
         } else if (error) {
