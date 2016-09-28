@@ -135,7 +135,7 @@ app.post('/webhook/', function (req, res) {
             }
             console.log('sessies[recipient].vragensessie: ', sessies[recipient].vragensessie);
             console.log('questionSet: ', questionSet);
-            if (sessies[recipient].vragensessie) {
+            if (sessies[recipient].vragensessie && questionSet) {
 
                 if (text > 10) {
                     sendTextMessage(sender, 'error, antwoord onbekend!')
@@ -411,7 +411,7 @@ function getEvaluationData(id, accessToken) {
 
 function askQuestion(question, sender) {
     var quickReplies = [];
-
+    console.log('askquestions word afgehandeld')
     if (question.scale.input === 'rating') {
         var i = 1;
         _.times(question.scale.scaleNl.max, function (value) {

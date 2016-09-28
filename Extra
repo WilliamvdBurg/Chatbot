@@ -30,7 +30,27 @@
 
 
 
+HOe werkt de code op de goede manier:
 
+ if (text == 'Start' ) {
+
+                 sendTextMessage(sender, 'skp-855', function (error, response, body) {
+
+
+                     if (error) {
+                        console.log('Error sending messages: ', error)
+                    } else if (response.body.error) {
+                        console.log('Error: ', response.body.error)
+                    }waitForCode = true;
+                     // code zal moeten worden opgehaald uit de getypte text
+
+                })
+            }
+if(waitForCode) {
+                waitForCode = false;
+                console.log("code is getypt", text)
+                startVragen(text);
+}
 
 
 
