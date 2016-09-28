@@ -115,35 +115,20 @@ app.post('/webhook/', function (req, res) {
 
             if (text == 'Start' ) {
 
-                sessies[recipient].vragensessie = true;
-                sessies[recipient].vraag = 0;
-
                 sendTextMessage(sender, 'skp-855', function (error, response, body) {
-                    waitForCode = true;
+
+
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }
-                    else {
-                        authenticateCode(getAuthenticateCode(userInput))
-                            .then(function (accessToken) {
-                                var decoded = jwt_decode(accessToken);
-                                var evaluationId = decoded.evaluationId;
-                                return getEvaluationData(evaluationId, accessToken);
-                            })
-                            .then(function (questionSet) {
-                                askQuestion(questionSet[sessies[recipient].vraag], sender);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            })
-                    }
+                    }waitForCode = true;
+                    // code zal moeten worden opgehaald uit de getypte text
+
                 })
             }
 
-
-                    if(waitForCode) {
+            if(waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
