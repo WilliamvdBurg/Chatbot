@@ -113,30 +113,39 @@ app.post('/webhook/', function (req, res) {
             // }
 
 
-            if (text == 'Start') {
+
+
+            if (text == 'Start' ) {
+
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'otm-505', function (error, response, body) {
-
-
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }
-                    waitForCode = true;
-                    // code zal moeten worden opgehaald uit de getypte text
-
-                });
-
+                    else {
+                        authenticateCode('skp-855')
+                            .then(function (accessToken) {
+                                var decoded = jwt_decode(accessToken);
+                                var evaluationId = decoded.evaluationId;
+                                return getEvaluationData(evaluationId, accessToken);
+                            })
+                            .then(function (questionSet) {
+                                askQuestion(questionSet[sessies[recipient].vraag], sender);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            })
+                    }
+                })
             }
 
-            if (waitForCode) {
+            if(waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
-                sendTextMessage(sender, questionSet[sessies[recipient].vraag], function () {
-                });
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
@@ -147,7 +156,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push(text);
-                    console.log(' answers zijn', sessies[recipient].answers);
+                    console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
 
@@ -222,7 +231,7 @@ app.post('/webhook/', function (req, res) {
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
-                console.log(' testersultaten postback', sessies);
+                console.log(' stoned kotsen', sessies);
 
                 sendTextMessage(sender, antwoorden);
 
@@ -258,11 +267,9 @@ var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9z
 
 
 function sendTextMessage(sender, text, callback) {
-
     messageData = {
         text: text
     }
-    console.log('messageData in sendTextMessage', messageData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -322,9 +329,9 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput) {
-    var sender = event.sender.id;
-    var recipient = sender;
+function startVragen(userInput)
+{
+    text = userInput
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
@@ -332,24 +339,23 @@ function startVragen(userInput) {
             var decoded = jwt_decode(accessToken);
             var evaluationId = decoded.evaluationId;
             return getEvaluationData(evaluationId, accessToken);
-            console.log('token is hier', evaluationId, accessToken)
         })
         .then(function (questionSet) {
             askQuestion(questionSet[sessies[recipient].vraag], sender);
         })
         .catch(function (error) {
-            console.log('startvragen', error);
+            console.log(error);
         })
-
 }
 
 
+
 // code uit de text halen
-function getAuthenticateCode(userInput) {
+function getAuthenticateCode(userInput){
     console.log('code word opgevraagt');
-    var woordenArray = ["code", ':', "mijn", "is"];
-    for (var i = 0; i < woordenArray.length; i++) {
-        userInput = userInput.replace(woordenArray[i], '')
+    var woordenArray = ["code",':',"mijn","is"];
+    for (var i = 0; i < woordenArray.length; i++){
+        userInput = userInput.replace(woordenArray[i],'')
     }
     console.log('hier is de code', userInput);
     return userInput;
@@ -383,7 +389,7 @@ function authenticateCode(code) {
         var data = JSON.parse(result);
         return data.accessToken;
     }).catch(function (error) {
-        console.log('authenticateCode', error);
+        console.log(error);
     })
 
 
@@ -409,7 +415,7 @@ function getEvaluationData(id, accessToken) {
 
         return questionSet;
     }).catch(function (error) {
-        console.log('getEvaluationData', error);
+        console.log(error);
     });
 }
 
@@ -417,7 +423,7 @@ function getEvaluationData(id, accessToken) {
 
 function askQuestion(question, sender) {
     var quickReplies = [];
-    console.log('askquestions word afgehandeld')
+
     if (question.scale.input === 'rating') {
         var i = 1;
         _.times(question.scale.scaleNl.max, function (value) {
@@ -472,10 +478,8 @@ function askQuestion(question, sender) {
         quick_replies: quickReplies
     };
 
-    //console.log('aamessage', sender, messageData);
+    console.log('message', messageData);
 
-
-    console.log('messageData in sendTextMessage', messageData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -484,11 +488,11 @@ function askQuestion(question, sender) {
             recipient: {id: sender},
             message: messageData,
         }
-    }, function (response, error, body) {
-        if (response) {
-            console.log('Response of messages');
-        } else if (error) {
-            console.log('Error');//, error)
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
         }
     })
 }
