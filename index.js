@@ -105,9 +105,11 @@ app.post('/webhook/', function (req, res) {
                 var tokenAndId;
                 Promise.all([authenticateCode(text)])
                     .then(function (result) {
-                        tokenAndId = result[0];
+                        return tokenAndId = result[0];
                     })
-                    .then(getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken))
+                    .then(function(tokenAndId){
+                        getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
+                    })
                     .then(function (questionSet) {
                         startVragen(questionSet, recipient);
                     });
