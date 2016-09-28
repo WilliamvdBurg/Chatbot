@@ -105,8 +105,10 @@ app.post('/webhook/', function (req, res) {
                     });
 
                 if (tokenAndId) {
-                    var questionSet = getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken);
-                    startVragen(questionSet, recipient);
+                    getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
+                        .then(function(questionSet){
+                            startVragen(questionSet, recipient);
+                        });
                 } else {
                     sendTextMessage(sender, 'Foute code boii', function () {
                     });
