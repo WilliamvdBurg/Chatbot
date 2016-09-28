@@ -115,20 +115,33 @@ app.post('/webhook/', function (req, res) {
 
             if (text == 'Start' ) {
 
-                sendTextMessage(sender, 'skp-855', function (error, response, body) {
-
-
+                sessies[recipient].vragensessie = true;
+                sessies[recipient].vraag = 0;
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }waitForCode = true;
-                    // code zal moeten worden opgehaald uit de getypte text
-
+                    }
+                    else {
+                        authenticateCode('skp-855')
+                            .then(function (accessToken) {
+                                var decoded = jwt_decode(accessToken);
+                                var evaluationId = decoded.evaluationId;
+                                return getEvaluationData(evaluationId, accessToken);
+                            })
+                            .then(function (questionSet) {
+                                askQuestion(questionSet[sessies[recipient].vraag], sender);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            })
+                    }
                 })
             }
 
-            if(waitForCode) {
+
+                    if(waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
@@ -217,7 +230,7 @@ app.post('/webhook/', function (req, res) {
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
-                console.log(' stoned kotsen', sessies);
+                console.log(' testersultaten postback', sessies);
 
                 sendTextMessage(sender, antwoorden);
 
