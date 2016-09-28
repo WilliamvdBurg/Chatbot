@@ -92,35 +92,36 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee' || text == 'nee') {
-                vragensessie = true
-                vraag = 0
+                vragensessie = true;
+                vraag = 0;
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
-                        sendGenericMessage(sender)
+                        sendGenericMessage(sender);
                     }
                 })
             }
             if (text == 'restart' || text == 'Restart') {
                 sendTestfinishedMessage(sender)
             }
-            // if (text == 'haai'){
-            //     sendGenericMessage(sender)
-            //
-            // }
 
-
-
-            if(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
+            if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt nie');
-               authenticateCode(text);
+                var tokenAndId = authenticateCode(text);
+                if (tokenAndId) {
+                    var questionSet = getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken);
+                    startVragen(questionSet);
+                } else {
+                    sendTextMessage(sender, 'Foute code boii', function () {
+                    });
+                }
 
             }
 
-            if (text == 'Start' ) {
+            if (text == 'Start') {
 
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
@@ -130,24 +131,11 @@ app.post('/webhook/', function (req, res) {
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }
-                    else {
-                        authenticateCode(text)
-                            .then(function (accessToken) {
-                                var decoded = jwt_decode(accessToken);
-                                var evaluationId = decoded.evaluationId;
-                                return getEvaluationData(evaluationId, accessToken);
-                            })
-                            .then(function (questionSet) {
-                                askQuestion(questionSet[sessies[recipient].vraag], sender);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            })
-                    }
+
                 })
             }
 
-            if(waitForCode) {
+            if (waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
@@ -161,7 +149,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push(text);
-                    console.log(' answers zijn',sessies[recipient].answers);
+                    console.log(' answers zijn', sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
 
@@ -334,33 +322,19 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput)
-{
-    text = userInput
+function startVragen(questionSet) {
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
-    authenticateCode(getAuthenticateCode(userInput))
-        .then(function (accessToken) {
-            var decoded = jwt_decode(accessToken);
-            var evaluationId = decoded.evaluationId;
-            return getEvaluationData(evaluationId, accessToken);
-        })
-        .then(function (questionSet) {
-            askQuestion(questionSet[sessies[recipient].vraag], sender);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+    askQuestion(questionSet[sessies[recipient].vraag], sender);
 }
 
 
-
 // code uit de text halen
-function getAuthenticateCode(userInput){
+function getAuthenticateCode(userInput) {
     console.log('code word opgevraagt');
-    var woordenArray = ["code",':',"mijn","is"];
-    for (var i = 0; i < woordenArray.length; i++){
-        userInput = userInput.replace(woordenArray[i],'')
+    var woordenArray = ["code", ':', "mijn", "is"];
+    for (var i = 0; i < woordenArray.length; i++) {
+        userInput = userInput.replace(woordenArray[i], '')
     }
     console.log('hier is de code', userInput);
     return userInput;
@@ -390,11 +364,13 @@ function authenticateCode(code) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
         method: 'POST'
-    }).then(function (result) {
-        var data = JSON.parse(result);
-        return data.accessToken;
-    }).catch(function (error) {
-        console.log(error);
+    }).then(function (accessToken) {
+        var decoded = jwt_decode(accessToken);
+        var evaluationId = decoded.evaluationId;
+        return {
+            evaluationId: evaluationId,
+            accessToken: accessToken
+        };
     })
 
 
