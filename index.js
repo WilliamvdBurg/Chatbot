@@ -195,7 +195,7 @@ app.post('/webhook/', function (req, res) {
                             "title": "Nee",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                         }]
-                }
+                };
                 request({
                     url: 'https://graph.facebook.com/v2.6/me/messages',
                     qs: {access_token: token},
@@ -228,22 +228,6 @@ app.post('/webhook/', function (req, res) {
 
                 sendTextMessage(sender, antwoorden);
 
-                console.log('antwoorden', antwoorden);
-                // sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                //     .then(function(callBack) {
-                //         sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                //     })
-                //
-
-                // sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                // sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                // sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                // sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                // sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                // sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                // sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
-
             }
             if (payload = 'Get started') {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
@@ -262,7 +246,7 @@ var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9z
 function sendTextMessage(sender, text, callback) {
     messageData = {
         text: text
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -304,7 +288,7 @@ function sendOnderwijsMessage(sender) {
                 "title": "Scheikunde",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }]
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -369,7 +353,7 @@ function authenticateCode(code) {
         var evaluationId = decoded.evaluationId;
         return {
             evaluationId: evaluationId,
-            accessToken: accessToken
+            accessToken: decoded
         };
     })
 
