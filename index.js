@@ -326,7 +326,7 @@ function startVragen(userInput)
             var decoded = jwt_decode(accessToken);
             var evaluationId = decoded.evaluationId;
             return getEvaluationData(evaluationId, accessToken);
-            console.log('token is hier', accessToken)
+            console.log('token is hier', evaluationId, accessToken)
         })
         .then(function (questionSet) {
             askQuestion(questionSet[sessies[recipient].vraag], sender);
