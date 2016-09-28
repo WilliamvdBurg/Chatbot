@@ -468,18 +468,9 @@ function askQuestion(question, sender) {
     };
 
     console.log('aamessage', sender, messageData);
-
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
+    sendTextMessage(sender,messageData, function (response, error, body) {
+        if (response) {
+            console.log('Response of messages: ', response)
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
