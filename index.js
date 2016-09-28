@@ -113,7 +113,7 @@ app.post('/webhook/', function (req, res) {
                 var tokenAndId = authenticateCode(text);
                 if (tokenAndId) {
                     var questionSet = getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken);
-                    startVragen(questionSet);
+                    startVragen(questionSet, recipient);
                 } else {
                     sendTextMessage(sender, 'Foute code boii', function () {
                     });
@@ -322,7 +322,7 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(questionSet) {
+function startVragen(questionSet, recipient) {
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     askQuestion(questionSet[sessies[recipient].vraag], sender);
