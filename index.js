@@ -98,11 +98,12 @@ app.post('/webhook/', function (req, res) {
 
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt nie');
-                var tokenAndId = authenticateCode(text)
+                var tokenAndId;
+                Promise.all([authenticateCode(text)])
                     .then(function(result){
-                        tokenAndId = result;
+                        tokenAndId = result[0];
                     });
-                console.log('je token is', tokenAndId);
+
                 if (tokenAndId) {
                     var questionSet = getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken);
                     startVragen(questionSet, recipient);
