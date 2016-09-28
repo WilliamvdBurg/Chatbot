@@ -51,15 +51,6 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            // if (text == 'mijn code is:' + code ) {
-            //     sendWebsiteMessage(sender)
-            //
-            // }
-
-            if (text == 'Informatie' || text == 'Informatie') {
-                sendWebsiteMessage(sender)
-
-            }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
                 sendOnderwijsMessage(sender)
@@ -104,9 +95,6 @@ app.post('/webhook/', function (req, res) {
                     }
                 })
             }
-            if (text == 'restart' || text == 'Restart') {
-                sendTestfinishedMessage(sender)
-            }
 
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt nie');
@@ -122,10 +110,9 @@ app.post('/webhook/', function (req, res) {
             }
 
             if (text == 'Start') {
-
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                sendTextMessage(recipient, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
@@ -133,12 +120,6 @@ app.post('/webhook/', function (req, res) {
                     }
 
                 })
-            }
-
-            if (waitForCode) {
-                waitForCode = false;
-                console.log("code is getypt", text)
-                startVragen(text);
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
@@ -165,20 +146,7 @@ app.post('/webhook/', function (req, res) {
             if (event.message = null) {
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
-            // if (text < 11 ) {
-            //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-            //     if ( text > 10) {
-            //         sendTextMessage(sender, 'error, antwoord onbekend!'),
-            //             sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-            //     }
-            // }
 
-
-// function StartTest()
-// {
-//     sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-//     sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-// }
 
 
             function sendKlaarMessage(sender) {
@@ -313,35 +281,7 @@ function startVragen(questionSet, recipient) {
 }
 
 
-// code uit de text halen
-function getAuthenticateCode(userInput) {
-    console.log('code word opgevraagt');
-    var woordenArray = ["code", ':', "mijn", "is"];
-    for (var i = 0; i < woordenArray.length; i++) {
-        userInput = userInput.replace(woordenArray[i], '')
-    }
-    console.log('hier is de code', userInput);
-    return userInput;
-}
 
-
-// code
-function getEvaluation(code) {
-    console.log("yoooooooooooooooop")
-    authenticateCode(code)
-        .then(function (result) {
-            var accessToken = result;
-            console.log('access ontvangen')
-            console.log(accessToken);
-            var decoded = jwt_decode(accessToken);
-            console.log(decoded);
-            var evaluationId = decoded.evaluationId;
-            return getEvaluationData(evaluationId, accessToken)
-        }).then(function (result) {
-        console.log(result);
-        askQuestion(question, sender)
-    })
-}
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code) {
@@ -363,7 +303,7 @@ function authenticateCode(code) {
 function getEvaluationData(id, accessToken) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
-        qs: {access_token: token},
+        // qs: {access_token: accessToken},
         method: 'GET',
         headers: {
             ['access-token']: accessToken
@@ -427,16 +367,6 @@ function askQuestion(question, sender) {
             // afhandeling de onbekende vragen.
         });
     }
-
-    // quick_replies: [{
-    //     content_type: 'text',
-    //     title: '1',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }, {
-    //     content_type: 'text',
-    //     title: '2',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }]
 
     var messageData = {
         text: question.questionNl,
@@ -573,7 +503,7 @@ function sendStartMessage(sender) {
                 "title": "Stop",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -651,7 +581,7 @@ function sendTestfinishedMessage(sender) {
                 "title": "Nee",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
-    }
+    };
 
 
     request({
