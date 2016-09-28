@@ -116,7 +116,7 @@ app.post('/webhook/', function (req, res) {
             if (text == 'Start' ) {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'skp-855', function (error, response, body) {
+                sendTextMessage(sender, 'otm-505', function (error, response, body) {
 
 
                     if (error) {
