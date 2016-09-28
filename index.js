@@ -134,27 +134,27 @@ app.post('/webhook/', function (req, res) {
                 startVragen(text);
             }
 
-            if (sessies[recipient].vragensessie && questionSet) {
-
-                if (text > 10) {
-                    sendTextMessage(sender, 'error, antwoord onbekend!')
-                }
-                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
-                    sessies[recipient].vraag++;
-                    sessies[recipient].answers.push(text);
-                    console.log(' answers zijn',sessies[recipient].answers);
-                    // moet gereset worden + verzonden.
-                }
-
-                if (questionSet[sessies[recipient].vraag]) {
-                    askQuestion(questionSet[sessies[recipient].vraag], sender);
-                }
-
-                if (sessies[recipient].vraag >= questionSet.length) {
-                    sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
-                }
-
-            }
+            // if (sessies[recipient].vragensessie && questionSet) {
+            //
+            //     if (text > 10) {
+            //         sendTextMessage(sender, 'error, antwoord onbekend!')
+            //     }
+            //     if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
+            //         sessies[recipient].vraag++;
+            //         sessies[recipient].answers.push(text);
+            //         console.log(' answers zijn',sessies[recipient].answers);
+            //         // moet gereset worden + verzonden.
+            //     }
+            //
+            //     if (questionSet[sessies[recipient].vraag]) {
+            //         askQuestion(questionSet[sessies[recipient].vraag], sender);
+            //     }
+            //
+            //     if (sessies[recipient].vraag >= questionSet.length) {
+            //         sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
+            //     }
+            //
+            // }
             if (event.message = null) {
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
@@ -319,14 +319,6 @@ function startVragen(userInput)
 {
     var sender = event.sender.id;
     var recipient = sender;
-    var recipient = sender;
-    if (sessies[recipient] == null || sessies[recipient] == undefined) {
-        sessies[recipient] = {};
-        sessies[recipient].answers = [];
-        console.log('self.sender is ', sessies)
-        var sender = event.sender.id;
-    }
-
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
