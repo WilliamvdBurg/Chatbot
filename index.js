@@ -466,7 +466,7 @@ function askQuestion(question, sender) {
         quick_replies: quickReplies
     };
 
-    console.log('message', messageData);
+    console.log('aamessage', messageData);
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
