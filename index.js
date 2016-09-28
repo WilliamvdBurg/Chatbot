@@ -126,13 +126,15 @@ app.post('/webhook/', function (req, res) {
                     }waitForCode = true;
                     // code zal moeten worden opgehaald uit de getypte text
 
-                })
+                });
+
             }
 
             if(waitForCode) {
                 waitForCode = false;
                 console.log("code is getypt", text)
                 startVragen(text);
+                sendTextMessage(sender, questionSet[sessies[recipient].vraag], function(){});
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
