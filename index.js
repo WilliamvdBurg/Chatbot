@@ -258,7 +258,7 @@ var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9z
 function sendTextMessage(sender, text, callback) {
 
     messageData = {
-        text: encodeURI(text)
+        text: text
     }
     console.log('messageData in sendTextMessage', messageData);
     request({
