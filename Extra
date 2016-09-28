@@ -1,4 +1,188 @@
 
+  function startVragen(userInput)
+  { var sender = event.sender.id;
+      var recipient = sender;
+      sessies[recipient].vragensessie = true;
+      sessies[recipient].vraag = 0;
+      authenticateCode(getAuthenticateCode(userInput))
+              .then(function (accessToken) {
+                  var decoded = jwt_decode(accessToken);
+                  var evaluationId = decoded.evaluationId;
+                  return getEvaluationData(evaluationId, accessToken);
+              })
+              .then(function (questionSet) {
+                  console.log('askquetsions word aangeroepen')
+                  askQuestion(questionSet[sessies[recipient].vraag], sender);
+              })
+              .catch(function (error) {
+                  console.log(error);
+              })
+      }
+
+
+
+  // code uit de text halen
+  function getAuthenticateCode(userInput){
+      console.log('code word opgevraagt');
+      var woordenArray = ["code",':',"mijn","is"];
+      for (var i = 0; i < woordenArray.length; i++){
+          userInput = userInput.replace(woordenArray[i],'')
+      }
+      console.log('hier is de code', userInput);
+      return userInput;
+  }
+
+
+  // code
+  function getEvaluation(code) {
+      console.log("yoooooooooooooooop")
+      authenticateCode(code)
+          .then(function (result) {
+              var accessToken = result;
+              console.log('access ontvangen')
+              console.log(accessToken);
+              var decoded = jwt_decode(accessToken);
+              console.log(decoded);
+              var evaluationId = decoded.evaluationId;
+              return getEvaluationData(evaluationId, accessToken)
+          }).then(function (result) {
+          console.log(result);
+          askQuestion(question, sender)
+      })
+  }
+  // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
+  // bij terugkrijgen van de acces token word die ge returned.
+  function authenticateCode(code) {
+      return request({
+          url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
+          method: 'POST'
+      }).then(function (result) {
+          var data = JSON.parse(result);
+          return data.accessToken;
+      }).catch(function (error) {
+          console.log(error);
+      })
+
+
+  }
+  // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
+  function getEvaluationData(id, accessToken) {
+      return request({
+          url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
+          qs: {access_token: token},
+          method: 'GET',
+          headers: {
+              ['access-token']: accessToken
+          }
+      }).then(function (result) {
+          var data = JSON.parse(result);
+          var evaluation = data.results[0];
+
+          var openQuestions = [];
+          _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
+              questionSet = questionset.questions;
+              console.log(questionSet);
+          });
+
+          return questionSet;
+      }).catch(function (error) {
+          console.log(error);
+      });
+  }
+
+  // in deze functie worden de question soorten beschreven en verteld wat ze moeten uitvoeren.
+
+  function askQuestion(question, sender) {
+      var quickReplies = [];
+      console.log('askquestions word afgehandeld')
+      if (question.scale.input === 'rating') {
+          var i = 1;
+          _.times(question.scale.scaleNl.max, function (value) {
+              quickReplies.push({
+                  content_type: 'text',
+                  title: i++,
+                  payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+              })
+          });
+
+          // 1 t/m 10 afhandeling
+
+      } else if (question.scale.input === 'boolean') {
+
+          quickReplies.push({
+              content_type: 'text',
+              title: scale.value,
+              payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+
+          })
+          // Ja/nee afhandeling
+
+      } else if (question.scale.input === 'text') {
+          // Open vraag
+          input.push
+      }
+
+
+      else {
+          question.scale.scaleNl.forEach(function (scale) {
+              quickReplies.push({
+                  content_type: 'text',
+                  title: scale.value,
+                  payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+              })
+              // afhandeling de onbekende vragen.
+          });
+      }
+
+      // quick_replies: [{
+      //     content_type: 'text',
+      //     title: '1',
+      //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+      // }, {
+      //     content_type: 'text',
+      //     title: '2',
+      //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
+      // }]
+
+      var messageData = {
+          text: question.questionNl,
+          quick_replies: quickReplies
+      };
+
+      console.log('aamessage', messageData);
+
+      request({
+          url: 'https://graph.facebook.com/v2.6/me/messages',
+          qs: {access_token: token},
+          method: 'POST',
+          json: {
+              recipient: {id: sender},
+              message: messageData,
+          }
+      }, function (error, response, body) {
+          if (error) {
+              console.log('Error sending messages: ', error)
+          } else if (response.body.error) {
+              console.log('Error: ', response.body.error)
+          }
+      })
+  }
+
+
+
+  --------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
   if (text == 'Start' ) {
 
     sessies[recipient].vragensessie = true;
