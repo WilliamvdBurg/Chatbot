@@ -112,8 +112,15 @@ app.post('/webhook/', function (req, res) {
             //
             // }
 
+            if(str.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
+                alert("match!");
+            }
 
 
+
+            if(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/)) {
+               authenticateCode(text);
+            }
 
             if (text == 'Start' ) {
 
@@ -126,7 +133,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                     else {
-                        authenticateCode('otm-505')
+                        authenticateCode(text)
                             .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
