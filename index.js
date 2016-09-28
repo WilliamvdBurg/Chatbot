@@ -8,7 +8,7 @@ var Promise = require('bluebird');
 var waitForCode = false;
 var questionSet;
 var sessies = {};
-var self = this; 
+var self = this;
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -113,32 +113,18 @@ app.post('/webhook/', function (req, res) {
             // }
 
 
-
-
             if (text == 'Start' ) {
 
-                sessies[recipient].vragensessie = true;
-                sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                sendTextMessage(sender, 'skp-855', function (error, response, body) {
+
+
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }
-                    else {
-                        authenticateCode('skp-855')
-                            .then(function (accessToken) {
-                                var decoded = jwt_decode(accessToken);
-                                var evaluationId = decoded.evaluationId;
-                                return getEvaluationData(evaluationId, accessToken);
-                            })
-                            .then(function (questionSet) {
-                                askQuestion(questionSet[sessies[recipient].vraag], sender);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            })
-                    }
+                    }waitForCode = true;
+                    // code zal moeten worden opgehaald uit de getypte text
+
                 })
             }
 
@@ -330,23 +316,24 @@ function sendOnderwijsMessage(sender) {
 }
 
 function startVragen(userInput)
-{
-    text = userInput
+{ var sender = event.sender.id;
+    var recipient = sender;
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
-            .then(function (accessToken) {
-                var decoded = jwt_decode(accessToken);
-                var evaluationId = decoded.evaluationId;
-                return getEvaluationData(evaluationId, accessToken);
-            })
-            .then(function (questionSet) {
-                askQuestion(questionSet[sessies[recipient].vraag], sender);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
+        .then(function (accessToken) {
+            var decoded = jwt_decode(accessToken);
+            var evaluationId = decoded.evaluationId;
+            return getEvaluationData(evaluationId, accessToken);
+        })
+        .then(function (questionSet) {
+            askQuestion(questionSet[sessies[recipient].vraag], sender);
+        })
+        .catch(function (error) {
+            console.log('startvragen', error);
+        })
+
+}
 
 
 
@@ -389,7 +376,7 @@ function authenticateCode(code) {
         var data = JSON.parse(result);
         return data.accessToken;
     }).catch(function (error) {
-        console.log(error);
+        console.log('authenticateCode', error);
     })
 
 
@@ -415,7 +402,7 @@ function getEvaluationData(id, accessToken) {
 
         return questionSet;
     }).catch(function (error) {
-        console.log(error);
+        console.log('getEvaluationData', error);
     });
 }
 
@@ -423,7 +410,7 @@ function getEvaluationData(id, accessToken) {
 
 function askQuestion(question, sender) {
     var quickReplies = [];
-
+    console.log('askquestions word afgehandeld')
     if (question.scale.input === 'rating') {
         var i = 1;
         _.times(question.scale.scaleNl.max, function (value) {
@@ -478,7 +465,7 @@ function askQuestion(question, sender) {
         quick_replies: quickReplies
     };
 
-    console.log('message', messageData);
+    console.log('aamessage', messageData);
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
