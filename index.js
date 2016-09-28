@@ -467,12 +467,12 @@ function askQuestion(question, sender) {
         quick_replies: quickReplies
     };
 
-    console.log('aamessage', sender, messageData);
+    //console.log('aamessage', sender, messageData);
     sendTextMessage(sender,messageData, function (response, error, body) {
         if (response) {
             console.log('Response of messages: ', response)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
+        } else if (error) {
+            console.log('Error: ', error)
         }
     })
 }
