@@ -99,6 +99,7 @@ app.post('/webhook/', function (req, res) {
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt nie');
                 var tokenAndId = authenticateCode(text);
+                console.log('je token is', tokenAndId);
                 if (tokenAndId) {
                     var questionSet = getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken);
                     startVragen(questionSet, recipient);
@@ -293,7 +294,7 @@ function authenticateCode(code) {
         var evaluationId = decoded.evaluationId;
         return {
             evaluationId: evaluationId,
-            accessToken: decoded
+            accessToken: accessToken
         };
     })
 
