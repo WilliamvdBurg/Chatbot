@@ -260,6 +260,7 @@ function sendTextMessage(sender, text, callback) {
     messageData = {
         text: encodeURI(text)
     }
+    console.log('messageData in sendTextMessage', messageData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -473,9 +474,9 @@ function askQuestion(question, sender) {
     //console.log('aamessage', sender, messageData);
     sendTextMessage(sender,messageData, function (response, error, body) {
         if (response) {
-            console.log('Response of messages: ', response)
+            console.log('Response of messages');
         } else if (error) {
-            console.log('Error: ', error)
+            console.log('Error');//, error)
         }
     })
 }
