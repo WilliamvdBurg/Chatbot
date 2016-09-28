@@ -107,11 +107,6 @@ app.post('/webhook/', function (req, res) {
             if (text == 'restart' || text == 'Restart') {
                 sendTestfinishedMessage(sender)
             }
-            // if (text == 'haai'){
-            //     sendGenericMessage(sender)
-            //
-            // }
-
 
             if (text == 'Start' ) {
 
