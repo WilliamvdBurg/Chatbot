@@ -119,11 +119,12 @@ app.post('/webhook/', function (req, res) {
                 sessies[recipient].vraag = 0;
 
                 sendTextMessage(sender, 'skp-855', function (error, response, body) {
+                    waitForCode = true;
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }waitForCode = true
+                    }
                     else {
                         authenticateCode(getAuthenticateCode(userInput))
                             .then(function (accessToken) {
