@@ -107,19 +107,24 @@ app.post('/webhook/', function (req, res) {
             if (text == 'restart' || text == 'Restart') {
                 sendTestfinishedMessage(sender)
             }
+            // if (text == 'haai'){
+            //     sendGenericMessage(sender)
+            //
+            // }
+
+
 
             if (text == 'Start' ) {
 
-                sendTextMessage(sender, 'skp-855', function (error, response, body) {
+                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                     waitForCode = true;
 
-
-                    if (error) {
+                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
-                    }waitForCode = true;
-                    // code zal moeten worden opgehaald uit de getypte text
-
+                    }
+                     // code zal moeten worden opgehaald uit de getypte text
                 })
             }
 
@@ -129,27 +134,27 @@ app.post('/webhook/', function (req, res) {
                 startVragen(text);
             }
 
-            // if (sessies[recipient].vragensessie && questionSet) {
-            //
-            //     if (text > 10) {
-            //         sendTextMessage(sender, 'error, antwoord onbekend!')
-            //     }
-            //     if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
-            //         sessies[recipient].vraag++;
-            //         sessies[recipient].answers.push(text);
-            //         console.log(' answers zijn',sessies[recipient].answers);
-            //         // moet gereset worden + verzonden.
-            //     }
-            //
-            //     if (questionSet[sessies[recipient].vraag]) {
-            //         askQuestion(questionSet[sessies[recipient].vraag], sender);
-            //     }
-            //
-            //     if (sessies[recipient].vraag >= questionSet.length) {
-            //         sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
-            //     }
-            //
-            // }
+            if (sessies[recipient].vragensessie && questionSet) {
+
+                if (text > 10) {
+                    sendTextMessage(sender, 'error, antwoord onbekend!')
+                }
+                if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
+                    sessies[recipient].vraag++;
+                    sessies[recipient].answers.push(text);
+                    console.log(' answers zijn',sessies[recipient].answers);
+                    // moet gereset worden + verzonden.
+                }
+
+                if (questionSet[sessies[recipient].vraag]) {
+                    askQuestion(questionSet[sessies[recipient].vraag], sender);
+                }
+
+                if (sessies[recipient].vraag >= questionSet.length) {
+                    sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
+                }
+
+            }
             if (event.message = null) {
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
@@ -312,51 +317,24 @@ function sendOnderwijsMessage(sender) {
 
 function startVragen(userInput)
 {
-    var sender = event.sender.id;
-    var recipient = sender;
+    text = userInput
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
     authenticateCode(getAuthenticateCode(userInput))
-        .then(function (accessToken) {
-            var decoded = jwt_decode(accessToken);
-            var evaluationId = decoded.evaluationId;
-            return getEvaluationData(evaluationId, accessToken);
-        })
-        .then(function (questionSet) {
-            askQuestion(questionSet[sessies[recipient].vraag], sender);
-        })
-        .catch(function (error) {
-            console.log('startvragen', error);
-        })
-
-
-}
-
-
-function getQuestions()
-{
-    if (sessies[recipient].vragensessie && questionSet) {
-
-        if (text > 10) {
-            sendTextMessage(sender, 'error, antwoord onbekend!')
-        }
-        if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
-            sessies[recipient].vraag++;
-            sessies[recipient].answers.push(text);
-            console.log(' answers zijn', sessies[recipient].answers);
-            // moet gereset worden + verzonden.
-        }
-
-        if (questionSet[sessies[recipient].vraag]) {
-            askQuestion(questionSet[sessies[recipient].vraag], sender);
-        }
-
-        if (sessies[recipient].vraag >= questionSet.length) {
-            sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
-        }
-
+            .then(function (accessToken) {
+                var decoded = jwt_decode(accessToken);
+                var evaluationId = decoded.evaluationId;
+                return getEvaluationData(evaluationId, accessToken);
+            })
+            .then(function (questionSet) {
+                askQuestion(questionSet[sessies[recipient].vraag], sender);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
-}
+
+
 
 // code uit de text halen
 function getAuthenticateCode(userInput){
@@ -397,7 +375,7 @@ function authenticateCode(code) {
         var data = JSON.parse(result);
         return data.accessToken;
     }).catch(function (error) {
-        console.log('authenticateCode', error);
+        console.log(error);
     })
 
 
@@ -423,16 +401,15 @@ function getEvaluationData(id, accessToken) {
 
         return questionSet;
     }).catch(function (error) {
-        console.log('getEvaluationData', error);
+        console.log(error);
     });
 }
 
 // in deze functie worden de question soorten beschreven en verteld wat ze moeten uitvoeren.
 
 function askQuestion(question, sender) {
-    getQuestions()
     var quickReplies = [];
-    console.log('askquestions word afgehandeld')
+
     if (question.scale.input === 'rating') {
         var i = 1;
         _.times(question.scale.scaleNl.max, function (value) {
@@ -487,7 +464,7 @@ function askQuestion(question, sender) {
         quick_replies: quickReplies
     };
 
-    console.log('aamessage', messageData);
+    console.log('message', messageData);
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
