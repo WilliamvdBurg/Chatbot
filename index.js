@@ -127,7 +127,7 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                     else {
-                        authenticateCode('skp-855')
+                        authenticateCode(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g))
                             .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
