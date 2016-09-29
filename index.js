@@ -406,6 +406,7 @@ function getEvaluationData(id, accessToken) {
     }).then(function (result) {
         var data = JSON.parse(result);
         var evaluation = data.results[0];
+        console.log ('evaluatie', data)
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
