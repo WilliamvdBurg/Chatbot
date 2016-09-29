@@ -49,6 +49,7 @@ app.post('/webhook/', function (req, res) {
         if (sessies[recipient] == null || sessies[recipient] == undefined) {
             sessies[recipient] = {};
             console.log("log dit kut ding", sessies[recipient])
+            console.log('fuck', sessies[recipient].answers = [])
             sessies[recipient].answers = [];
             console.log('self.sender is ', sessies)
         }
