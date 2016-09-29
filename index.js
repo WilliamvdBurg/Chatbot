@@ -247,7 +247,7 @@ function authenticateCode(code) {
         var evaluationId = decoded.evaluationId;
         return {
             evaluationId: evaluationId,
-            accessToken: accessToken
+            accessToken: accessToken.accessToken
         };
     })
 
