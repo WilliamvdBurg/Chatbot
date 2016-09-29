@@ -255,10 +255,9 @@ function getEvaluationData(id, accessToken) {
     console.log('we gaan nu een call maken om de details te vragen', id, accessToken);
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
-        qs: {access_token: token},
         method: 'GET',
         headers: {
-            ['access-token']: accessToken
+            ['access-token']: 'jwt' +accessToken
         }
     }).then(function (result) {
         var data = JSON.parse(result);
