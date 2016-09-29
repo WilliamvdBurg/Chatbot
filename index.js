@@ -227,7 +227,7 @@ function sendOnderwijsMessage(sender) {
 function startVragen(questionSet, recipient) {
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
-    askQuestion(questionSet[sessies[recipient].vraag], sender);
+    askQuestion(questionSet[sessies[recipient].vraag], recipient);
 }
 
 
