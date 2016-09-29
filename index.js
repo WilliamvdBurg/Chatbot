@@ -266,7 +266,7 @@ function getEvaluationData(id, accessToken) {
         var evaluation = data.results[0];
 
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
-            questionSet.concat(questionset.questions);
+            questionSet = questionSet.concat(questionset.questions);
         });
 
         return questionSet;
