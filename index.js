@@ -8,7 +8,10 @@ var Promise = require('bluebird');
 var waitForCode = false;
 var questionSet;
 var sessies = {};
+
 var self = this;
+
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -50,16 +53,8 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
 
             text = event.message.text;
+            console.log('text:',text)
 
-            // if (text == 'mijn code is:' + code ) {
-            //     sendWebsiteMessage(sender)
-            //
-            // }
-
-            if (text == 'Informatie' || text == 'Informatie') {
-                sendWebsiteMessage(sender)
-
-            }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
                 sendOnderwijsMessage(sender)
@@ -92,60 +87,49 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
             if (text == 'Nee' || text == 'nee') {
-                vragensessie = true
-                vraag = 0
+                vragensessie = true;
+                vraag = 0;
                 sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     } else {
-                        sendGenericMessage(sender)
+                        sendGenericMessage(sender);
                     }
                 })
             }
-            if (text == 'restart' || text == 'Restart') {
-                sendTestfinishedMessage(sender)
+
+            if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
+                console.log('werkt ');
+                var tokenAndId;
+                Promise.all([authenticateCode(text)])
+                    .then(function (result) {
+                        return tokenAndId = result[0];
+                    })
+                    .then(function (tokenAndId) {
+                        getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
+                    })
+                    .then(function (questionSet) {
+                        startVragen(questionSet, recipient);
+                    });
+            } else {
+                sendTextMessage(sender, 'Foute code boii', function () {
+                });
             }
-            // if (text == 'haai'){
-            //     sendGenericMessage(sender)
-            //
-            // }
 
 
-
-
-            if (text == 'Start' ) {
-
+            if (text == 'Start') {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                sendTextMessage(recipient, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
                         console.log('Error: ', response.body.error)
                     }
-                    else {
-                        authenticateCode('skp-855')
-                            .then(function (accessToken) {
-                                var decoded = jwt_decode(accessToken);
-                                var evaluationId = decoded.evaluationId;
-                                return getEvaluationData(evaluationId, accessToken);
-                            })
-                            .then(function (questionSet) {
-                                askQuestion(questionSet[sessies[recipient].vraag], sender);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            })
-                    }
-                })
-            }
 
-            if(waitForCode) {
-                waitForCode = false;
-                console.log("code is getypt", text)
-                startVragen(text);
+                })
             }
 
             if (sessies[recipient].vragensessie && questionSet) {
@@ -156,7 +140,7 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push(text);
-                    console.log(' answers zijn',sessies[recipient].answers);
+                    console.log(' answers zijn', sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
 
@@ -172,104 +156,17 @@ app.post('/webhook/', function (req, res) {
             if (event.message = null) {
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
-            // if (text < 11 ) {
-            //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-            //     if ( text > 10) {
-            //         sendTextMessage(sender, 'error, antwoord onbekend!'),
-            //             sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-            //     }
-            // }
-
-
-// function StartTest()
-// {
-//     sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-//     sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-// }
-
-
-            function sendKlaarMessage(sender) {
-                messageData = {
-                    "text": "Alle vragen zijn beantwoord, bent u zeker over uw antwoorden?",
-                    "quick_replies": [
-                        {
-                            "content_type": "text",
-                            "title": "Ja",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                        },
-                        {
-                            "content_type": "text",
-                            "title": "Nee",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                        }]
-                }
-                request({
-                    url: 'https://graph.facebook.com/v2.6/me/messages',
-                    qs: {access_token: token},
-                    method: 'POST',
-                    json: {
-                        recipient: {id: sender},
-                        message: messageData,
-                    }
-                }, function (error, response, body) {
-                    if (error) {
-                        console.log('Error sending messages: ', error)
-                    } else if (response.body.error) {
-                        console.log('Error: ', response.body.error)
-                    }
-                })
-
-            }
-
-        }
-        else if (event.postback && event.postback.payload) {
-            payload = event.postback.payload;
-
-            if (payload = 'Testresultaten') {
-
-                var antwoorden = '';
-                for (var i = 0; i < sessies[recipient].answers.length; i++) {
-                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
-                }
-                console.log(' stoned kotsen', sessies);
-
-                sendTextMessage(sender, antwoorden);
-
-                console.log('antwoorden', antwoorden);
-                // sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                //     .then(function(callBack) {
-                //         sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                //     })
-                //
-
-                // sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                // sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                // sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                // sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                // sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                // sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                // sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
-
-            }
-            if (payload = 'Get started') {
-                sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
-
-            }
-
         }
     }
-    res.sendStatus(200);
 });
-
-
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+
 
 
 function sendTextMessage(sender, text, callback) {
     messageData = {
         text: text
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -311,7 +208,7 @@ function sendOnderwijsMessage(sender) {
                 "title": "Scheikunde",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }]
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -329,79 +226,39 @@ function sendOnderwijsMessage(sender) {
     })
 }
 
-function startVragen(userInput)
-{
-    text = userInput
+function startVragen(questionSet, recipient) {
     sessies[recipient].vragensessie = true;
     sessies[recipient].vraag = 0;
-    authenticateCode(getAuthenticateCode(userInput))
-        .then(function (accessToken) {
-            var decoded = jwt_decode(accessToken);
-            var evaluationId = decoded.evaluationId;
-            return getEvaluationData(evaluationId, accessToken);
-        })
-        .then(function (questionSet) {
-            askQuestion(questionSet[sessies[recipient].vraag], sender);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+    askQuestion(questionSet[sessies[recipient].vraag], sender);
 }
 
 
-
-// code uit de text halen
-function getAuthenticateCode(userInput){
-    console.log('code word opgevraagt');
-    var woordenArray = ["code",':',"mijn","is"];
-    for (var i = 0; i < woordenArray.length; i++){
-        userInput = userInput.replace(woordenArray[i],'')
-    }
-    console.log('hier is de code', userInput);
-    return userInput;
-}
-
-
-// code
-function getEvaluation(code) {
-    console.log("yoooooooooooooooop")
-    authenticateCode(code)
-        .then(function (result) {
-            var accessToken = result;
-            console.log('access ontvangen')
-            console.log(accessToken);
-            var decoded = jwt_decode(accessToken);
-            console.log(decoded);
-            var evaluationId = decoded.evaluationId;
-            return getEvaluationData(evaluationId, accessToken)
-        }).then(function (result) {
-        console.log(result);
-        askQuestion(question, sender)
-    })
-}
 // evaluren met code word gevraagd met die code. als het goed gaat krijg je Acces token terug. anders een error
 // bij terugkrijgen van de acces token word die ge returned.
 function authenticateCode(code) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/auth/code?code=' + code,
         method: 'POST'
-    }).then(function (result) {
-        var data = JSON.parse(result);
-        return data.accessToken;
-    }).catch(function (error) {
-        console.log(error);
+    }).then(function (accessToken) {
+        var decoded = jwt_decode(accessToken);
+        var evaluationId = decoded.evaluationId;
+        return {
+            evaluationId: evaluationId,
+            accessToken: accessToken
+        };
     })
 
 
 }
+
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
 function getEvaluationData(id, accessToken) {
+    console.log('we gaan nu een call maken om de details te vragen', id, accessToken);
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
-        qs: {access_token: token},
         method: 'GET',
         headers: {
-            ['access-token']: accessToken
+            ['access-token']: 'JWT ' + accessToken
         }
     }).then(function (result) {
         var data = JSON.parse(result);
@@ -462,16 +319,6 @@ function askQuestion(question, sender) {
             // afhandeling de onbekende vragen.
         });
     }
-
-    // quick_replies: [{
-    //     content_type: 'text',
-    //     title: '1',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }, {
-    //     content_type: 'text',
-    //     title: '2',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }]
 
     var messageData = {
         text: question.questionNl,
@@ -545,6 +392,7 @@ function sendInformaticaMessage(sender) {
     })
 
 }
+
 function sendModuleMessage(sender) {
     messageData = {
         "text": "Om welke Module gaat het?",
@@ -608,7 +456,7 @@ function sendStartMessage(sender) {
                 "title": "Stop",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -686,7 +534,7 @@ function sendTestfinishedMessage(sender) {
                 "title": "Nee",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
-    }
+    };
 
 
     request({
