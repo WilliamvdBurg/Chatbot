@@ -257,7 +257,7 @@ function getEvaluationData(id, accessToken) {
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
         method: 'GET',
         headers: {
-            ['access-token']: 'JWT ' + accessToken.accessToken
+            ['access-token']: 'JWT ' + accessToken
         }
     }).then(function (result) {
         console.log("result data", result)
