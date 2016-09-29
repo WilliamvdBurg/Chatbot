@@ -122,7 +122,7 @@ app.post('/webhook/', function (req, res) {
             if (text == 'Start') {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(recipient, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
@@ -261,12 +261,12 @@ function getEvaluationData(id, accessToken) {
             'access-token': 'JWT ' + accessToken.accessToken
         }
     }).then(function (result) {
-
         var data = JSON.parse(result);
         var evaluation = data.results[0];
 
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
-            questionSet = questionSet.concat(questionset.questions);
+            questionSet = questionSet.concat(questionset.questions)
+            console.log(questionset);
         });
 
         return questionSet;
@@ -389,7 +389,6 @@ function sendInformaticaMessage(sender) {
     })
 
 }
-
 function sendModuleMessage(sender) {
     messageData = {
         "text": "Om welke Module gaat het?",
