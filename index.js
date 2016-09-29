@@ -53,7 +53,6 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
 
             text = event.message.text;
-            console.log('text:',text)
 
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
@@ -256,9 +255,10 @@ function getEvaluationData(id, accessToken) {
     console.log('we gaan nu een call maken om de details te vragen', id, accessToken);
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
+        qs: {access_token: token},
         method: 'GET',
         headers: {
-            ['access-token']: 'JWT ' + accessToken
+            ['access-token']: accessToken
         }
     }).then(function (result) {
         var data = JSON.parse(result);
