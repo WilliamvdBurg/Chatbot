@@ -69,8 +69,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="260" column="28" selection-start-line="260" selection-start-column="28" selection-end-line="260" selection-end-column="28" />
+            <state relative-caret-position="109">
+              <caret line="253" column="26" selection-start-line="253" selection-start-column="9" selection-end-line="253" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -339,7 +339,7 @@
       <workItem from="1472548260805" duration="15223000" />
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
-      <workItem from="1474039264905" duration="175659000" />
+      <workItem from="1474039264905" duration="176554000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -429,7 +429,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326996000" />
+    <option name="totallyTimeSpent" value="327891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -500,7 +500,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="38" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -796,8 +796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="260" column="28" selection-start-line="260" selection-start-column="28" selection-end-line="260" selection-end-column="28" />
+        <state relative-caret-position="109">
+          <caret line="253" column="26" selection-start-line="253" selection-start-column="9" selection-end-line="253" selection-end-column="26" />
           <folding />
         </state>
       </provider>

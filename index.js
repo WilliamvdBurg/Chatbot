@@ -108,7 +108,7 @@ app.post('/webhook/', function (req, res) {
                         return tokenAndId = result[0];
                     })
                     .then(function (tokenAndId) {
-                        getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
+                        return getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
                     })
                     .then(function (questionSet) {
                         startVragen(questionSet, recipient);
@@ -252,7 +252,7 @@ function authenticateCode(code) {
 
 // hierin word de assay aangevraagd zodat deze in het rest van de code gebruikt kan worden.  de token is een token die je terugkrijgt nadat je je eerste token meegeeft op de site van evalytics. deze code geeft je de vragen terug.
 function getEvaluationData(id, accessToken) {
-    console.log('we gaan nu een call maken om de details te vragen', id, accessToken);
+
     accessToken = JSON.parse(accessToken);
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
@@ -261,19 +261,15 @@ function getEvaluationData(id, accessToken) {
             'access-token': 'JWT ' + accessToken.accessToken
         }
     }).then(function (result) {
-        console.log("result data", result)
+
         var data = JSON.parse(result);
         var evaluation = data.results[0];
 
-        var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
-            questionSet = questionset.questions;
-            console.log(questionSet);
+            questionSet.push(questionset.questions);
         });
 
         return questionSet;
-    }).catch(function (error) {
-        console.log(error);
     });
 }
 
