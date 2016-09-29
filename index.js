@@ -260,6 +260,7 @@ function getEvaluationData(id, accessToken) {
             ['access-token']: 'JWT ' + accessToken.accessToken
         }
     }).then(function (result) {
+        console.log("result data", result)
         var data = JSON.parse(result);
         var evaluation = data.results[0];
 
