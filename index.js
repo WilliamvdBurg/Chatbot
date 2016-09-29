@@ -99,23 +99,23 @@ app.post('/webhook/', function (req, res) {
                 })
             }
 
-            if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
-                console.log('werkt ');
-                var tokenAndId;
-                Promise.all([authenticateCode(text)])
-                    .then(function (result) {
-                        return tokenAndId = result[0];
-                    })
-                    .then(function (tokenAndId) {
-                        getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
-                    })
-                    .then(function (questionSet) {
-                        startVragen(questionSet, recipient);
-                    });
-            } else {
-                sendTextMessage(sender, 'Foute code boii', function () {
-                });
-            }
+            // if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
+            //     console.log('werkt ');
+            //     var tokenAndId;
+            //     Promise.all([authenticateCode(text)])
+            //         .then(function (result) {
+            //             return tokenAndId = result[0];
+            //         })
+            //         .then(function (tokenAndId) {
+            //             getEvaluationData(tokenAndId.evaluationId, tokenAndId.accessToken)
+            //         })
+            //         .then(function (questionSet) {
+            //             startVragen(questionSet, recipient);
+            //         });
+            // } else {
+            //     sendTextMessage(sender, 'Foute code boii', function () {
+            //     });
+            // }
 
 
             if (text == 'Start') {
