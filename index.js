@@ -399,7 +399,6 @@ function authenticateCode(code) {
 function getEvaluationData(id, accessToken) {
     return request({
         url: 'https://staging-api-portal.evalytics.nl/evaluation/getDetails/' + id,
-        qs: {access_token: token},
         method: 'GET',
         headers: {
             ['access-token']: accessToken
@@ -497,6 +496,27 @@ function askQuestion(question, sender) {
         }
     })
 }
+function sendAnswers(sender){
+    var formData = new FormData();
+
+    formData.append( id , duration, evaluationBlocks)
+    request({
+    url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
+    method: 'POST',
+    json: {
+        recipient: {id: sender},
+        message:  sessies[recipient].answers,
+    }
+}, function (error, response, body) {
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
+}
+
+
 
 function sendInformaticaMessage(sender) {
     messageData = {
