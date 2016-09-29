@@ -68,8 +68,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="368" column="24" selection-start-line="368" selection-start-column="24" selection-end-line="368" selection-end-column="24" />
+            <state relative-caret-position="7">
+              <caret line="361" column="10" selection-start-line="361" selection-start-column="10" selection-end-line="361" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -338,7 +338,7 @@
       <workItem from="1472548260805" duration="15223000" />
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
-      <workItem from="1474039264905" duration="182806000" />
+      <workItem from="1474039264905" duration="182923000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -428,7 +428,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="334143000" />
+    <option name="totallyTimeSpent" value="334260000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -440,7 +440,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="905" y="24" width="1015" height="993" extended-state="0" />
+    <frame x="905" y="24" width="1015" height="993" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12474849" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -795,8 +795,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="368" column="24" selection-start-line="368" selection-start-column="24" selection-end-line="368" selection-end-column="24" />
+        <state relative-caret-position="7">
+          <caret line="361" column="10" selection-start-line="361" selection-start-column="10" selection-end-line="361" selection-end-column="10" />
           <folding />
         </state>
       </provider>
