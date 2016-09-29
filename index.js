@@ -102,6 +102,7 @@ app.post('/webhook/', function (req, res) {
 
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt ');
+                waitForCode = true;
                 var tokenAndId;
                 Promise.all([authenticateCode(text)])
                     .then(function (result) {
@@ -117,7 +118,11 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'Foute code boii', function () {
                 });
             }
-
+            if(waitForCode) {
+                waitForCode = false;
+                console.log("code is getypt", text)
+                startVragen(text);
+            }
 
             if (text == 'Start') {
                 sessies[recipient].vragensessie = true;
