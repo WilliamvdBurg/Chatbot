@@ -6,7 +6,7 @@ var app = express()
 var _ = require('lodash');
 var Promise = require('bluebird');
 var waitForCode = false;
-var questionSet;
+var questionSet = [];
 var sessies = {};
 
 var self = this;
