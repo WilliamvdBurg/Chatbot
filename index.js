@@ -158,8 +158,8 @@ app.post('/webhook/', function (req, res) {
                     sessies[recipient].vraag++;
 
                     sessies[recipient].answers.push({
-                        questionId: questionSet.id,
-                        questionSet: 1,
+                        questionId: questionSet.question.id,
+                        questionSet: id,
                         answer: text
                     });
 
