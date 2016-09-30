@@ -484,6 +484,7 @@ console.log('id madda', question.id);
 
     var messageData = {
         text: question.questionNl,
+        id: question.id,
         quick_replies: quickReplies
     };
 
@@ -505,6 +506,9 @@ console.log('id madda', question.id);
         }
     })
 }
+
+
+
 // function sendAnswers(sender){
 //     var formData = new FormData();
 //
