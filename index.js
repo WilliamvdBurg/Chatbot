@@ -164,7 +164,8 @@ app.post('/webhook/', function (req, res) {
                     sessies[recipient].answers.push({
                         questionId: _qid,
                         questionSet: _id,
-                        answer: text
+                        answer: text,
+                        score: text
                     });
                     _qid ++;
                     console.log(' answers zijn',sessies[recipient].answers);
