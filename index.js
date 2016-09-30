@@ -156,10 +156,10 @@ app.post('/webhook/', function (req, res) {
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
-
+                    block
                     sessies[recipient].answers.push({
-                        questionId:1,
-                        questionSet: getEvaluationData(id),
+                        questionId: question,
+                        questionSet: block.id,
                         answer: text
                     });
 
