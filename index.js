@@ -156,7 +156,13 @@ app.post('/webhook/', function (req, res) {
                 }
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
                     sessies[recipient].vraag++;
-                    sessies[recipient].answers.push(text);
+
+                    sessies[recipient].answers.push({
+                        questionId: 1,
+                        questionSet: 1,
+                        answer: text
+                    });
+
                     console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
@@ -505,7 +511,8 @@ function askQuestion(question, sender) {
 //     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
 //     method: 'POST',
 //     headers: headers,
-//     data: 'id' + result.id,
+//     data: {evaluationBlocks: data,
+//     }
 // // ik heb het id test, id vraag, vak, antwoorden/ answers
 // }, function (error, response, body) {
 //     if (error) {
