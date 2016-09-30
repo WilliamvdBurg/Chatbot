@@ -482,7 +482,7 @@ function askQuestion(question, sender) {
     // }]
 
     var messageData = {
-        text: question.questionNl,
+        text: question.id,
         quick_replies: quickReplies
     };
 
