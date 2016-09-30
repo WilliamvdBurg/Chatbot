@@ -497,25 +497,24 @@ function askQuestion(question, sender) {
         }
     })
 }
-function sendAnswers(sender){
-    var formData = new FormData();
-
-    formData.append( id , duration, evaluationBlocks)
-    request({
-    url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
-    method: 'POST',
-    json: {
-        recipient: {id: sender},
-        message:  sessies[recipient].answers,
-    }
-}, function (error, response, body) {
-    if (error) {
-        console.log('Error sending messages: ', error)
-    } else if (response.body.error) {
-        console.log('Error: ', response.body.error)
-    }
-})
-}
+// function sendAnswers(sender){
+//     var formData = new FormData();
+//
+//     formData.append( id , duration, evaluationBlocks)
+//     request({
+//     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
+//     method: 'POST',
+//     headers: headers,
+//     data: 'id' + result.id,
+// // ik heb het id test, id vraag, vak, antwoorden/ answers
+// }, function (error, response, body) {
+//     if (error) {
+//         console.log('Error sending messages: ', error)
+//     } else if (response.body.error) {
+//         console.log('Error: ', response.body.error)
+//     }
+// })
+// }
 
 
 
