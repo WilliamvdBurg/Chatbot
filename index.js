@@ -484,8 +484,8 @@ console.log('id madda', question.id);
 
     var messageData = {
         text: question.questionNl,
-        quick_replies: quickReplies
-        id: question.id,
+        quick_replies: quickReplies,
+        id: question.id
     };
 
     console.log('message', messageData);
