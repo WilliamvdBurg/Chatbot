@@ -10,6 +10,7 @@ var questionSet;
 var sessies = {};
 var self = this;
 var _id;
+var _qid;
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -161,11 +162,11 @@ app.post('/webhook/', function (req, res) {
 
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push({
-                        questionId: _id,
-                        questionSet: 1,
+                        questionId: _qid,
+                        questionSet: _id,
                         answer: text
                     });
-
+                    _qid ++;
                     console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
@@ -420,7 +421,8 @@ function getEvaluationData(id, accessToken) {
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
             questionSet = questionset.questions;
-            console.log('hierooo',questionset.questions.id)
+            _qid = questionset[0].id
+
             console.log(questionSet);
         });
 
