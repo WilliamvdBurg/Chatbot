@@ -417,6 +417,7 @@ function getEvaluationData(id, accessToken) {
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
             questionSet = questionset.questions;
+            console.log('hierooo',questionset.questions.id)
             console.log(questionSet);
         });
 
