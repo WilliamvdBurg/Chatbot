@@ -159,8 +159,8 @@ app.post('/webhook/', function (req, res) {
 
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push({
-                        questionId: 1,
-                        questionSet: 1,
+                        questionId: ,
+                        questionSet: ,
                         answer: text
                     });
 
@@ -432,7 +432,7 @@ function getEvaluationData(id, accessToken) {
 
 function askQuestion(question, sender) {
     var quickReplies = [];
-
+console.log('id madda', question.id);
     if (question.scale.input === 'rating') {
         var i = 1;
         _.times(question.scale.scaleNl.max, function (value) {
