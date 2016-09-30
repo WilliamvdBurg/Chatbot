@@ -9,6 +9,7 @@ var waitForCode = false;
 var questionSet;
 var sessies = {};
 var self = this;
+var _id;
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -131,6 +132,7 @@ app.post('/webhook/', function (req, res) {
                             .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
+                                _id = evaluationId;
                                 return getEvaluationData(evaluationId, accessToken);
                             })
                             .then(function (questionSet) {
@@ -159,7 +161,7 @@ app.post('/webhook/', function (req, res) {
 
                     sessies[recipient].vraag++;
                     sessies[recipient].answers.push({
-                        questionId: 1,
+                        questionId: _id,
                         questionSet: 1,
                         answer: text
                     });
@@ -484,8 +486,6 @@ console.log('id madda', question.id);
 
     var messageData = {
         text: question.questionNl,
-
-
         quick_replies: quickReplies,
 
     };
