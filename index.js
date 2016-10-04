@@ -510,7 +510,34 @@ console.log('id madda', question.id);
         }
     })
 }
+//de data die je moet verzenden
+function sendData() {
+    var data = [
+        {
+            "id": _id
+        },
+        "answers"
+]
+}
+// de data word hier in de juiste versend status gezet
 
+function questionPush(){
+
+    questions.answers.push({
+    "answer": "",
+    "score": "",
+    "question": _qid,
+    "teacher": {
+        "id": "",
+        "block": "",
+        "name": "",
+        "code": "",
+        "imageId": "",
+        "color": "",
+        "formPartId": ""
+    }
+})
+}
 
 
 // function sendAnswers(sender){
@@ -521,8 +548,8 @@ console.log('id madda', question.id);
 //     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
 //     method: 'POST',
 //     headers: headers,
-//     data: {evaluationBlocks: data,
-//     }
+//     data:
+//
 // // ik heb het id test, id vraag, vak, antwoorden/ answers
 // }, function (error, response, body) {
 //     if (error) {
@@ -532,8 +559,6 @@ console.log('id madda', question.id);
 //     }
 // })
 // }
-
-
 
 function sendInformaticaMessage(sender) {
     messageData = {
