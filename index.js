@@ -115,6 +115,32 @@ app.post('/webhook/', function (req, res) {
             // }
 
 
+        //     curl -X POST -H "Content-Type: application/json" -d'{
+        //     "recipient":{
+        //         "phone_number":"(+31)623462529"
+        //     },
+        //     "message":{
+        //         "text":"hello, how are you?!"
+        //     }
+        // }' "https://graph.facebook.com/v2.6/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+
+
+        //     curl -X POST -H "Content-Type: application/json" -d '{
+        //     "recipient":{
+        //         "phone_number":"(+31)629573758"
+        //     },
+        //     "message":{
+        //         "attachment":{
+        //             "type":"image",
+        //                 "payload":{
+        //                 "url":"http://www.lindanieuws.nl/wp-content/uploads/2014/05/Schermafbeelding-2014-05-26-om-10.25.29.png",
+        //                     "is_reusable":true
+        //             }
+        //         }
+        //     }
+        // }' "https://graph.facebook.com/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
+
+
 
 
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
@@ -511,33 +537,33 @@ console.log('id madda', question.id);
     })
 }
 //de data die je moet verzenden
-function sendData() {
-    var data = [
-        {
-            "id": _id
-        },
-        "answers"
-]
-}
-// de data word hier in de juiste versend status gezet
-
-function questionPush(){
-
-    questions.answers.push({
-    "answer": "",
-    "score": "",
-    "question": _qid,
-    "teacher": {
-        "id": "",
-        "block": "",
-        "name": "",
-        "code": "",
-        "imageId": "",
-        "color": "",
-        "formPartId": ""
-    }
-})
-}
+// function sendData() {
+//     var data = [
+//         {
+//             "id": _id
+//         },
+//         "answers"
+// ]
+// }
+// // de data word hier in de juiste versend status gezet
+//
+// function questionPush(){
+//
+//     questions.answers.push({
+//     "answer": "",
+//     "score": "",
+//     "question": _qid,
+//     "teacher": {
+//         "id": "",
+//         "block": "",
+//         "name": "",
+//         "code": "",
+//         "imageId": "",
+//         "color": "",
+//         "formPartId": ""
+//     }
+// })
+// }
 
 
 // function sendAnswers(sender){
