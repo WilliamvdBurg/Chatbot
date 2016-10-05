@@ -459,7 +459,7 @@ function getEvaluationData(id, accessToken) {
             questionSet = questionset.questions;
             _qid = questionSet[0].id;
             console.log(questionSet);
-
+        });
         var openteachers = [];
         _.forEach(evaluation.blocks[0].data, function (teachersset) {
             teachersSet = teachersset.teachers;
@@ -472,6 +472,7 @@ function getEvaluationData(id, accessToken) {
     }).catch(function (error) {
         console.log(error);
     });
+
 }
 
 
