@@ -445,6 +445,7 @@ function getEvaluationData(id, accessToken) {
     }).then(function (result) {
         var data = JSON.parse(result);
         var evaluation = data.results[0];
+        console.log('evaluatie2', evaluation)
         console.log ('evaluatie', data)
 
         var openQuestions = [];
