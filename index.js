@@ -305,6 +305,9 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten')
 
             }
+            else if (text === "\"klacht indienen\"") {
+                sendTextMessage(sender, 'jerom is niet zo goed in zijn hoofd')
+            }
 
         }
     }
