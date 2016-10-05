@@ -7,13 +7,14 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 var waitForCode = false;
 var questionSet;
-var teachersSet
+var teacherName;
 var sessies = {};
 var self = this;
 var _id;
 var _qid;
-var _nameT
-var _idT
+// var _nameT;
+// var _idT;
+// var _codeT;
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -460,21 +461,12 @@ function getEvaluationData(id, accessToken) {
             _qid = questionSet[0].id;
             console.log(questionSet);
         });
-        var openteachers = [];
-        _.forEach(evaluation.blocks[0].data, function (teachersset) {
-            teachersSet = teachersset.teachers;
-            _idT = teachersSet[0].teachers.id;
-            _nameT = teachersSet[0].teachers.name;
-            console.log(teachersSet);
-        });
-        return teachersSet;
+
         return questionSet;
     }).catch(function (error) {
         console.log(error);
     });
-
 }
-
 
 // in deze functie worden de question soorten beschreven en verteld wat ze moeten uitvoeren.
 
@@ -641,6 +633,28 @@ console.log('id madda', question.id);
 //         }
 //
 //     ])
+// }
+// function TeachersAnswers() {
+//     var openteachers = [];
+//     _.forEach(evaluation.blocks[0].data, function (teachersset) {
+//         teachersSet = teachersset.teachers;
+//         _idT = teachersSet[0].teachers.id;
+//         _nameT = teachersSet[0].teachers.name;
+//         console.log(teachersSet);
+//
+//     });
+//     return teachersSet;
+// }
+
+// function getTeacherName() {
+//     _.forEach(evaluation.blocks[0].data, function (teachersset) {
+//         teacherName = teachersset.teachers;
+//         _nameT = teacherName.teachers.name;
+//         _idT = teacherName.teachers.id;
+//         _codeT = teacherName.teachers.code
+//         console.log('leraren', teacherName);
+//     });
+//     return name;
 // }
 
 
