@@ -7,10 +7,13 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 var waitForCode = false;
 var questionSet;
+var teachersSet
 var sessies = {};
 var self = this;
 var _id;
 var _qid;
+var _nameT
+var _idT
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -57,7 +60,9 @@ app.post('/webhook/', function (req, res) {
             //     sendWebsiteMessage(sender)
             //
             // }
-
+            if (text == 'teachers') {
+                questionsAnswers(sender)
+            }
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
 
@@ -588,9 +593,15 @@ console.log('id madda', question.id);
 // })
 // }
 
-
-
-
+//
+// teacher info
+// - results.blocks.data.teachers.id
+// - results.blocks.data.teachers.name
+// - results.blocks.data.teachers.data.code
+// -
+//
+//
+// - results.topic.id/name/type
 
 // function questionsAnswers() {
 //
@@ -622,6 +633,17 @@ console.log('id madda', question.id);
 //
 //     ])
 // }
+function questionsAnswers() {
+    var openteachers = [];
+    _.forEach(evaluation.blocks[0].data, function (teachersset) {
+        teachersSet = teachersset.teachers;
+        _idT = teachersSet[0].teachers.id;
+        _nameT = teachersSet[0].teachers.name;
+        console.log(teachersSet);
+
+    });
+    return teachersSet;
+}
 
 function sendInformaticaMessage(sender) {
     messageData = {
