@@ -161,6 +161,7 @@ app.post('/webhook/', function (req, res) {
                                 var evaluationId = decoded.evaluationId;
                                 _id = evaluationId;
                                 return getEvaluationData(evaluationId, accessToken);
+                                console.log('gehele set', evaluationId)
                             })
                             .then(function (questionSet) {
                                 askQuestion(questionSet[sessies[recipient].vraag], sender);
