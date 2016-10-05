@@ -148,7 +148,7 @@ app.post('/webhook/', function (req, res) {
 
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sendTextMessage(sender, '', function (error, response, body) {
+                sendTextMessage(sender, 'De evaluatie is gestart', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
