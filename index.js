@@ -736,7 +736,7 @@ function sendWebsiteMessage(sender) {
                         {
                             "type": "postback",
                             "title": "Testresultaten",
-                            "payload": "sasdasdasd"
+                            "payload": "Testresultaten"
                         },],
                 },
                 ]
