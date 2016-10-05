@@ -7,7 +7,7 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 var waitForCode = false;
 var questionSet;
-var teacherName;
+// var teacherName;
 var sessies = {};
 var self = this;
 var _id;
