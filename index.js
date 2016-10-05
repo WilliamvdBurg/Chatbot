@@ -187,14 +187,14 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
 
                     sessies[recipient].vraag++;
-                    sessies[recipient].answers.push(text)
-                    // {
-                    //     // questionId: _qid,
-                    //     // questionSet: _id,
-                    //     answer: text
-                    //     // score: text
-                    // });
-                    // _qid ++;
+                    sessies[recipient].answers.push(
+                    {
+                        questionId: _qid,
+                        questionSet: _id,
+                        answer: text,
+                        score: text
+                    });
+                    _qid ++;
                     console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
