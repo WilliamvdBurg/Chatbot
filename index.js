@@ -187,12 +187,13 @@ app.post('/webhook/', function (req, res) {
                 if (text < 11 || text == "Eens" || text == "Oneens" || text == "Zeer weinig" || text == "Weinig" || text == "Neutraal" || text == "Veel" || text == "Zeer veel" || text == "slecht" || text == "Slecht" || text == "Zeer slecht" || text == "Goed" || text == "Zeer Goed" || text == "Volledig mee oneens" || text == "Volledig mee eens") {
 
                     sessies[recipient].vraag++;
-                    sessies[recipient].answers.push({
-                        // questionId: _qid,
-                        // questionSet: _id,
-                        // answer: text
-                        // score: text
-                    });
+                    sessies[recipient].answers.push(text)
+                    // {
+                    //     // questionId: _qid,
+                    //     // questionSet: _id,
+                    //     answer: text
+                    //     // score: text
+                    // });
                     _qid ++;
                     console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
@@ -290,7 +291,7 @@ app.post('/webhook/', function (req, res) {
                 // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
 
             }
-            else if (text === "\"Aan de slag\"") {
+            else if (text === "\"USER_DEFINED_PAYLOAD\"") {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
 
             }
