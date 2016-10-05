@@ -194,7 +194,7 @@ app.post('/webhook/', function (req, res) {
                     //     answer: text
                     //     // score: text
                     // });
-                    _qid ++;
+                    // _qid ++;
                     console.log(' answers zijn',sessies[recipient].answers);
                     // moet gereset worden + verzonden.
                 }
