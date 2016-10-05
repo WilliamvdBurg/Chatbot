@@ -459,13 +459,21 @@ function getEvaluationData(id, accessToken) {
             questionSet = questionset.questions;
             _qid = questionSet[0].id;
             console.log(questionSet);
-        });
 
+        var openteachers = [];
+        _.forEach(evaluation.blocks[0].data, function (teachersset) {
+            teachersSet = teachersset.teachers;
+            _idT = teachersSet[0].teachers.id;
+            _nameT = teachersSet[0].teachers.name;
+            console.log(teachersSet);
+        });
+        return teachersSet;
         return questionSet;
     }).catch(function (error) {
         console.log(error);
     });
 }
+
 
 // in deze functie worden de question soorten beschreven en verteld wat ze moeten uitvoeren.
 
@@ -633,17 +641,7 @@ console.log('id madda', question.id);
 //
 //     ])
 // }
-function questionsAnswers() {
-    var openteachers = [];
-    _.forEach(evaluation.blocks[0].data, function (teachersset) {
-        teachersSet = teachersset.teachers;
-        _idT = teachersSet[0].teachers.id;
-        _nameT = teachersSet[0].teachers.name;
-        console.log(teachersSet);
 
-    });
-    return teachersSet;
-}
 
 function sendInformaticaMessage(sender) {
     messageData = {
