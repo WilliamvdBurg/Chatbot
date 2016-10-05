@@ -447,6 +447,7 @@ function getEvaluationData(id, accessToken) {
         var evaluation = data.results[0];
         console.log('evaluatie2', evaluation)
         console.log ('evaluatie', data)
+        console.log('code kw', result)
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
@@ -561,9 +562,7 @@ console.log('id madda', question.id);
 //         "block": "",
 //         "name": "",
 //         "code": "",
-//         "imageId": "",
-//         "color": "",
-//         "formPartId": ""
+//
 //     }
 // })
 // }
@@ -587,6 +586,41 @@ console.log('id madda', question.id);
 //         console.log('Error: ', response.body.error)
 //     }
 // })
+// }
+
+
+
+
+
+// function questionsAnswers() {
+//
+//     questions.answers.push(
+//         [
+//         {
+//             "id": _id,
+//             "topic": {
+//                 "id": topic.id,
+//                 "name": topic.name,
+//                 "type": topic.type
+//             },
+//             "answers": [
+//                 {
+//                     "answer": answers.answer,
+//                     "score": answers.score,
+//                     "question": _qid,
+//                     "teacher": {
+//                         "id": results.type.id,
+//                         "block": _id,
+//                         "name": results.type.nameNl,
+//                         "code": "",
+//                     }
+//                 }
+//
+//             ]
+//
+//         }
+//
+//     ])
 // }
 
 function sendInformaticaMessage(sender) {
