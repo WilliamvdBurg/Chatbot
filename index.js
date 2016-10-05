@@ -538,54 +538,54 @@ console.log('id madda', question.id);
     })
 }
 // de data die je moet verzenden
-function sendData() {
-    var data = [
-        {
-            "id": _id
-        },
-        "answers"
-]
-}
-// de data word hier in de juiste versend status gezet
-
-function questionPush(){
-
-    questions.answers.push({
-    "answer": "",
-    "score": "",
-    "question": _qid,
-    "teacher": {
-        "id": "",
-        "block": "",
-        "name": "",
-        "code": "",
-        "imageId": "",
-        "color": "",
-        "formPartId": ""
-    }
-})
-}
-
-
-function sendAnswers(sender){
-    var formData = new FormData();
-
-    formData.append( id , duration, evaluationBlocks)
-    request({
-    url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
-    method: 'POST',
-    headers: headers,
-    data:
+// function sendData() {
+//     var data = [
+//         {
+//             "id": _id
+//         },
+//         "answers"
+// ]
+// }
+// // de data word hier in de juiste versend status gezet
+//
+// function questionPush(){
+//
+//     questions.answers.push({
+//     "answer": "",
+//     "score": "",
+//     "question": _qid,
+//     "teacher": {
+//         "id": "",
+//         "block": "",
+//         "name": "",
+//         "code": "",
+//         "imageId": "",
+//         "color": "",
+//         "formPartId": ""
+//     }
+// })
+// }
+//
+//
+// function sendAnswers(sender){
+//     var formData = new FormData();
+//
+//     formData.append( id , duration, evaluationBlocks)
+//     request({
+//     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
+//     method: 'POST',
+//     headers: headers,
+//     data:
 
 // ik heb het id test, id vraag, vak, antwoorden/ answers
-}, function (error, response, body) {
-    if (error) {
-        console.log('Error sending messages: ', error)
-    } else if (response.body.error) {
-        console.log('Error: ', response.body.error)
-    }
-})
-}
+// }, function (error, response, body) {
+//     if (error) {
+//         console.log('Error sending messages: ', error)
+//     } else if (response.body.error) {
+//         console.log('Error: ', response.body.error)
+//     }
+// })
+// }
 
 function sendInformaticaMessage(sender) {
     messageData = {
