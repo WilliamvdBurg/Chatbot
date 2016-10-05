@@ -190,7 +190,7 @@ app.post('/webhook/', function (req, res) {
                     sessies[recipient].answers.push({
                         // questionId: _qid,
                         // questionSet: _id,
-                        answer: text
+                        // answer: text
                         // score: text
                     });
                     _qid ++;
@@ -269,7 +269,7 @@ app.post('/webhook/', function (req, res) {
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
                     antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
-                console.log(' stoned kotsen', sessies);
+                console.log(' antwoorden', sessies);
 
                 sendTextMessage(sender, antwoorden);
 
