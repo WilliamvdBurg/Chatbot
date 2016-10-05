@@ -292,7 +292,7 @@ app.post('/webhook/', function (req, res) {
 
             }
             else if (text === "\"USER_DEFINED_PAYLOAD\"") {
-                sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
+                sendTextMessage(sender, 'Vul u authenticatie code in om de test te starten')
 
             }
 
