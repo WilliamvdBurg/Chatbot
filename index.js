@@ -290,7 +290,7 @@ app.post('/webhook/', function (req, res) {
                 // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
 
             }
-            else if (text === "\"Get started\"") {
+            else if (text === "\"Aan de slag\"") {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
 
             }
