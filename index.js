@@ -61,9 +61,9 @@ app.post('/webhook/', function (req, res) {
             //     sendWebsiteMessage(sender)
             //
             // }
-            if (text == 'teachers') {
-                questionsAnswers(sender)
-            }
+            // if (text == 'teachers') {
+            //     questionsAnswers(sender)
+            // }
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
 
