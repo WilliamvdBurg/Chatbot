@@ -260,10 +260,10 @@ app.post('/webhook/', function (req, res) {
             }
 
         }
-        else if (event.postback && event.postback.payload) {
-            payload = event.postback.payload;
+        if (event.postback) {
+            var text = JSON.stringify(event.postback.payload)
 
-            if (payload = 'Testresultaten') {
+            if (text === "\"Testresultaten\"") {
 
                 var antwoorden = '';
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
@@ -290,7 +290,7 @@ app.post('/webhook/', function (req, res) {
                 // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
 
             }
-            if (payload = 'Get started') {
+            else if (text === "\"Get started\"") {
                 sendTextMessage(sender, 'Vul u gekregen code in om de test van evalytics te starten')
 
             }
