@@ -106,16 +106,38 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
-            // if (text == 'Ja' || text == 'ja') {
-            //     sendDetails();
-            //     if (error) {
-            //         console.log('Error sending messages: ', error)
-            //     } else if (response.body.error) {
-            //         console.log('Error: ', response.body.error)
-            //     } else {
-            //         sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
-            //     }
-            // }
+            if (text == 'Ja' || text == 'ja') {
+                var awnsers = [];
+                awnsers['id'] = 'id';
+                awnsers['topic'] = {
+                    "id": _idV,
+                    "name": _nameV,
+                    "type": _typeV
+                };
+                awnsers['awnsers'] = [];
+                for(var i = 0; i < sessies[recipient].answers.length; i++) {
+                    awnsers['awnsers'].push({
+                        "answer": sessies[recipient].answers[i].answer,
+                        "score": sessies[recipient].answers[i].score,
+                        "question": sessies[recipient].answers[i].questionId,
+                        "teacher": {
+                            "id": getTeacherId(),
+                            "block": getBlockId(),
+                            "name": getTeacherName(),
+                            "code": getTeacherCode()
+                        }
+                    })
+                }
+
+                console.log('awnsers', awnsers);
+                if (error) {
+                    console.log('Error sending messages: ', error)
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error)
+                } else {
+                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                }
+            }
 
 
             if (text == 'Nee' || text == 'nee') {
