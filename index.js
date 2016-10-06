@@ -19,6 +19,8 @@ var _nameV;
 var _idV;
 var _typeV;
 var _idB;
+var sender = event.sender.id;
+var recipient = sender;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -57,7 +59,7 @@ app.post('/webhook/', function (req, res) {
             sessies[recipient] = {};
             sessies[recipient].answers = [];
             console.log('self.sender is ', sessies)
-            return recipient;
+
         }
         if (event.message && event.message.text) {
 
@@ -654,7 +656,7 @@ function getBlockId() {
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(){
-var recipient
+
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
