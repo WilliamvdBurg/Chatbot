@@ -108,14 +108,9 @@ app.post('/webhook/', function (req, res) {
             // }
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
-                if (error) {
-                    console.log('Error sending messages: ', error)
-                } else if (response.body.error) {
-                    console.log('Error: ', response.body.error)
-                } else {
-                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
-                }
+                sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
+
 
 
             if (text == 'Nee' || text == 'nee') {
