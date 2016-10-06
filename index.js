@@ -251,6 +251,7 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 if (sessies[recipient].vraag >= questionSet.length) {
+                    console.log('sessies', sessies)
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
@@ -639,6 +640,17 @@ console.log('id madda', question.id);
 
 function getTeacherName() {
     return evaluation.blocks[0].data.teachers[0].name;
+}
+
+function getTeacherId() {
+    return evaluation.blocks[0].data.teachers[0].id;
+}
+function getTeacherCode() {
+    return evaluation.blocks[0].data.teachers[0].data.code;
+}
+
+function getBlockId() {
+    return evaluation.blocks[0].id;
 }
 
 function getTeacherId() {
