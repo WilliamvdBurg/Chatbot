@@ -105,7 +105,7 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
             if (text == 'Ja' || text == 'ja') {
-                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                sendDetails();
                 if (error) {
                     console.log('Error sending messages: ', error)
                 } else if (response.body.error) {
@@ -612,14 +612,21 @@ console.log('id madda', question.id);
 //     });
 //     return ;
 // }
-// function getBlockId() {
-//     _.forEach(evaluation.blocks[0].id, function (blockid) {
-//         _idB = blockid.id;
-//
-//         console.log('blockid', teacher);
-//     });
-//     return ;
-// }
+
+function getTeacherName() {
+    return evaluation.blocks[0].data.teachers[0].name;
+}
+
+function getTeacherId() {
+    return evaluation.blocks[0].data.teachers[0].id;
+}
+function getTeacherCode() {
+    return evaluation.blocks[0].data.teachers[0].data.code;
+}
+
+function getBlockId() {
+    return evaluation.blocks[0].id;
+}
 // function getVakname(){
 //     var i = 0;
 //     _.forEach(evaluation.topic[i], function (vak) {
@@ -631,49 +638,75 @@ console.log('id madda', question.id);
 //     });
 //     return;
 // }
-// function getVakname(){
+// function getanswersTest(){
 //     var i = 0;
-//     _.forEach(evaluation.topic[i], function (vak) {
-//         answer
-//         score
+//     var a = [];
+//     _.forEach(sessies[recipient].answers, function (vak) {
+//         a.push(
+//             answer: ads,
+//             score: asd
+//         )
 //     });
-//     return;
+//     return a;
 // }
 //-------------------------------------finished ophalen gegevens------------------------------------------
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
-// function sendDetails(){
-//
-//
-//     questions.answers.push(
-//         [
-//         {
-//             "id": _id,
-//             "topic": {
-//                 "id": _idV,
-//                 "name": _nameV,
-//                 "type": _typeV
-//             },
-//             "answers": [
-//                 {
-//                     "answer": sessies.answer,
-//                     "score": answers.score,
-//                     "question": _qid,
-//                     "teacher": {
-//                         "id": _idT,
-//                         "block": _idB,
-//                         "name": _nameT,
-//                         "code": _codeT
-//                     }
-//                 }
-//
-//             ]
-//
-//         }
-//
-//     ])
-//
-// }
+function sendDetails(){
+
+    var awnsers = [];
+    awnsers['id'] = 'id';
+    awnsers['topic'] = {
+        "id": _idV,
+        "name": _nameV,
+        "type": _typeV
+    };
+
+    awnsers['awnsers'] = [];
+    for(var i = 0; i < sessies[recipient].answers.length; i++) {
+        awnsers['awnsers'].push({
+            "answer": sessies[recipient].answers[i].answer,
+            "score": sessies[recipient].answers[i].score,
+            "question": sessies[recipient].answers[i].questionId,
+            "teacher": {
+                "id": getTeacherId(),
+                "block": getBlockId(),
+                "name": getTeacherName(),
+                "code": getTeacherCode()
+            }
+        })
+    }
+
+    console.log('awnsers', awnsers);
+    // questions.answers.push(
+    //     [
+    //     {
+    //         "id": _id,
+    //         "topic": {
+    //             "id": _idV,
+    //             "name": _nameV,
+    //             "type": _typeV
+    //         },
+    //         "answers": [
+    //             {
+    //                 "answer": sessies.answer,
+    //                 "score": answers.score,
+    //                 "question": _qid,
+    //                 "teacher": {
+    //                     "id": _idT,
+    //                     "block": _idB,
+    //                     "name": _nameT,
+    //                     "code": _codeT
+    //                 }
+    //             }
+    //
+    //         ]
+    //
+    //     }
+    //
+    // ])
+
+}
 
 
 //------------------------------------verzonden gegevens-------------------------------------------------
