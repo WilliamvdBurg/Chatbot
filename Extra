@@ -1,6 +1,6 @@
 curl -X POST -H "Content-Type: application/json" -d '{
   "recipient":{
-    "phone_number":"(+31)654701854"
+    "phone_number":"(+31)654902460"
   },
   "message":{
     "attachment":{
@@ -15,9 +15,9 @@ curl -X POST -H "Content-Type: application/json" -d '{
             "title":"Betaal"
           },
           {
-            "type":"web_url",
-            "url":"https://mijnbeta.vrendly.nl/app/#/debitor-detail/payment/LHuVvWb4GE",
-            "title":"Klacht indienen"
+            "type":"postback",
+            "title":"Klacht indienen",
+            "payload":"klacht indienen"
           }
         ]
       }
@@ -27,43 +27,11 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 
 
-curl -X POST -H "Content-Type: application/json" -d '{
-  "recipient":{
-    "id":"USER_ID"
-  },
-  "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-          {
-            "title":"Welcome to Peter\'s Hats",
-            "item_url":"https://petersfancybrownhats.com",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We\'ve got the right hat for everyone.",
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
-              },
-              {
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
-}' "https://graph.facebook.com/v2.6/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
 
-https://mijnbeta.vrendly.nl/app/#/debitor-detail/remarks/lHuVvWb4GE
+
+
 
 
 

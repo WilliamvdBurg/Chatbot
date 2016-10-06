@@ -12,9 +12,14 @@ var sessies = {};
 var self = this;
 var _id;
 var _qid;
-// var _nameT;
-// var _idT;
-// var _codeT;
+var _nameT;
+var _idT;
+var _codeT;
+var _nameV;
+var _idV;
+var _typeV;
+var _idB;
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -68,9 +73,9 @@ app.post('/webhook/', function (req, res) {
                 sendWebsiteMessage(sender)
 
             }
-            if (text == 'fuckjerom'){
-                sendGenericMessage(sender)
-            }
+            // if (text == 'fuckjerom'){
+            //     sendGenericMessage(sender)
+            // }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
                 sendOnderwijsMessage(sender)
@@ -100,8 +105,17 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
             if (text == 'Ja' || text == 'ja') {
-                sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                sendTextMessage(sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10', function (error, response, body) {
+                if (error) {
+                    console.log('Error sending messages: ', error)
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error)
+                } else {
+                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
+                }
+            })
             }
+
             if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
                 vraag = 0
@@ -563,21 +577,6 @@ console.log('id madda', question.id);
 // }
 // // de data word hier in de juiste versend status gezet
 //
-// function questionPush(){
-//
-//     questions.answers.push({
-//     "answer": "",
-//     "score": "",
-//     "question": _qid,
-//     "teacher": {
-//         "id": "",
-//         "block": "",
-//         "name": "",
-//         "code": "",
-//
-//     }
-// })
-// }
 //
 //
 // function sendAnswers(sender){
@@ -601,36 +600,70 @@ console.log('id madda', question.id);
 // }
 
 //
-// teacher info
-// - results.blocks.data.teachers.id
-// - results.blocks.data.teachers.name
-// - results.blocks.data.teachers.data.code
-// -
-//
-//
-// - results.topic.id/name/type
 
-// function questionsAnswers() {
+//------------------------------------gegevens ophalen voor verzenden------------------------------------
+
+// function getTeacherName() {
+//     _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
+//         _nameT = teacher.name;
+//         _idT = teacher.id;
+//         _codeT = teacher.code
+//         console.log('leraren', teacher);
+//     });
+//     return ;
+// }
+// function getBlockId() {
+//     _.forEach(evaluation.blocks[0].id, function (blockid) {
+//         _idB = blockid.id;
+//
+//         console.log('blockid', teacher);
+//     });
+//     return ;
+// }
+// function getVakname(){
+//     var i = 0;
+//     _.forEach(evaluation.topic[i], function (vak) {
+//         i++;
+//         _nameV = vak.name;
+//         _idV = vak.id;
+//         _typeV = vak.type;
+//         console.log('vak', vak);
+//     });
+//     return;
+// }
+// function getVakname(){
+//     var i = 0;
+//     _.forEach(evaluation.topic[i], function (vak) {
+//         answer
+//         score
+//     });
+//     return;
+// }
+//-------------------------------------finished ophalen gegevens------------------------------------------
+
+//-------------------------------------senden gegevens EVA test--------------------------------------------
+// function sendDetails(){
+//
 //
 //     questions.answers.push(
 //         [
 //         {
 //             "id": _id,
 //             "topic": {
-//                 "id": topic.id,
-//                 "name": topic.name,
-//                 "type": topic.type
+//                 "id": _idV,
+//                 "name": _nameV,
+//                 "type": _typeV
 //             },
 //             "answers": [
 //                 {
-//                     "answer": answers.answer,
+//                     "answer": sessies.answer,
 //                     "score": answers.score,
 //                     "question": _qid,
 //                     "teacher": {
-//                         "id": results.type.id,
-//                         "block": _id,
-//                         "name": results.type.nameNl,
-//                         "code": "",
+//                         "id": _idT,
+//                         "block": _idB,
+//                         "name": _nameT,
+//                         "code": _codeT
 //                     }
 //                 }
 //
@@ -639,31 +672,11 @@ console.log('id madda', question.id);
 //         }
 //
 //     ])
-// }
-// function TeachersAnswers() {
-//     var openteachers = [];
-//     _.forEach(evaluation.blocks[0].data, function (teachersset) {
-//         teachersSet = teachersset.teachers;
-//         _idT = teachersSet[0].teachers.id;
-//         _nameT = teachersSet[0].teachers.name;
-//         console.log(teachersSet);
 //
-//     });
-//     return teachersSet;
-// }
-
-// function getTeacherName() {
-//     _.forEach(evaluation.blocks[0].data, function (teachersset) {
-//         teacherName = teachersset.teachers;
-//         _nameT = teacherName.teachers.name;
-//         _idT = teacherName.teachers.id;
-//         _codeT = teacherName.teachers.code
-//         console.log('leraren', teacherName);
-//     });
-//     return name;
 // }
 
 
+//------------------------------------verzonden gegevens-------------------------------------------------
 function sendInformaticaMessage(sender) {
     messageData = {
         "text": "Welke leraar wilt u beoordelen?",
