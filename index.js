@@ -107,7 +107,12 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
             if (text == 'Ja' || text == 'ja') {
+
+
+                var evaluation
                 var awnsers = [];
+
+
                 awnsers['id'] = 'id';
                 awnsers['topic'] = {
                     "id": _idV,
