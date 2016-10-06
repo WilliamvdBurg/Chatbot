@@ -108,7 +108,7 @@ app.post('/webhook/', function (req, res) {
             // }
             if (text == 'Ja' || text == 'ja') {
 
-                var evaluation = data.results[0];
+                var evaluation
                 var awnsers = [];
 
 
