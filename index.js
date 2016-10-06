@@ -113,8 +113,8 @@ app.post('/webhook/', function (req, res) {
                 } else {
                     sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
                 }
-            })
             }
+
 
             if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
