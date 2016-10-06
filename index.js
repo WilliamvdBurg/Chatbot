@@ -19,7 +19,7 @@ var _nameV;
 var _idV;
 var _typeV;
 var _idB;
-var recipient
+var evaluation;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -107,35 +107,14 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
             if (text == 'Ja' || text == 'ja') {
-
-
-                var evaluation
-                var awnsers = [];
-
-
-                awnsers['id'] = 'id';
-                awnsers['topic'] = {
-                    "id": _idV,
-                    "name": _nameV,
-                    "type": _typeV
-                };
-                awnsers['awnsers'] = [];
-                for(var i = 0; i < sessies[recipient].answers.length; i++) {
-                    awnsers['awnsers'].push({
-                        "answer": sessies[recipient].answers[i].answer,
-                        "score": sessies[recipient].answers[i].score,
-                        "question": sessies[recipient].answers[i].questionId,
-                        "teacher": {
-                            "id": getTeacherId(),
-                            "block": getBlockId(),
-                            "name": getTeacherName(),
-                            "code": getTeacherCode()
-                        }
-                    })
+                sendDetails(recipient);
+                if (error) {
+                    console.log('Error sending messages: ', error)
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error)
+                } else {
+                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
                 }
-
-                console.log('awnsers', awnsers);
-
             }
 
 
@@ -251,7 +230,6 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 if (sessies[recipient].vraag >= questionSet.length) {
-                    // console.log('sessies', sessies.answers[0])
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
@@ -494,7 +472,7 @@ function getEvaluationData(id, accessToken) {
         }
     }).then(function (result) {
         var data = JSON.parse(result);
-        var evaluation = data.results[0];
+        evaluation = data.results[0];
         console.log('evaluatie2', evaluation)
         console.log ('evaluatie', data)
         console.log('code kw', result)
@@ -507,7 +485,6 @@ function getEvaluationData(id, accessToken) {
         });
 
         return questionSet;
-        return evaluation;
     }).catch(function (error) {
         console.log(error);
     });
@@ -653,16 +630,7 @@ function getBlockId() {
     return evaluation.blocks[0].id;
 }
 
-function getTeacherId() {
-    return evaluation.blocks[0].data.teachers[0].id;
-}
-function getTeacherCode() {
-    return evaluation.blocks[0].data.teachers[0].data.code;
-}
 
-function getBlockId() {
-    return evaluation.blocks[0].id;
-}
 // function getVakname(){
 //     var i = 0;
 //     _.forEach(evaluation.topic[i], function (vak) {
@@ -688,7 +656,8 @@ function getBlockId() {
 //-------------------------------------finished ophalen gegevens------------------------------------------
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
-function sendDetails(){
+function sendDetails(recipient){
+
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
