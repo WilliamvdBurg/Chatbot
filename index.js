@@ -624,6 +624,16 @@ function getTeacherCode() {
 function getBlockId() {
     return evaluation.blocks[0].id;
 }
+function getvakId() {
+    return evaluation.topic[i].id;
+}
+function getvakName() {
+    return evaluation.topic[i].name;
+}
+
+function getvakType() {
+    return evaluation.topic[i].type;
+}
 
 
 // function getVakname(){
@@ -656,9 +666,9 @@ function sendDetails(recipient){
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        "id": _idV,
-        "name": _nameV,
-        "type": _typeV
+        "id": getvakId(),
+        "name": getvakName(),
+        "type": getvakType()
     };
     awnsers['awnsers'] = [];
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
