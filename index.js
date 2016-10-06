@@ -251,7 +251,7 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 if (sessies[recipient].vraag >= questionSet.length) {
-                    console.log('sessies', sessies.answers[0])
+                    // console.log('sessies', sessies.answers[0])
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
                 }
 
