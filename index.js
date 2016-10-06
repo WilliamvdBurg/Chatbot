@@ -130,11 +130,7 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 console.log('awnsers', awnsers);
-                if (error) {
-                    console.log('Error sending messages: ', error)
-                } else if (response.body.error) {
-                    console.log('Error: ', response.body.error)
-                } else {
+                else {
                     sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
                 }
             }
