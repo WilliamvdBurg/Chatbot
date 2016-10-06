@@ -130,9 +130,7 @@ app.post('/webhook/', function (req, res) {
                 }
 
                 console.log('awnsers', awnsers);
-                else {
-                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
-                }
+
             }
 
 
