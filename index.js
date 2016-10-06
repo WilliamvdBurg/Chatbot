@@ -654,7 +654,7 @@ function getBlockId() {
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(){
-
+var recipient
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
