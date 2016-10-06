@@ -676,6 +676,7 @@ function sendDetails(recipient){
     }
 
     console.log('awnsers', awnsers);
+    console.log('awnsers', awnsers['awnsers'].teacher);
     // questions.answers.push(
     //     [
     //     {
