@@ -107,34 +107,14 @@ app.post('/webhook/', function (req, res) {
             //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
             // }
             if (text == 'Ja' || text == 'ja') {
-
-                var evaluation
-                var awnsers = [];
-
-
-                awnsers['id'] = 'id';
-                awnsers['topic'] = {
-                    "id": _idV,
-                    "name": _nameV,
-                    "type": _typeV
-                };
-                awnsers['awnsers'] = [];
-                for(var i = 0; i < sessies[recipient].answers.length; i++) {
-                    awnsers['awnsers'].push({
-                        "answer": sessies[recipient].answers[i].answer,
-                        "score": sessies[recipient].answers[i].score,
-                        "question": sessies[recipient].answers[i].questionId,
-                        "teacher": {
-                            "id": getTeacherId(),
-                            "block": getBlockId(),
-                            "name": getTeacherName(),
-                            "code": getTeacherCode()
-                        }
-                    })
+                sendDetails();
+                if (error) {
+                    console.log('Error sending messages: ', error)
+                } else if (response.body.error) {
+                    console.log('Error: ', response.body.error)
+                } else {
+                    sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
                 }
-
-                console.log('awnsers', awnsers);
-
             }
 
 
@@ -505,7 +485,6 @@ function getEvaluationData(id, accessToken) {
         });
 
         return questionSet;
-        return evaluation;
     }).catch(function (error) {
         console.log(error);
     });
@@ -676,6 +655,7 @@ function getBlockId() {
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(){
+
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
@@ -683,6 +663,7 @@ function sendDetails(){
         "name": _nameV,
         "type": _typeV
     };
+
     awnsers['awnsers'] = [];
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
         awnsers['awnsers'].push({
