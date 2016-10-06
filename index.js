@@ -19,7 +19,7 @@ var _nameV;
 var _idV;
 var _typeV;
 var _idB;
-var recipient = sender;
+var recipient
 
 app.set('port', (process.env.PORT || 5000))
 
