@@ -57,6 +57,7 @@ app.post('/webhook/', function (req, res) {
             sessies[recipient] = {};
             sessies[recipient].answers = [];
             console.log('self.sender is ', sessies)
+            return recipient;
         }
         if (event.message && event.message.text) {
 
