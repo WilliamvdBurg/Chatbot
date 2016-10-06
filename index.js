@@ -507,6 +507,7 @@ function getEvaluationData(id, accessToken) {
         });
 
         return questionSet;
+        return evaluation;
     }).catch(function (error) {
         console.log(error);
     });
