@@ -490,7 +490,7 @@ function getEvaluationData(id, accessToken) {
         teacherName =  evaluation.blocks[0].data.teachers[0].name;;
         teacherCode =  evaluation.blocks[0].data.teachers[0].data.code;;
 
-        console.log('topic evaluatie', topicId, topicName, topicType)
+        console.log('topic evaluatie', topicId, topicName, topicType, teacherName, teacherCode, teacherId);
         return questionSet;
     }).catch(function (error) {
         console.log(error);
