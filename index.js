@@ -666,7 +666,7 @@ function sendDetails(recipient, evaluation){
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        "id": evaluation.topic.id,
+        "id": evaluation.blocks[0].topic.id,
         "name": 1,
         "type": 1
     };
