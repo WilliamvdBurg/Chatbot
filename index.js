@@ -20,6 +20,9 @@ var _idV;
 var _typeV;
 var _idB;
 var evaluation;
+var topicId;
+var topicName;
+var topicType;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -477,9 +480,9 @@ function getEvaluationData(id, accessToken) {
             console.log(questionSet);
         });
 
-        var topicId = evaluation.topic.id;
-        var topicName = evaluation.topic.name;
-        var topicType = evaluation.topic.type;
+        topicId = evaluation.topic.id;
+        topicName = evaluation.topic.name;
+        topicType = evaluation.topic.type;
 
         console.log('topic evaluatie', topicId, topicName, topicType)
         return questionSet;
@@ -671,9 +674,9 @@ function sendDetails(recipient, evaluation){
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        "id": 1,
-        "name": 1,
-        "type": 1
+        "id": topicId,
+        "name": topicName,
+        "type": topicType
     };
     awnsers['awnsers'] = [];
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
