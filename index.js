@@ -700,7 +700,7 @@ function sendDetails(recipient, evaluation){
     }
 
     console.log('awnsers', awnsers);
-    console.log('awnsersteachers',awnsers['awnsers'].teachers);
+    console.log('awnsersteachers',awnsers.teachers);
     // questions.answers.push(
     //     [
     //     {
