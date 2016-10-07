@@ -661,7 +661,7 @@ function getvakType() {
 //-------------------------------------finished ophalen gegevens------------------------------------------
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
-function sendDetails(recipient){
+function sendDetails(recipient, evaluation){
 
     var awnsers = [];
     awnsers['id'] = 'id';
