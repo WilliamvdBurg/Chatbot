@@ -620,20 +620,20 @@ function getTeacherId() {
 function getTeacherCode() {
     return evaluation.blocks[0].data.teachers[0].data.code;
 }
-
-function getBlockId() {
-    return evaluation.blocks[0].id;
-}
-function getvakId() {
-    return evaluation.topic[0].id;
-}
-function getvakName() {
-    return evaluation.topic[0].name;
-}
-
-function getvakType() {
-    return evaluation.topic[0].type;
-}
+//
+// function getBlockId() {
+//     return evaluation.blocks[0].id;
+// }
+// function getvakId() {
+//     return evaluation.topic[0].id;
+// }
+// function getvakName() {
+//     return evaluation.topic[0].name;
+// }
+//
+// function getvakType() {
+//     return evaluation.topic[0].type;
+// }
 
 
 // function getVakname(){
