@@ -69,10 +69,10 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="701" column="12" selection-start-line="701" selection-start-column="12" selection-end-line="701" selection-end-column="12" />
+            <state relative-caret-position="555">
+              <caret line="710" column="0" selection-start-line="710" selection-start-column="0" selection-end-line="710" selection-end-column="0" />
               <folding>
-                <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+                <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
               </folding>
             </state>
           </provider>
@@ -365,7 +365,7 @@
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
       <workItem from="1474039264905" duration="224808000" />
-      <workItem from="1475661423096" duration="46893000" />
+      <workItem from="1475661423096" duration="47134000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -455,7 +455,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423038000" />
+    <option name="totallyTimeSpent" value="423279000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -576,7 +576,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+            <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
           </folding>
         </state>
       </provider>
@@ -650,7 +650,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+            <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
           </folding>
         </state>
       </provider>
@@ -690,7 +690,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+            <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
           </folding>
         </state>
       </provider>
@@ -716,7 +716,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+            <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
           </folding>
         </state>
       </provider>
@@ -907,10 +907,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="701" column="12" selection-start-line="701" selection-start-column="12" selection-end-line="701" selection-end-column="12" />
+        <state relative-caret-position="555">
+          <caret line="710" column="0" selection-start-line="710" selection-start-column="0" selection-end-line="710" selection-end-column="0" />
           <folding>
-            <marker date="1475846565000" expanded="true" signature="22847:22914" ph="..." />
+            <marker date="1475846973000" expanded="true" signature="22847:22914" ph="..." />
           </folding>
         </state>
       </provider>

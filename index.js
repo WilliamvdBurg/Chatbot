@@ -174,6 +174,7 @@ app.post('/webhook/', function (req, res) {
 
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
+                sessies[recipient].accessToken =
                 sendTextMessage(sender, 'De evaluatie is gestart', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
@@ -181,13 +182,13 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                     else {
-                        authenticateCode(text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g))
+                        console.log('the text is ', text, 'and the regular ex', text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g));
+                        authenticateCode(text)
                             .then(function (accessToken) {
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
                                 _id = evaluationId;
                                 return getEvaluationData(evaluationId, accessToken);
-                                console.log('gehele set', evaluationId)
                             })
                             .then(function (questionSet) {
                                 askQuestion(questionSet[sessies[recipient].vraag], sender);
@@ -336,7 +337,7 @@ var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9z
 function sendTextMessage(sender, text, callback) {
     messageData = {
         text: text
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: token},
@@ -588,25 +589,20 @@ console.log('id madda', question.id);
 //
 //
 //
-// function sendAnswers(sender){
-//     var formData = new FormData();
-//
-//     formData.append( id , duration, evaluationBlocks)
-//     request({
-//     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
-//     method: 'POST',
-//     headers: headers,
-//     data:
-
-// ik heb het id test, id vraag, vak, antwoorden/ answers
-// }, function (error, response, body) {
-//     if (error) {
-//         console.log('Error sending messages: ', error)
-//     } else if (response.body.error) {
-//         console.log('Error: ', response.body.error)
-//     }
-// })
-// }
+function sendAnswers(payload){
+    request({
+    url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
+    method: 'POST',
+    headers: headers,
+    data: payload
+}, function (error, response, body) {
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
+}
 
 //
 
@@ -708,35 +704,8 @@ function sendDetails(recipient, evaluation){
 
 
     console.log('awnsers', payload);
-    console.log('awnsersteachers',payload['answers'].teachers);
-    // questions.answers.push(
-    //     [
-    //     {
-    //         "id": _id,
-    //         "topic": {
-    //             "id": _idV,
-    //             "name": _nameV,
-    //             "type": _typeV
-    //         },
-    //         "answers": [
-    //             {
-    //                 "answer": sessies.answer,
-    //                 "score": answers.score,
-    //                 "question": _qid,
-    //                 "teacher": {
-    //                     "id": _idT,
-    //                     "block": _idB,
-    //                     "name": _nameT,
-    //                     "code": _codeT
-    //                 }
-    //             }
-    //
-    //         ]
-    //
-    //     }
-    //
-    // ])
 
+    sendAnswers(sender, payload);
 }
 
 
