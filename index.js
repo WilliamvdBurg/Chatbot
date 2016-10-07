@@ -691,13 +691,14 @@ function sendDetails(recipient, evaluation){
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
             "teachers": {
-                "id": teacherId,
+                "id": evaluation.blocks[0].data.teachers[0].id,
                 "block":_id,
-                "name": teacherName,
-                "code": teacherCode
+                "name": teacherName =  evaluation.blocks[0].data.teachers[0].name,
+                "code": teacherCode =  evaluation.blocks[0].data.teachers[0].data.code
             }
         })
     }
+
 
     console.log('awnsers', awnsers);
     console.log('awnsersteachers',awnsers['awnsers'].teachers);
