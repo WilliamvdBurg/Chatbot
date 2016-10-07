@@ -70,20 +70,10 @@ app.post('/webhook/', function (req, res) {
 
             text = event.message.text;
 
-            // if (text == 'mijn code is:' + code ) {
-            //     sendWebsiteMessage(sender)
-            //
-            // }
-            // if (text == 'teachers') {
-            //     questionsAnswers(sender)
-            // }
             if (text == 'Informatie' || text == 'Informatie') {
                 sendWebsiteMessage(sender)
 
             }
-            // if (text == 'fuckjerom'){
-            //     sendGenericMessage(sender)
-            // }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
                 sendOnderwijsMessage(sender)
@@ -101,17 +91,6 @@ app.post('/webhook/', function (req, res) {
                 sendStartMessage(sender)
             }
 
-            // if (text == 'testresultaten' || text == 'Testresultaten') {
-            //     sendTextMessage(sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1 - 1])
-            //     sendTextMessage(sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-            //     sendTextMessage(sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-            //     sendTextMessage(sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-            //     sendTextMessage(sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-            //     sendTextMessage(sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-            //     sendTextMessage(sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-            //     sendTextMessage(sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-            //     sendTextMessage(sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
-            // }
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
@@ -135,11 +114,6 @@ app.post('/webhook/', function (req, res) {
             if (text == 'restart' || text == 'Restart') {
                 sendTestfinishedMessage(sender)
             }
-            // if (text == 'haai'){
-            //     sendGenericMessage(sender)
-            //
-            // }
-
 
         //     curl -X POST -H "Content-Type: application/json" -d'{
         //     "recipient":{
@@ -167,7 +141,7 @@ app.post('/webhook/', function (req, res) {
         // }' "https://graph.facebook.com/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 
-
+//---------------------code word hier gestart door een regular expression. deze if word uitgevoerd hierna--------------------
 
             if (text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g)) {
                 console.log('werkt ')
@@ -238,21 +212,6 @@ app.post('/webhook/', function (req, res) {
             if (event.message = null) {
                 sendTextMessage(sender, 'Het bericht word niet herkent, probeer het opnieuw of typ Help.')
             }
-            // if (text < 11 ) {
-            //     sendTextMessage(sender, 'vraag 2: De docent legde de lesstof begrijpelijk uit.')
-            //     if ( text > 10) {
-            //         sendTextMessage(sender, 'error, antwoord onbekend!'),
-            //             sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-            //     }
-            // }
-
-
-// function StartTest()
-// {
-//     sendTextMessage(self.sender, 'De vragen dienen te worden beantwoord met cijfer van 1 tot en met 10'),
-//     sendTextMessage(self.sender, 'vraag 1: De docent toonde voldoende kennis over de lesstof.')
-// }
-
 
             function sendKlaarMessage(sender) {
                 messageData = {
@@ -302,20 +261,6 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, antwoorden);
 
                 console.log('antwoorden', antwoorden);
-                // sendTextMessage(self.sender, 'Vraag: 1 - antwoord:' + ' ' + cijferArray[1-1])
-                //     .then(function(callBack) {
-                //         sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                //     })
-                //
-
-                // sendTextMessage(self.sender, 'Vraag: 2 - antwoord:' + ' ' + cijferArray[1])
-                // sendTextMessage(self.sender, 'Vraag: 3 - antwoord:' + ' ' + cijferArray[2])
-                // sendTextMessage(self.sender, 'Vraag: 4 - antwoord:' + ' ' + cijferArray[3])
-                // sendTextMessage(self.sender, 'Vraag: 5 - antwoord:' + ' ' + cijferArray[4])
-                // sendTextMessage(self.sender, 'Vraag: 6 - antwoord:' + ' ' + cijferArray[5])
-                // sendTextMessage(self.sender, 'Vraag: 7 - antwoord:' + ' ' + cijferArray[6])
-                // sendTextMessage(self.sender, 'Vraag: 8 - antwoord:' + ' ' + cijferArray[7])
-                // sendTextMessage(self.sender, 'Vraag: 9 - antwoord:' + ' ' + cijferArray[8])
 
             }
             else if (text === "\"USER_DEFINED_PAYLOAD\"") {
@@ -378,22 +323,8 @@ function sendOnderwijsMessage(sender) {
                 "title": "Scheikunde",
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }]
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    };
+sendTextMessage(messageData);
 }
 
 function startVragen(userInput)
@@ -541,16 +472,6 @@ console.log('id madda', question.id);
         });
     }
 
-    // quick_replies: [{
-    //     content_type: 'text',
-    //     title: '1',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }, {
-    //     content_type: 'text',
-    //     title: '2',
-    //     payload: 'DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED'
-    // }]
-
     var messageData = {
         text: question.questionNl,
         quick_replies: quickReplies,
@@ -575,19 +496,7 @@ console.log('id madda', question.id);
         }
     })
 }
-// de data die je moet verzenden
-// function sendData() {
-//     var data = [
-//         {
-//             "id": _id
-//         },
-//         "answers"
-// ]
-// }
-// // de data word hier in de juiste versend status gezet
-//
-//
-//
+
 function sendAnswers(payload, accessToken){
     request({
     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
@@ -597,7 +506,6 @@ function sendAnswers(payload, accessToken){
     },
     data: payload
 }, function (error, response, body) {
-    console.log(error, response);
     if (error) {
         console.log('Error sending messages: ', error)
     } else if (response.body.error) {
@@ -610,66 +518,6 @@ function sendAnswers(payload, accessToken){
 
 //------------------------------------gegevens ophalen voor verzenden------------------------------------
 
-// function getTeacherName() {
-//     _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
-//         _nameT = teacher.name;
-//         _idT = teacher.id;
-//         _codeT = teacher.code
-//         console.log('leraren', teacher);
-//     });
-//     return ;
-// }
-
-// function getTeacherName() {
-//     return evaluation.blocks[0].data.teachers[0].name;
-// }
-//
-// function getTeacherId() {
-//     return evaluation.blocks[0].data.teachers[0].id;
-// }
-// function getTeacherCode() {
-//     return evaluation.blocks[0].data.teachers[0].data.code;
-// }
-//
-// function getBlockId() {
-//     return evaluation.blocks[0].id;
-// }
-//
-// function getvakId() {
-//     console.log('evaluation hiero', evaluation)
-//     return evaluation.blocks[0].topic.id;
-// }
-// function getvakName() {
-//     return evaluation.blocks[0].topic.name;
-// }
-//
-// function getvakType() {
-//     return evaluation.blocks[0].topic.type;
-// }
-
-
-// function getVakname(){
-//     var i = 0;
-//     _.forEach(evaluation.topic[i], function (vak) {
-//         i++;
-//         _nameV = vak.name;
-//         _idV = vak.id;
-//         _typeV = vak.type;
-//         console.log('vak', vak);
-//     });
-//     return;
-// }
-// function getanswersTest(){
-//     var i = 0;
-//     var a = [];
-//     _.forEach(sessies[recipient].answers, function (vak) {
-//         a.push(
-//             answer: ads,
-//             score: asd
-//         )
-//     });
-//     return a;
-// }
 //-------------------------------------finished ophalen gegevens------------------------------------------
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
@@ -921,7 +769,6 @@ function sendTestfinishedMessage(sender) {
     })
 
 }
-
 
 function sendGenericMessage(sender) {
     messageData = {
