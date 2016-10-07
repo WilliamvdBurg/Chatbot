@@ -174,7 +174,6 @@ app.post('/webhook/', function (req, res) {
 
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
-                sessies[recipient].accessToken =
                 sendTextMessage(sender, 'De evaluatie is gestart', function (error, response, body) {
                     if (error) {
                         console.log('Error sending messages: ', error)
@@ -182,9 +181,9 @@ app.post('/webhook/', function (req, res) {
                         console.log('Error: ', response.body.error)
                     }
                     else {
-                        console.log('the text is ', text, 'and the regular ex', text.match(/^[a-zA-Z]{3,}-[0-9]{3,}/g));
                         authenticateCode(text)
                             .then(function (accessToken) {
+                                sessies[recipient].accessToken = accessToken;
                                 var decoded = jwt_decode(accessToken);
                                 var evaluationId = decoded.evaluationId;
                                 _id = evaluationId;
@@ -589,13 +588,16 @@ console.log('id madda', question.id);
 //
 //
 //
-function sendAnswers(payload){
+function sendAnswers(payload, accessToken){
     request({
     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
     method: 'POST',
-    headers: headers,
+    headers: {
+        ['access-token']: accessToken
+    },
     data: payload
 }, function (error, response, body) {
+    console.log(error, response);
     if (error) {
         console.log('Error sending messages: ', error)
     } else if (response.body.error) {
@@ -671,7 +673,7 @@ function sendAnswers(payload){
 //-------------------------------------finished ophalen gegevens------------------------------------------
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
-function sendDetails(recipient, evaluation){
+function sendDetails(recipient){
 
     var payload = [];
     payload.id = _id;
@@ -705,7 +707,7 @@ function sendDetails(recipient, evaluation){
 
     console.log('awnsers', payload);
 
-    sendAnswers(sender, payload);
+    sendAnswers(payload, sessies[recipient].accessToken);
 }
 
 
