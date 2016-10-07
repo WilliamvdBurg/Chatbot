@@ -598,19 +598,19 @@ console.log('id madda', question.id);
 
 //------------------------------------gegevens ophalen voor verzenden------------------------------------
 
-// function getTeacherName() {
-//     _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
-//         _nameT = teacher.name;
-//         _idT = teacher.id;
-//         _codeT = teacher.code
-//         console.log('leraren', teacher);
-//     });
-//     return ;
-// }
-
 function getTeacherName() {
-    return evaluation.blocks[0].data.teachers[0].name;
+    _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
+        _nameT = teacher.name;
+        _idT = teacher.id;
+        _codeT = teacher.code
+        console.log('leraren', teacher);
+    });
+    return ;
 }
+
+// function getTeacherName() {
+//     return evaluation.blocks[0].data.teachers[0].name;
+// }
 
 function getTeacherId() {
     return evaluation.blocks[0].data.teachers[0].id;
@@ -662,13 +662,13 @@ function getvakType() {
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(recipient){
-
+    getTeacherName();
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        "id": getvakId(),
-        "name": getvakName(),
-        "type": getvakType()
+        // "id": getvakId(),
+        // "name": getvakName(),
+        // "type": getvakType()
     };
     awnsers['awnsers'] = [];
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
@@ -677,10 +677,10 @@ function sendDetails(recipient){
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
             "teacher": {
-                "id": getTeacherId(),
-                "block": getBlockId(),
-                "name": getTeacherName(),
-                "code": getTeacherCode()
+                "id": _idT,
+                // "block": getBlockId(),
+                "name": _nameT,
+                "code": _codeT
             }
         })
     }
