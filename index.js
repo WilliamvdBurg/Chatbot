@@ -690,7 +690,7 @@ function sendDetails(recipient, evaluation){
             "answer": sessies[recipient].answers[i].answer,
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
-            "teacher": {
+            "teachers": {
                 "id": teacherId,
                 "block": _id,
                 "name": teacherName,
@@ -700,7 +700,7 @@ function sendDetails(recipient, evaluation){
     }
 
     console.log('awnsers', awnsers);
-    console.log('awnsersteachers', awnsers.answers.teacher);
+    console.log('awnsersteachers', awnsers.answers.teachers);
     // questions.answers.push(
     //     [
     //     {
