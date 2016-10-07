@@ -295,7 +295,7 @@ app.post('/webhook/', function (req, res) {
 
                 var antwoorden = '';
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
-                    antwoorden += 'Q' + (i + 1) + '=' + ' ' + sessies[recipient].answers[i] + '\n';
+                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
                 console.log(' antwoorden', sessies);
 
@@ -486,11 +486,9 @@ function getEvaluationData(id, accessToken) {
         topicId = evaluation.topic.id;
         topicName = evaluation.topic.name;
         topicType = evaluation.topic.type;
-        teacherId =  evaluation.blocks[0].data.teachers.id;
-        teacherName =  evaluation.blocks[0].data.teachers.name;
-        teacherCode =  evaluation.blocks[0].data.teachers.data.code;
-
-        console.log(evaluation.blocks[0].data.teachers)
+        teacherId =  evaluation.blocks[0].data.teachers[0].id;
+        teacherName =  evaluation.blocks[0].data.teachers[0].name;
+        teacherCode =  evaluation.blocks[0].data.teachers[0].data.code;
 
         console.log('topic evaluatie', topicId, topicName, topicType, ',', teacherName, teacherCode, teacherId);
         return questionSet;
@@ -702,7 +700,7 @@ function sendDetails(recipient, evaluation){
     }
 
     console.log('awnsers', awnsers);
-    console.log('awnsersteachers',awnsers.teachers);
+    console.log('awnsersteachers',awnsers['awnsers'].teachers);
     // questions.answers.push(
     //     [
     //     {
