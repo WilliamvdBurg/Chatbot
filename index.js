@@ -622,32 +622,32 @@ console.log('id madda', question.id);
 //     return ;
 // }
 
-function getTeacherName() {
-    return evaluation.blocks[0].data.teachers[0].name;
-}
-
-function getTeacherId() {
-    return evaluation.blocks[0].data.teachers[0].id;
-}
-function getTeacherCode() {
-    return evaluation.blocks[0].data.teachers[0].data.code;
-}
-
-function getBlockId() {
-    return evaluation.blocks[0].id;
-}
-
-function getvakId() {
-    console.log('evaluation hiero', evaluation)
-    return evaluation.blocks[0].topic.id;
-}
-function getvakName() {
-    return evaluation.blocks[0].topic.name;
-}
-
-function getvakType() {
-    return evaluation.blocks[0].topic.type;
-}
+// function getTeacherName() {
+//     return evaluation.blocks[0].data.teachers[0].name;
+// }
+//
+// function getTeacherId() {
+//     return evaluation.blocks[0].data.teachers[0].id;
+// }
+// function getTeacherCode() {
+//     return evaluation.blocks[0].data.teachers[0].data.code;
+// }
+//
+// function getBlockId() {
+//     return evaluation.blocks[0].id;
+// }
+//
+// function getvakId() {
+//     console.log('evaluation hiero', evaluation)
+//     return evaluation.blocks[0].topic.id;
+// }
+// function getvakName() {
+//     return evaluation.blocks[0].topic.name;
+// }
+//
+// function getvakType() {
+//     return evaluation.blocks[0].topic.type;
+// }
 
 
 // function getVakname(){
