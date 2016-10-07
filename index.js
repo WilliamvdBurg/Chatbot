@@ -476,7 +476,7 @@ function getEvaluationData(id, accessToken) {
             _qid = questionSet[0].id;
             console.log(questionSet);
         });
-
+        sendDetails(evaluation);
         return questionSet;
     }).catch(function (error) {
         console.log(error);
@@ -666,7 +666,7 @@ function sendDetails(recipient){
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        "id": 1,
+        "id": evaluation.blocks[0].topic.id,
         "name": 1,
         "type": 1
     };
