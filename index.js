@@ -476,7 +476,7 @@ function getEvaluationData(id, accessToken) {
             _qid = questionSet[0].id;
             console.log(questionSet);
         });
-
+        return evaluation;
         return questionSet;
     }).catch(function (error) {
         console.log(error);
@@ -605,7 +605,7 @@ function getTeacherName() {
         _codeT = teacher.code
         console.log('leraren', teacher);
     });
-    return ;
+
 }
 
 // function getTeacherName() {
