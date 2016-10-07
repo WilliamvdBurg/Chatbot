@@ -466,9 +466,9 @@ function getEvaluationData(id, accessToken) {
     }).then(function (result) {
         var data = JSON.parse(result);
         evaluation = data.results[0];
-        console.log('evaluatie2', evaluation)
-        console.log ('evaluatie', data)
-        console.log('code kw', result)
+        console.log('evaluatie2', evaluation);
+        console.log ('evaluatie', data);
+        console.log('code kw', result);
 
         var openQuestions = [];
         _.forEach(evaluation.blocks[0].questionSets, function (questionset) {
@@ -476,7 +476,12 @@ function getEvaluationData(id, accessToken) {
             _qid = questionSet[0].id;
             console.log(questionSet);
         });
-        sendDetails(evaluation);
+
+        var topicId = evaluation.topic.id;
+        var topicName = evaluation.topic.name;
+        var topicType = evaluation.topic.type;
+
+        console.log('topic evaluatie', topicId, topicName, topicType)
         return questionSet;
     }).catch(function (error) {
         console.log(error);
