@@ -677,30 +677,38 @@ console.log('id madda', question.id);
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(recipient, evaluation){
 
-    var awnsers = [];
-    awnsers['id'] = _id;
-    awnsers['topic'] = {
+    var payload = [];
+    payload.id = _id;
+    payload.topic = {
         "id": topicId,
         "name": topicName,
         "type": topicType
     };
-    awnsers['awnsers'] = [];
+
+    var antwoorden = [];
+    //vullen van antwoorden
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
-        awnsers['awnsers'].push({
+        antwoorden.push({
             "answer": sessies[recipient].answers[i].answer,
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
-            "teachers": [{
+            "teachers": [
+                {
                 "id": teacherId,
                 "block":_id,
                 "name": teacherName,
                 "code": teacherCode
-            }]
+            }
+            ]
         })
     }
 
-    console.log('awnsers', awnsers);
-    console.log('awnsersteachers',awnsers['awnsers'].teachers);
+    payload.answers = antwoorden;
+
+
+
+    console.log('awnsers', payload);
+    console.log('awnsersteachers',payload['answers'].teachers);
     // questions.answers.push(
     //     [
     //     {
