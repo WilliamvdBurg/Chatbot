@@ -619,19 +619,19 @@ function getTeacherCode() {
     return evaluation.blocks[0].data.teachers[0].data.code;
 }
 
-function getBlockId() {
+function getBlockId(evaluation) {
     return evaluation.blocks[0].id;
 }
 
-function getvakId() {
+function getvakId(evaluation) {
     console.log('evaluation hiero', evaluation)
     return evaluation.topic.id;
 }
-function getvakName() {
+function getvakName(evaluation) {
     return evaluation.topic.name;
 }
 
-function getvakType() {
+function getvakType(evaluation) {
     return evaluation.topic.type;
 }
 
@@ -677,10 +677,10 @@ function sendDetails(recipient){
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
             "teacher": {
-                "id": getTeacherId(),
-                "block": getBlockId(),
-                "name": getTeacherName(),
-                "code": getTeacherCode()
+                "id": getTeacherId(evaluation),
+                "block": getBlockId(evaluation),
+                "name": getTeacherName(evaluation),
+                "code": getTeacherCode(evaluation)
             }
         })
     }
