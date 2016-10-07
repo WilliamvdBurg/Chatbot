@@ -690,12 +690,12 @@ function sendDetails(recipient, evaluation){
             "answer": sessies[recipient].answers[i].answer,
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
-            "teachers": {
+            "teachers": [{
                 "id": teacherId,
                 "block":_id,
                 "name": teacherName,
                 "code": teacherCode
-            }
+            }]
         })
     }
 
