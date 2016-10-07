@@ -325,9 +325,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200);
 });
 
-
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
-
 
 function sendTextMessage(sender, text, callback) {
     messageData = {
@@ -620,20 +618,20 @@ function getTeacherId() {
 function getTeacherCode() {
     return evaluation.blocks[0].data.teachers[0].data.code;
 }
-//
-// function getBlockId() {
-//     return evaluation.blocks[0].id;
-// }
-// function getvakId() {
-//     return evaluation.topic[0].id;
-// }
-// function getvakName() {
-//     return evaluation.topic[0].name;
-// }
-//
-// function getvakType() {
-//     return evaluation.topic[0].type;
-// }
+
+function getBlockId() {
+    return evaluation.blocks[0].id;
+}
+function getvakId() {
+    return evaluation.topic[0].id;
+}
+function getvakName() {
+    return evaluation.topic[0].name;
+}
+
+function getvakType() {
+    return evaluation.topic[0].type;
+}
 
 
 // function getVakname(){
