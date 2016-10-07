@@ -678,7 +678,7 @@ console.log('id madda', question.id);
 function sendDetails(recipient, evaluation){
 
     var awnsers = [];
-    awnsers['id'] = 'id';
+    awnsers['id'] = _id;
     awnsers['topic'] = {
         "id": topicId,
         "name": topicName,
@@ -692,7 +692,7 @@ function sendDetails(recipient, evaluation){
             "question": sessies[recipient].answers[i].questionId,
             "teacher": {
                 "id": teacherId,
-                "block": 1,
+                "block": _id,
                 "name": teacherName,
                 "code": teacherCode
             }
