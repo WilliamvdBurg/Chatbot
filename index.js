@@ -295,7 +295,7 @@ app.post('/webhook/', function (req, res) {
 
                 var antwoorden = '';
                 for (var i = 0; i < sessies[recipient].answers.length; i++) {
-                    antwoorden += 'Vraag' + (i + 1) + '- antwoord:' + ' ' + sessies[recipient].answers[i] + '\n';
+                    antwoorden += 'Q' + (i + 1) + ':' + ' ' + sessies[recipient].answers[i] + '\n';
                 }
                 console.log(' antwoorden', sessies);
 
