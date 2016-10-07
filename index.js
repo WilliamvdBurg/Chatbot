@@ -599,6 +599,7 @@ console.log('id madda', question.id);
 //------------------------------------gegevens ophalen voor verzenden------------------------------------
 
 function getTeacherName() {
+    getEvaluationData()
     _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
         _nameT = teacher.name;
         _idT = teacher.id;
@@ -618,11 +619,11 @@ function getTeacherName() {
 // function getTeacherCode() {
 //     return evaluation.blocks[0].data.teachers[0].data.code;
 // }
-
-function getBlockId() {
-    return evaluation.blocks[0].id;
-}
-
+//
+// function getBlockId() {
+//     return evaluation.blocks[0].id;
+// }
+//
 // function getvakId() {
 //     console.log('evaluation hiero', evaluation)
 //     return evaluation.blocks[0].topic.id;
