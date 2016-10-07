@@ -476,7 +476,7 @@ function getEvaluationData(id, accessToken) {
             _qid = questionSet[0].id;
             console.log(questionSet);
         });
-        return evaluation;
+
         return questionSet;
     }).catch(function (error) {
         console.log(error);
@@ -598,43 +598,42 @@ console.log('id madda', question.id);
 
 //------------------------------------gegevens ophalen voor verzenden------------------------------------
 
-function getTeacherName() {
-    getEvaluationData()
-    _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
-        _nameT = teacher.name;
-        _idT = teacher.id;
-        _codeT = teacher.code
-        console.log('leraren', teacher);
-    });
+// function getTeacherName() {
+//     _.forEach(evaluation.blocks[0].data.teachers, function (teacher) {
+//         _nameT = teacher.name;
+//         _idT = teacher.id;
+//         _codeT = teacher.code
+//         console.log('leraren', teacher);
+//     });
+//     return ;
+// }
 
+function getTeacherName() {
+    return evaluation.blocks[0].data.teachers[0].name;
 }
 
-// function getTeacherName() {
-//     return evaluation.blocks[0].data.teachers[0].name;
-// }
+function getTeacherId() {
+    return evaluation.blocks[0].data.teachers[0].id;
+}
+function getTeacherCode() {
+    return evaluation.blocks[0].data.teachers[0].data.code;
+}
 
-// function getTeacherId() {
-//     return evaluation.blocks[0].data.teachers[0].id;
-// }
-// function getTeacherCode() {
-//     return evaluation.blocks[0].data.teachers[0].data.code;
-// }
-//
-// function getBlockId() {
-//     return evaluation.blocks[0].id;
-// }
-//
-// function getvakId() {
-//     console.log('evaluation hiero', evaluation)
-//     return evaluation.blocks[0].topic.id;
-// }
-// function getvakName() {
-//     return evaluation.blocks[0].topic.name;
-// }
-//
-// function getvakType() {
-//     return evaluation.blocks[0].topic.type;
-// }
+function getBlockId() {
+    return evaluation.blocks[0].id;
+}
+
+function getvakId() {
+    console.log('evaluation hiero', evaluation)
+    return evaluation.blocks[0].topic.id;
+}
+function getvakName() {
+    return evaluation.blocks[0].topic.name;
+}
+
+function getvakType() {
+    return evaluation.blocks[0].topic.type;
+}
 
 
 // function getVakname(){
@@ -663,13 +662,13 @@ function getTeacherName() {
 
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(recipient){
-    getTeacherName();
+
     var awnsers = [];
     awnsers['id'] = 'id';
     awnsers['topic'] = {
-        // "id": getvakId(),
-        // "name": getvakName(),
-        // "type": getvakType()
+        "id": 1,
+        "name": 1,
+        "type": 1
     };
     awnsers['awnsers'] = [];
     for(var i = 0; i < sessies[recipient].answers.length; i++) {
@@ -678,10 +677,10 @@ function sendDetails(recipient){
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
             "teacher": {
-                "id": _idT,
-                // "block": getBlockId(),
-                "name": _nameT,
-                "code": _codeT
+                "id": 1,
+                "block": 1,
+                "name": 1,
+                "code": 1
             }
         })
     }
