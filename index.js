@@ -486,9 +486,11 @@ function getEvaluationData(id, accessToken) {
         topicId = evaluation.topic.id;
         topicName = evaluation.topic.name;
         topicType = evaluation.topic.type;
-        teacherId =  evaluation.blocks[0].data.teachers[0].id;
-        teacherName =  evaluation.blocks[0].data.teachers[0].name;
-        teacherCode =  evaluation.blocks[0].data.teachers[0].data.code;
+        teacherId =  evaluation.blocks[0].data.teachers.id;
+        teacherName =  evaluation.blocks[0].data.teachers.name;
+        teacherCode =  evaluation.blocks[0].data.teachers.data.code;
+
+        console.log(evaluation.blocks[0].data.teachers)
 
         console.log('topic evaluatie', topicId, topicName, topicType, ',', teacherName, teacherCode, teacherId);
         return questionSet;
