@@ -23,6 +23,9 @@ var evaluation;
 var topicId;
 var topicName;
 var topicType;
+var teacherId;
+var teacherName;
+var teacherCode;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -483,6 +486,9 @@ function getEvaluationData(id, accessToken) {
         topicId = evaluation.topic.id;
         topicName = evaluation.topic.name;
         topicType = evaluation.topic.type;
+        teacherId =  evaluation.blocks[0].data.teachers[0].id;;
+        teacherName =  evaluation.blocks[0].data.teachers[0].name;;
+        teacherCode =  evaluation.blocks[0].data.teachers[0].data.code;;
 
         console.log('topic evaluatie', topicId, topicName, topicType)
         return questionSet;
@@ -685,10 +691,10 @@ function sendDetails(recipient, evaluation){
             "score": sessies[recipient].answers[i].score,
             "question": sessies[recipient].answers[i].questionId,
             "teacher": {
-                "id": 1,
+                "id": teacherId,
                 "block": 1,
-                "name": 1,
-                "code": 1
+                "name": teacherName,
+                "code": teacherCode
             }
         })
     }
