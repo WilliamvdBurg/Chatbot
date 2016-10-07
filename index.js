@@ -622,7 +622,9 @@ function getTeacherCode() {
 function getBlockId() {
     return evaluation.blocks[0].id;
 }
+
 function getvakId() {
+    console.log('evaluation hiero', evaluation)
     return evaluation.topic.id;
 }
 function getvakName() {
