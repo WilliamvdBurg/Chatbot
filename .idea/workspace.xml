@@ -68,8 +68,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="465" column="31" selection-start-line="465" selection-start-column="31" selection-end-line="465" selection-end-column="31" />
+            <state relative-caret-position="280">
+              <caret line="668" column="25" selection-start-line="667" selection-start-column="24" selection-end-line="668" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -362,7 +362,7 @@
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
       <workItem from="1474039264905" duration="224808000" />
-      <workItem from="1475661423096" duration="35614000" />
+      <workItem from="1475661423096" duration="35854000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -452,7 +452,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="411759000" />
+    <option name="totallyTimeSpent" value="411999000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1028,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="465" column="31" selection-start-line="465" selection-start-column="31" selection-end-line="465" selection-end-column="31" />
+        <state relative-caret-position="280">
+          <caret line="668" column="25" selection-start-line="667" selection-start-column="24" selection-end-line="668" selection-end-column="25" />
           <folding />
         </state>
       </provider>

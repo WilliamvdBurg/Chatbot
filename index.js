@@ -625,14 +625,14 @@ function getBlockId(evaluation) {
 
 function getvakId(evaluation) {
     console.log('evaluation hiero', evaluation)
-    return evaluation.topic.id;
+    return evaluation.blocks[0].topic.id;
 }
 function getvakName(evaluation) {
-    return evaluation.topic.name;
+    return evaluation.blocks[0].topic.name;
 }
 
 function getvakType(evaluation) {
-    return evaluation.topic.type;
+    return evaluation.blocks[0].topic.type;
 }
 
 
