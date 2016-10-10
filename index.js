@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
 
                 sendTextMessage(sender, 'Welkom! typ uw code in om de test te starten :|]')
             }
-            if (text == 'jacowies' || text == 'Jacowies') {
+            if (text == 'mirjan' || text == 'Mirjan') {
 
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
@@ -649,9 +649,9 @@ function sendjeromMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "fuck you jerom",
-                    "subtitle": "ik ga jacowies niet pesten!",
-                    "image_url": "https://media.giphy.com/media/U7P2vnWfPkIQ8/giphy.gif",
+                    "title": "OOPSIE FLOOPSIE",
+                    "subtitle": "Hij viel maar van zo hoog :P",
+                    "image_url": "https://media2.giphy.com/media/3oEjHWN812pVOq0D5e/200w.gif#2",
                     }
                 ]
             }
