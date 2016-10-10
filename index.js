@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
 
                 sendTextMessage(sender, 'Welkom! typ uw code in om de test te starten :|]')
             }
-            if (text == 'jacowies' || text == 'Jerom') {
+            if (text == 'jacowies' || text == 'Jacowies') {
 
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
