@@ -77,9 +77,6 @@ app.post('/webhook/', function (req, res) {
 
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
-            if (text == 'Geert' || text == 'geert') {
-                sendgeertMessage(sender,'Minder Minder Minder')
-            }
 
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
@@ -656,46 +653,6 @@ function sendjeromMessage(sender) {
                     "subtitle": "hier is een foto van jerom na het bulken!",
                     "image_url": "https://i.ytimg.com/vi/wt9WHu4G06o/hqdefault.jpg",
                     }
-                ]
-            }
-        }
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-
-}
-
-function sendgeertMessage(sender) {
-    messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "PVV",
-                    "subtitle": "groetjes van de PVV",
-                    "image_url": "https://i.redd.it/t0e79l2k848x.jpg",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.pvv.nl/",
-                        "title": "MINDER"
-                    }
-                    ]
-                }
-
                 ]
             }
         }
