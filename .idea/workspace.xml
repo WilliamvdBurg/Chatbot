@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="674efd4b-5de8-42ba-8fff-46670cefd4c1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-    </list>
+    <list default="true" id="674efd4b-5de8-42ba-8fff-46670cefd4c1" name="Default" comment="" />
     <ignored path="bot.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -68,8 +66,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="111" column="50" selection-start-line="111" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="133" column="18" selection-start-line="133" selection-start-column="18" selection-end-line="133" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -372,7 +370,7 @@
       <workItem from="1472744817390" duration="2962000" />
       <workItem from="1472830342529" duration="133152000" />
       <workItem from="1474039264905" duration="224808000" />
-      <workItem from="1475661423096" duration="64752000" />
+      <workItem from="1475661423096" duration="65051000" />
     </task>
     <task id="LOCAL-00001" summary="nieuwe heroku">
       <created>1473063207521</created>
@@ -462,7 +460,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440897000" />
+    <option name="totallyTimeSpent" value="441196000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -945,8 +943,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="111" column="50" selection-start-line="111" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="133" column="18" selection-start-line="133" selection-start-column="18" selection-end-line="133" selection-end-column="18" />
           <folding />
         </state>
       </provider>
