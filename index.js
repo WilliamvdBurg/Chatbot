@@ -660,7 +660,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "MWuHahaha",
                     "subtitle": "Don't Look!!",
-                    "image_url": jacowies
+                    "image_url": allPics.jacowies
                     }
                 ]
             }
