@@ -642,9 +642,6 @@ function sendStartMessage(sender) {
     })
 
 }
-
-
-
 function sendjeromMessage(sender) {
     messageData = {
         "attachment": {
@@ -652,9 +649,9 @@ function sendjeromMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "MWuHahaha",
-                    "subtitle": "Don't Look!!",
-                    "image_url": 'http//:www.google.nl'
+                    "title": "fuck you jerom",
+                    "subtitle": "ik ga jacowies niet pesten!",
+                    "image_url": "http://cheezburger.com/6470120192",
                     }
                 ]
             }
