@@ -73,7 +73,7 @@ app.post('/webhook/', function (req, res) {
 
                 sendTextMessage(sender, 'Welkom! typ uw code in om de test te starten :|]')
             }
-            if (text == 'jerom' || text == 'Jerom') {
+            if (text == 'jacowies' || text == 'Jerom') {
 
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
@@ -660,7 +660,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "MWuHahaha",
                     "subtitle": "Don't Look!!",
-                    "image_url": allPics
+                    "image_url": jacowies
                     }
                 ]
             }
