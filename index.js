@@ -654,7 +654,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "BulkPower",
                     "subtitle": "hier is een foto van jerom na het bulken!",
-                    "image_url": "http://2.bp.blogspot.com/-shN6m9oIJrg/UcsxF81TOYI/AAAAAAAAEr4/rYweD8cKAic/s1600/dikkerd-zit-achter-de-computer.PNG",
+                    "image_url": "https://i.ytimg.com/vi/wt9WHu4G06o/hqdefault.jpg",
                     }
                 ]
             }
