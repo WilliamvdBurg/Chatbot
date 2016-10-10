@@ -18,6 +18,9 @@ var topicType;
 var teacherId;
 var teacherName;
 var teacherCode;
+var longStarttime;
+var longEndtime;
+var longSeconds;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -68,27 +71,12 @@ app.post('/webhook/', function (req, res) {
             }
             if (text == 'Start test' || text == 'Hello' || text == 'yo' || text == 'hallo' || text == 'Hallo' || text == 'heey' || text == 'hey' || text == 'Hey' || text == 'hi' || text == 'Yo' || text == 'hoi' || text == 'Hoi') {
 
-                sendOnderwijsMessage(sender)
+                sendTextMessage(sender, 'Welkom! typ uw code in om de test te starten :|]')
             }
-            if (text == 'Informatica' || text == 'Pshychologie' || text == 'Communicatie' || text == 'Pabo' || text == 'Scheikunde') {
-                sendModuleMessage(sender)
-            }
-
-
-            if (text == 'Bierpong' || text == 'Breien' || text == 'Java Beginners' || text == 'Sterrekunde' || text == 'Aapies kijken') {
-                sendInformaticaMessage(sender)
-            }
-
-            if (text == 'Jaap Hoogeveen' || text == 'Arend Appel' || text == 'Tinus Hendrikus' || text == 'Jerommeke Arends' || text == 'Truus Huus') {
-                sendStartMessage(sender)
-            }
-
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
             }
-
-
 
             if (text == 'Nee' || text == 'nee') {
                 vragensessie = true
@@ -107,31 +95,6 @@ app.post('/webhook/', function (req, res) {
                 sendTestfinishedMessage(sender)
             }
 
-        //     curl -X POST -H "Content-Type: application/json" -d'{
-        //     "recipient":{
-        //         "phone_number":"(+31)623462529"
-        //     },
-        //     "message":{
-        //         "text":"hello, how are you?!"
-        //     }
-        // }' "https://graph.facebook.com/v2.6/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
-
-
-        //     curl -X POST -H "Content-Type: application/json" -d '{
-        //     "recipient":{
-        //         "phone_number":"(+31)629573758"
-        //     },
-        //     "message":{
-        //         "attachment":{
-        //             "type":"image",
-        //                 "payload":{
-        //                 "url":"http://www.lindanieuws.nl/wp-content/uploads/2014/05/Schermafbeelding-2014-05-26-om-10.25.29.png",
-        //                     "is_reusable":true
-        //             }
-        //         }
-        //     }
-        // }' "https://graph.facebook.com/me/messages?access_token=EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
-
 
 //---------------------code word hier gestart door een regular expression. deze if word uitgevoerd hierna--------------------
 
@@ -141,6 +104,7 @@ app.post('/webhook/', function (req, res) {
                 sessies[recipient].vragensessie = true;
                 sessies[recipient].vraag = 0;
                 sendTextMessage(sender, 'De evaluatie is gestart', function (error, response, body) {
+                    longStarttime = System.currentTimeMillis();
                     if (error) {
                         console.log('Error sending messages: ', error)
                     } else if (response.body.error) {
@@ -170,7 +134,7 @@ app.post('/webhook/', function (req, res) {
                 console.log("code is getypt", text)
                 startVragen(text);
             }
-
+            // questionset is opgehaald, allee vragen die goed worden beantwoord zullen in een array worden gezet, de rest word genegeerd.
             if (sessies[recipient].vragensessie && questionSet) {
 
 
@@ -198,6 +162,9 @@ app.post('/webhook/', function (req, res) {
 
                 if (sessies[recipient].vraag >= questionSet.length) {
                     sendKlaarMessage(sender, 'alle vragen zijn beantwoord, bent u zeker over uw antwoorden?')
+                    longEndtime = System.currentTimeMillis();
+                    longSeconds = (endTime - startTime) / 1000;
+                    console.log('tijd', longSeconds)
                 }
 
             }
@@ -239,6 +206,7 @@ app.post('/webhook/', function (req, res) {
             }
 
         }
+        //----------------------------------postback word hier gerealiseerd-------------------------------------
         if (event.postback) {
             var text = JSON.stringify(event.postback.payload)
 
@@ -267,7 +235,7 @@ app.post('/webhook/', function (req, res) {
     }
     res.sendStatus(200);
 });
-
+//--------------------------------facebook token----------------------------------------
 var token = "EAAH6aBRRwRIBAAztsST3yW36UMjwAXW18gx5jfDDHGL0fgzI9zja5TPBtUiVXIVS9zaZASfaSXOJCqb0ZBXzWQF1LUWiZBbcRXqcPTz1atCTvQFF4cvodOJ7dmlTJQMFIAsL1uxiJtFjasn4ls4Ex2WeZA3rPrRKmXhMcQf9IQZDZD"
 
 function sendTextMessage(sender, text, callback) {
@@ -316,7 +284,7 @@ function sendOnderwijsMessage(sender) {
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }]
     };
-sendTextMessage(messageData);
+    sendTextMessage(messageData);
 }
 
 function startVragen(userInput)
@@ -489,6 +457,8 @@ console.log('id madda', question.id);
     })
 }
 
+//------------------------------answers versturen------------------------------
+
 function sendAnswers(payload, accessToken){
     request({
     url: 'https://staging-api-portal.evalytics.nl/evaluation/postAnswers/',
@@ -506,15 +476,13 @@ function sendAnswers(payload, accessToken){
 })
 }
 
-//
-
-//------------------------------------gegevens ophalen voor verzenden------------------------------------
-
-//-------------------------------------finished ophalen gegevens------------------------------------------
-
 //-------------------------------------senden gegevens EVA test--------------------------------------------
 function sendDetails(recipient){
 
+
+    // evaluation
+    // duration
+    // evaluationblocks
     var payload = [];
     payload.id = _id;
     payload.topic = {
@@ -543,11 +511,14 @@ function sendDetails(recipient){
 
     payload.answers = antwoorden;
 
+    var send = [];
+    send['evaluation'] = 10;
+    send['duration'] = longSeconds;
+    send['evaluationBlocks'] = payload;
 
+    console.log('awnsers', send);
 
-    console.log('awnsers', payload);
-
-    sendAnswers(payload, sessies[recipient].accessToken);
+    sendAnswers(send, sessies[recipient].accessToken);
 }
 
 
@@ -582,24 +553,9 @@ function sendInformaticaMessage(sender) {
                 "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
             }]
     };
-
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: token},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData,
-        }
-    }, function (error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-
+    sendTextMessage(messageData);
 }
+
 function sendModuleMessage(sender) {
     messageData = {
         "text": "Om welke Module gaat het?",
