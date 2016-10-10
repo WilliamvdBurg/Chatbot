@@ -654,7 +654,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "MWuHahaha",
                     "subtitle": "Don't Look!!",
-                    "image_url": 'https://media.giphy.com/media/NGDSQlPJiWImc/giphy.gif'
+                    "image_url": 'http//:www.google.nl'
                     }
                 ]
             }
