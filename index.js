@@ -651,7 +651,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "fuck you jerom",
                     "subtitle": "ik ga jacowies niet pesten!",
-                    "image_url": "http://cheezburger.com/6470120192",
+                    "image_url": "https://media.giphy.com/media/U7P2vnWfPkIQ8/giphy.gif",
                     }
                 ]
             }
