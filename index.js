@@ -642,6 +642,15 @@ function sendStartMessage(sender) {
     })
 
 }
+
+var allPics = {
+    jacowies:[
+        'https://media.giphy.com/media/NGDSQlPJiWImc/giphy.gif',
+        'https://media.giphy.com/media/12071fYBO811v2/giphy.gif'
+    ]
+};
+
+pics = allPics
 function sendjeromMessage(sender) {
     messageData = {
         "attachment": {
@@ -649,9 +658,9 @@ function sendjeromMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "BulkPower",
-                    "subtitle": "hier is een foto van jerom na het bulken!",
-                    "image_url": "https://media.giphy.com/media/NNjubPv8IE3Sw/giphy.gif",
+                    "title": "MWuHahaha",
+                    "subtitle": "Don't Look!!",
+                    "image_url": pics
                     }
                 ]
             }
