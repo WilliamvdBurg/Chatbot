@@ -73,6 +73,10 @@ app.post('/webhook/', function (req, res) {
 
                 sendTextMessage(sender, 'Welkom! typ uw code in om de test te starten :|]')
             }
+            if (text == 'jerom') {
+
+                sendjeromMessage(sender, 'hier is een foto van jerom')
+            }
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
                 sendWebsiteMessage(sender, "Oke! dankuwel voor het invullen van de vragenlijst. Totziens!!")
@@ -637,7 +641,38 @@ function sendStartMessage(sender) {
     })
 
 }
+function sendjeromMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "BulkPower",
+                    "subtitle": "hier is een foto van jerom na het bulken!",
+                    "image_url": "http://2.bp.blogspot.com/-shN6m9oIJrg/UcsxF81TOYI/AAAAAAAAEr4/rYweD8cKAic/s1600/dikkerd-zit-achter-de-computer.PNG",
+                    }
+                ]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
+}
 
 function sendWebsiteMessage(sender) {
     messageData = {
