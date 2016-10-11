@@ -665,12 +665,12 @@ function sendPayMessage(sender) {
                                 "currency": "USD",
                                 "payment_type": "FIXED_AMOUNT",
                                 "merchant_name": "Peter's Apparel",
-                                "requested_user_info": [
-                                    "shipping_address",
-                                    "contact_name",
-                                    "contact_phone",
-                                    "contact_email"
-                                ],
+                                "requested_user_info": [{
+                                    "shipping_address": "hallostraat",
+                                    "contact_name": "Jaapie Flaap",
+                                    "contact_phone": "039237829309",
+                                    "contact_email": "janaap@hshs.nl"
+                                }],
                                 "price_list": [
                                     {
                                         "label": "Subtotal",
