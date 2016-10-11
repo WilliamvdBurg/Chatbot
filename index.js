@@ -77,6 +77,10 @@ app.post('/webhook/', function (req, res) {
 
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
+            if ( text == 'factuur' || text == 'Factuur'){
+                sendFactuurMessage(sender)
+            }
+
 
             if (text == 'Ja' || text == 'ja') {
                 sendDetails(recipient);
@@ -661,6 +665,59 @@ function sendjeromMessage(sender) {
                         "title": "Meer informatie",
                         "payload": "Payload_1"
                     }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
+function sendFactuurMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Factuur 1:",
+                    "subtitle": "Crediteur: Google",
+                    "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.oculus.com/",
+                        "title": "Factuur inzien"
+                    }, {
+                        "type": "postback",
+                        "title": "Direct betalen",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Fatuur 2:",
+                    "subtitle": "Crediteur: Jerom Kok",
+                    "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Factuur inzien",
+                        "payload": "Payload for second element in a generic bubble"
+                    },{
+                        "type": "postback",
+                        "title": "Direct Betalen",
+                        "payload": "Payload for first element in a generic bubble",
+                    }]
                 }]
             }
         }
