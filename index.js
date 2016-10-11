@@ -663,7 +663,7 @@ function sendPayMessage(sender) {
                             "payload": "DEVELOPER_DEFINED_PAYLOAD",
                             "payment_summary": {
                                 "currency": "USD",
-                                "payment_type": "10",
+                                "payment_type": "FIXED_AMOUNT",
                                 "merchant_name": "Peter's Apparel",
                                 "requested_user_info": [
                                     "shipping_address",
