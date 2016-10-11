@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
             if ( text == 'factuur' || text == 'Factuur'){
-                sendFactuurMessage(sender)
+                sendPayMessage(sender)
             }
 
 
@@ -646,6 +646,66 @@ function sendStartMessage(sender) {
     })
 
 }
+function sendPayMessage(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "vrendly test",
+                    "subtitle": "Ziet er weer prima uit",
+                    "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
+                    "buttons": [
+                        {
+                            "type": "payment",
+                            "title": "buy",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD",
+                            "payment_summary": {
+                                "currency": "USD",
+                                "payment_type": "FIXED_AMOUNT",
+                                "merchant_name": "Peter's Apparel",
+                                "requested_user_info": [
+                                    "shipping_address",
+                                    "contact_name",
+                                    "contact_phone",
+                                    "contact_email"
+                                ],
+                                "price_list": [
+                                    {
+                                        "label": "Subtotal",
+                                        "amount": "29.99"
+                                    },
+                                    {
+                                        "label": "Taxes",
+                                        "amount": "2.47"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+
+}
+
 function sendjeromMessage(sender) {
     messageData = {
         "attachment": {
