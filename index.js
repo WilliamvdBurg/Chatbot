@@ -652,8 +652,16 @@ function sendjeromMessage(sender) {
                     "title": "vrendly test",
                     "subtitle": "Ziet er weer prima uit",
                     "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
-                    }
-                ]
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://beta.vrendly.nl/app/#/overview/open",
+                        "title": "Klacht indienen"
+                    }, {
+                        "type": "postback",
+                        "title": "Meer informatie",
+                        "payload": "Payload_1"
+                    }],
+                }]
             }
         }
     }
