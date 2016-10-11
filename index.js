@@ -647,7 +647,6 @@ function sendStartMessage(sender) {
 
 }
 function sendPayMessage(sender) {
-    id = "(+31)54902460"
     messageData = {
         "attachment":{
                 "type":"template",
@@ -696,7 +695,7 @@ function sendPayMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: { id },
+            recipient: { phone_number :"(+31)654902460"},
             message: messageData,
         }
     }, function (error, response, body) {
