@@ -649,8 +649,8 @@ function sendjeromMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "fuck you jerom",
-                    "subtitle": "ik ga jacowies niet pesten!",
+                    "title": "vrendly test",
+                    "subtitle": "Ziet er weer prima uit",
                     "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
                     }
                 ]
