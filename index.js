@@ -662,7 +662,7 @@ function sendPayMessage(sender) {
                             "title": "buy",
                             "payload": "DEVELOPER_DEFINED_PAYLOAD",
                             "payment_summary": {
-                                "currency": "EURO",
+                                "currency": "USD",
                                 "payment_type": "10",
                                 "merchant_name": "Peter's Apparel",
                                 "requested_user_info": [
