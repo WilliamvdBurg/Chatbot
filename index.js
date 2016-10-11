@@ -651,7 +651,7 @@ function sendjeromMessage(sender) {
                 "elements": [{
                     "title": "fuck you jerom",
                     "subtitle": "ik ga jacowies niet pesten!",
-                    "image_url": "https://media.giphy.com/media/U7P2vnWfPkIQ8/giphy.gif",
+                    "image_url": "https://files.slack.com/files-pri/T03BPURV8-F2MQG7NGL/ancient_invoice.jpg",
                     }
                 ]
             }
