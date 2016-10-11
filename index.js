@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
                 sendjeromMessage(sender, 'hier is een foto van jerom, wilt u meer afbeeldingen typ Geert')
             }
             if ( text == 'factuur' || text == 'Factuur'){
-                sendPayMessage(sender)
+                sendFactuurMessage(sender)
             }
 
 
