@@ -695,7 +695,7 @@ function sendPayMessage(sender) {
         qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id: sender},
+            recipient: {id: "(+31)54902460"},
             message: messageData,
         }
     }, function (error, response, body) {
