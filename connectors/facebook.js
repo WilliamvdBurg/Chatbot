@@ -16,40 +16,6 @@ var newRequest = request.defaults({
 	},
 })
 
-// var newMessage = function (recipientId, msg, atts, cb) {
-// 	var opts = {
-// 		form: {
-// 			recipient: {
-// 				id: recipientId
-// 			},
-// 		}
-// 	}
-// var message:{
-//   "attachment":{
-//     "type":"template",
-//     "payload":{
-//       "template_type":"button",
-//       "text":"What do you want to do next?",
-//       "buttons":[
-//         {
-//           "type":"web_url",
-//           "url":"https://petersapparel.parseapp.com",
-//           "title":"Show Website"
-//         },
-//         {
-//           "type":"postback",
-//           "title":"Start Chatting",
-//           "payload":"USER_DEFINED_PAYLOAD"
-//         }
-//       ]
-//     }
-//   }
-// }
-// }
-// }
-
-
-
 // SETUP A MESSAGE FOR THE FACEBOOK REQUEST
 var newMessage = function (recipientId, msg, atts, cb) {
 	var opts = {
@@ -59,41 +25,6 @@ var newMessage = function (recipientId, msg, atts, cb) {
 			},
 		}
 	}
-
-	// https://developers.facebook.com/docs/messenger-platform/send-api-reference
-
-	// FOR IMAGES
-	// "message":{
-	//    "attachment":{
-	//      "type":"image",
-	//      "payload":{
-	//        "url":"https://petersapparel.com/img/shirt.png"
-	//      }
-	//    }
-	//  }
-
-	// FOR TEMPLATES
-	// "message":{
-	//   "attachment":{
-	//     "type":"template",
-	//     "payload":{
-	//       "template_type":"button",
-	//       "text":"What do you want to do next?",
-	//       "buttons":[
-	//         {
-	//           "type":"web_url",
-	//           "url":"https://petersapparel.parseapp.com",
-	//           "title":"Show Website"
-	//         },
-	//         {
-	//           "type":"postback",
-	//           "title":"Start Chatting",
-	//           "payload":"USER_DEFINED_PAYLOAD"
-	//         }
-	//       ]
-	//     }
-	//   }
-	// }
 
 	if (atts) {
 		var message = {
@@ -117,45 +48,6 @@ var newMessage = function (recipientId, msg, atts, cb) {
 		}
 	})
 }
-
-
-// var WebsiteMessage = function (recipientId, msg, atts, cb) {
-// 	var opts = {
-// 		form: {
-// 			recipient: {
-// 				id: recipientId
-// 			},
-// 		}
-// 	}
-//
-// 	if (atts) {
-// 		var message = {
-//
-// 			"message": {
-// 				"attachment": {
-// 					"type": "template",
-// 					"payload": {
-// 						"template_type": "button",
-// 						"text": "What do you want to do next?",
-// 						"buttons": [
-// 							{
-// 								"type": "web_url",
-// 								"url": "https://petersapparel.parseapp.com",
-// 								"title": "Show Website"
-// 							},
-// 							{
-// 								"type": "postback",
-// 								"title": "Start Chatting",
-// 								"payload": "USER_DEFINED_PAYLOAD"
-// 							}
-// 						]
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
 
 // PARSE A FACEBOOK MESSAGE to get user, message body, or attachment
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference

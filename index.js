@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === 'vrendly_bot_will') {
         res.send(req.query['hub.challenge'])
-    }
+}
     res.send('Error, wrong token')
 })
 
